@@ -1,6 +1,3 @@
-<?php 
-  include("../Controller/registration_controller.php")
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +7,16 @@
 </head>
 <body>
   <div>
-    <form action="GET_POST">
-      <input type="text" id="Name">User név</input>
-      <input type="text" id="pass">Password</input>
-      <button type="submit">Regisztál</button>
+    <form action="" method="POST">
+      <input type="text" name="name">User név</input>
+      <input type="email" name="mail">E-mail</input>
+      <input type="text" name="pass">Password</input>
+      <button type="submit" name="submit">Regisztál</button>
     </form>
   </div>
+  <?php 
+  include("../Controller/registration_controller.php");
+  init($_POST);
+?>
 </body>
 </html>
