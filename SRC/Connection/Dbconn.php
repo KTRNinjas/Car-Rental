@@ -3,9 +3,9 @@
 $host="localhost";
 $user="root";
 $password="";
-$db="emberek";//adatbázis neve
+//$db="Autokolcsonzo";//adatbázis neve
 
-$kapcsolat=mysqli_connect($host,$user,$password,$db);
+$kapcsolat=mysqli_connect($host,$user,$password);
 if(!$kapcsolat){
 die('Nem lehet kapcsolódni az adatbázishoz!');
 }else{
