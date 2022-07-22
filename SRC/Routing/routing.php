@@ -1,20 +1,19 @@
 <?php
-include_once("Controller/master_controller.php");
+require_once("Controller/master_controller.php");
 function initRouting()
 {
-    collectRoutes();
     $request = $_SERVER['REQUEST_URI'];
     $path = dirname(__DIR__, 1);
-    $foundPage=false;
-    foreach($GLOBALS['routes'] as $url =>$filenameAndLocation){
+    $foundPage = false;
+    foreach ($GLOBALS['routes'] as $url => $filenameAndLocation) {
         if (matcher($url, $request)) {
             require_once($path . $filenameAndLocation);
-            $foundPage=true;
+            $foundPage = true;
         }
     }
-    if(!$foundPage){
+    if (!$foundPage) {
         http_response_code(404);
-        print "404"; 
+        print "404";
     }
     /*if (matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation', $request)) {
         require($path . "/View/testimplementation.php");

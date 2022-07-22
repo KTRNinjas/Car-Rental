@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regisztráció</title>
 </head>
+
 <body>
   <div>
     <form action="" method="POST">
@@ -14,11 +16,12 @@
       <button type="submit" name="submit">Regisztál</button>
     </form>
   </div>
-  <?php 
+  <?php
   print __DIR__;
-  $path=dirname(__DIR__, 1);
-  include($path."/Controller/testimplemetation_controller.php");
+  $path = dirname(__DIR__, 1);
+  require_once($path . "/Controller/testimplemetation_controller.php");
   init($_POST);
-?>
+  ?>
 </body>
+
 </html>

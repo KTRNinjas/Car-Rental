@@ -1,25 +1,24 @@
 <?php
 require_once("testimplemetation_controller.php");
-$routes = [];
+require_once("testimplementation_controller2.php");
+
 
 function getRoutes()
 {
-    
+
     return $GLOBALS['routes'];
 }
-function collectRoutes(){
-    //addRoute();
+/*function collectRoutes(){
     $pageRoute=getRouteOfThisPage();
-    print $pageRoute;
     $fileLocation=getFileLocationOfThisPage();
-    print $fileLocation;
     $GLOBALS['routes'][$pageRoute] = $fileLocation;
-}
-function addRoute()
+    print $fileLocation;
+}*/
+/*function addRoute()
 {
     $pageRoute=getRouteOfThisPage();
     print $pageRoute;
     $fileLocation=getFileLocationOfThisPage();
     print $fileLocation;
     $GLOBALS['routes'][$pageRoute] = $fileLocation;
-}
+}*/

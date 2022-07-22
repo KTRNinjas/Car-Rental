@@ -1,18 +1,17 @@
 <?php 
-$i=0;
-$i=$i+1;
-print "belépések száma".$i;
+//Ezt a két paramétert adjátok meg a saját controlleretekben
 $url="/KTRNINJAS/Car-Rental/SRC/testimplementation";
-
-function getRouteOfThisPage(){
+$fileLocation="/View/testimplementation.php";
+$routes[$url]=$fileLocation;
+/*function getRouteOfThisPage(){
 
   
   return $GLOBALS['url'];
 }
 function getFileLocationOfThisPage(){
-  $fileLocation="/View/testimplementation.php";
+  $fileLocation=$GLOBALS['fileLocation'];
   return $fileLocation;
-}
+}*/
 
 
   function init(){
@@ -31,4 +30,3 @@ function getFileLocationOfThisPage(){
     $pass=$_POST["pass"];
       print $name.$mail.$pass;
   }
-?>
