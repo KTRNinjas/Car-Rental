@@ -15,7 +15,9 @@
     </form>
   </div>
   <?php 
-  include("../Controller/testimplemetation_controller.php");
+  print __DIR__;
+  $path=dirname(__DIR__, 1);
+  include($path."/Controller/testimplemetation_controller.php");
   init($_POST);
 ?>
 </body>

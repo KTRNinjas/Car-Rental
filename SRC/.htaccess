@@ -1,6 +1,6 @@
 RewriteEngine On
-RewriteBase /KTRNINJAS/Car-Rental/
+RewriteBase /KTRNINJAS/Car-Rental/SRC/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /KTRNINJAS/Car-Rental/index.php [L]
+RewriteRule . /KTRNINJAS/Car-Rental/SRC/index.php [L]

@@ -1,5 +1,4 @@
 <?php 
-include("master_controller.php");
   function init(){
     if(isset($_POST["submit"])){
       data();
