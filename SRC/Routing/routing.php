@@ -3,7 +3,7 @@
 function initRouting()
 {
     $request = $_SERVER['REQUEST_URI'];
-    $path = dirname(__DIR__, 2);
+    $path = dirname(__DIR__, 1);
     if (matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation', $request)) {
         require($path . "/View/testimplementation.php");
     }else if(matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation2', $request)){
