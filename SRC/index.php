@@ -1,3 +1,3 @@
 <?php 
-include("Controller/master_controller.php");
+include("Controller/indexcontroller.php");
 ?>

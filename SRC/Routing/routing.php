@@ -1,20 +1,30 @@
 <?php
-
+include_once("Controller/master_controller.php");
 function initRouting()
 {
+    collectRoutes();
     $request = $_SERVER['REQUEST_URI'];
     $path = dirname(__DIR__, 1);
-    if (matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation', $request)) {
+    $foundPage=false;
+    foreach($GLOBALS['routes'] as $url =>$filenameAndLocation){
+        if (matcher($url, $request)) {
+            require_once($path . $filenameAndLocation);
+            $foundPage=true;
+        }
+    }
+    if(!$foundPage){
+        http_response_code(404);
+        print "404"; 
+    }
+    /*if (matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation', $request)) {
         require($path . "/View/testimplementation.php");
-    }else if(matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation2', $request)){
+    } else if (matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation2', $request)) {
         print matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation', $request);
         require($path . "/View/testimplementation2.php");
-    } 
-    
-    else {
+    } else {
         http_response_code(404);
         print "404";
-    }
+    }*/
     // switch ($request) {
 
     //     case '/KTRNINJAS/Car-Rental/SRC/testimplementation':
@@ -53,18 +63,19 @@ function matcher($url, $request)
 {
     $pattern = replacer($url);
     $exactPattern = "/" . $pattern . "$/";
-    if(preg_match($exactPattern, $request) == 1){
+    if (preg_match($exactPattern, $request) == 1) {
         return true;
-    }else if(getMatcher($pattern,$request)){
+    } else if (getMatcher($pattern, $request)) {
         return true;
-    }else{
+    } else {
         return false;
     }
-   // return preg_match($exactPattern, $request) == 1 ? true : getMatcher($pattern,$request);
+    // return preg_match($exactPattern, $request) == 1 ? true : getMatcher($pattern,$request);
 }
-function getMatcher($pattern,$request){
+function getMatcher($pattern, $request)
+{
     $getPattern = "/" . $pattern . "\?/";
-    if(preg_match($getPattern, $request)==1){
+    if (preg_match($getPattern, $request) == 1) {
         return true;
     }
     return false;
