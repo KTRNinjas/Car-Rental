@@ -12,7 +12,7 @@
         <option>bmw </optiona>
         <option>bmw </optiona>
         <option>bmw </optiona>
-    </select> -->
+    </select> 
         <label for="">Márka
             <input type="text" ></input> 
         </label>
@@ -27,6 +27,13 @@
         <label for="">Suly
             <input type="text"></input>
         </label>
+-->
+    <?php // adatok felvétele egy php segitségével az adatokat több tömből generálja ki  
+      include("AutoFelvevoBackend.php");
+      kiiro();
+  
+  ?>
+
 
       <button type="submit" name="submit">Regisztál</button>
     </form>
@@ -51,13 +58,4 @@
         Auto :
             Rendszám
             Alvázszám
-            
-
-
-
-
-
-
-
-
 -->
