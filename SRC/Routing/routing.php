@@ -14,7 +14,8 @@ function initRouting()
     }
     if (!$foundPage) {
         http_response_code(404);
-        print "404";
+        require_once($path."/View/response_404.php");
+        //print "404";
     }
     /*if (matcher('/KTRNINJAS/Car-Rental/SRC/testimplementation', $request)) {
         require($path . "/View/testimplementation.php");
