@@ -22,3 +22,12 @@ function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $Korn
     } else print $üzenet . " sikertelen volt!<br><br>";
     print $sql;
 }
+function FajtaFeltolto($kapcsolat){
+    $result= mysqli_query($kapcsolat ,"SELECT * FROM `fajta`");
+    $Fajta=[];
+    $Fajtak =[];
+    while($egysor=mysqli_fetch_array($result)){
+        array_push($Fajtak,$Fajta[$egysor["ID"]=$egysor["Fajta_neve"]])  
+     }
+     return $Fajtak;
+}
