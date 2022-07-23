@@ -2,7 +2,7 @@
 
 $path = dirname(__DIR__, 2);
 include($path . "/Connection/Dbconn.php");
-AutoTipusTarolo($kapcsolat, "BMW", "Teher", "Benzines", 1, "e5");
+AutoTipusTarolo($kapcsolat, "BMW", "Teher", "Benzines", 1, "e5");//elős elem felvétele nem kell a kodba 
 
 function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
 {
