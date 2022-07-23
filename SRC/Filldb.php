@@ -21,4 +21,5 @@ function Query($kapcsolat, $üzenet, $sql)
         print $üzenet . " sikeres volt!<br><br>";
     } else print $üzenet . " sikertelen volt!<br><br>";
 }
+
 ?>
