@@ -17,7 +17,6 @@
     </form>
   </div>
   <?php
-  print __DIR__;
   $path = dirname(__DIR__, 1);
   require_once($path . "/Controller/testimplemetation_controller.php");
   init($_POST);

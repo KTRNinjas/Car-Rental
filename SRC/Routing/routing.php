@@ -1,5 +1,6 @@
 <?php
-require_once("Controller/master_controller.php");
+$path = dirname(__DIR__, 1);
+require_once($path . "/Controller/master_controller.php");
 function initRouting()
 {
     $request = $_SERVER['REQUEST_URI'];
@@ -7,7 +8,7 @@ function initRouting()
     $foundPage = false;
     foreach ($GLOBALS['routes'] as $url => $filenameAndLocation) {
         if (matcher($url, $request)) {
-            require_once($path . $filenameAndLocation);
+            require_once($filenameAndLocation);
             $foundPage = true;
         }
     }
@@ -61,7 +62,8 @@ function initRouting()
 function matcher($url, $request)
 {
     $pattern = replacer($url);
-    $exactPattern = "/" . $pattern . "$/";
+    print $pattern;
+    $exactPattern = "/^" . $pattern . "$/";
     if (preg_match($exactPattern, $request) == 1) {
         return true;
     } else if (getMatcher($pattern, $request)) {
@@ -73,7 +75,7 @@ function matcher($url, $request)
 }
 function getMatcher($pattern, $request)
 {
-    $getPattern = "/" . $pattern . "\?/";
+    $getPattern = "/^" . $pattern . "\?/";
     if (preg_match($getPattern, $request) == 1) {
         return true;
     }

@@ -1,8 +1,9 @@
-<?php 
+<?php
 //Ezt a két paramétert adjátok meg a saját controlleretekben
-$url="/KTRNINJAS/Car-Rental/SRC/testimplementation";
-$fileLocation="/View/testimplementation.php";
-$routes[$url]=$fileLocation;
+$path = dirname(__DIR__, 1);
+$url = "/testimplementation";
+$fileLocation = $path . "/View/testimplementation.php";
+$routes[$url] = $fileLocation;
 /*function getRouteOfThisPage(){
 
   
@@ -14,19 +15,21 @@ function getFileLocationOfThisPage(){
 }*/
 
 
-  function init(){
-    
-    if(isset($_POST["submit"])){
-      data();
-      /* $name=$_POST["name"];
+function init()
+{
+
+  if (isset($_POST["submit"])) {
+    data();
+    /* $name=$_POST["name"];
       $mail=$_POST["mail"];
       $pass=$_POST["pass"];
       print $name.$mail.$pass; */
-    }
   }
-  function data(){
-    $name=$_POST["name"];
-    $mail=$_POST["mail"];
-    $pass=$_POST["pass"];
-      print $name.$mail.$pass;
-  }
+}
+function data()
+{
+  $name = $_POST["name"];
+  $mail = $_POST["mail"];
+  $pass = $_POST["pass"];
+  print $name . $mail . $pass;
+}
