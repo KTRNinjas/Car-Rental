@@ -3,6 +3,7 @@ require("Connection/Dbconn.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
+    $sql = "DROP DATABASE Autokolcsonzo";
     $üzenet = "az adatbázis létrehozása ";
     $sql = "CREATE DATABASE Autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
