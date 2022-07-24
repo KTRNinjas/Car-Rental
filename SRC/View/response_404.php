@@ -1,6 +1,7 @@
 <?php
 $path=dirname(__DIR__, 1);
-print '<img src="'.$_SERVER['DOCUMENT_ROOT'].'/Car-Rental/SRC/Fileok/Kepek/toy-car-crash.gif" alt="">';
+$hostname = getenv('HTTP_HOST');
+$url='/'.trim($path."c",$_SERVER['DOCUMENT_ROOT'])."C";
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -9,9 +10,12 @@ print '<img src="'.$_SERVER['DOCUMENT_ROOT'].'/Car-Rental/SRC/Fileok/Kepek/toy-c
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 Requested page can't be found</title>
+    <link rel="stylesheet" href=<?php print '"'.(isset($_SERVER['HTTPS']) ? 'https://' : 'http://').$hostname.$url.'/View/css/response_404.css"' ?>>
 </head>
 <body>
-    <h1>OOPS Page Not Found</h1>
-    
+    <h1 class="h1404">OOPS Page Not Found Error:404</h1>
+    <?php 
+    //print '<p><img src="'.(isset($_SERVER['HTTPS']) ? 'https://' : 'http://').$hostname.$url.'/Fileok/Kepek/toy-car-crash.gif" alt=""></p>';
+    ?>
 </body>
 </html>

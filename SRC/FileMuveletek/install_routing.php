@@ -26,13 +26,20 @@ print  ' . $hyphen . '<form action="" method="POST">
 function createHtaccess()
 {
     $htaccess = fopen($_SERVER['DOCUMENT_ROOT'] . "/.htaccess", "w") or die("Unable to open file!");
-    $content = '
+    /*$content = '
     RewriteEngine On
     RewriteBase ///
     RewriteRule ^index\.php$ - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule . index.php [L]
+    ';*/
+    $content = '
+    RewriteEngine On
+    RewriteBase ///
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)$ index.php [QSA,L]
     ';
     fwrite($htaccess, $content);
     fclose($htaccess);
