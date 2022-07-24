@@ -1,4 +1,5 @@
-<?php 
-function getRootPath(){
+<?php
+function getRootPath()
+{
     return __DIR__;
 }
