@@ -15,45 +15,37 @@ function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $Korn
     } else print $üzenet . " sikertelen volt!<br><br>";
     print $sql;
 }
-
-function FajtaFeltolto($kapcsolat){
-    $sql="SELECT * FROM `autokolcsonzo`.`fajta`" ;
+function SQLFeltolto($kapcsolat,$sql,$value){
     $result= mysqli_query($kapcsolat ,$sql);
-    $Fajta=[];
-
     print_r($result);
     while($egysor=mysqli_fetch_array($result)){
-        $Fajta[$egysor["ID"]]=$egysor["Fajta_neve"];  
+        $SQLTomb[$egysor["ID"]]=$egysor[$value];  
      }
 
-     return $Fajta;
+     return $SQLTomb;
+
+}
+function FajtaFeltolto($kapcsolat){
+    $sql="SELECT * FROM `autokolcsonzo`.`fajta`" ;
+    $Fajta=[];
+    $Fajta=SQLFeltolto($kapcsolat,$sql,"Fajta_neve");
+    return $Fajta;    
 }
 
 
 function KategoriaFeltolto($kapcsolat){
     $sql="SELECT * FROM `autokolcsonzo`.`kategoria`" ;
-    $result= mysqli_query($kapcsolat ,$sql);
     $Kategoria=[];
-
-    print_r($result);
-    while($egysor=mysqli_fetch_array($result)){
-        $Kategoria[$egysor["ID"]]=$egysor["Kategoria"];  
-     }
-
-     return $Kategoria;
+    $Kategoria=SQLFeltolto($kapcsolat,$sql,"Kategoria");
+    return $Kategoria;
+    
 }
 
 function KornyezetVedelemFeltolto($kapcsolat){
     $sql="SELECT * FROM `autokolcsonzo`.`környezetvédelmibesorolás`" ;
-    $result= mysqli_query($kapcsolat ,$sql);
-    $kornyezetvedelemiBesorolas=[];
-
-    print_r($result);
-    while($egysor=mysqli_fetch_array($result)){
-        $kornyezetvedelemiBesorolas[$egysor["ID"]]=$egysor["KörnyezetvédelmiBesorolás"];  
-     }
-
-     return $kornyezetvedelemiBesorolas;
+    $Környezetvédelmibesorolás=[];
+    $Környezetvédelmibesorolás=SQLFeltolto($kapcsolat,$sql,"KörnyezetvédelmiBesorolás");
+    return $Környezetvédelmibesorolás;
 }
 
 

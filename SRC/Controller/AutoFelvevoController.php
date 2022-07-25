@@ -1,22 +1,21 @@
 <?php 
 include_once("../Model/Service/AutoTipusService.php");
-function getFajta($kapcsolat){
-  $fajtak = FajtaFeltolto($kapcsolat);
-  foreach($fajtak as $key=>$value){
+function kiiro($legordulo){
+  foreach($legordulo as $key=>$value){
     print "<option>$value </option>";
   };
+}
+function getFajta($kapcsolat){
+  $fajta = FajtaFeltolto($kapcsolat);
+  kiiro($fajta);
 };
 function getKategoria($kapcsolat){
   $kategoria = KategoriaFeltolto($kapcsolat);
-  foreach($kategoria as $key=>$value){
-    print "<option>$value </option>";
-  };
+  kiiro($kategoria);
 };
 function getKornyezetVedelem($kapcsolat){
   $kornyezetvedelem = KornyezetVedelemFeltolto($kapcsolat);
-  foreach($kornyezetvedelem as $key=>$value){
-    print "<option>$value </option>";
-  };
+  kiiro($kornyezetvedelem);
 };
   function init(){
     if(isset($_POST["submit"])){
