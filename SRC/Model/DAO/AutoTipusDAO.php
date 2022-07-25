@@ -22,6 +22,7 @@ function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $Korn
     } else print $üzenet . " sikertelen volt!<br><br>";
     print $sql;
 }
+
 function FajtaFeltolto($kapcsolat){
     $sql="SELECT * FROM `autokolcsonzo`.`fajta`" ;
     $result= mysqli_query($kapcsolat ,$sql);
