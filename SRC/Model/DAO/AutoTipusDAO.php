@@ -1,5 +1,4 @@
 <?php
-
 $path = dirname(__DIR__, 2);
 include($path . "/Connection/Dbconn.php");
 //AutoTipusTarolo($kapcsolat, "BMW", "Teher", "Benzines", 1, "e5");//elős elem felvétele nem kell a kodba 
@@ -8,13 +7,7 @@ function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $Korn
 {
     $Macskakorom = '"';
     print $Macskakorom;
-    $sql = "INSERT INTO `Autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Fajta`, `Kategoria`, `Prémium`, `Környezetvédelmi besorolás`, `Ársáv`) VALUES (NULL,
-" . $Macskakorom . $Marka . $Macskakorom . ",
-" . $Macskakorom . $Fajta . $Macskakorom . ",
-" . $Macskakorom . $Kategoria . $Macskakorom . ",
-" . $Premium . ",
-" . $Macskakorom . $KornyezetvedelmiBesorolas . $Macskakorom . ",
-" . $Macskakorom . "70" . $Macskakorom . ");";
+    $sql = "INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, 'BMW', '1', '1', '1', '2')";
     $üzenet = "az auto ";
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
@@ -62,3 +55,5 @@ function KornyezetVedelemFeltolto($kapcsolat){
 
      return $kornyezetvedelemiBesorolas;
 }
+
+

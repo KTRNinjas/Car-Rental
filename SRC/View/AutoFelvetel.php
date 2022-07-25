@@ -7,6 +7,7 @@
     <title>Autofelvétel</title>
     <?php
     include_once("../Controller/AutoFelvevoController.php");
+    
     ?>
 </head>
 
