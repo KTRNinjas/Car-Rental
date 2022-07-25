@@ -1,3 +1,6 @@
+#####Saját ignore-ok, ide írjátok
+phpunit.xml
+.phpunit.result.cache
 ##### Windows
 # Windows thumbnail cache files
 Thumbs.db
@@ -450,11 +453,6 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
-
-##Saját ignore-ok, ide írjátok
-#phpunit*.phar
-phpunit.xml
-.phpunit.result.cache
 
 ##### Composer
 composer.phar
