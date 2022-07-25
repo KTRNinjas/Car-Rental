@@ -1,57 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regisztráció</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autofelvétel</title>
+    <?php
+    include_once("../Controller/AutoFelvevoController.php");
+    ?>
 </head>
+
 <body>
-    <!-- <select>     Select     Lenyíló lista létrehozására szolgáló páros címke.
-        <option>bmw </optiona>
-        <option>bmw </optiona>
-        <option>bmw </optiona>
-    </select> 
-        <label for="">Márka
-            <input type="text" ></input> 
-        </label>
-        <select> Kategóriák
+    <select name="" id="">
+        <?php
+        getFajta($kapcsolat);
 
-        <label for="">Márka</label>
-            <option>Sedan </optiona>
-            <option>Combi </optiona>
-            <option>Cabrio </optiona>
-            <option>4X4 </optiona>
-        </select>
-        <label for="">Suly
-            <input type="text"></input>
-        </label>
--->
-    <?php // adatok felvétele egy php segitségével az adatokat több tömből generálja ki  
-
-     // kiiro();
-        include_once("../Controller/AutoFelvevoController.php");
-    getFajta($kapcsolat);
- ?>
+        ?>
+    </select>
+    <select name="" id="">
+        <?php
+        getKategoria($kapcsolat);
+        ?>
+    </select>
+    <select name="" id="">
+        <?php
+        getKornyezetVedelem($kapcsolat);
+        ?>
+    </select>
 
 
-  <?php 
-  include("../Controller/AutoFelvevoController.php");//cser;ljem ki
-  init($_POST);
-?>
 </body>
+
 </html>
-
-
-
-<!--
-    mit vegyek fel az adatbázisba:
-    Táblák száma:2
-        Auto tipus:
-            Márka
-            Fajta
-
-
-        Auto :
-            Rendszám
-            Alvázszám
--->

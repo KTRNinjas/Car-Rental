@@ -4,10 +4,10 @@ InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
     $üzenet="adatbazis torlése";
-    $sql = "DROP DATABASE Autokolcsonzo";
+    $sql = "DROP DATABASE autokolcsonzo";
     Query($kapcsolat,$üzenet,$sql);
     $üzenet = "az adatbázis létrehozása ";
-    $sql = "CREATE DATABASE Autokolcsonzo";
+    $sql = "CREATE DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
