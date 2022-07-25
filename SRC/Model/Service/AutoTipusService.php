@@ -1,7 +1,7 @@
 <?php 
-    include_once("../DAO/AutoTipusDAO.php");
-    FajtaFeltolto($kapcsolat);
+$path = dirname(__DIR__, 1);
+    include_once($path."/DAO/AutoTipusDAO.php");
     function Feltolto($kapcsolat){
-        return FajtaFeltolto($kapcsolat)
+        return FajtaFeltolto($kapcsolat);
     }
 ?>

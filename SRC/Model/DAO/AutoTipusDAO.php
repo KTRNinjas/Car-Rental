@@ -2,7 +2,7 @@
 
 $path = dirname(__DIR__, 2);
 include($path . "/Connection/Dbconn.php");
-AutoTipusTarolo($kapcsolat, "BMW", "Teher", "Benzines", 1, "e5");//elős elem felvétele nem kell a kodba 
+//AutoTipusTarolo($kapcsolat, "BMW", "Teher", "Benzines", 1, "e5");//elős elem felvétele nem kell a kodba 
 
 function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
 {
@@ -23,11 +23,14 @@ function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $Korn
     print $sql;
 }
 function FajtaFeltolto($kapcsolat){
-    $result= mysqli_query($kapcsolat ,"SELECT * FROM `fajta`");
+    $sql="SELECT * FROM `autokolcsonzo`.`fajta`" ;
+    $result= mysqli_query($kapcsolat ,$sql);
     $Fajta=[];
-    $Fajtak =[];
+
+    print_r($result);
     while($egysor=mysqli_fetch_array($result)){
-        array_push($Fajtak,$Fajta[$egysor["ID"]=$egysor["Fajta_neve"]])  
+        $Fajta[$egysor["ID"]=$egysor["Fajta_neve"]];  
      }
-     return $Fajtak;
+
+     return $Fajta;
 }

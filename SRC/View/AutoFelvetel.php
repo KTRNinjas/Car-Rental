@@ -6,8 +6,6 @@
   <title>Regisztráció</title>
 </head>
 <body>
-  <div>
-    <form action="" method="POST">
     <!-- <select>     Select     Lenyíló lista létrehozására szolgáló páros címke.
         <option>bmw </optiona>
         <option>bmw </optiona>
@@ -29,15 +27,13 @@
         </label>
 -->
     <?php // adatok felvétele egy php segitségével az adatokat több tömből generálja ki  
-      include("AutoFelvevoBackend.php");
-      kiiro();
-  
-  ?>
+
+     // kiiro();
+        include_once("../Controller/AutoFelvevoController.php");
+    getFajta($kapcsolat);
+ ?>
 
 
-      <button type="submit" name="submit">Regisztál</button>
-    </form>
-  </div>
   <?php 
   include("../Controller/AutoFelvevoController.php");//cser;ljem ki
   init($_POST);
