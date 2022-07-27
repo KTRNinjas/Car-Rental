@@ -8,9 +8,10 @@
 <body>
   <div>
     <form action="" method="POST">
-      <input type="text" name="name">User név</input>
-      <input type="email" name="mail">E-mail</input>
-      <input type="text" name="pass">Password</input>
+      <input type="text" name="surname" required>Vezetéknév</input>
+      <input type="text" name="firstname" required>Keresztnév</input>
+      <input type="email" name="mail" required>E-mail</input>
+      <input type="text" name="pass" required>Password</input>
       <button type="submit" name="submit">Regisztál</button>
     </form>
   </div>
