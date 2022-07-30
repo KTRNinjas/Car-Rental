@@ -13,4 +13,3 @@ $path = dirname(__DIR__, 1);
     function AutotipusAdatAtvevo($marka,$fajta,$kategoria,$premium,$kornyezetvedelem){
        return AutoTipusTarolo($marka,$fajta,$kategoria,$premium,$kornyezetvedelem);
     }
-?>
