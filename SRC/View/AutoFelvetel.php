@@ -13,6 +13,9 @@
         <label name="marka" for="">
             <input type="text" name="marka" required placeholder="Márka">
         </label>
+        <label name="tipus" for="">
+            <input type="text" name="tipus" required placeholder="Tipus">
+        </label>
         <select name="fajta" id="" required>
             <option value="">Válaszon fajtát</option>
             <?php

@@ -1,10 +1,10 @@
 <?php
 $path = dirname(__DIR__, 2);
 include($path . "/Connection/Dbconn.php");
-function AutoTipusTarolo($Marka, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
+function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
 {
     $kapcsolat = $GLOBALS["kapcsolat"];
-    $sql = "INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, '$Marka', '$Fajta', '$Kategoria', '$Premium', '$KornyezetvedelmiBesorolas')";
+    $sql = "INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`,`Tipus`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, '$Marka','$Tipus', '$Fajta', '$Kategoria', '$Premium', '$KornyezetvedelmiBesorolas')";
     $üzenet = "Az autotipus felvétel ";
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {

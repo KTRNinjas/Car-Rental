@@ -31,11 +31,12 @@ function initAutotipusbekuldes()
 function Autotipusbekuldes()
 {
   $marka = $_POST["marka"];
+  $tipus = $_POST["tipus"];
   $fajta = $_POST["fajta"];
   $kategoria = $_POST["kategoria"];
   $premium = isset($_POST["premium"]);
   $kornyezetvedelem = $_POST["kornyezetvedelem"];
-  $GLOBALS["autotipusadatatvevo"] =AutotipusAdatAtvevo($marka, $fajta, $kategoria, $premium, $kornyezetvedelem);
+  $GLOBALS["autotipusadatatvevo"] =AutotipusAdatAtvevo($marka,$tipus ,$fajta, $kategoria, $premium, $kornyezetvedelem);
   print $fajta.$marka;
 }
 function printresult(){
