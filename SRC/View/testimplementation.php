@@ -18,7 +18,7 @@
   </div>
   <?php
   $path = dirname(__DIR__, 1);
-  require_once($path . "/Controller/testimplemetation_controller.php");
+  require_once($path .DIRECTORY_SEPARATOR."Controller".DIRECTORY_SEPARATOR."testimplemetation_controller.php");
   init($_POST);
   ?>
 </body>

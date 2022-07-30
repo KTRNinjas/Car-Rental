@@ -22,9 +22,9 @@ function initRouting($serverRequestUri, $isTest = false)
     }
     if (!$isTest) {
         http_response_code(404);
-        require_once($path . "/View/response_404.php");
+        require_once($path .DIRECTORY_SEPARATOR."View".DIRECTORY_SEPARATOR."response_404.php");
     }
-    return $path . "/View/response_404.php";
+    return $path .DIRECTORY_SEPARATOR."View".DIRECTORY_SEPARATOR."response_404.php";
 }
 function matcher($url, $request)
 {
@@ -48,6 +48,6 @@ function getMatcher($pattern, $request)
 }
 function replacer($url)
 {
-    $pattern = str_ireplace("/", "\\/", $url);
+    $pattern = str_ireplace(DIRECTORY_SEPARATOR, "\\".DIRECTORY_SEPARATOR, $url);
     return $pattern;
 }

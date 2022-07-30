@@ -2,7 +2,7 @@
 //Ezt a két paramétert adjátok meg a saját controlleretekben és adjákok hozzá a saját controllereteket a master_controllerhez
 $path = dirname(__DIR__, 1);
 $url = "/testimplementation";
-$fileLocation = $path . "/View/testimplementation.php";
+$fileLocation = $path .DIRECTORY_SEPARATOR."View".DIRECTORY_SEPARATOR."testimplementation.php";
 $routes[$url] = $fileLocation;
 
 
