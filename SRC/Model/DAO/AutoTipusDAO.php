@@ -3,11 +3,13 @@ $path = dirname(__DIR__, 2);
 include($path . "/Connection/Dbconn.php");
 //AutoTipusTarolo($kapcsolat, "BMW", "Teher", "Benzines", 1, "e5");//elős elem felvétele nem kell a kodba 
 
-function AutoTipusTarolo($kapcsolat, $Marka, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
+function AutoTipusTarolo($Marka, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
 {
+    $kapcsolat=$GLOBALS["kapcsolat"];
     $Macskakorom = '"';
     print $Macskakorom;
-    $sql = "INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, 'BMW', '1', '1', '1', '2')";
+    $sql = "INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, '$Marka', '$Fajta', '$Kategoria', '$Premium', '$KornyezetvedelmiBesorolas')";
+    print $sql;
     $üzenet = "az auto ";
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
