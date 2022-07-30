@@ -36,6 +36,7 @@ function Autotipusbekuldes()
   $premium = isset($_POST["premium"]);
   $kornyezetvedelem = $_POST["kornyezetvedelem"];
   $GLOBALS["autotipusadatatvevo"] =AutotipusAdatAtvevo($marka, $fajta, $kategoria, $premium, $kornyezetvedelem);
+  print $fajta.$marka;
 }
 function printresult(){
   print $GLOBALS["autotipusadatatvevo"];

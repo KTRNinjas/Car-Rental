@@ -13,13 +13,13 @@
         <label name="marka" for="">
             <input type="text" name="marka" required placeholder="Márka">
         </label>
-        <select name="fajta" id="">
+        <select name="fajta" id="" required>
             <option value="">Válaszon fajtát</option>
             <?php
             getFajta($kapcsolat);
             ?>
         </select>
-        <select name="kategoria" id="">
+        <select name="kategoria" required id="">
             <option value="">Válaszon kategoriát</option>
             <?php
                 getKategoria($kapcsolat);
@@ -30,7 +30,7 @@
                 Prémium
             </input>
         </label>
-        <select name="kornyezetvedelem" id="">
+        <select name="kornyezetvedelem" required id="">
             <option value="">Válaszon környezetvédelmi besorolást</option>
             <?php
                 getKornyezetVedelem($kapcsolat);
