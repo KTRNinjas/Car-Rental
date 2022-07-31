@@ -42,7 +42,7 @@
             <?php
                 initAutotipusbekuldes();
             ?>
-        <label name="ar" for="">
+            <label name="ar" for="">
             <input type="text" name="ar" required placeholder="Ár">
         </label>
         <button type="submit" name="Autotipusbekuldes">Beküldés</button>
