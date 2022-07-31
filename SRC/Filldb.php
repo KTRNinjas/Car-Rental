@@ -1,6 +1,6 @@
 <?php
 require("Connection/Dbconn.php");
-include_once("ARSQL.php");
+include_once("AutotipusSQL.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
@@ -34,4 +34,5 @@ function Query($kapcsolat, $üzenet, $sql)
 function Tablamegvaltoztatas($kapcsolat){
     AutotipusTablamegvaltoztatasa($kapcsolat);
 }
+
 ?>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Árfelvevő</title>
+    <title>Autotipus felvétel</title>
     <?php
-    include_once("../Controller/ArFelvevoController.php");
+    include_once("../Controller/AutoFelvevoController.php");
     ?>
 </head>
 <body>
