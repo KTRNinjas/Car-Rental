@@ -1,7 +1,6 @@
 #####Saját ignore-ok, ide írjátok
 phpunit.xml
 .phpunit.result.cache
-
 ##### Windows
 # Windows thumbnail cache files
 Thumbs.db

@@ -1,33 +1,44 @@
-<?php 
+<?php
 include_once("../Model/Service/AutoTipusService.php");
-function kiiro($legordulo){
-  foreach($legordulo as $key=>$value){
-    print "<option>$value </option>";
+$autotipusadatatvevo="";
+function kiiro($legordulo)
+{
+  foreach ($legordulo as $key => $value) {
+    print '<option value="' . $key . '" >' . $value . '</option>';
   };
 }
-function getFajta($kapcsolat){
+function getFajta($kapcsolat)
+{
   $fajta = FajtaFeltolto($kapcsolat);
   kiiro($fajta);
 };
-function getKategoria($kapcsolat){
+function getKategoria($kapcsolat)
+{
   $kategoria = KategoriaFeltolto($kapcsolat);
   kiiro($kategoria);
 };
-function getKornyezetVedelem($kapcsolat){
+function getKornyezetVedelem($kapcsolat)
+{
   $kornyezetvedelem = KornyezetVedelemFeltolto($kapcsolat);
   kiiro($kornyezetvedelem);
 };
-  function init(){
-    if(isset($_POST["submit"])){
-      data();
-      print "Bejutott";
-
-    }
+function initAutotipusbekuldes()
+{
+  if (isset($_POST["Autotipusbekuldes"])) {
+    Autotipusbekuldes();
   }
-  function data(){
-    $name=$_POST["name"];
-    $mail=$_POST["mail"];
-    $pass=$_POST["pass"];
-      print $name.$mail.$pass;
-  }
-?>
+}
+function Autotipusbekuldes()
+{
+  $marka = $_POST["marka"];
+  $tipus = $_POST["tipus"];
+  $fajta = $_POST["fajta"];
+  $kategoria = $_POST["kategoria"];
+  $premium = isset($_POST["premium"]);
+  $kornyezetvedelem = $_POST["kornyezetvedelem"];
+  $GLOBALS["autotipusadatatvevo"] =AutotipusAdatAtvevo($marka,$tipus ,$fajta, $kategoria, $premium, $kornyezetvedelem);
+  print $fajta.$marka;
+}
+function printresult(){
+  print $GLOBALS["autotipusadatatvevo"];
+}
