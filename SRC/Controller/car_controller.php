@@ -9,6 +9,7 @@ function makeHeader(){
 //$keys=array_keys($GLOBALS['cars'][0]);
 print "<th>Rendszám</th>";
 print "<th>Alvázszám</th>";
+print "<th>Autótípus</th>";
 print "<th>Hajtáslánc</th>";
 print "<th>Váltótípus</th>";
 print "<th>Évjárat</th>";
@@ -16,7 +17,6 @@ print "<th>Teljesítmény</th>";
 print "<th>Biztosítási díj</th>";
 print "<th>Kilométeróra állása</th>";
 print "<th>Forgalmi megújításának ideje</th>";
-print "<th>Autótípus</th>";
 print "<th>Kivezetve</th>";
 }
 function printCarsInDB(){
@@ -32,8 +32,19 @@ function printCarsInDB(){
 }
 function getAllHajtaslancController(){
     $hajtaslanc=getAllHajtaslancService();
-    var_dump($hajtaslanc);
     foreach($hajtaslanc as $key=>$value){
+        print '<option value="'.$key.'">'.$value.'</option>';
+    }
+}
+function getAllValtotipusController(){
+    $valtotipus=getAllValtotipusService();
+    foreach($valtotipus as $key=>$value){
+        print '<option value="'.$key.'">'.$value.'</option>';
+    }
+}
+function getAllAutoTipusController(){
+    $autotipus=getAllAutoTipusService();
+    foreach($autotipus as $key=>$value){
         print '<option value="'.$key.'">'.$value.'</option>';
     }
 }

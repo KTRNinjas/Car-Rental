@@ -5,7 +5,7 @@ function getAllCars(){
     $kapcsolat=$GLOBALS['kapcsolat'];
     $cars=[];
     $today=date("y-m-d");
-    $sql="SELECT Rendszám,Alvázszám,(SELECT hajtaslanc FROM `autokolcsonzo`.`hajtaslanc` WHERE id=hajtaslanc_id) AS hajtaslanc,(SELECT valtotipus FROM `autokolcsonzo`.`valtotipus` WHERE id=valtotipus_id) AS valtotipus,Evjarat,Teljesitmeny,Biztositasi_dij,km,Forgalmi_megujitasanak_ideje,(SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,Kivezetve FROM `autokolcsonzo`.`cars` WHERE Kivezetve IS NULL OR DATE(Kivezetve)>'$today'";
+    $sql="SELECT Rendszám,Alvázszám,(SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,(SELECT hajtaslanc FROM `autokolcsonzo`.`hajtaslanc` WHERE id=hajtaslanc_id) AS hajtaslanc,(SELECT valtotipus FROM `autokolcsonzo`.`valtotipus` WHERE id=valtotipus_id) AS valtotipus,Evjarat,Teljesitmeny,Biztositasi_dij,km,Forgalmi_megujitasanak_ideje,Kivezetve FROM `autokolcsonzo`.`cars` WHERE Kivezetve IS NULL OR DATE(Kivezetve)>'$today'";
     $result=mysqli_query($kapcsolat, $sql);
     while($egysor=mysqli_fetch_assoc($result)){
         $car=[];
@@ -16,6 +16,16 @@ function getAllCars(){
    }
    return $cars;
 }
+function getAllAutoTipusDAO(){
+    $kapcsolat=$GLOBALS['kapcsolat'];
+    $sql="SELECT * FROM `autokolcsonzo`.`hajtaslanc`";
+    $result=mysqli_query($kapcsolat, $sql);
+    $cartype=[];
+    while($egysor=mysqli_fetch_assoc($result)){
+        $cartype[$egysor['id']]=$egysor['Hajtaslanc'];
+   }
+   return $cartype;
+}
 function getAllHajtaslancDAO(){
     $kapcsolat=$GLOBALS['kapcsolat'];
     $sql="SELECT * FROM `autokolcsonzo`.`hajtaslanc`";
@@ -23,9 +33,18 @@ function getAllHajtaslancDAO(){
     $hajtaslanc=[];
     while($egysor=mysqli_fetch_assoc($result)){
         $hajtaslanc[$egysor['id']]=$egysor['Hajtaslanc'];
-        var_dump($hajtaslanc);
    }
    return $hajtaslanc;
+}
+function getAllValtotipusDAO(){
+    $kapcsolat=$GLOBALS['kapcsolat'];
+    $sql="SELECT * FROM `autokolcsonzo`.`valtotipus`";
+    $result=mysqli_query($kapcsolat, $sql);
+    $valtotipus=[];
+    while($egysor=mysqli_fetch_assoc($result)){
+        $valtotipus[$egysor['id']]=$egysor['Valtotipus'];
+   }
+   return $valtotipus;
 }
 function insertCar($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id){
     $kapcsolat=$GLOBALS['kapcsolat'];
