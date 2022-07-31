@@ -11,5 +11,6 @@ $path = dirname(__DIR__, 1);
         return KornyezetVedelemFeltolto($kapcsolat);
     }
     function AutotipusAdatAtvevo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem){
+    //Ide kéne egy if($premium==true){$premium=1;}else{$premium=0;} átírás, különben nem működik nálam rajnaig
        return AutoTipusTarolo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem);
     }
