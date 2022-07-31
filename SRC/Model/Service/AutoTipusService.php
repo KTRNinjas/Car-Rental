@@ -12,5 +12,6 @@ $path = dirname(__DIR__, 1);
     }
     function AutotipusAdatAtvevo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem){
         if($premium==true){$premium=1;}else{$premium=0;}
+        
        return AutoTipusTarolo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem);
     }
