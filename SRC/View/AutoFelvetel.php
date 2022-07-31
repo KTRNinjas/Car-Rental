@@ -16,29 +16,12 @@
         <label name="tipus" for="">
             <input type="text" name="tipus" placeholder="Tipus">
         </label>
-        <select name="fajta" id="" >
-            <option value="">Válaszon fajtát</option>
-            
-        </select>
-        <select name="kategoria" id="">
-            <option value="">Válaszon kategoriát</option>
-            
-        </select>
-        <label for="">
-            <input name="premium" type="checkbox" value="off">
-                Prémium
-            </input>
-        </label>
-        <select name="kornyezetvedelem" id="">
-            <option value="">Válaszon környezetvédelmi besorolást</option>
-            
-        </select>
-            <?php
-                initAutotipusbekuldes();
-            ?>
         <label name="ar" for="">
             <input type="text" name="ar" placeholder="Ár">
         </label>
+        <?php
+            initAutotipusbekuldes();
+        ?>
         <button type="submit" name="Autotipusbekuldes">Beküldés</button>
     </form>
     <div>
