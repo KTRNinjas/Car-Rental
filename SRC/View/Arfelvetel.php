@@ -20,9 +20,12 @@
             initAutoarbekuldes()
         ?>
         <button type="submit" name="Autotipusbekuldes">Beküldés</button>
+        
+    </form>
+    <div>
         <?php
         printresult()
         ?>
-    </form>
+    </div>
 </body>
 </html>
