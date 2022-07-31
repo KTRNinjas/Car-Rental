@@ -30,4 +30,17 @@ function printCarsInDB(){
     print '</tr>';
    }
 }
+function getAllHajtaslancController(){
+    $hajtaslanc=getAllHajtaslancService();
+    var_dump($hajtaslanc);
+    foreach($hajtaslanc as $key=>$value){
+        print '<option value="'.$key.'">'.$value.'</option>';
+    }
+}
+function insertCarController(){
+    if(isset($_POST['insertCar'])){
+       // $rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id;
+       // insertCarService($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id);
+    }
+}
 ?>

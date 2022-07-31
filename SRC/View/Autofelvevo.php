@@ -19,7 +19,18 @@ initCarController();
         <tbody>
         <?php printCarsInDB() ?>
             <tr>
-                <td>Új autó felvétele:</td>
+                <td>
+                    <button><b>+</b>Új autó felvétele</button>
+                <form action="" method="post">
+                $alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id;
+                    <input type="text" name="rendszam" value="Rendszám">
+                    <input type="text" name="alvazszam" value="alvazszam">
+                    <select name="hajtaslanc" id="" required>
+                        <option value="">Válasszon hajtáslánctípust</option>
+                        <?php getAllHajtaslancController();?>
+                    </select>
+                </form>
+                </td>
             </tr>
         </tbody>
     </table>

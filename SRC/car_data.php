@@ -32,5 +32,9 @@
   Query($kapcsolat, "tesztauto2 betoltese ", $sql);
   $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'CCC-003', '123123123123', '3', '1', '2010', '10', '120000', '70000', '2022-09-28', '3', NULL)";
   Query($kapcsolat, "tesztauto3 betoltese ", $sql);
+  $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'DDD-004', '123123123123', '1', '1', '2011', '11', '130000', '80000', '2022-10-28', '1', '2021-09-28')";
+  Query($kapcsolat, "tesztauto3 betoltese ", $sql);
+  $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'EEE-005', '123123123123', '2', '2', '2012', '12', '140000', '90000', '2022-11-28', '4', '2022-09-28')";
+  Query($kapcsolat, "tesztauto3 betoltese ", $sql);
 }
 ?>
