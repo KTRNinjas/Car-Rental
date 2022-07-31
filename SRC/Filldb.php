@@ -11,15 +11,10 @@ function InitDb($kapcsolat)
     $sql = "CREATE DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
     TablaFelvetele($kapcsolat);
-    Adatfelvetel($kapcsolat);
-    Tablamegvaltoztatas($kapcsolat);
+
 
 }
-function AdatFelvetel($kapcsolat){
-    AdatfelvetelAutoFajta($kapcsolat);
-    AdatfelvetelAutoKategoria($kapcsolat);
-    KornyezetvedelmiBesorolas($kapcsolat);
-}
+
 function TablaFelvetele($kapcsolat)
 {
     creatAutotipusTable($kapcsolat);
@@ -30,9 +25,6 @@ function Query($kapcsolat, $üzenet, $sql)
     if ($ok) {
         print $üzenet . " sikeres volt!<br><br>";
     } else print $üzenet . " sikertelen volt!<br><br>";
-}
-function Tablamegvaltoztatas($kapcsolat){
-    AutotipusTablamegvaltoztatasa($kapcsolat);
 }
 
 ?>
