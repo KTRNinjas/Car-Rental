@@ -48,6 +48,6 @@ function getMatcher($pattern, $request)
 }
 function replacer($url)
 {
-    $pattern = str_ireplace(DIRECTORY_SEPARATOR, "\\".DIRECTORY_SEPARATOR, $url);
+    $pattern = str_ireplace("/", "\\"."/", $url);
     return $pattern;
 }

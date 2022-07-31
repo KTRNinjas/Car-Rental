@@ -11,9 +11,10 @@ function createIndexPHP()
     $path=$GLOBALS['path'];
     $hyphen = "'";
     $index = fopen($_SERVER['DOCUMENT_ROOT'] . "/index.php", "w") or die("Unable to open file!");
+    $replacedPath=str_ireplace("\\","\\\\",$path);
     $content =
         '<?php
-include_once("' . $path . DIRECTORY_SEPARATOR.'Controller'.DIRECTORY_SEPARATOR.'indexcontroller.php");
+include_once("' . $replacedPath . DIRECTORY_SEPARATOR.'Controller'.DIRECTORY_SEPARATOR.'indexcontroller.php");
 initRouting($_SERVER[' . $hyphen . 'REQUEST_URI' . $hyphen . ']);
 print  ' . $hyphen . '<form action="" method="POST">
 <input type="submit" name="uninstall" value="Routing uninstallálása">
