@@ -14,7 +14,7 @@ function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $Kornyezet
 }
 function ArTarolo($MarkaTipus,$AR){
     $aratvevo = $GLOBALS["aratvevo"];
-    $sql = "INSERT INTO `artabla` (`MARKA_TIPUS`, `AR`) VALUES ('$MarkaTipus', '$AR')";   
+    $sql = "INSERT INTO `autokolcsonzo`.`artabla` (`MARKA_TIPUS`, `AR`) VALUES ('$MarkaTipus', '$AR')";   
 }
 
 
