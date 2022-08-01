@@ -5,5 +5,3 @@ function creatAutotipusTable($kapcsolat){
     $üzenet = "Az autotipus tabla letrehozasa";
     Query($kapcsolat, $üzenet, $sql);
 }
-
-?>

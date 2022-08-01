@@ -1,6 +1,6 @@
 <?php
-include_once("../Model/Service/AutoTipusService.php");
-$autotipusadatatvevo="";
+include_once("../Model/Service/AutoArService.php");
+$autotipusadatatvevo = "";
 
 function initAutotipusbekuldes()
 {
@@ -12,10 +12,11 @@ function Autotipusbekuldes()
 {
   $marka = $_POST["marka"];
   $tipus = $_POST["tipus"];
-  $ar=$_POST["ar"];
-  $GLOBALS["autotipusadatatvevo"] =AutotipusAdatAtvevo($marka,$tipus,$ar);
-  print $marka.$ar.$tipus;
+  $ar = $_POST["ar"];
+  $GLOBALS["autotipusadatatvevo"] = AutotipusAdatAtvevo($marka, $tipus, $ar);
+  print $marka . $ar . $tipus;
 }
-function printresult(){
+function printresult()
+{
   print $GLOBALS["autotipusadatatvevo"];
 }
