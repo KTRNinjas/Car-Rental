@@ -14,7 +14,7 @@ function Autotipusbekuldes()
   $tipus = $_POST["tipus"];
   $ar = $_POST["ar"];
   $GLOBALS["autotipusadatatvevo"] = AutotipusAdatAtvevo($marka, $tipus, $ar);
-  print $marka . $ar . $tipus;
+  print $marka . $tipus. $ar."forint";
 }
 function printresult()
 {
