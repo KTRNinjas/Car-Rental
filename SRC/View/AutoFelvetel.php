@@ -11,41 +11,34 @@
 <body>
     <form action="" method="POST">
         <label name="marka" for="">
-            <input type="text" name="marka" required placeholder="Márka">
+            <input type="text" name="marka"  placeholder="Márka">
         </label>
         <label name="tipus" for="">
-            <input type="text" name="tipus" required placeholder="Tipus">
+            <input type="text" name="tipus" placeholder="Tipus">
         </label>
-        <select name="fajta" id="" required>
+        <select name="fajta" id="" >
             <option value="">Válaszon fajtát</option>
-            <?php
-            getFajta($kapcsolat);
-            ?>
+            
         </select>
-        <select name="kategoria" required id="">
+        <select name="kategoria" id="">
             <option value="">Válaszon kategoriát</option>
-            <?php
-                getKategoria($kapcsolat);
-            ?>
+            
         </select>
         <label for="">
             <input name="premium" type="checkbox" value="off">
                 Prémium
             </input>
         </label>
-        <select name="kornyezetvedelem" required id="">
+        <select name="kornyezetvedelem" id="">
             <option value="">Válaszon környezetvédelmi besorolást</option>
-            <?php
-                getKornyezetVedelem($kapcsolat);
-            ?>
-        </select>
             
-            <label name="ar" for="">
-            <input type="text" name="ar" required placeholder="Ár">
-        </label>
-        <?php
+        </select>
+            <?php
                 initAutotipusbekuldes();
             ?>
+        <label name="ar" for="">
+            <input type="text" name="ar" placeholder="Ár">
+        </label>
         <button type="submit" name="Autotipusbekuldes">Beküldés</button>
     </form>
     <div>
