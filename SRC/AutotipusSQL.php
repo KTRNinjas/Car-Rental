@@ -12,6 +12,12 @@ function creatAutotipusTable($kapcsolat){
     Query($kapcsolat, $üzenet, $sql);
     $sql="CREATE TABLE `autokolcsonzo`.`környezetvédelmibesorolás` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `KörnyezetvédelmiBesorolás` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
     $üzenet = "Az Környezetvédelmi besorolás tabla letrehozasa";
+   
+   
+   //artabla letrehozas
+    Query($kapcsolat, $üzenet, $sql);
+    $sql="CREATE TABLE `autokolcsonzo`.`Artabla` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Marka` VARCHAR(50) NOT NULL , `Ar` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
+    $üzenet = "Az Ar besorolás tabla letrehozasa";
     Query($kapcsolat, $üzenet, $sql);
 }
 function AdatfelvetelAutoFajta($kapcsolat){

@@ -39,12 +39,13 @@
                 getKornyezetVedelem($kapcsolat);
             ?>
         </select>
-            <?php
-                initAutotipusbekuldes();
-            ?>
+            
             <label name="ar" for="">
             <input type="text" name="ar" required placeholder="Ár">
         </label>
+        <?php
+                initAutotipusbekuldes();
+            ?>
         <button type="submit" name="Autotipusbekuldes">Beküldés</button>
     </form>
     <div>
