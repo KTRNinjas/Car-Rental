@@ -16,7 +16,7 @@ function creatAutotipusTable($kapcsolat){
    
    //artabla letrehozas
     Query($kapcsolat, $üzenet, $sql);
-    $sql="CREATE TABLE `autokolcsonzo`.`Artabla` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Marka` VARCHAR(50) NOT NULL , `Ar` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
+    $sql="CREATE TABLE `autokolcsonzo`.`Artabla` (`MARKA_TIPUS` VARCHAR(50) NOT NULL , `AR` INT(20) NOT NULL , PRIMARY KEY (`MARKA_TIPUS`(50))) ENGINE = InnoDB;";
     $üzenet = "Az Ar besorolás tabla letrehozasa";
     Query($kapcsolat, $üzenet, $sql);
 }
