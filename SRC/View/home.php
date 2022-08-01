@@ -14,6 +14,14 @@ require_once($path .DIRECTORY_SEPARATOR."Controller".DIRECTORY_SEPARATOR."home_c
 
 <body>
     <h1>Home</h1>
+    <form action="" method="post">
+        <input type="e-mail" name="mail" placeholder="E-mail" required>
+        <input type="password" name="pass" placeholder="Password" required>
+        <input type="submit" name="login" value="Belépés">
+    </form>
+    <?php 
+    loginController();
+    ?>
 </body>
 
 </html>
