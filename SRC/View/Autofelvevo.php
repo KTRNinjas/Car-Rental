@@ -22,17 +22,18 @@ initCarController();
             <?php printCarsInDB() ?>
             <tr>
                 <td>
-
+                <?php ?>
                 </td>
             </tr>
         </tbody>
     </table>
     <button><b>+</b>Új autó felvétele</button>
     <form action="" method="post">
-        <?php //$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id;
+        <?php 
+        insertCarController();
         ?>
-        <input type="text" name="rendszam" value="Rendszám" required>
-        <input type="text" name="alvazszam" value="Alvázszám" required>
+        <input type="text" name="rendszam" placeholder="Rendszám" required>
+        <input type="text" name="alvazszam" placeholder="Alvázszám" required>
         <select name="autotipus" id="" required>
             <option value="">Válasszon autótípust</option>
             <?php getAllAutoTipusController(); ?>
@@ -45,6 +46,12 @@ initCarController();
             <option value="">Válasszon váltótípust</option>
             <?php getAllValtotipusController(); ?>
         </select>
+        <input type="number" name="evjarat" id="" placeholder="Évjárat" required>
+        <input type="number" name="teljesitmeny" id="" placeholder="Teljesítmény" required>
+        <input type="number" name="biztositas" id="" placeholder="Biztosítási díj" required>
+        <input type="number" name="kilometer" id="" placeholder="Kilométeróra állása" required>
+        <input type="text" name="forgalmi" id="" placeholder="Forgalmi megújításának ideje" onfocus="(this.type='date')" required>
+        <input type="submit" name="insertCar" value="Új autó felvétele">
     </form>
 </body>
 

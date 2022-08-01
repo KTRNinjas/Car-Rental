@@ -37,4 +37,12 @@
   $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'EEE-005', '123123123123', '2', '2', '2012', '12', '140000', '90000', '2022-11-28', '4', '2022-09-28')";
   Query($kapcsolat, "tesztauto3 betoltese ", $sql);
 }
+function fill_testAutoTipus($kapcsolat){
+  $sql="INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Tipus`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, 'AudiTeszt', 'S8Teszt', '3', '2', '1', '1') ";
+  Query($kapcsolat, "tesztAudiS8 betoltese ", $sql);
+  $sql="INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Tipus`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, 'VolkswagenTeszt', 'PassatTeszt', '1', '2', '0', '2') ";
+  Query($kapcsolat, "tesztVolkswagenPassat betoltese ", $sql);
+  $sql="INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Tipus`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, 'JeepTeszt', 'WranglerTeszt', '2', '2', '0', '5') ";
+  Query($kapcsolat, "tesztJeepWranlger betoltese ", $sql);
+}
 ?>

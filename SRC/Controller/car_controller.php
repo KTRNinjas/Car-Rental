@@ -21,7 +21,6 @@ print "<th>Kivezetve</th>";
 }
 function printCarsInDB(){
    $cars=$GLOBALS['cars'];
-   //var_dump($cars);
    for($i=0;$i<count($cars);$i++){
     print '<tr>';
     foreach($cars[$i] as $key=>$value){
@@ -50,8 +49,17 @@ function getAllAutoTipusController(){
 }
 function insertCarController(){
     if(isset($_POST['insertCar'])){
-       // $rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id;
-       // insertCarService($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id);
+        $rendszam=$_POST['rendszam'];
+        $alvazszam=$_POST['alvazszam'];
+        $hajtaslanc_id=$_POST['hajtaslanc'];
+        $valtotipus_id=$_POST['valtotipus'];
+        $evjarat=$_POST['evjarat'];
+        $teljesitmeny=$_POST['teljesitmeny'];
+        $biztositasi_dij=$_POST['biztositas'];
+        $kilometer=$_POST['kilometer'];
+        $forgalmi=$_POST['forgalmi'];
+        $autotipus_id=$_POST['autotipus'];
+        insertCarService($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id);
     }
 }
 ?>
