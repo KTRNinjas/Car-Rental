@@ -1,6 +1,7 @@
 <?php
 include_once("../Model/Service/AutoTipusService.php");
 $autotipusadatatvevo="";
+$aratvevo="";
 function kiiro($legordulo)
 {
   foreach ($legordulo as $key => $value) {
