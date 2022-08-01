@@ -12,6 +12,15 @@ function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $Kornyezet
         return $üzenet . " sikeres volt!<br><br>";
     } else return $üzenet . " sikertelen volt!<br><br>";
 }
+function ArTarolo($MarkaTipus,$AR){
+    $kapcsolat = $GLOBALS["aratvevo"];
+    $sql = "INSERT INTO `artabla` (`MARKA_TIPUS`, `AR`) VALUES ('$MarkaTipus', '$AR')";
+    $üzenet = "Az AR felvétel ";
+   
+}
+
+
+
 function SQLFeltolto($kapcsolat, $sql, $value)
 {
     $result = mysqli_query($kapcsolat, $sql);
