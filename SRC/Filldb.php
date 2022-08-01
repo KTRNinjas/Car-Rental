@@ -1,6 +1,6 @@
 <?php
 require("Connection/Dbconn.php");
-include_once("AutotipusSQL.php");
+include_once("AutoArSQL.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
@@ -11,10 +11,7 @@ function InitDb($kapcsolat)
     $sql = "CREATE DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
     TablaFelvetele($kapcsolat);
-
-
 }
-
 function TablaFelvetele($kapcsolat)
 {
     creatAutotipusTable($kapcsolat);
@@ -26,5 +23,3 @@ function Query($kapcsolat, $üzenet, $sql)
         print $üzenet . " sikeres volt!<br><br>";
     } else print $üzenet . " sikertelen volt!<br><br>";
 }
-
-?>
