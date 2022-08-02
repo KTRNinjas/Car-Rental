@@ -11,18 +11,7 @@ function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $Kornyezet
     if ($ok) {
         return $üzenet . " sikeres volt!<br><br>";
     } else return $üzenet . " sikertelen volt!<br><br>";
-    print $sql;
 }
-function ArTarolo($MarkaTipus,$AR){
-    $aratvevo = $GLOBALS["aratvevo"];
-    $sql = "INSERT INTO `autokolcsonzo`.`artabla` (`MARKA_TIPUS`, `AR`) VALUES ('$MarkaTipus','$AR')";
-    print $sql;
-    
-    
-}
-
-
-
 function SQLFeltolto($kapcsolat, $sql, $value)
 {
     $result = mysqli_query($kapcsolat, $sql);

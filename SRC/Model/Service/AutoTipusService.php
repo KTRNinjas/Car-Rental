@@ -13,6 +13,3 @@ $path = dirname(__DIR__, 1);
     function AutotipusAdatAtvevo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem,$ar){
        return AutoTipusTarolo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem,$ar); //ar beszur'as
     }
-function Aratvevo($markaTipus,$ar){
-    return ArTarolo($markaTipus,$ar);
-}
