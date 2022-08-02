@@ -99,4 +99,3 @@ function KornyezetvedelmiBesorolas($kapcsolat){
     $üzenet = "a KornyezetvedelmiBesorolas felvetünk egy elemet";
     Query($kapcsolat, $üzenet, $sql);  
 }
-?>
