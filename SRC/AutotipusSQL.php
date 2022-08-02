@@ -53,6 +53,7 @@ function AdatfelvetelAutoKategoria($kapcsolat){
     $oszlop='KörnyezetvédelmiBesorolás';
     CreatSQL($kapcsolat,$array,$tabla,$oszlop);
  }
+ 
 function AutotipusTablamegvaltoztatasa($kapcsolat){
     $sql="ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Környezetvédelmi_ID`) REFERENCES `környezetvédelmibesorolás`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
     $üzenet= "az autotipus tabla sikeresen megvaltoztatva";
