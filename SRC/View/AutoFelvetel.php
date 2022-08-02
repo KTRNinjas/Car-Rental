@@ -10,11 +10,12 @@
 </head>
 <body>
     <form action="" method="POST">
-        <label name="marka" for="">
+        <select name="marka" id="" required >
+            <option value="">Válaszon Márkát</option>
             <?php
-                getMarka($kapcsolat);
+            getMarka($kapcsolat);
             ?>
-        </label>
+        </select>
         <label name="tipus" for="">
             <input type="text" name="tipus" required placeholder="Tipus">
         </label>
