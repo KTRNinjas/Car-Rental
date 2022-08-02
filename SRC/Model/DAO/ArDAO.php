@@ -16,6 +16,8 @@
     }
     return $autoTipusokKulsoTomb;
     }
-    
+    function insertArDAO($autoTipusID,$Ar){
+      
+    }
 
 ?>

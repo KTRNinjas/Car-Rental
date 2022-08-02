@@ -20,13 +20,21 @@
                     print "<Td>".$value."</Td>";
                 }
             }
+            $autoTipusID=$GetAutotipusok[$i]["ID"];
             $formAr='<form action="" method="POST">
-            <input type="number" placeholder="Ár">
+            <input type="number" name="autoTipusID" value="'.$autoTipusID.'" hidden>
+            <input type="number" name="Ar" placeholder="Ár" required>
             <input type="submit" name="bekuldes" value="Árbeírás">
             </form>';
             print "<Td>".$formAr."</Td>";
             print "</tr>";
-
+            
     }
+    if(isset($_POST['bekuldes'])){//gomb beküldés
+        $autoTipusID=$_POST['autoTipusID'];
+        $Ar=$_POST['Ar'];
+        insertArservice($autoTipusID,$Ar);
+    }
+    
 }
 ?>
