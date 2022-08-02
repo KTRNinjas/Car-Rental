@@ -10,6 +10,9 @@ $path = dirname(__DIR__, 1);
     function KornyezetVedelem($kapcsolat){
         return KornyezetVedelemFeltolto($kapcsolat);
     }
+    function Marka($kapcsolat){
+        return MarkaFeltolto($kapcsolat);
+    }
     function AutotipusAdatAtvevo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem,$ar){
        return AutoTipusTarolo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem,$ar); //ar beszur'as
     }

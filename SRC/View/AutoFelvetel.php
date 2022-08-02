@@ -11,7 +11,9 @@
 <body>
     <form action="" method="POST">
         <label name="marka" for="">
-            <input type="text" name="marka" required placeholder="Márka">
+            <?php
+                getMarka($kapcsolat);
+            ?>
         </label>
         <label name="tipus" for="">
             <input type="text" name="tipus" required placeholder="Tipus">

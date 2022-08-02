@@ -20,6 +20,14 @@ function SQLFeltolto($kapcsolat, $sql, $value)
     }
     return $SQLTomb;
 }
+//marka
+function MarkaFeltolto($kapcsolat)
+{
+    $sql = "SELECT * FROM `autokolcsonzo`.`márka`";
+    $Marka = [];
+    $Marka = SQLFeltolto($kapcsolat, $sql, "Márka");
+    return $Marka;
+}
 function FajtaFeltolto($kapcsolat)
 {
     $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";

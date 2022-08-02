@@ -13,6 +13,18 @@ function creatAutotipusTable($kapcsolat){
     $sql="CREATE TABLE `autokolcsonzo`.`környezetvédelmibesorolás` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `KörnyezetvédelmiBesorolás` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
     $üzenet = "Az Környezetvédelmi besorolás tabla letrehozasa";
     Query($kapcsolat, $üzenet, $sql);
+    $sql="CREATE TABLE `autokolcsonzo`.`márka` (`ID` INT NOT NULL AUTO_INCREMENT , `Márka` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
+    $üzenet = "A Márka tabla letrehozasa";
+    Query($kapcsolat, $üzenet, $sql);
+   
+}//MArka
+function MarkafelvetelAutoFajta($kapcsolat){
+    $sql="INSERT INTO `autokolcsonzo`.`márka` (`ID`, `Márka`) VALUES (NULL, 'BMW')";
+    $üzenet="a Marka tablaba felvettünk egy elemet";
+    Query($kapcsolat, $üzenet, $sql);
+    $sql="INSERT INTO `autokolcsonzo`.`márka` (`ID`, `Márka`) VALUES (NULL, 'Nissan')";
+    $üzenet="a Marka tablaba felvettünk egy elemet";
+    Query($kapcsolat, $üzenet, $sql);
 }
 function AdatfelvetelAutoFajta($kapcsolat){
     $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, 'Combi')";

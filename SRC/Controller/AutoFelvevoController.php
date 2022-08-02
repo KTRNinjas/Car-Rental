@@ -7,6 +7,11 @@ function kiiro($legordulo)
     print '<option value="' . $key . '" >' . $value . '</option>';
   };
 }
+function getMarka($kapcsolat)
+{
+  $marka = MarkaFeltolto($kapcsolat);
+  kiiro($marka);
+};
 function getFajta($kapcsolat)
 {
   $fajta = FajtaFeltolto($kapcsolat);
