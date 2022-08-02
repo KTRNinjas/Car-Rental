@@ -1,5 +1,6 @@
 <?php
 require("Connection/Dbconn.php");
+include_once("ArFeltolto.php");
 include_once("AutotipusSQL.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
@@ -20,7 +21,7 @@ function AdatFelvetel($kapcsolat){
     AdatfelvetelAutoKategoria($kapcsolat);
     KornyezetvedelmiBesorolas($kapcsolat);
     MarkafelvetelAutoFajta($kapcsolat);
-    
+    fillAutotipus($kapcsolat);
 }
 function TablaFelvetele($kapcsolat)
 {
