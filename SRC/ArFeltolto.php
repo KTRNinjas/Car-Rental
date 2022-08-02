@@ -11,5 +11,9 @@
         $sql="CREATE TABLE `autokolcsonzo`.`Ar` (`ID` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT , `Ár` INT(50) UNSIGNED NOT NULL , `AutoTipusID` INT(10) UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
         Query($kapcsolat,"Árlista tábla létrehozása",$sql);
     }
+    function Arcascadolas($kapcsolat){
+        $sql="ALTER TABLE `autokolcsonzo`.`ar` ADD FOREIGN KEY (`AutoTipusID`) REFERENCES `autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+        Query($kapcsolat,"Az artabal cascadolás ",$sql);
+    }
 
 ?>

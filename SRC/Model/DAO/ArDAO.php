@@ -17,7 +17,8 @@
     return $autoTipusokKulsoTomb;
     }
     function insertArDAO($autoTipusID,$Ar){
-      
+        $sql="INSERT INTO `autokolcsonzo`.`ar` (`ID`, `Ár`, `AutoTipusID`) VALUES (NULL, '$Ar', '$autoTipusID')";
+        $kapcsolat=$GLOBALS["kapcsolat"];
+        $ok=mysqli_query($kapcsolat,$sql);
     }
-
 ?>

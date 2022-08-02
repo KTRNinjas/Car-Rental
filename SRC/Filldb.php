@@ -22,9 +22,11 @@ function AdatFelvetel($kapcsolat){
     KornyezetvedelmiBesorolas($kapcsolat);
     MarkafelvetelAutoFajta($kapcsolat);
     fillAutotipus($kapcsolat);
+    
 }
 function TablaFelvetele($kapcsolat)
 {
+    CreateArtabla($kapcsolat);
     creatAutotipusTable($kapcsolat);
 }
 function Query($kapcsolat, $üzenet, $sql)
@@ -35,6 +37,7 @@ function Query($kapcsolat, $üzenet, $sql)
     } else print $üzenet . " sikertelen volt!<br><br>";
 }
 function Tablamegvaltoztatas($kapcsolat){
+    Arcascadolas($kapcsolat);
     AutotipusTablamegvaltoztatasa($kapcsolat);
 }
 
