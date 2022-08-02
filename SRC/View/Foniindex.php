@@ -12,11 +12,7 @@
 </head>
 
 <body>
-    <form action="" method="POST">
-        <input type="number" placeholder="Ár">
-        <input type="submit" name="bekuldes" value="Árbeírás">
-    </form>
-    <Table>
+        <Table>
         <Thead>
             <?php
                 TakeAutoTipusHeader();
@@ -24,7 +20,7 @@
         </Thead>
         <tbody>
             <?php
-//TakeAutoTipusBody();
+TakeAutoTipusBody();
             ?>
         </tbody>
     </Table>
