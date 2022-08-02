@@ -20,12 +20,21 @@ function SQLFeltolto($kapcsolat, $sql, $value)
     }
     return $SQLTomb;
 }
+//!!!
+function SQLFeltoltoMarka($kapcsolat, $sql, $value)
+{
+    $result = mysqli_query($kapcsolat, $sql);
+    while ($egysor = mysqli_fetch_array($result)) {
+        $SQLTomb[$egysor["Márka"]] = $egysor[$value];
+    }
+    return $SQLTomb;
+}
 //marka
 function MarkaFeltolto($kapcsolat)
 {
     $sql = "SELECT * FROM `autokolcsonzo`.`márka`";
     $Marka = [];
-    $Marka = SQLFeltolto($kapcsolat, $sql, "Márka");
+    $Marka = SQLFeltoltoMarka($kapcsolat, $sql, "Márka");
     return $Marka;
 }
 function FajtaFeltolto($kapcsolat)
