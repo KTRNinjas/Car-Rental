@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autotipus felvétel</title>
     <?php
-    include_once("../Controller/AutoFelvevoController.php");
+    include_once("../Controller/AutoTipusFelvevoController.php");
     ?>
 </head>
 <body>
