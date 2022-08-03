@@ -11,14 +11,14 @@ function InitDb($kapcsolat)
     $sql = "CREATE DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
     TablaFelvetele($kapcsolat);
-    //Adatfelvetel($kapcsolat);
+    Adatfelvetel($kapcsolat);
 
 }
-/* function AdatFelvetel($kapcsolat){
+function AdatFelvetel($kapcsolat){
     AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
     KornyezetvedelmiBesorolas($kapcsolat);
-} */
+}
 function TablaFelvetele($kapcsolat)
 {
     create_contact($kapcsolat);
