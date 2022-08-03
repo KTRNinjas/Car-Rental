@@ -16,10 +16,10 @@ function InitDb($kapcsolat)
 }
 function AdatFelvetel($kapcsolat)
 {
+    fill_user_data($kapcsolat);
     AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
     KornyezetvedelmiBesorolas($kapcsolat);
-    fill_user_data($kapcsolat);
 }
 function TablaFelvetele($kapcsolat)
 {
