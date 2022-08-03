@@ -15,6 +15,7 @@ session_start();
 
 <body>
     <h1>Home</h1>
+    <a href="/registration">Regisztráció</a>
     <form action="" method="post">
         <input type="e-mail" name="mail" placeholder="E-mail" required>
         <input type="password" name="pass" placeholder="Password" required>

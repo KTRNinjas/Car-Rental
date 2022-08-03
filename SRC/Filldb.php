@@ -4,6 +4,7 @@ include_once("registration_data.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
+
     $üzenet = "adatbazis torlése";
     $sql = "DROP DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
