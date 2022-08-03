@@ -51,8 +51,12 @@ function TakeAutoTipusBody()
             $ArID=$_POST['ArID'];
             
             updateArService($autoTipusID,$Ar,$ArID);
+            header('Location: /Foni_oldala', true, 303);
+        exit;
         }else{
         insertArservice($autoTipusID, $Ar);
+        header('Location: /Foni_oldala', true, 303);
+        exit;
         }
     }
 }
