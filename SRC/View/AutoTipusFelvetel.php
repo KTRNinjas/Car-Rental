@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autotipus felvétel</title>
     <?php
-    include_once("../Controller/AutoTipusFelvevoController.php");
+    $path=dirname(__DIR__,1);
+    include_once($path.DIRECTORY_SEPARATOR."Controller".DIRECTORY_SEPARATOR."AutoTipusFelvevoController.php");
     ?>
 </head>
 <body>

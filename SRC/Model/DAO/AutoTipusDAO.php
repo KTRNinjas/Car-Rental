@@ -13,6 +13,7 @@ function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $Kornyezet
 }
 function SQLFeltolto($kapcsolat, $sql, $value)
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $result = mysqli_query($kapcsolat, $sql);
     while ($egysor = mysqli_fetch_array($result)) {
         $SQLTomb[$egysor["ID"]] = $egysor[$value];
@@ -21,6 +22,7 @@ function SQLFeltolto($kapcsolat, $sql, $value)
 }
 function FajtaFeltolto($kapcsolat)
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
     $Fajta = [];
     $Fajta = SQLFeltolto($kapcsolat, $sql, "Fajta_neve");
@@ -28,6 +30,7 @@ function FajtaFeltolto($kapcsolat)
 }
 function KategoriaFeltolto($kapcsolat)
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $sql = "SELECT * FROM `autokolcsonzo`.`kategoria`";
     $Kategoria = [];
     $Kategoria = SQLFeltolto($kapcsolat, $sql, "Kategoria");
@@ -35,6 +38,7 @@ function KategoriaFeltolto($kapcsolat)
 }
 function KornyezetVedelemFeltolto($kapcsolat)
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $sql = "SELECT * FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
     $Környezetvédelmibesorolás = [];
     $Környezetvédelmibesorolás = SQLFeltolto($kapcsolat, $sql, "KörnyezetvédelmiBesorolás");

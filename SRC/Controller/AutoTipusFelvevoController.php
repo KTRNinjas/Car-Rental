@@ -1,5 +1,10 @@
 <?php
-include_once("../Model/Service/AutoTipusService.php");
+$path=dirname(__DIR__,1);
+include_once($path.DIRECTORY_SEPARATOR."Model".DIRECTORY_SEPARATOR."Service".DIRECTORY_SEPARATOR."AutoTipusService.php");
+$url="/autotipusfelvevo";
+$fileLocation = $path .DIRECTORY_SEPARATOR."View".DIRECTORY_SEPARATOR."AutoTipusFelvetel.php";
+$routes[$url] = $fileLocation;
+
 $autotipusadatatvevo="";
 function kiiro($legordulo)
 {
