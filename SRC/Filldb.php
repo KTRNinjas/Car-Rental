@@ -15,9 +15,9 @@ function InitDb($kapcsolat)
 }
 function AdatFelvetel($kapcsolat)
 {
-    /*AdatfelvetelAutoFajta($kapcsolat);
+    AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
-    KornyezetvedelmiBesorolas($kapcsolat);*/
+    KornyezetvedelmiBesorolas($kapcsolat);
     fill_user_data($kapcsolat);
 }
 function TablaFelvetele($kapcsolat)
