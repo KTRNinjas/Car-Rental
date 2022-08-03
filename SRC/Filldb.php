@@ -1,6 +1,7 @@
 <?php
 require("Connection/Dbconn.php");
 include_once("registration_data.php");
+include_once("AutotipusSQL.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
@@ -23,6 +24,7 @@ function AdatFelvetel($kapcsolat)
 }
 function TablaFelvetele($kapcsolat)
 {
+    creatAutotipusTable($kapcsolat);
     create_contact($kapcsolat);
     create_account($kapcsolat);
     create_user_account_join($kapcsolat);
@@ -34,3 +36,8 @@ function Query($kapcsolat, $üzenet, $sql)
         print $üzenet . " sikeres volt!<br><br>";
     } else print $üzenet . " sikertelen volt!<br><br>";
 }
+function Tablamegvaltoztatas($kapcsolat){
+    AutotipusTablamegvaltoztatasa($kapcsolat);
+}
+
+?>
