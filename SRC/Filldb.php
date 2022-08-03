@@ -4,20 +4,22 @@ include_once("registration_data.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
-    $üzenet="adatbazis torlése";
+
+    $üzenet = "adatbazis torlése";
     $sql = "DROP DATABASE autokolcsonzo";
-    Query($kapcsolat,$üzenet,$sql);
+    Query($kapcsolat, $üzenet, $sql);
     $üzenet = "az adatbázis létrehozása ";
     $sql = "CREATE DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
-
 }
-function AdatFelvetel($kapcsolat){
-    /*AdatfelvetelAutoFajta($kapcsolat);
+function AdatFelvetel($kapcsolat)
+{
+    AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
-    KornyezetvedelmiBesorolas($kapcsolat);*/
+    KornyezetvedelmiBesorolas($kapcsolat);
+    fill_user_data($kapcsolat);
 }
 function TablaFelvetele($kapcsolat)
 {
@@ -32,6 +34,3 @@ function Query($kapcsolat, $üzenet, $sql)
         print $üzenet . " sikeres volt!<br><br>";
     } else print $üzenet . " sikertelen volt!<br><br>";
 }
-
-
-?>

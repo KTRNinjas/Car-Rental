@@ -1,6 +1,7 @@
 <?php
 $path = dirname(__DIR__, 1);
-require_once($path .DIRECTORY_SEPARATOR."Controller".DIRECTORY_SEPARATOR."home_controller.php");
+require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "home_controller.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -15,6 +16,15 @@ require_once($path .DIRECTORY_SEPARATOR."Controller".DIRECTORY_SEPARATOR."home_c
 <body>
     <h1>Home</h1>
     <a href="/registration">Regisztráció</a>
+    <form action="" method="post">
+        <input type="e-mail" name="mail" placeholder="E-mail" required>
+        <input type="password" name="pass" placeholder="Password" required>
+        <input type="submit" name="login" value="Belépés">
+    </form>
+
+    <?php
+    loginController();
+    ?>
 </body>
 
 </html>
