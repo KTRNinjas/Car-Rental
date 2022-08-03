@@ -8,6 +8,3 @@
     function insertArservice($autoTipusID,$Ar){
         insertArDAO($autoTipusID,$Ar);
     }
-    
-
-?>

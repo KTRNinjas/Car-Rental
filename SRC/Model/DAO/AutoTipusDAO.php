@@ -1,7 +1,7 @@
 <?php
 $path = dirname(__DIR__, 2);
 include($path . "/Connection/Dbconn.php");
-function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas,$Ar)
+function AutoTipusTarolo($Marka, $Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas, $Ar)
 {
     $kapcsolat = $GLOBALS["kapcsolat"];
     $sql = "INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`,`Tipus`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`, `Ar`) VALUES (NULL, '$Marka','$Tipus', '$Fajta', '$Kategoria', '$Premium', '$KornyezetvedelmiBesorolas','$Ar')"; // modositott

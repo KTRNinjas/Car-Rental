@@ -12,16 +12,16 @@
 </head>
 
 <body>
-        <Table>
+    <Table>
         <Thead>
             <?php
-                TakeAutoTipusHeader();
+            TakeAutoTipusHeader();
             ?>
         </Thead>
         <tbody>
             <input type="number" name="autoTipusID" value="ID" hidden>
             <?php
-                TakeAutoTipusBody();
+            TakeAutoTipusBody();
             ?>
         </tbody>
     </Table>

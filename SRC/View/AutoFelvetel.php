@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,10 @@
     include_once("../Controller/AutoFelvevoController.php");
     ?>
 </head>
+
 <body>
     <form action="" method="POST">
-        <select name="marka" id="" required >
+        <select name="marka" id="" required>
             <option value="">Válaszon Márkát</option>
             <?php
             getMarka($kapcsolat);
@@ -28,23 +30,23 @@
         <select name="kategoria" required id="">
             <option value="">Válaszon kategoriát</option>
             <?php
-                getKategoria($kapcsolat);
+            getKategoria($kapcsolat);
             ?>
         </select>
         <label for="">
             <input name="premium" type="checkbox" value="off">
-                Prémium
+            Prémium
             </input>
         </label>
         <select name="kornyezetvedelem" required id="">
             <option value="">Válaszon környezetvédelmi besorolást</option>
             <?php
-                getKornyezetVedelem($kapcsolat);
+            getKornyezetVedelem($kapcsolat);
             ?>
         </select>
-            <?php
-                initAutotipusbekuldes();
-            ?>
+        <?php
+        initAutotipusbekuldes();
+        ?>
         <label name="ar" for="">
             <input type="text" name="ar" required placeholder="Ár">
         </label>
@@ -56,4 +58,5 @@
         ?>
     </div>
 </body>
+
 </html>

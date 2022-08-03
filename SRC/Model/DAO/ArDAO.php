@@ -21,4 +21,3 @@
         $kapcsolat=$GLOBALS["kapcsolat"];
         $ok=mysqli_query($kapcsolat,$sql);
     }
-?>

@@ -15,5 +15,3 @@
         $sql="ALTER TABLE `autokolcsonzo`.`ar` ADD FOREIGN KEY (`AutoTipusID`) REFERENCES `autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
         Query($kapcsolat,"Az artabal cascadolás ",$sql);
     }
-
-?>

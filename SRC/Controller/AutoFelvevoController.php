@@ -1,6 +1,6 @@
 <?php
 include_once("../Model/Service/AutoTipusService.php");
-$autotipusadatatvevo="";
+$autotipusadatatvevo = "";
 function kiiro($legordulo)
 {
   foreach ($legordulo as $key => $value) {
@@ -41,10 +41,10 @@ function Autotipusbekuldes()
   $kategoria = $_POST["kategoria"];
   $premium = isset($_POST["premium"]);
   $kornyezetvedelem = $_POST["kornyezetvedelem"];
-  $ar=$_POST["ar"];
-  $GLOBALS["autotipusadatatvevo"] =AutotipusAdatAtvevo($marka,$tipus ,$fajta, $kategoria, $premium, $kornyezetvedelem,$ar);
-
+  $ar = $_POST["ar"];
+  $GLOBALS["autotipusadatatvevo"] = AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $kornyezetvedelem, $ar);
 }
-function printresult(){
+function printresult()
+{
   print $GLOBALS["autotipusadatatvevo"];
 }
