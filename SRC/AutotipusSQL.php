@@ -68,7 +68,4 @@ function AutotipusTablamegvaltoztatasa($kapcsolat)
     $sql = "ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Fajta_ID`) REFERENCES `fajta`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
     $üzenet = "az autotipus tabla sikeresen megvaltoztatva";
     Query($kapcsolat, $üzenet, $sql);
-    $sql = "ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Márka`) REFERENCES `márka`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
-    $üzenet = "az autotipus tabla sikeresen megvaltoztatva";
-    Query($kapcsolat, $üzenet, $sql);
 }
