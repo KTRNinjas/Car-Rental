@@ -1,0 +1,27 @@
+@-webkit-keyframes blinker {
+  from {
+    color: red;
+  }
+
+  to {
+    color: rgb(20, 70, 161);
+  }
+}
+
+.blinkingNotification {
+  -webkit-animation-name: blinker;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(.5, 0, 1, 1);
+  -webkit-animation-duration: 0.7s;
+}
+
+h1 {
+  text-align: center;
+  color: red;
+}
+
+body {
+  background-image: url("../../Fileok/Kepek/officer1.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
