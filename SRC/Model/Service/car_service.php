@@ -16,4 +16,7 @@ return getAllAutoTipusDAO();
 function insertCarService($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id){
     return insertCarDAO($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id);
 }
+function updateCarService($rendszam, $alvazszam,$autotipus_id,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositas,$kilometer,$forgalmi,$kivezetve,$carID){
+    updateCarDAO($rendszam, $alvazszam,$autotipus_id,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositas,$kilometer,$forgalmi,$kivezetve,$carID);
+}
 ?>

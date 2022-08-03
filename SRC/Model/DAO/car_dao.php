@@ -5,7 +5,7 @@ function getAllCars(){
     $kapcsolat=$GLOBALS['kapcsolat'];
     $cars=[];
     $today=date("y-m-d");
-    $sql="SELECT Rendszám,Alvázszám,(SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,(SELECT Tipus FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS tipus,(SELECT hajtaslanc FROM `autokolcsonzo`.`hajtaslanc` WHERE id=hajtaslanc_id) AS hajtaslanc,(SELECT valtotipus FROM `autokolcsonzo`.`valtotipus` WHERE id=valtotipus_id) AS valtotipus,Evjarat,Teljesitmeny,Biztositasi_dij,km,Forgalmi_megujitasanak_ideje,Kivezetve FROM `autokolcsonzo`.`cars` WHERE Kivezetve IS NULL OR DATE(Kivezetve)>'$today'";
+    $sql="SELECT id,Rendszám,Alvázszám,(SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,(SELECT Tipus FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS tipus,(SELECT hajtaslanc FROM `autokolcsonzo`.`hajtaslanc` WHERE id=hajtaslanc_id) AS hajtaslanc,(SELECT valtotipus FROM `autokolcsonzo`.`valtotipus` WHERE id=valtotipus_id) AS valtotipus,Evjarat,Teljesitmeny,Biztositasi_dij,km,Forgalmi_megujitasanak_ideje,Kivezetve FROM `autokolcsonzo`.`cars` WHERE Kivezetve IS NULL OR DATE(Kivezetve)>'$today'";
     $result=mysqli_query($kapcsolat, $sql);
     while($egysor=mysqli_fetch_assoc($result)){
         $car=[];
@@ -22,13 +22,14 @@ function getAllCars(){
    }
    return $cars;
 }
+getAllAutoTipusDAO();
 function getAllAutoTipusDAO(){
     $kapcsolat=$GLOBALS['kapcsolat'];
     $sql="SELECT * FROM `autokolcsonzo`.`autotipus`";
     $result=mysqli_query($kapcsolat, $sql);
     $cartype=[];
     while($egysor=mysqli_fetch_assoc($result)){
-        $cartype[$egysor['Márka']]=$egysor['Márka']." ".$egysor['Tipus'];
+        $cartype[$egysor['ID']]=$egysor['Márka']." ".$egysor['Tipus'];
    }
    return $cartype;
 }
@@ -54,16 +55,16 @@ function getAllValtotipusDAO(){
 }
 function insertCarDAO($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id){
     $kapcsolat=$GLOBALS['kapcsolat'];
-    $cars=[];
-    $today=date("y-m-d");
-    $sql="SELECT Rendszám,Alvázszám,(SELECT hajtaslanc FROM `autokolcsonzo`.`hajtaslanc` WHERE id=hajtaslanc_id) AS hajtaslanc,(SELECT valtotipus FROM `autokolcsonzo`.`valtotipus` WHERE id=valtotipus_id) AS valtotipus,Evjarat,Teljesitmeny,Biztositasi_dij,km,Forgalmi_megujitasanak_ideje,(SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,Kivezetve FROM `autokolcsonzo`.`cars` WHERE Kivezetve IS NULL OR DATE(Kivezetve)>'$today'";
-    $result=mysqli_query($kapcsolat, $sql);
-    while($egysor=mysqli_fetch_assoc($result)){
-        $car=[];
-        foreach($egysor as $key=>$value){
-        $car[$key]=$value;
-        }
-        array_push($cars,$car);
-   }
-   return $cars;
+
+    $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, '$rendszam', '$alvazszam', '$hajtaslanc_id', '$valtotipus_id', '$evjarat', '$teljesitmeny', '$biztositasi_dij', '$kilometer', '$forgalmi', '$autotipus_id', NULL)";
+    $ok=mysqli_query($kapcsolat, $sql);
+}
+function updateCarDAO($rendszam, $alvazszam,$autotipus_id,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositas,$kilometer,$forgalmi,$kivezetve,$carID){
+    $kapcsolat=$GLOBALS['kapcsolat'];
+    if($kivezetve!=''){
+        $sql="UPDATE `autokolcsonzo`.`cars` SET `Rendszám` = '$rendszam', `Alvázszám` = '$alvazszam', `hajtaslanc_id` = '$hajtaslanc_id', `valtotipus_id` = '$valtotipus_id', `Evjarat` = '$evjarat', `Teljesitmeny` = '$teljesitmeny', `Biztositasi_dij` = '$biztositas', `km` = '$kilometer', `Forgalmi_megujitasanak_ideje` = '$forgalmi', `Autotipus_id` = '$autotipus_id', `Kivezetve` = '$kivezetve' WHERE `cars`.`id` = $carID "; 
+    }else{
+        $sql="UPDATE `autokolcsonzo`.`cars` SET `Rendszám` = '$rendszam', `Alvázszám` = '$alvazszam', `hajtaslanc_id` = '$hajtaslanc_id', `valtotipus_id` = '$valtotipus_id', `Evjarat` = '$evjarat', `Teljesitmeny` = '$teljesitmeny', `Biztositasi_dij` = '$biztositas', `km` = '$kilometer', `Forgalmi_megujitasanak_ideje` = '$forgalmi', `Autotipus_id` = '$autotipus_id', `Kivezetve` = NULL  WHERE `cars`.`id` = $carID ";  
+    }
+    $ok=mysqli_query($kapcsolat,$sql);
 }
