@@ -15,7 +15,8 @@ $path=dirname(__DIR__, 1);
     $firstname=$_POST["firstname"];
     $mail=$_POST["mail"];
     $pass=$_POST["pass"];
-      if (registration_form($surname, $firstname, $mail, $pass)!=NULL && registration_form($surname, $firstname, $mail, $pass)){
+    $isRegistered=registration_form($surname, $firstname, $mail, $pass);
+      if ($isRegistered!=NULL && $isRegistered){
         print "Sikeres regisztráció";
       } else{
         print "Sikertelen regisztráció!";
