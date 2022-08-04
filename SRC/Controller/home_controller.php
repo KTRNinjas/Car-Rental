@@ -3,16 +3,16 @@ $path = dirname(__DIR__, 1);
 $url = "/";
 $fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "home.php";
 $routes[$url] = $fileLocation;
-//include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "user_service.php");
+include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "user_service.php");
 function loginController()
 {
   isset($_POST["login"]);
   if (isset($_POST["login"])) {
     $mail = $_POST["mail"];
     $pass = $_POST["pass"];
-    //loginService($mail, $pass);
-    //$belepesiAdatok = loginService($mail, $pass);
-   // checkBelepesiAdatok($belepesiAdatok);
+    loginService($mail, $pass);
+    $belepesiAdatok = loginService($mail, $pass);
+    checkBelepesiAdatok($belepesiAdatok);
   }
 }
 function checkBelepesiAdatok($belepesiAdatok)
