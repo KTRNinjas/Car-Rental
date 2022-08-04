@@ -34,7 +34,7 @@
   Query($kapcsolat, "tesztauto3 betoltese ", $sql);
   $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'DDD-004', '123123123123', '1', '1', '2011', '11', '130000', '80000', '2022-10-28', '1', '2021-09-28')";
   Query($kapcsolat, "tesztauto3 betoltese ", $sql);
-  $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'EEE-005', '123123123123', '2', '2', '2012', '12', '140000', '90000', '2022-11-28', '4', '2022-09-28')";
+  $sql="INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'EEE-005', '123123123123', '2', '2', '2012', '12', '140000', '90000', '2022-11-28', '3', '2022-09-28')";
   Query($kapcsolat, "tesztauto3 betoltese ", $sql);
 }
 function fill_testAutoTipus($kapcsolat){
@@ -45,4 +45,7 @@ function fill_testAutoTipus($kapcsolat){
   $sql="INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Tipus`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, 'JeepTeszt', 'WranglerTeszt', '2', '2', '0', '5') ";
   Query($kapcsolat, "tesztJeepWranlger betoltese ", $sql);
 }
-?>
+function CarsTablamegvaltoztatasa($kapcsolat){
+  $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+  Query($kapcsolat, "A cars tábla kaszkádolása ", $sql);
+}

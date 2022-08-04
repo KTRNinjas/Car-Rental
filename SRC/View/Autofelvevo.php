@@ -25,15 +25,15 @@ deleteCarController();
             <?php printCarsInDB() ?>
             <tr>
                 <td>
-                <?php ?>
+                    <?php ?>
                 </td>
             </tr>
         </tbody>
     </table>
     <button><b>+</b>Új autó felvétele</button>
     <form action="" method="post">
-        <?php 
-        
+        <?php
+
         ?>
         <input type="text" name="rendszam" placeholder="Rendszám" size="4" required>
         <input type="text" name="alvazszam" placeholder="Alvázszám" size="8" required>

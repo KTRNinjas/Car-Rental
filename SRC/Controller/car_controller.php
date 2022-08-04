@@ -47,7 +47,7 @@ function printCarsInDB(){
       print '<td><select name="autotipus" id="" required>
       <option value="">Válasszon autótípust</option>';
       getAllAutoTipusController($cars[$i]['marka']);
-      //print '<option value="AutoTipusFelvetel"onclick="location = this.value;">Új autótípus felvétele</option>';
+      print '<option value="/autotipusfelvevo"onclick="location = this.value;">Új autótípus felvétele</option>';
       print '</select></td>';
 
       print '<td><select name="hajtaslanc" id="" required>
@@ -155,4 +155,3 @@ function deleteCarController(){
         header('Location: /Autofelvetel', true, 303);  
     }
 }
-?>

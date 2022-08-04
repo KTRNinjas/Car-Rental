@@ -48,7 +48,5 @@ function Query($kapcsolat, $üzenet, $sql)
 }
 function Tablamegvaltoztatas($kapcsolat){
     AutotipusTablamegvaltoztatasa($kapcsolat);
+    CarsTablamegvaltoztatasa($kapcsolat);
 }
-
-?>
-

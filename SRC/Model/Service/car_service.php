@@ -22,4 +22,3 @@ function updateCarService($rendszam, $alvazszam,$autotipus_id,$hajtaslanc_id,$va
 function deleteCarService($carID){
     deleteCarDAO($carID);
 }
-?>

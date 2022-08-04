@@ -1,11 +1,11 @@
 <?php
-$path=dirname(__DIR__,1);
-include_once($path.DIRECTORY_SEPARATOR."Model".DIRECTORY_SEPARATOR."Service".DIRECTORY_SEPARATOR."AutoTipusService.php");
-$url="/autotipusfelvevo";
-$fileLocation = $path .DIRECTORY_SEPARATOR."View".DIRECTORY_SEPARATOR."AutoTipusFelvetel.php";
+$path = dirname(__DIR__, 1);
+include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "AutoTipusService.php");
+$url = "/autotipusfelvevo";
+$fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "AutoTipusFelvetel.php";
 $routes[$url] = $fileLocation;
 
-$autotipusadatatvevo="";
+$autotipusadatatvevo = "";
 function kiiro($legordulo)
 {
   foreach ($legordulo as $key => $value) {
@@ -41,8 +41,9 @@ function Autotipusbekuldes()
   $kategoria = $_POST["kategoria"];
   $premium = isset($_POST["premium"]);
   $kornyezetvedelem = $_POST["kornyezetvedelem"];
-  $GLOBALS["autotipusadatatvevo"] =AutotipusAdatAtvevo($marka,$tipus ,$fajta, $kategoria, $premium, $kornyezetvedelem);
+  $GLOBALS["autotipusadatatvevo"] = AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $kornyezetvedelem);
 }
-function printresult(){
+function printresult()
+{
   print $GLOBALS["autotipusadatatvevo"];
 }
