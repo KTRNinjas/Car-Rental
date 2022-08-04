@@ -4,6 +4,7 @@ include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
 updateCarController();
 insertCarController();
 initCarController();
+deleteCarController();
 ?>
 <!DOCTYPE html>
 <html lang="hu">

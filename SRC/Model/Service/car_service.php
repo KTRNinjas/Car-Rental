@@ -19,4 +19,7 @@ function insertCarService($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$ev
 function updateCarService($rendszam, $alvazszam,$autotipus_id,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositas,$kilometer,$forgalmi,$kivezetve,$carID){
     updateCarDAO($rendszam, $alvazszam,$autotipus_id,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositas,$kilometer,$forgalmi,$kivezetve,$carID);
 }
+function deleteCarService($carID){
+    deleteCarDAO($carID);
+}
 ?>

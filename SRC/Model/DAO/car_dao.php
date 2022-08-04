@@ -68,3 +68,8 @@ function updateCarDAO($rendszam, $alvazszam,$autotipus_id,$hajtaslanc_id,$valtot
     }
     $ok=mysqli_query($kapcsolat,$sql);
 }
+function deleteCarDAO($carID){
+    $kapcsolat=$GLOBALS['kapcsolat'];
+    $sql="DELETE FROM `autokolcsonzo`.cars WHERE `autokolcsonzo`.`cars`.`id` = $carID";
+    $ok=mysqli_query($kapcsolat,$sql);
+}

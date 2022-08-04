@@ -35,8 +35,9 @@ print "<th><small>Kivezetve</small></th>";
 function printCarsInDB(){
     $cars=$GLOBALS['cars'];
     for($i=0;$i<count($cars);$i++){
-     print '<tr>';
+     //print '<tr>';
      print '<form action="" method="post">';
+     print '<tr>';
       print '<td>';
       print '<input type="text" name="carID" size="0" value="'.$cars[$i]['id'].'" hidden>';
       print '<input type="text" name="rendszam" size="4" value="'.$cars[$i]['Rendszám'].'" required>
@@ -46,6 +47,7 @@ function printCarsInDB(){
       print '<td><select name="autotipus" id="" required>
       <option value="">Válasszon autótípust</option>';
       getAllAutoTipusController($cars[$i]['marka']);
+      //print '<option value="AutoTipusFelvetel"onclick="location = this.value;">Új autótípus felvétele</option>';
       print '</select></td>';
 
       print '<td><select name="hajtaslanc" id="" required>
@@ -70,13 +72,15 @@ function printCarsInDB(){
       
       print '<td><input type="date" name="kivezetve" id="" value="'.$cars[$i]['Kivezetve'].'"></td>';
       
+      print '</tr>';
+     
       print '<td><input type="submit" name="updateCar" value="Mentés"></td>';
 
-      print '<td><input type="button" name="deleteCar" value="Törlés"></td>';
+      print '<td><input type="submit" name="deleteCar" value="Törlés"></td>';
       
       print '</form>';
 
-      print '</tr>';
+      //print '</tr>';
     }
 }
 function updateCarController(){
@@ -142,6 +146,13 @@ function insertCarController(){
         insertCarService($rendszam,$alvazszam,$hajtaslanc_id,$valtotipus_id,$evjarat,$teljesitmeny,$biztositasi_dij,$kilometer,$forgalmi,$autotipus_id);
         header('Location: /Autofelvetel', true, 303);
         exit;
+    }
+}
+function deleteCarController(){
+    if(isset($_POST['deleteCar'])){
+        $carID=$_POST['carID'];
+        deleteCarService($carID);
+        header('Location: /Autofelvetel', true, 303);  
     }
 }
 ?>
