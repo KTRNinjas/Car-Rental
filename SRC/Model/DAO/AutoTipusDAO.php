@@ -1,6 +1,6 @@
 <?php
 $path = dirname(__DIR__, 2);
-include($path . "/Connection/Dbconn.php");
+require_once($path.DIRECTORY_SEPARATOR."Connection".DIRECTORY_SEPARATOR."Dbconn.php");
 function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
 {
     $kapcsolat = $GLOBALS["kapcsolat"];
@@ -13,28 +13,32 @@ function AutoTipusTarolo($Marka,$Tipus ,$Fajta, $Kategoria, $Premium, $Kornyezet
 }
 function SQLFeltolto($kapcsolat, $sql, $value)
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $result = mysqli_query($kapcsolat, $sql);
     while ($egysor = mysqli_fetch_array($result)) {
         $SQLTomb[$egysor["ID"]] = $egysor[$value];
     }
     return $SQLTomb;
 }
-function FajtaFeltolto($kapcsolat)
+function FajtaFeltoltoDAO()
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
     $Fajta = [];
     $Fajta = SQLFeltolto($kapcsolat, $sql, "Fajta_neve");
     return $Fajta;
 }
-function KategoriaFeltolto($kapcsolat)
+function KategoriaFeltoltoDAO()
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $sql = "SELECT * FROM `autokolcsonzo`.`kategoria`";
     $Kategoria = [];
     $Kategoria = SQLFeltolto($kapcsolat, $sql, "Kategoria");
     return $Kategoria;
 }
-function KornyezetVedelemFeltolto($kapcsolat)
+function KornyezetVedelemFeltoltoDAO()
 {
+    $kapcsolat = $GLOBALS["kapcsolat"];
     $sql = "SELECT * FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
     $Környezetvédelmibesorolás = [];
     $Környezetvédelmibesorolás = SQLFeltolto($kapcsolat, $sql, "KörnyezetvédelmiBesorolás");

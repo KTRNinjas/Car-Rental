@@ -1,5 +1,10 @@
 <?php
-include_once("../Model/Service/AutoTipusService.php");
+$path=dirname(__DIR__,1);
+include_once($path.DIRECTORY_SEPARATOR."Model".DIRECTORY_SEPARATOR."Service".DIRECTORY_SEPARATOR."AutoTipusService.php");
+$url="/autotipusfelvevo";
+$fileLocation = $path .DIRECTORY_SEPARATOR."View".DIRECTORY_SEPARATOR."AutoTipusFelvetel.php";
+$routes[$url] = $fileLocation;
+
 $autotipusadatatvevo="";
 function kiiro($legordulo)
 {
@@ -7,19 +12,19 @@ function kiiro($legordulo)
     print '<option value="' . $key . '" >' . $value . '</option>';
   };
 }
-function getFajta($kapcsolat)
+function getFajta()
 {
-  $fajta = FajtaFeltolto($kapcsolat);
+  $fajta = FajtaFeltoltoService();
   kiiro($fajta);
 };
-function getKategoria($kapcsolat)
+function getKategoria()
 {
-  $kategoria = KategoriaFeltolto($kapcsolat);
+  $kategoria = KategoriaFeltoltoService();
   kiiro($kategoria);
 };
-function getKornyezetVedelem($kapcsolat)
+function getKornyezetVedelem()
 {
-  $kornyezetvedelem = KornyezetVedelemFeltolto($kapcsolat);
+  $kornyezetvedelem = KornyezetVedelemFeltoltoService();
   kiiro($kornyezetvedelem);
 };
 function initAutotipusbekuldes()
