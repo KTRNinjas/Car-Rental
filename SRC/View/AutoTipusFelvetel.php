@@ -20,13 +20,13 @@
         <select name="fajta" id="" required>
             <option value="">Válaszon fajtát</option>
             <?php
-            getFajta($kapcsolat);
+            getFajta();
             ?>
         </select>
         <select name="kategoria" required id="">
             <option value="">Válaszon kategoriát</option>
             <?php
-                getKategoria($kapcsolat);
+                getKategoria();
             ?>
         </select>
         <label for="">
@@ -37,7 +37,7 @@
         <select name="kornyezetvedelem" required id="">
             <option value="">Válaszon környezetvédelmi besorolást</option>
             <?php
-                getKornyezetVedelem($kapcsolat);
+                getKornyezetVedelem();
             ?>
         </select>
             <?php

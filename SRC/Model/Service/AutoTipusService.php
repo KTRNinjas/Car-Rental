@@ -1,14 +1,14 @@
 <?php 
 $path = dirname(__DIR__, 1);
-    include_once($path."/DAO/AutoTipusDAO.php");
-    function Feltolto($kapcsolat){
-        return FajtaFeltolto($kapcsolat);
+    include_once($path.DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR."AutoTipusDAO.php");
+    function FajtaFeltoltoService(){
+        return FajtaFeltoltoDAO();
     }
-    function Kategoria($kapcsolat){
-        return KategoriaFeltolto($kapcsolat);
+    function KategoriaFeltoltoService(){
+        return KategoriaFeltoltoDAO();
     }
-    function KornyezetVedelem($kapcsolat){
-        return KornyezetVedelemFeltolto($kapcsolat);
+    function KornyezetVedelemFeltoltoService(){
+        return KornyezetVedelemFeltoltoDAO();
     }
     function AutotipusAdatAtvevo($marka,$tipus,$fajta,$kategoria,$premium,$kornyezetvedelem){
         if($premium==true){$premium=1;}else{$premium=0;}

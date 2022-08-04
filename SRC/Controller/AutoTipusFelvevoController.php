@@ -12,19 +12,19 @@ function kiiro($legordulo)
     print '<option value="' . $key . '" >' . $value . '</option>';
   };
 }
-function getFajta($kapcsolat)
+function getFajta()
 {
-  $fajta = FajtaFeltolto($kapcsolat);
+  $fajta = FajtaFeltoltoService();
   kiiro($fajta);
 };
-function getKategoria($kapcsolat)
+function getKategoria()
 {
-  $kategoria = KategoriaFeltolto($kapcsolat);
+  $kategoria = KategoriaFeltoltoService();
   kiiro($kategoria);
 };
-function getKornyezetVedelem($kapcsolat)
+function getKornyezetVedelem()
 {
-  $kornyezetvedelem = KornyezetVedelemFeltolto($kapcsolat);
+  $kornyezetvedelem = KornyezetVedelemFeltoltoService();
   kiiro($kornyezetvedelem);
 };
 function initAutotipusbekuldes()
