@@ -37,10 +37,10 @@ deleteCarController();
         ?>
         <input type="text" name="rendszam" placeholder="Rendszám" size="4" required>
         <input type="text" name="alvazszam" placeholder="Alvázszám" size="8" required>
-        <select name="autotipus" id="" required>
+        <select name="autotipus" id="" onchange="if(this.value=='autotipusfelvevo'){location=this.value}" required>
             <option value="">Válasszon autótípust</option>
             <?php getAllAutoTipusController(); ?>
-            <option value="/autotipusfelvevo" onclick="location = this.value;">Új autótípus felvétele</option>'
+            <option value="autotipusfelvevo">Új autótípus felvétele</option>'
         </select>
         <select name="hajtaslanc" id="" required>
             <option value="">Válasszon hajtáslánctípust</option>
