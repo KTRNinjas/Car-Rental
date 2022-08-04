@@ -20,7 +20,6 @@ function AdatFelvetel($kapcsolat){
     AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
     KornyezetvedelmiBesorolas($kapcsolat);
-    MarkafelvetelAutoFajta($kapcsolat);
     fillAutotipus($kapcsolat);
     
 }
