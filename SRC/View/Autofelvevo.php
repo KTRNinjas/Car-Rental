@@ -40,6 +40,7 @@ deleteCarController();
         <select name="autotipus" id="" required>
             <option value="">Válasszon autótípust</option>
             <?php getAllAutoTipusController(); ?>
+            <option value="/autotipusfelvevo" onclick="location = this.value;">Új autótípus felvétele</option>'
         </select>
         <select name="hajtaslanc" id="" required>
             <option value="">Válasszon hajtáslánctípust</option>
