@@ -12,4 +12,3 @@ die('Nem lehet kapcsolódni az adatbázishoz!');
    print "<h3>Sikerült a kapcsolat</h3>";
 }
 mysqli_query($kapcsolat,"SET NAMES UTF8");
-?>

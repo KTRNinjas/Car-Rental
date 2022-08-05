@@ -4,5 +4,6 @@ require_once("testimplemetation_controller.php");
 require_once("testimplementation_controller2.php");
 require_once("home_controller.php");
 require_once("registration_controller.php");
+require_once("car_controller.php");
 require_once("FoniController.php");
 require_once("AutoTipusFelvevoController.php");
