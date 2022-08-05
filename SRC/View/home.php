@@ -21,7 +21,10 @@ session_start();
         <input type="password" name="pass" placeholder="Password" required>
         <input type="submit" name="login" value="Belépés">
     </form>
-
+    <a href="/testimplementation2">Routing GET paraméterek</a><br>
+    <a href="/autotipusfelvevo">Autótípus felvétel</a><br>
+    <a href="/Foni_oldala">Árfelvétel</a><br>
+    <a href="/Autofelvetel">Autófelvétel</a><br>
     <?php
     loginController();
     ?>
