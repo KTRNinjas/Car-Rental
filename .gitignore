@@ -1,4 +1,18 @@
 #####Saját ignore-ok, ide írjátok
+codeception.yml
+acceptance.suite.yml
+functional.suite.yml
+unit.suite.yml
+.gitkeep
+AcceptanceTester.php
+FunctionalTester.php
+UnitTester.php
+Acceptance.php
+Functional.php
+Unit.php
+AcceptanceTesterActions.php
+FunctionalTesterActions.php
+UnitTesterActions.php
 phpunit.xml
 .phpunit.result.cache
 ##### Windows
