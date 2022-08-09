@@ -31,7 +31,7 @@ session_start();
     ?>
     <div class="tablazat">
     <?php
-    aa();
+        
     ?>
     </div>
 </body>
