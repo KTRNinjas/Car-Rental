@@ -32,9 +32,11 @@ function creatAutotipusTable($kapcsolat)
 
 function MainAutotipusTablaCreate($kapcsolat)
 {
+    $kapcsolat=$GLOBALS["kapcsolat"];
     $sql = "CREATE TABLE `autokolcsonzo`.`autotipus` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Márka` VARCHAR(50) NOT NULL ,`Tipus` VARCHAR(50) NOT NULL ,`Fajta_ID` INT UNSIGNED NOT NULL , `Kategoria_ID` INT UNSIGNED NOT NULL , `Prémium` BOOLEAN NOT NULL , `Környezetvédelmi_ID` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
     $üzenet = "Az autotipus tabla letrehozasa";
-    Query($kapcsolat, $üzenet, $sql);
+    return Query($kapcsolat, $üzenet, $sql);
+    
 }
 function SidetablaCreator($kapcsolat, $tablaNeveArray, $SideTableNevArray)
 {
@@ -79,14 +81,4 @@ function AutotipusTablamegvaltoztatasa($kapcsolat)
     $tablaID = ['Fajta_ID', 'Kategoria_ID', 'Környezetvédelmi_ID'];
     $tablaNev = ['fajta', 'kategoria', 'környezetvédelmibesorolás'];
     Cascade($kapcsolat, $tablaNev, $tablaID);
-    /* 
-    $sql = "ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Környezetvédelmi_ID`) REFERENCES `környezetvédelmibesorolás`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
-    $üzenet = "az autotipus tabla sikeresen megvaltoztatva";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql = "ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Kategoria_ID`) REFERENCES `kategoria`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
-    $üzenet = "az autotipus tabla sikeresen megvaltoztatva";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql = "ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Fajta_ID`) REFERENCES `fajta`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
-    $üzenet = "az autotipus tabla sikeresen megvaltoztatva";
-    Query($kapcsolat, $üzenet, $sql); */
 }

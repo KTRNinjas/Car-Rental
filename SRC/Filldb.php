@@ -48,7 +48,10 @@ function Query($kapcsolat, $üzenet, $sql)
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
         print '<p style="color:green;">'.$üzenet . ' sikeres volt!</p><br>';
-    } else print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
+        return $üzenet."sikeres volt!";
+    } else{ print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
+    return $üzenet." sikertelen volt!";
+}
 
 }
 function Tablamegvaltoztatas($kapcsolat){
