@@ -1,4 +1,5 @@
 <?php
+
 require("Connection/Dbconn.php");
 include_once("ArFeltolto.php");
 include_once("registration_data.php");
