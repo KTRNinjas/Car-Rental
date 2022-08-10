@@ -4,6 +4,7 @@ include_once("ArFeltolto.php");
 include_once("registration_data.php");
 include_once("AutotipusSQL.php");
 include_once("car_data.php");
+include_once("contract_data.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
@@ -48,7 +49,9 @@ function Query($kapcsolat, $üzenet, $sql)
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
         print '<p style="color:green;">'.$üzenet . ' sikeres volt!</p><br>';
-    } else print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
+        return $üzenet."Sikeres volt!";
+    } else {print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
+    return $üzenet."Sikertelen volt!";}
 
 }
 function Tablamegvaltoztatas($kapcsolat){

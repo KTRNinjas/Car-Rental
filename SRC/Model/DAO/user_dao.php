@@ -18,12 +18,12 @@ function get_contact_id($surname, $firstname, $mail, $pass)
     return $egysor["id"];
   }
 }
-function create_user_account_join($contact_id)
+function createUserAccountJoin($contact_id)
 {
   $kapcsolat = $GLOBALS["kapcsolat"];
   $sql = "INSERT INTO `autokolcsonzo`.`user_account_join` (`id`, `account_id`, `contact_id`) VALUES (NULL, '', '$contact_id')";
 }
-function create_account()
+function createAccount()
 {
   $kapcsolat = $GLOBALS["kapcsolat"];
   $sql = "";
