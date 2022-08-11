@@ -1,6 +1,9 @@
 <?php
 $path = dirname(__DIR__, 1);
 include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "RoleService.php");
+$url = "/Admin";
+$fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "Admin.php";
+$routes[$url] = $fileLocation;
 function searchForUserRole()
 {
     if (isset($_POST['searchUserRole'])) {
@@ -59,5 +62,6 @@ function updateRoleController()
         $user_id = $_POST['user_id'];
         $role_id = $_POST['roleSelect'];
         updateRoleService($user_id, $role_id);
+        header('Location: /Admin', true, 303);
     }
 }

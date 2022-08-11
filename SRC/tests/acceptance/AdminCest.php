@@ -3,7 +3,8 @@ class AdminCest
 {
     public function test_Admin_with_nonexistent(AcceptanceTester $I)
     {
-        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/View/Admin.php');
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/FileMuveletek/install_routing.php');
+        $I->amOnPage('http://localhost/Admin');
         $I->fillField('lastname', 'Kamu');
         $I->fillField('firstname', 'Berta');
         $I->fillField('email', 'kamuberta@gmail.com');
@@ -15,7 +16,7 @@ class AdminCest
     }
     public function test_Admin_with_existing(AcceptanceTester $I)
     {
-        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/View/Admin.php');
+        $I->amOnPage('http://localhost/Admin');
 
         $I->fillField('lastname', 'Ka');
         $I->fillField('firstname', 'Pál');
@@ -39,6 +40,7 @@ class AdminCest
 
         $I->selectOption("#roleSelect", "Autófelvevő");
         $I->click('roleSubmit');
+        $I->amOnPage('http://localhost/Admin');
         $I->fillField('lastname', 'Ka');
         $I->fillField('firstname', 'Pál');
         $I->fillField('email', 'k.pal@gmail.com');
@@ -54,6 +56,7 @@ class AdminCest
 
         $I->selectOption("#roleSelect", "Admin");
         $I->click('roleSubmit');
+        $I->amOnPage('http://localhost/Admin');
         $I->fillField('lastname', 'Ka');
         $I->fillField('firstname', 'Pál');
         $I->fillField('email', 'k.pal@gmail.com');
@@ -69,6 +72,7 @@ class AdminCest
 
         $I->selectOption("#roleSelect", "Sales");
         $I->click('roleSubmit');
+        $I->amOnPage('http://localhost/Admin');
         $I->fillField('lastname', 'Ka');
         $I->fillField('firstname', 'Pál');
         $I->fillField('email', 'k.pal@gmail.com');
@@ -84,6 +88,7 @@ class AdminCest
 
         $I->selectOption("#roleSelect", "Főnök");
         $I->click('roleSubmit');
+        $I->amOnPage('http://localhost/Admin');
         $I->fillField('lastname', 'Ka');
         $I->fillField('firstname', 'Pál');
         $I->fillField('email', 'k.pal@gmail.com');
@@ -99,6 +104,7 @@ class AdminCest
 
         $I->selectOption("#roleSelect", "Vásárló");
         $I->click('roleSubmit');
+        $I->amOnPage('http://localhost/Admin');
         $I->fillField('lastname', 'Ka');
         $I->fillField('firstname', 'Pál');
         $I->fillField('email', 'k.pal@gmail.com');
@@ -111,5 +117,6 @@ class AdminCest
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');
+        $I->click("Routing uninstallálása");
     }
 }
