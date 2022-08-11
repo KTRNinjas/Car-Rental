@@ -49,3 +49,18 @@ function CarsTablamegvaltoztatasa($kapcsolat){
   $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
   Query($kapcsolat, "A cars tábla kaszkádolása ", $sql);
 }
+
+
+
+
+
+
+
+
+// 7+ó branch része
+
+
+
+
+
+
