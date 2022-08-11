@@ -19,10 +19,9 @@ function InitDb($kapcsolat)
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
     Tablamegvaltoztatas($kapcsolat);
-
-
 }
-function AdatFelvetel($kapcsolat){
+function AdatFelvetel($kapcsolat)
+{
     fill_user_data($kapcsolat);
     AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
@@ -51,13 +50,15 @@ function Query($kapcsolat, $üzenet, $sql)
 {
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
-        print '<p style="color:green;">'.$üzenet . ' sikeres volt!</p><br>';
-        return $üzenet."Sikeres volt!";
-    } else {print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
-    return $üzenet."Sikertelen volt!";}
-
+        print '<p style="color:green;">' . $üzenet . ' sikeres volt!</p><br>';
+        return $üzenet . "Sikeres volt!";
+    } else {
+        print '<p style="color:red;">' . $üzenet . " sikertelen volt!</p><br>";
+        return $üzenet . "Sikertelen volt!";
+    }
 }
-function Tablamegvaltoztatas($kapcsolat){
+function Tablamegvaltoztatas($kapcsolat)
+{
     Arcascadolas($kapcsolat);
     AutotipusTablamegvaltoztatasa($kapcsolat);
     CarsTablamegvaltoztatasa($kapcsolat);
