@@ -10,6 +10,7 @@ class FillDBCest
         $I->see("Az Admin Role létrehozása sikeres volt!");
         $I->see("A Sales Role létrehozása sikeres volt!");
         $I->see("A Főnök Role létrehozása sikeres volt!");
+        $I->see("A Role tábla megváltoztatása sikeres volt!");
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');

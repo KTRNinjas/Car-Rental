@@ -62,4 +62,5 @@ function Tablamegvaltoztatas($kapcsolat)
     Arcascadolas($kapcsolat);
     AutotipusTablamegvaltoztatasa($kapcsolat);
     CarsTablamegvaltoztatasa($kapcsolat);
+    alterRoleTable($kapcsolat);
 }

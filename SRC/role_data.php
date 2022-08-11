@@ -19,4 +19,8 @@ function insertRoles($kapcsolat)
     $messages[4] = Query($kapcsolat, "A Főnök Role létrehozása ", $sql);
     return $messages;
 }
-?>
+function alterRoleTable($kapcsolat)
+{
+    $sql = "ALTER TABLE `autokolcsonzo`.`contact` ADD FOREIGN KEY (`Role_id`) REFERENCES `autokolcsonzo`.`Role`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ";
+    return Query($kapcsolat, "A Role tábla megváltoztatása ", $sql);
+}
