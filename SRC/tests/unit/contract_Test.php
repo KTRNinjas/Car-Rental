@@ -18,7 +18,7 @@ class contract_data_test extends \Codeception\Test\Unit
       //given
       $path=dirname(__DIR__,2);
       include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
-      $host="localhost";
+      $host="127.0.0.1";
       $user="root";
       $password="";
       $kapcsolat=mysqli_connect($host,$user,$password);

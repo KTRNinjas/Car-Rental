@@ -15,6 +15,7 @@ Unit.php
 AcceptanceTesterActions.php
 FunctionalTesterActions.php
 UnitTesterActions.php
+.vscode
 ##### Windows
 # Windows thumbnail cache files
 Thumbs.db
