@@ -23,13 +23,13 @@ class contractDAO_test extends \Codeception\Test\Unit
       $user="root";
       $password="";
       $kapcsolat=mysqli_connect($host,$user,$password);
+      $GLOBALS['kapcsolat']=$kapcsolat;
       $sql="INSERT INTO `autokolcsonzo`.`account` (`id`, `Magán/Cég`, `Lakcím`, `Telephely`, `Cégnév`, `Bankszámlaszám`, `Adószám`, `Cégjegyzékszám`) VALUES (NULL, '0', 'Cegléd', '', '', '', '', '')";
       mysqli_query($kapcsolat,$sql);
       $sql="INSERT INTO `autokolcsonzo`.`user_account_join` (`id`, `account_id`, `contact_id`) VALUES (NULL, '1', '1')";
       mysqli_query($kapcsolat,$sql);
       //when
-      $result=checkAccount(1,$kapcsolat);
-      
+      $result=checkAccount(1);
       //then
       $this->assertEquals("Cegléd", $result[0]["Lakcím"]);
     }

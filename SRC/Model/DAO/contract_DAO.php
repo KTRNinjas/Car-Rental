@@ -1,7 +1,8 @@
 <?php 
   $path = dirname(__DIR__, 2);
   require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . "Dbconn.php");
-  function checkAccount($contactID,$kapcsolat){
+  function checkAccount($contactID){
+    $kapcsolat=$GLOBALS['kapcsolat'];
     $sql="SELECT * FROM `autokolcsonzo`.`account` WHERE `id`=(SELECT `user_account_join`.`account_id` FROM `autokolcsonzo`.`user_account_join` WHERE `user_account_join`.`contact_id`=$contactID)";
     $result=mysqli_query($kapcsolat, $sql);
     $account=[];
