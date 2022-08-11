@@ -20,7 +20,7 @@ function GetLekerdezesAutoTipusok(){
         array_push($lekerdezesAutoTipusokKulsotomb,$lekerdezesAutoTipusok);
         
     }
-    print_r($lekerdezesAutoTipusokKulsotomb);
+
     return $lekerdezesAutoTipusokKulsotomb;
 }
 

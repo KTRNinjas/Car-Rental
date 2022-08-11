@@ -20,7 +20,7 @@ function Autolekerdezesfejlec()
 }
 function AutolekerdezesBody(){
  $GetLekerdezesAutok = GetLekerdezesAutok();
-
+    var_dump($GetLekerdezesAutok);
 }
 
 ?>
