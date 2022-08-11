@@ -5,6 +5,7 @@ include_once("ArFeltolto.php");
 include_once("registration_data.php");
 include_once("AutotipusSQL.php");
 include_once("car_data.php");
+include_once("AutolekerdezesSQL.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
