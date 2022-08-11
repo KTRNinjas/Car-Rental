@@ -9,3 +9,7 @@ function getRoleIDAndRoleNameOfAUserService($email, $vezeteknev, $keresztnev)
 {
    return getRoleIDAndRoleNameOfAUser($email, $vezeteknev, $keresztnev);
 }
+function updateRoleService($user_id, $role_id)
+{
+   updateRoleDAO($user_id, $role_id);
+}

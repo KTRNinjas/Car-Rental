@@ -32,3 +32,10 @@ function getAllRoles()
     }
     return $roles;
 }
+function updateRoleDAO($user_id, $role_id)
+{
+    $kapcsolat = $GLOBALS['kapcsolat'];
+    $sql = "UPDATE `autokolcsonzo`.`contact` SET `Role_id` = '$role_id' WHERE `contact`.`id` = $user_id ";
+    $ok = mysqli_query($kapcsolat, $sql);
+    return $ok;
+}

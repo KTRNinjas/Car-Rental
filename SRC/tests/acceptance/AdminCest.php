@@ -11,6 +11,7 @@ class AdminCest
         $I->see("Nincs ilyen nevű ember az adatbázisban");
         $I->dontSee('warning');
         $I->dontSee('error');
+        $I->dontSee('notice');
     }
     public function test_Admin_with_existing(AcceptanceTester $I)
     {
@@ -27,10 +28,88 @@ class AdminCest
         $I->see("e-mail");
         $I->see("k.pal@gmail.com");
         $I->see("Role Azonosító");
-        $I->seeOptionIsSelected("#roleSelect","Vásárló");
-        $I->dontSeeOptionIsSelected("#roleSelect","Autófelvevő");
-        $I->dontSeeOptionIsSelected("#roleSelect","Admin");
-        $I->dontSeeOptionIsSelected("#roleSelect","Sales");
-        $I->dontSeeOptionIsSelected("#roleSelect","Főnök");
+        $I->seeOptionIsSelected("#roleSelect", "Vásárló");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Autófelvevő");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Admin");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Sales");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Főnök");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+
+        $I->selectOption("#roleSelect", "Autófelvevő");
+        $I->click('roleSubmit');
+        $I->fillField('lastname', 'Ka');
+        $I->fillField('firstname', 'Pál');
+        $I->fillField('email', 'k.pal@gmail.com');
+        $I->click('searchUserRole');
+        $I->seeOptionIsSelected("#roleSelect", "Autófelvevő");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Vásárló");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Admin");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Sales");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Főnök");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+
+        $I->selectOption("#roleSelect", "Admin");
+        $I->click('roleSubmit');
+        $I->fillField('lastname', 'Ka');
+        $I->fillField('firstname', 'Pál');
+        $I->fillField('email', 'k.pal@gmail.com');
+        $I->click('searchUserRole');
+        $I->seeOptionIsSelected("#roleSelect", "Admin");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Vásárló");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Autófelvevő");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Sales");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Főnök");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+
+        $I->selectOption("#roleSelect", "Sales");
+        $I->click('roleSubmit');
+        $I->fillField('lastname', 'Ka');
+        $I->fillField('firstname', 'Pál');
+        $I->fillField('email', 'k.pal@gmail.com');
+        $I->click('searchUserRole');
+        $I->seeOptionIsSelected("#roleSelect", "Sales");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Vásárló");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Autófelvevő");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Admin");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Főnök");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+
+        $I->selectOption("#roleSelect", "Főnök");
+        $I->click('roleSubmit');
+        $I->fillField('lastname', 'Ka');
+        $I->fillField('firstname', 'Pál');
+        $I->fillField('email', 'k.pal@gmail.com');
+        $I->click('searchUserRole');
+        $I->seeOptionIsSelected("#roleSelect", "Főnök");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Vásárló");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Autófelvevő");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Sales");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Admin");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+
+        $I->selectOption("#roleSelect", "Vásárló");
+        $I->click('roleSubmit');
+        $I->fillField('lastname', 'Ka');
+        $I->fillField('firstname', 'Pál');
+        $I->fillField('email', 'k.pal@gmail.com');
+        $I->click('searchUserRole');
+        $I->seeOptionIsSelected("#roleSelect", "Vásárló");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Főnök");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Autófelvevő");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Sales");
+        $I->dontSeeOptionIsSelected("#roleSelect", "Admin");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
     }
 }

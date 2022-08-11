@@ -73,4 +73,21 @@ class Role_DAO_Test extends \Codeception\Test\Unit
         $this->assertEquals("Sales", $result[4]);
         $this->assertEquals("Főnök", $result[5]);
     }
+    public function test_if_Role_updated_to_fonok()
+    {
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        //$db="Autokolcsonzo";//adatbázis neve
+
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        //When
+        $result = updateRoleDAO(1, 5);
+        //Then
+        $this->assertTrue($result);
+    }
 }

@@ -3,7 +3,7 @@ $path = dirname(__DIR__, 1);
 include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AdminController.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,8 @@ include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
         <input type="email" name="email" id="">
         <input type="submit" name="searchUserRole" value="Keresés">
     </form>
-    <?php searchForUserRole(); ?>
+    <?php searchForUserRole();
+    updateRoleController(); ?>
 </body>
 
 </html>

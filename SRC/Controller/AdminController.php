@@ -11,7 +11,7 @@ function searchForUserRole()
         if (count($user) == 0) {
             print "Nincs ilyen nevű ember az adatbázisban";
         } else {
-            print '<table>
+            print '<form method="POST"><table>
             <thead>
             <th></th>
             <th>Vezetéknév</th>
@@ -26,9 +26,11 @@ function searchForUserRole()
             <td>' . $user["Keresztnév"] . '</td>
             <td>' . $user["email"] . '</td>
             <td>' . createRoleLegördülő($user["Role_id"]) . '</td>
+            <td><input type="submit" name="roleSubmit" value="Módosítás"></td>
             </tr>
             </tbody>
-            </table>';
+            </table>         
+            </form>';
         }
     }
 }
@@ -40,7 +42,7 @@ function createRoleLegördülő($roleID, $isTest = false, $testData = [])
         $roles = getAllRolesService();
     }
     $display = "";
-    $display .= '<select id="roleSelect">';
+    $display .= '<select name="roleSelect" id="roleSelect">';
     foreach ($roles as $key => $value) {
         if ($key == $roleID) {
             $display .= '<option value="' . $key . '" selected>' . $value . '</option>';
@@ -50,4 +52,12 @@ function createRoleLegördülő($roleID, $isTest = false, $testData = [])
     }
     $display .= '</select>';
     return $display;
+}
+function updateRoleController()
+{
+    if (isset($_POST['roleSubmit'])) {
+        $user_id = $_POST['user_id'];
+        $role_id = $_POST['roleSelect'];
+        updateRoleService($user_id, $role_id);
+    }
 }
