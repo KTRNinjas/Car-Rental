@@ -19,7 +19,7 @@ function InitDb($kapcsolat)
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
     Tablamegvaltoztatas($kapcsolat);
-
+    creatSzerzodesTabal($kapcsolat);
 
 }
 function AdatFelvetel($kapcsolat){
