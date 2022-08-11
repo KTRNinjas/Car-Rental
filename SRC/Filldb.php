@@ -4,7 +4,8 @@ include_once("ArFeltolto.php");
 include_once("registration_data.php");
 include_once("AutotipusSQL.php");
 include_once("car_data.php");
-include_once("contract_data.php");
+//include_once("contract_data.php");
+include_once("role_data.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
@@ -32,6 +33,7 @@ function AdatFelvetel($kapcsolat){
     fill_testcars($kapcsolat);
     fill_testAutoTipus($kapcsolat);
     fillAutotipus($kapcsolat);
+    insertRoles($kapcsolat);
 }
 function TablaFelvetele($kapcsolat)
 {
@@ -43,6 +45,7 @@ function TablaFelvetele($kapcsolat)
     create_cars($kapcsolat);
     create_valtotipus($kapcsolat);
     create_hajtaslanc($kapcsolat);
+    createRoleTable($kapcsolat);
 }
 function Query($kapcsolat, $üzenet, $sql)
 {
