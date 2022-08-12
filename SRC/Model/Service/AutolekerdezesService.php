@@ -4,6 +4,6 @@ include_once($path . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoLe
 
 
 function GetLekerdezesAutok(){
-    GetLekerdezesAutoTipusok();
+   return GetLekerdezesAutoTipusok();
 }
 ?>

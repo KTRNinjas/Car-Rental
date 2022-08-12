@@ -31,10 +31,11 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
     loginController();
     ?>
     <div class="tablazat">
+        <table>
     <?php
        autolekerdezes();
-
     ?>
+    </table>
     </div>
 </body>
 
