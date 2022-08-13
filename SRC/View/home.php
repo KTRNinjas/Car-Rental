@@ -40,6 +40,7 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
     <div class="tablazat">
         <table>
     <?php
+    
        autolekerdezes();
     ?>
     </table>
