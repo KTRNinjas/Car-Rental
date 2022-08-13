@@ -16,10 +16,10 @@ function create_user_account_join($kapcsolat)
 }
 function fill_user_data($kapcsolat)
 {
-  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Ka', 'Pál', 'k.pal@gmail.com', 'Palika1', '', NULL, '0')";
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Ka', 'Pál', 'k.pal@gmail.com', 'Palika1', '', NULL, '1')";
   Query($kapcsolat, "user_data tábla kitöltése Ka Pállal", $sql);
-  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Tök', 'Ödön', 't_odon@gmail.com', 'tokodon2', '', NULL, '0')";
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Tök', 'Ödön', 't_odon@gmail.com', 'tokodon2', '', NULL, '1')";
   Query($kapcsolat, "user_data tábla kitöltése Tök Ödönnel", $sql);
-  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Füty', 'Imre', 'f_imre@gmail.com', 'futyimre25', '', NULL, '0')";
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Füty', 'Imre', 'f_imre@gmail.com', 'futyimre25', '', NULL, '1')";
   Query($kapcsolat, "user_data tábla kitöltése Füty Imrével", $sql);
 }
