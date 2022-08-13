@@ -4,3 +4,11 @@ function creatSzerzodesTabal($kapcsolat){
     $üzenet = "Az Szerzodes tábla létrehozása";
     Query($kapcsolat, $üzenet, $sql);
 }
+    function szerzodescascadolas($kapcsolat){
+        $sql="ALTER TABLE `autokolcsonzo`.`szerzodes` ADD FOREIGN KEY (`Szerzodes_szama`) REFERENCES `szerzodes`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+        Query($kapcsolat,"Az artabla cascadolás ",$sql);
+    }
+    // function Arcascadolas($kapcsolat){
+    //     $sql="ALTER TABLE `autokolcsonzo`.`Ar` ADD FOREIGN KEY (`AutoTipusID`) REFERENCES `autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+    //     Query($kapcsolat,"Az artabla cascadolás ",$sql);
+    // }
