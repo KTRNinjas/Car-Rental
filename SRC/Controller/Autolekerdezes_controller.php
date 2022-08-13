@@ -3,8 +3,8 @@ $path = dirname(__DIR__, 1);
 include_once($path . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . 'Service' . DIRECTORY_SEPARATOR . 'AutolekerdezesService.php');
 function autolekerdezes()
 {
-    Autolekerdezesfejlec();
     AutolekerdezesBody();
+
 }
 
 
@@ -20,8 +20,11 @@ function Autolekerdezesfejlec()
 }
 function AutolekerdezesBody()
 {
-    $GetLekerdezesAutok = GetLekerdezesAutok();
-    $i = 0;
+    if(isset($_POST["Lefoglalas"])){
+        Autolekerdezesfejlec();
+        $kezdoDATE=$_POST["kezdoDATE"];
+        $vegDATE=$_POST["vegDATE"];
+        $GetLekerdezesAutok = GetLekerdezesAutok($kezdoDATE,$vegDATE);
 
     for ($i = 0; $i < count($GetLekerdezesAutok); $i++) {
         print "<tr>";
@@ -29,5 +32,10 @@ function AutolekerdezesBody()
             print "<td>" . $value . "</td>";
         }
         print "</tr>";
+        }
+
+
     }
+
 }
+

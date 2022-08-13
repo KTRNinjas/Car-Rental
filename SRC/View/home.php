@@ -31,12 +31,20 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
     <?php
     loginController();
     ?>
+    
+    <form action="" method="POST">
+        <input type="text" name="kezdoDATE" id="" placeholder="Kezdő dátum" onfocus="(this.type='date')" required>
+        <input type="text" name="vegDATE" id="" placeholder="Vég dátum" onfocus="(this.type='date')" required>
+        <input type="submit" value="Lefoglalas" name="Lefoglalas">
+    </form>
     <div class="tablazat">
         <table>
     <?php
        autolekerdezes();
     ?>
     </table>
+<!-- Márka tipus fajta kategoria premium,Ar,valto,hajtaslanc évjárat, -->
+
     </div>
 </body>
 
