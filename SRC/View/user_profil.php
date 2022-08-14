@@ -17,11 +17,6 @@
   <input type="checkbox" name="magan">Magánszemély<br>
   <input type="checkbox" name="ceges">Céges vásárló
   </form>
-
-  <form action="" method="post">
-    <input type="text" placeholder="Lakcím">
-    <input type="text" placeholder="Bankszámlaszám">
-  </form>
   </div>
 </body>
 </html>
