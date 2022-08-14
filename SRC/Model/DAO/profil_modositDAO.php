@@ -4,7 +4,7 @@ require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . 
 function profilModifyDAO($id,$surname,$firstname,$mail,$pass,$license,$phone){
   $kapcsolat=$GLOBALS["kapcsolat"];
   $sql="UPDATE `autokolcsonzo`.`contact` SET `Vezetéknév`='$surname',`Keresztnév`='$firstname',`e-mail`='$mail',`Password`='$pass',`Jogosítvány száma`='$license',`Telefonszám`='$phone' WHERE `id`='$id'";
-  mysqli_query($kapcsolat,$sql);
+ return mysqli_query($kapcsolat,$sql);
 }
 function automatic_profil_fill($id){
   $kapcsolat=$GLOBALS["kapcsolat"];
@@ -25,6 +25,6 @@ function automatic_profil_fill($id){
 function deleteProfilDAO($id){
   $kapcsolat=$GLOBALS["kapcsolat"];
   $sql="DELETE FROM `autokolcsonzo`.`contact` WHERE `id`=$id";
-  mysqli_query($kapcsolat,$sql);
+  return mysqli_query($kapcsolat,$sql);
 }
 ?>

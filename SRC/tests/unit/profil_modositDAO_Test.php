@@ -23,7 +23,7 @@ class Profil_modositDAO_Test extends \Codeception\Test\Unit{
         //When
         $result = automatic_profil_fill(1);
         //Then
-        $this->assertEquals(1, $result["id"]);
+        $this->assertEquals(1, $result["id"]); //assertTrue
         $this->assertEquals("Ka", $result["Vezetéknév"]);
         $this->assertEquals("Pál", $result["Keresztnév"]);
         $this->assertEquals("k.pal@gmail.com", $result["e-mail"]);
