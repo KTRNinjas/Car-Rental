@@ -44,7 +44,6 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
        autolekerdezes();
     ?>
     </table>
-<!-- Márka tipus fajta kategoria premium,Ar,valto,hajtaslanc évjárat, -->
 
     </div>
 </body>
