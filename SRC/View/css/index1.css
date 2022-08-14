@@ -3,7 +3,10 @@ table{
     border: 3px solid #000;
     border-collapse: collapse;
 }
+th{
+    width: 40px;
+}
 td{
-    width: 30px;
+    width: 40px;
     border: 1px solid #000;
 }

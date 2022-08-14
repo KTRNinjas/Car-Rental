@@ -12,11 +12,15 @@ function autolekerdezes()
 
 function Autolekerdezesfejlec()
 {
-    print "<th><small>Rendszám</small></th>";
-    print "<th><small>Alvázszám</small></th>";
-    print "<th><small>Autótípus</small></th>";
-    print "<th><small>Teljesítmény</small></th>";
-    print "<th><small>Biztosítási díj</small></th>";
+    print "<th><small>Márka</small></th>";
+    print "<th><small>Tipus</small></th>";
+    print "<th><small>Fajta</small></th>";
+    print "<th><small>Kategoria</small></th>";
+    print "<th><small>Prémium díj</small></th>";
+    print "<th><small>Ár</small></th>";
+    print "<th><small>Hajtaslanc</small></th>";
+    print "<th><small>Evjarat</small></th>";    
+    print "<th><small>Valtotipus</small></th>";
 }
 function AutolekerdezesBody()
 {
