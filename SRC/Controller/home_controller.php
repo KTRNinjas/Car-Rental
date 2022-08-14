@@ -13,6 +13,7 @@ function loginController()
     loginService($mail, $pass);
     $belepesiAdatok = loginService($mail, $pass);
     checkBelepesiAdatok($belepesiAdatok);
+    
   }
 }
 function checkBelepesiAdatok($belepesiAdatok)
@@ -39,6 +40,7 @@ function put_Userid_and_Roleid_into_Session($id, $role)
 {
   $_SESSION["user_id"] = $id;
   $_SESSION["role_id"] = $role;
+  
 }
 function print_Logout_form()
 {
@@ -48,6 +50,8 @@ function is_Userid_in_Session()
 {
   if (isset($_SESSION["user_id"])) {
     print "A user azonosítója: " . $_SESSION["user_id"];
+    $id=$_SESSION["user_id"];
+    print '<a href="/Profil_modositas?user_id='.$id.'">Profil módosítása</a>';
   }
 }
 function Logout()

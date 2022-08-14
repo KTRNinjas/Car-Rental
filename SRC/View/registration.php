@@ -14,7 +14,7 @@
       <input type="text" name="firstname" placeholder="Keresztnév" required></input>
       <input type="email" name="mail" placeholder="E-mail" required></input>
       <input type="password" name="pass" placeholder="Password" required></input>
-      <button type="submit" name="submit">Regisztál</button>
+      <button type="submit" name="registration">Regisztál</button>
     </form>
   </div>
   <?php
