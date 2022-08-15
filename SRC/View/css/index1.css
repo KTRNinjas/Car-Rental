@@ -5,6 +5,7 @@ table{
 }
 th{
     width: 40px;
+    border-bottom: 2px solid #444;
 }
 td{
     width: 40px;

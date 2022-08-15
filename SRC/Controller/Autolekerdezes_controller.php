@@ -33,7 +33,17 @@ function AutolekerdezesBody()
     for ($i = 0; $i < count($GetLekerdezesAutok); $i++) {
         print "<tr>";
         foreach ($GetLekerdezesAutok[$i] as $key => $value) {
+            if($key !="Prémium"){
             print "<td>" . $value . "</td>";
+            }else{
+                if($value == 1){
+                    print  "<td>Premium</td>";
+                }else{
+                    print  "<td>Nem premium </td>";
+                }
+            }
+            
+            
         }
         print "</tr>";
         }
