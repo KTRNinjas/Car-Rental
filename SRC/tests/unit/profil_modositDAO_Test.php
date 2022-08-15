@@ -1,9 +1,15 @@
 <?php
+
 namespace Tests\Unit;
+
+$path = dirname(__DIR__, 2);
+include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
+include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "profil_modositDAO.php");
 
 use \Tests\Support\UnitTester;
 
-class Profil_modositDAO_Test extends \Codeception\Test\Unit{
+class Profil_modositDAO_Test extends \Codeception\Test\Unit
+{
     //protected UnitTester $tester;
     protected function _before()
     {
@@ -13,13 +19,11 @@ class Profil_modositDAO_Test extends \Codeception\Test\Unit{
     {
         //Given
         $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "profil_modositDAO.php");
-        $host="127.0.0.1";
-        $user="root";
-        $password="";
-        $kapcsolat=mysqli_connect($host,$user,$password);
-        $GLOBALS["kapcsolat"]=$kapcsolat;
-        include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $GLOBALS["kapcsolat"] = $kapcsolat;
         //When
         $result = automatic_profil_fill(1);
         //Then
@@ -32,4 +36,3 @@ class Profil_modositDAO_Test extends \Codeception\Test\Unit{
         $this->assertEquals(NULL, $result["Telefonszám"]);
     }
 }
-?>
