@@ -15,6 +15,21 @@ FunctionalTesterActions.php
 UnitTesterActions.php
 phpunit.xml
 .phpunit.result.cache
+codeception.yml
+acceptance.suite.yml
+functional.suite.yml
+unit.suite.yml
+.gitkeep
+AcceptanceTester.php
+FunctionalTester.php
+UnitTester.php
+Acceptance.php
+Functional.php
+Unit.php
+AcceptanceTesterActions.php
+FunctionalTesterActions.php
+UnitTesterActions.php
+.vscode
 ##### Windows
 # Windows thumbnail cache files
 Thumbs.db

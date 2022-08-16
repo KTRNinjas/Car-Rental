@@ -4,7 +4,7 @@ require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . 
 function fill_registration($surname, $firstname, $mail, $pass)
 {
   $kapcsolat = $GLOBALS["kapcsolat"];
-  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, '$surname', '$firstname', '$mail', '$pass', '', NULL, '0')";
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, '$surname', '$firstname', '$mail', '$pass', '', NULL, '1')";
   $ok = mysqli_query($kapcsolat, $sql);
   return $ok;
 }
@@ -18,12 +18,12 @@ function get_contact_id($surname, $firstname, $mail, $pass)
     return $egysor["id"];
   }
 }
-function create_user_account_join($contact_id)
+function createUserAccountJoin($contact_id)
 {
   $kapcsolat = $GLOBALS["kapcsolat"];
   $sql = "INSERT INTO `autokolcsonzo`.`user_account_join` (`id`, `account_id`, `contact_id`) VALUES (NULL, '', '$contact_id')";
 }
-function create_account()
+function createAccount()
 {
   $kapcsolat = $GLOBALS["kapcsolat"];
   $sql = "";

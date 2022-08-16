@@ -7,3 +7,4 @@ require_once("registration_controller.php");
 require_once("car_controller.php");
 require_once("FoniController.php");
 require_once("AutoTipusFelvevoController.php");
+require_once("AdminController.php");

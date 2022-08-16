@@ -7,6 +7,9 @@ include_once("AutotipusSQL.php");
 include_once("car_data.php");
 include_once("AutolekerdezesSQL.php");
 include_once("contract_data.php");
+
+include_once("role_data.php");
+
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
@@ -20,9 +23,9 @@ function InitDb($kapcsolat)
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
     Tablamegvaltoztatas($kapcsolat);
-
 }
-function AdatFelvetel($kapcsolat){
+function AdatFelvetel($kapcsolat)
+{
     fill_user_data($kapcsolat);
     AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
@@ -35,6 +38,7 @@ function AdatFelvetel($kapcsolat){
     fillAutotipus($kapcsolat);
     Contract_create($kapcsolat);
     Contract_car_table_beszuro($kapcsolat);
+    insertRoles($kapcsolat);
 }
 function TablaFelvetele($kapcsolat)
 {
@@ -46,22 +50,30 @@ function TablaFelvetele($kapcsolat)
     create_cars($kapcsolat);
     create_valtotipus($kapcsolat);
     create_hajtaslanc($kapcsolat);
+
     Create_Contract_car_join_table($kapcsolat);
     creatSzerzodesTabal($kapcsolat);
     create_contract_table($kapcsolat);
+    createRoleTable($kapcsolat);
 
 }
 function Query($kapcsolat, $üzenet, $sql)
 {
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
-        print '<p style="color:green;">'.$üzenet . ' sikeres volt!</p><br>';
-    } else print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
-
+        print '<p style="color:green;">' . $üzenet . ' sikeres volt!</p><br>';
+        return $üzenet . "Sikeres volt!";
+    } else {
+        print '<p style="color:red;">' . $üzenet . " sikertelen volt!</p><br>";
+        return $üzenet . "Sikertelen volt!";
+    }
 }
-function Tablamegvaltoztatas($kapcsolat){
+function Tablamegvaltoztatas($kapcsolat)
+{
     Arcascadolas($kapcsolat);
     AutotipusTablamegvaltoztatasa($kapcsolat);
     CarsTablamegvaltoztatasa($kapcsolat);
     // Szerzodescascadolas($kapcsolat);
+    alterRoleTable($kapcsolat);
+
 }
