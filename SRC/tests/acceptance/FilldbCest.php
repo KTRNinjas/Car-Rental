@@ -11,8 +11,12 @@ class FillDBCest
         $I->see("A Sales Role létrehozása sikeres volt!");
         $I->see("A Főnök Role létrehozása sikeres volt!");
         $I->see("A Role tábla megváltoztatása sikeres volt!");
+        $I->see("Contract_car tablaba a beszuras sikeres volt!");
+        $I->see("Contract car join tabla létrehozasa sikeres volt!");
+        $I->see("contract létrehozasa sikeres volt!");
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');
+    
     }
 }
