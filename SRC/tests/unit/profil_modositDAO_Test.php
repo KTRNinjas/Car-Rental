@@ -35,4 +35,44 @@ class Profil_modositDAO_Test extends \Codeception\Test\Unit
         $this->assertEquals("", $result["Jogosítvány száma"]);
         $this->assertEquals(NULL, $result["Telefonszám"]);
     }
+    public function test_profilModifyDAO()
+    {
+        //Given
+        $path = dirname(__DIR__, 2);
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $GLOBALS["kapcsolat"] = $kapcsolat;
+        $id=1;
+        $surname="Ka";
+        $firstname="Pál";
+        $mail="k.pal@gmail.com";
+        $pass="Palika1";
+        $license=NULL;
+        $phone="NULL";
+        //When
+        $result = profilModifyDAO($id, $surname, $firstname, $mail, $pass, $license, $phone);
+        //Then
+        $this->assertTrue($result); 
+    }
+    public function test_deleteProfilDAO()
+    {
+        //Given
+        $path = dirname(__DIR__, 2);
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $GLOBALS["kapcsolat"] = $kapcsolat;
+        $id=1;
+        //When
+        $result = deleteProfilDAO($id);
+        //Then
+        $this->assertTrue($result); 
+        //After
+        $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (1, 'Ka', 'Pál', 'k.pal@gmail.com', 'Palika1', '', NULL, '1')";
+        $result= mysqli_query($kapcsolat,$sql);
+        $this->assertTrue($result); 
+    }
 }
