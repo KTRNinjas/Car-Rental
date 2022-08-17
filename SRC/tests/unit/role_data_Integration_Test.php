@@ -2,13 +2,16 @@
 
 namespace Tests\Unit;
 
+$path = dirname(__DIR__, 2);
+include_once($path . DIRECTORY_SEPARATOR . "role_data.php");
+include_once($path . DIRECTORY_SEPARATOR . "FilldbData.php");
+
 use mysqli;
 use \Tests\Support\UnitTester;
 
 class Role_Data_Test extends \Codeception\Test\Unit
 {
     //protected UnitTester $tester;
-
     protected function _before()
     {
     }
@@ -17,35 +20,28 @@ class Role_Data_Test extends \Codeception\Test\Unit
     public function test_if_Role_Data_Table_Created()
     {
         //Given
-        $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "role_data.php");
-        include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
-        //$db="Autokolcsonzo";//adatbázis neve
 
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP DATABASE `autokolcsonzo`";
-        mysqli_query($kapcsolat, $sql);
-        $sql = "CREATE DATABASE `autokolcsonzo`";
-        mysqli_query($kapcsolat, $sql);
+        $sql = "DROP TABLE `autokolcsonzo`.`contact`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "DROP TABLE `autokolcsonzo`.`Role`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //When
         $result = createRoleTable($kapcsolat);
         //Then
         $this->assertEquals("A Role tábla létrehozása Sikeres volt!", $result);
-        InitDb($kapcsolat);
+        $sql = "CREATE TABLE `autokolcsonzo`.`contact` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT , `Vezetéknév` VARCHAR(50) NOT NULL , `Keresztnév` VARCHAR(50) NOT NULL , `e-mail` VARCHAR(50) NOT NULL , `Password` VARCHAR(50) NOT NULL , `Jogosítvány száma` VARCHAR(20) NOT NULL , `Telefonszám` INT(15) UNSIGNED NULL , `Role_id` INT(10) UNSIGNED NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
     }
     public function test_if_Roles_Inserted()
     {
         //Given
-        $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "role_data.php");
-        include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
-        //$db="Autokolcsonzo";//adatbázis neve
 
         $kapcsolat = mysqli_connect($host, $user, $password);
         //When
@@ -60,13 +56,9 @@ class Role_Data_Test extends \Codeception\Test\Unit
     public function test_if_Role_Table_Altered()
     {
         //Given
-        $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "role_data.php");
-        include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
-        //$db="Autokolcsonzo";//adatbázis neve
 
         $kapcsolat = mysqli_connect($host, $user, $password);
         //When
@@ -77,15 +69,11 @@ class Role_Data_Test extends \Codeception\Test\Unit
     public function test_if_Role_Cant_Be_Deleted_if_user_belongs_to_it()
     {
         //Given
-        $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "role_data.php");
-        include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
-        //$db="Autokolcsonzo";//adatbázis neve
+
         $kapcsolat = mysqli_connect($host, $user, $password);
-        InitDb($kapcsolat);
         $sql = "INSERT INTO `autokolcsonzo`.`Role` (`id`, `role_name`) VALUES (NULL, 'testrole')";
         $result = mysqli_query($kapcsolat, $sql);
         $this->assertTrue($result);
