@@ -1,0 +1,12 @@
+<?php
+$coverage = new SebastianBergmann\CodeCoverage\CodeCoverage;
+$coverage->setData(array (
+));
+$coverage->setTests(array (
+));
+
+$filter = $coverage->filter();
+$filter->setWhitelistedFiles(array (
+));
+
+return $coverage;

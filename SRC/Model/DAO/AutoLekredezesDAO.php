@@ -11,7 +11,6 @@ $kapcsolat=$GLOBALS["kapcsolat"];
     JOIN `autokolcsonzo`.`cars` ON `autokolcsonzo`.`autotipus`.`ID`= `autokolcsonzo`.`cars`.`Autotipus_id`
     JOIN `autokolcsonzo`.`valtotipus` ON `autokolcsonzo`.`valtotipus`.`id`= `autokolcsonzo`.`cars`.`valtotipus_id`
     JOIN `autokolcsonzo`.`hajtaslanc` ON `autokolcsonzo`.`hajtaslanc`.`id`= `autokolcsonzo`.`cars`.`hajtaslanc_id`
-    
     WHERE `cars`.`id` 
     NOT IN 
     (SELECT `Car_ID` FROM `autokolcsonzo`.`contract_car_join` WHERE `contract_car_join`.`Contract_ID` IN (SELECT id FROM `autokolcsonzo`.`contract` WHERE ('$kezdoDATE' BETWEEN `Kezdődátum` AND `Végdátum`) OR ('$vegDATE' BETWEEN `Kezdődátum` AND `Végdátum`)));";

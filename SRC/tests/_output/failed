@@ -1,1 +1,2 @@
+tests\acceptance\FilldbCest.php:test_if_Role_Tábla_És_Roleok_létrehozása_sikeres_volt_message_displayed
 tests\unit\AutoLekerdezesDAO_Test.php:test_LekerdezesAutok_kivantIntervalumba
