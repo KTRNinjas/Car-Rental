@@ -5,5 +5,6 @@ include_once($path . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoLe
 
 function GetLekerdezesAutok($kezdoDATE,$vegDATE){
    return LekerdezesAutok_kivantIntervalumba($kezdoDATE,$vegDATE);
+   
 }
 ?>

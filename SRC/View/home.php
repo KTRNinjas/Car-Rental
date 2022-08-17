@@ -41,7 +41,7 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
         <table>
     <?php
     
-       autolekerdezes();
+    autolekerdezes();
     ?>
     </table>
 

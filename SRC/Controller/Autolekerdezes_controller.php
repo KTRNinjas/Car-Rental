@@ -28,7 +28,7 @@ function AutolekerdezesBody()
         $kezdoDATE = $_POST["kezdoDATE"];
         $vegDATE = $_POST["vegDATE"];
         $GetLekerdezesAutok = GetLekerdezesAutok($kezdoDATE, $vegDATE);
-
+        var_dump($GetLekerdezesAutok);
         for ($i = 0; $i < count($GetLekerdezesAutok); $i++) {
             print "<tr>";
             foreach ($GetLekerdezesAutok[$i] as $key => $value) {

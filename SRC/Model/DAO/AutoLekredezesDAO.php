@@ -31,7 +31,7 @@ $kapcsolat=$GLOBALS["kapcsolat"];
     $belsotomb["Hajtaslanc"]=$egysor["Hajtaslanc"];
     $belsotomb["Evjarat"]=$egysor["Evjarat"];
     $belsotomb["Valtotipus"]=$egysor["Valtotipus"];
-
+        
     array_push($kulsoTomb,$belsotomb);
     }
 
