@@ -32,7 +32,7 @@ class profil_modify_service_unit_test extends \Codeception\Test\Unit
         //When
         $result = profilModifyService(null,null,null,null,null,null,null,true);
         //Then
-        $this->assertEquals('NULL', $result);
+        $this->assertEquals(null, $result);
     }
     public function test_if_profilModifyService_called_with_empty_phone_number()
     {
@@ -43,6 +43,6 @@ class profil_modify_service_unit_test extends \Codeception\Test\Unit
         //When
         $result = profilModifyService(null,null,null,null,null,null,"",true);
         //Then
-        $this->assertEquals('NULL', $result);
+        $this->assertEquals(null, $result);
     }
 }

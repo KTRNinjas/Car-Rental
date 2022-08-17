@@ -4,7 +4,7 @@ include_once($path . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "profil
 function profilModifyService($id, $surname, $firstname, $mail, $pass, $license, $phone, $isTest = false)
 {
   if (empty($phone) || $phone == "") {
-    $phone = 'NULL';
+    $phone = NULL;
   }
   if ($isTest) {
     return $phone;

@@ -14,7 +14,7 @@ function profilModifyController()
   <input type="email" name="mail" value="' . $user_data["e-mail"] . '"placeholder="E-mail" required>
   <input type="password" name="pass" value="' . $user_data["Password"] . '"placeholder="Password" required>
   <input type="text" name="license" value="' . $user_data["Jogosítvány száma"] . '"placeholder="Jogosítvány">
-  <input type="number" name="phone" value="' . $user_data["Telefonszám"] . '"placeholder="Telefonszám">
+  <input type="tel" name="phone" value="' . $user_data["Telefonszám"] . '"placeholder="Telefonszám">
   <input type="submit" value="Módosít" name="profile_modify">';
     if (isset($_POST["profile_modify"])) {
       $surname = $_POST["surname"];
