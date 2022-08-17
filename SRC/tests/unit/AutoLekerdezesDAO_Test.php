@@ -31,7 +31,7 @@ public function test_LekerdezesAutok_kivantIntervalumba()
         //márka
         $this->assertEquals("AudiTeszt",$result[0]["Márka"]);
         $this->assertEquals("AudiTeszt",$result[1]["Márka"]);
-        $this->assertEquals("AAAA",$result[2]["aaa"]);
+        $this->assertEquals("VolkswagenTeszt",$result[2]["Márka"]);
 
         //Tipus
         $this->assertEquals("S8Teszt",$result[0]["Tipus"]);

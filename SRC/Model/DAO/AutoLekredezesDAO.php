@@ -34,7 +34,8 @@ $kapcsolat=$GLOBALS["kapcsolat"];
         
     array_push($kulsoTomb,$belsotomb);
     }
-
+    print $sql;
+    var_dump($kulsoTomb);
     return $kulsoTomb;
 }
 
