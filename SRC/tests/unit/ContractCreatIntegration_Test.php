@@ -55,9 +55,9 @@ class ContractCreatTest extends \Codeception\Test\Unit
 
         $this->assertEquals(3,$gyujtoArry_contract_Adatok[2]["id"]);
         $this->assertEquals("2022-09-26",$gyujtoArry_contract_Adatok[2]["Kezdődátum"]);
-        $this->assertEquals("2022-09-30",$gyujtoArry_contract_Adatok[2]["Végdátum"]);
+        $this->assertEquals("2022-09-29",$gyujtoArry_contract_Adatok[2]["Végdátum"]);
         $this->assertEquals(0,$gyujtoArry_contract_Adatok[2]["Account_ID"]);
-        $this->assertEquals('0000-00-00',$gyujtoArry_contract_Adatok[2]["Visszavétel_időpontja"]);
+        $this->assertEquals('2022-09-30',$gyujtoArry_contract_Adatok[2]["Visszavétel_időpontja"]);
         
     }
     public function test_Create_Contract_car_join_table()

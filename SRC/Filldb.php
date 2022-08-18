@@ -36,6 +36,8 @@ function AdatFelvetel($kapcsolat)
     fill_testcars($kapcsolat);
     fill_testAutoTipus($kapcsolat);
     fillAutotipus($kapcsolat);
+    fillArak($kapcsolat);
+
     Contract_create($kapcsolat);
     Contract_car_table_beszuro($kapcsolat);
     insertRoles($kapcsolat);

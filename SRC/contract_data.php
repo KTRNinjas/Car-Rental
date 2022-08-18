@@ -11,7 +11,7 @@
     $sql="INSERT INTO `autokolcsonzo`.`contract` (`id`, `Kezdődátum`, `Végdátum`, `Account_ID`, `Visszavétel_időpontja`) VALUES (NULL, '2022-08-25', '2022-08-29', '0', '2022-08-31')";
     $uzenet="contract létrehozasa";
     Query($kapcsolat,$uzenet,$sql);
-    $sql="INSERT INTO `autokolcsonzo`.`contract` (`id`, `Kezdődátum`, `Végdátum`, `Account_ID`, `Visszavétel_időpontja`) VALUES (NULL, '2022-09-26', '2022-09-30', '0', '2022-09-31')";
+    $sql="INSERT INTO `autokolcsonzo`.`contract` (`id`, `Kezdődátum`, `Végdátum`, `Account_ID`, `Visszavétel_időpontja`) VALUES (NULL, '2022-09-26', '2022-09-29', '0', '2022-09-30')";
     $uzenet="contract létrehozasa";
     Query($kapcsolat,$uzenet,$sql);
   }

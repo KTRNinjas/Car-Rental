@@ -1,4 +1,5 @@
 #####Saját ignore-ok, ide írjátok
+_output
 codeception.yml
 acceptance.suite.yml
 functional.suite.yml
