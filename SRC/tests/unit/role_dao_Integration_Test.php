@@ -21,7 +21,6 @@ class Role_DAO_Test extends \Codeception\Test\Unit
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
-        //$db="Autokolcsonzo";//adatbázis neve
 
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
