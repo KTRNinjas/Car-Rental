@@ -48,10 +48,10 @@ class ContractCreatTest extends \Codeception\Test\Unit
         $this->assertEquals('2022-08-31',$gyujtoArry_contract_Adatok[0]["Visszavétel_időpontja"]);
                
         $this->assertEquals(2,$gyujtoArry_contract_Adatok[1]["id"]);
-        $this->assertEquals("2022-08-25",$gyujtoArry_contract_Adatok[1]["Kezdődátum"]);
-        $this->assertEquals("2022-08-29",$gyujtoArry_contract_Adatok[1]["Végdátum"]);
+        $this->assertEquals("2022-09-01",$gyujtoArry_contract_Adatok[1]["Kezdődátum"]);
+        $this->assertEquals("2022-09-10",$gyujtoArry_contract_Adatok[1]["Végdátum"]);
         $this->assertEquals(0,$gyujtoArry_contract_Adatok[1]["Account_ID"]);
-        $this->assertEquals('2022-08-31',$gyujtoArry_contract_Adatok[1]["Visszavétel_időpontja"]);
+        $this->assertEquals('2022-09-11',$gyujtoArry_contract_Adatok[1]["Visszavétel_időpontja"]);
 
         $this->assertEquals(3,$gyujtoArry_contract_Adatok[2]["id"]);
         $this->assertEquals("2022-09-26",$gyujtoArry_contract_Adatok[2]["Kezdődátum"]);
@@ -79,4 +79,3 @@ class ContractCreatTest extends \Codeception\Test\Unit
     
 
 }
-?>

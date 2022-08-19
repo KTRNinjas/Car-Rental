@@ -57,7 +57,6 @@ function TablaFelvetele($kapcsolat)
     creatSzerzodesTabal($kapcsolat);
     create_contract_table($kapcsolat);
     createRoleTable($kapcsolat);
-
 }
 function Query($kapcsolat, $üzenet, $sql)
 {
@@ -77,5 +76,4 @@ function Tablamegvaltoztatas($kapcsolat)
     CarsTablamegvaltoztatasa($kapcsolat);
     // Szerzodescascadolas($kapcsolat);
     alterRoleTable($kapcsolat);
-
 }
