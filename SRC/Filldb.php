@@ -4,6 +4,8 @@ include_once("ArFeltolto.php");
 include_once("registration_data.php");
 include_once("AutotipusSQL.php");
 include_once("car_data.php");
+//include_once("contract_data.php");
+include_once("role_data.php");
 InitDb($kapcsolat);
 function InitDb($kapcsolat)
 {
@@ -17,10 +19,9 @@ function InitDb($kapcsolat)
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
     Tablamegvaltoztatas($kapcsolat);
-
-
 }
-function AdatFelvetel($kapcsolat){
+function AdatFelvetel($kapcsolat)
+{
     fill_user_data($kapcsolat);
     AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
@@ -31,6 +32,7 @@ function AdatFelvetel($kapcsolat){
     fill_testcars($kapcsolat);
     fill_testAutoTipus($kapcsolat);
     fillAutotipus($kapcsolat);
+    insertRoles($kapcsolat);
 }
 function TablaFelvetele($kapcsolat)
 {
@@ -42,20 +44,32 @@ function TablaFelvetele($kapcsolat)
     create_cars($kapcsolat);
     create_valtotipus($kapcsolat);
     create_hajtaslanc($kapcsolat);
+    createRoleTable($kapcsolat);
 }
 function Query($kapcsolat, $üzenet, $sql)
 {
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
+<<<<<<< HEAD
         print '<p style="color:green;">'.$üzenet . ' sikeres volt!</p><br>';
         return $üzenet."sikeres volt!";
     } else{ print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
     return $üzenet." sikertelen volt!";
 }
 
+=======
+        print '<p style="color:green;">' . $üzenet . ' sikeres volt!</p><br>';
+        return $üzenet . "Sikeres volt!";
+    } else {
+        print '<p style="color:red;">' . $üzenet . " sikertelen volt!</p><br>";
+        return $üzenet . "Sikertelen volt!";
+    }
+>>>>>>> c243906b5e7b314f364caab41fb8c4ec53cdc244
 }
-function Tablamegvaltoztatas($kapcsolat){
+function Tablamegvaltoztatas($kapcsolat)
+{
     Arcascadolas($kapcsolat);
     AutotipusTablamegvaltoztatasa($kapcsolat);
     CarsTablamegvaltoztatasa($kapcsolat);
+    alterRoleTable($kapcsolat);
 }

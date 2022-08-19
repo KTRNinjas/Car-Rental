@@ -33,7 +33,7 @@ class RoutingTest extends TestCase
     //When
     $result = initRouting($server, true);
     //Then
-    $this->assertEquals(dirname(__DIR__, 2) . '/View/response_404.php', $result, "A testurl/testurl címre a /View/ mappába, a response_404-php-ra kellene irányítania");
+    $this->assertEquals(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR.'View'.DIRECTORY_SEPARATOR.'response_404.php', $result, "A testurl/testurl címre a /View/ mappába, a response_404-php-ra kellene irányítania");
   }
   function test_if_routing_can_accept_GET_parameters_in_url()
   {
@@ -59,7 +59,7 @@ class RoutingTest extends TestCase
     //When
     $result = initRouting($server, true);
     //Then
-    $this->assertEquals(dirname(__DIR__, 2) . '/View/response_404.php', $result, "A testurl/testurl?2 címre a /View/ mappába, a response_404-php-ra kellene irányítania");
+    $this->assertEquals(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR.'View'.DIRECTORY_SEPARATOR.'response_404.php', $result, "A testurl/testurl?2 címre a /View/ mappába, a response_404-php-ra kellene irányítania");
   }
   function test_if_replacer_replaces_slash_sign_backslash_sign()
   {
@@ -160,4 +160,3 @@ class RoutingTest extends TestCase
     $this->assertTrue($result, 'A projektben létező url-ekre true-val kell visszatérnie');
   }
 }
-?>
