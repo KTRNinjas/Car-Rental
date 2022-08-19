@@ -42,3 +42,10 @@ function loginDAO($mail, $pass)
   }
   return $belepesiAdatok;
 }
+function checkEmails($mail){
+  $kapcsolat = $GLOBALS["kapcsolat"];
+  $sql = "SELECT id FROM `autokolcsonzo`.`contact` WHERE e-mail=$mail";
+  $result = mysqli_query($kapcsolat, $sql);
+  $egysor = mysqli_fetch_array($result);
+    return $egysor["id"];
+}
