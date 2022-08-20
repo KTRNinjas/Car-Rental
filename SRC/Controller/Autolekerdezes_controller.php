@@ -16,10 +16,12 @@ function Autolekerdezesfejlec()
     print "<th><small>Fajta</small></th>";
     print "<th><small>Kategoria</small></th>";
     print "<th><small>Prémium díj</small></th>";
-    print "<th><small>Ár</small></th>";
     print "<th><small>Hajtaslanc</small></th>";
     print "<th><small>Evjarat</small></th>";
     print "<th><small>Valtotipus</small></th>";
+    print "<th><small>Napi Ár</small></th>";
+    print "<th><small>Osszár</small></th>";
+    
 }
 function AutolekerdezesBody()
 {
