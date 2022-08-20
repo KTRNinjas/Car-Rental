@@ -10,4 +10,8 @@ function loginService($mail, $pass)
 {
   return loginDAO($mail, $pass);
 }
+function loginNameService($user_id)
+{
+  return loginNameDAO($user_id);
+}
 ?>

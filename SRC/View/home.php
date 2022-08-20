@@ -4,7 +4,10 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
 require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Lefoglalo_controller.php");
 session_start();
 require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Autolekerdezes_controller.php");
+$hostname = "http://localhost/KTRNinjas/Car-Rental/SRC/View/css/home.css";
+$url = DIRECTORY_SEPARATOR . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
 ?>
+
 <!DOCTYPE html>
 <html lang="hu">
 
@@ -13,7 +16,9 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/index1.css">
+    <link rel="stylesheet" href=<?php print '"'.$hostname.'"' ?>
+    >
+    
 </head>
 
 <body>

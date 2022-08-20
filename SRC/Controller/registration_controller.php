@@ -7,7 +7,7 @@ $routes[$url] = $fileLocation;
 
 function initRegistration()
 {
-  if (isset($_POST["submit"])) {
+  if (isset($_POST["registration"])) {
     dataRegistration();
   }
 }

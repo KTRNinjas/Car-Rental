@@ -36,6 +36,8 @@ function AdatFelvetel($kapcsolat)
     fill_testcars($kapcsolat);
     fill_testAutoTipus($kapcsolat);
     fillAutotipus($kapcsolat);
+    fillArak($kapcsolat);
+
     Contract_create($kapcsolat);
     Contract_car_table_beszuro($kapcsolat);
     insertRoles($kapcsolat);
@@ -55,7 +57,6 @@ function TablaFelvetele($kapcsolat)
     creatSzerzodesTabal($kapcsolat);
     create_contract_table($kapcsolat);
     createRoleTable($kapcsolat);
-
 }
 function Query($kapcsolat, $üzenet, $sql)
 {
@@ -75,5 +76,4 @@ function Tablamegvaltoztatas($kapcsolat)
     CarsTablamegvaltoztatasa($kapcsolat);
     // Szerzodescascadolas($kapcsolat);
     alterRoleTable($kapcsolat);
-
 }
