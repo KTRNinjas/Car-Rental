@@ -20,7 +20,7 @@ function Autolekerdezesfejlec()
     print "<th><small>Evjarat</small></th>";
     print "<th><small>Valtotipus</small></th>";
     print "<th><small>Napi Ár</small></th>";
-    print "<th><small>Osszár</small></th>";
+    print "<th><small>Összár</small></th>";
     
 }
 function AutolekerdezesBody()
