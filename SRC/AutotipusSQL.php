@@ -9,7 +9,7 @@ function CreatSQL($kapcsolat, $arrayAdat, $tabla, $oszlop)
 {
     for ($i = 0; $i < count($arrayAdat); $i++) {
         $sql = "INSERT INTO `autokolcsonzo`.`$tabla` (`ID`, `$oszlop`) VALUES (NULL, '$arrayAdat[$i]')";
-        $üzenet = "a $tabla tablaba felvettünk egy elemet";
+        $üzenet = "a $tabla sikeresen felvetük a $arrayAdat[$i] elemet";
         Query($kapcsolat, $üzenet, $sql);
     }
 }
@@ -23,10 +23,8 @@ function Cascade($kapcsolat, $tablaID, $tablaNev)
 }
 function creatAutotipusTable($kapcsolat)
 {
-    $tablaNeveArray = ['fajta', 'kategoria', 'környezetvédelmibesorolás', 'márka'];
-    $SideTableNevArray = ['Fajta_neve', 'Kategoria', 'KörnyezetvédelmiBesorolás', 'Márka'];
     MainAutotipusTablaCreate($kapcsolat);
-    SidetablaCreator($kapcsolat, $tablaNeveArray, $SideTableNevArray);
+    SidetablaCreator($kapcsolat, );
 }
 
 
@@ -38,8 +36,10 @@ function MainAutotipusTablaCreate($kapcsolat)
     return Query($kapcsolat, $üzenet, $sql);
     
 }
-function SidetablaCreator($kapcsolat, $tablaNeveArray, $SideTableNevArray)
+function SidetablaCreator($kapcsolat)
 {
+    $tablaNeveArray = ['fajta', 'kategoria', 'környezetvédelmibesorolás', 'márka'];
+    $SideTableNevArray = ['Fajta_neve', 'Kategoria', 'KörnyezetvédelmiBesorolás', 'Márka'];
     for ($i = 0; $i < count($tablaNeveArray); $i++) {
         $sql = "CREATE TABLE `autokolcsonzo`.`$tablaNeveArray[$i]` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `$SideTableNevArray[$i]` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
         $üzenet = "Az $tablaNeveArray[$i] tabla letrehozasa";

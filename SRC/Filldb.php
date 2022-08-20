@@ -50,21 +50,14 @@ function Query($kapcsolat, $üzenet, $sql)
 {
     $ok = mysqli_query($kapcsolat, $sql);
     if ($ok) {
-<<<<<<< HEAD
-        print '<p style="color:green;">'.$üzenet . ' sikeres volt!</p><br>';
-        return $üzenet."sikeres volt!";
-    } else{ print '<p style="color:red;">'.$üzenet . " sikertelen volt!</p><br>";
-    return $üzenet." sikertelen volt!";
-}
 
-=======
         print '<p style="color:green;">' . $üzenet . ' sikeres volt!</p><br>';
         return $üzenet . "Sikeres volt!";
     } else {
         print '<p style="color:red;">' . $üzenet . " sikertelen volt!</p><br>";
         return $üzenet . "Sikertelen volt!";
     }
->>>>>>> c243906b5e7b314f364caab41fb8c4ec53cdc244
+
 }
 function Tablamegvaltoztatas($kapcsolat)
 {
