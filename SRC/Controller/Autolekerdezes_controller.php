@@ -45,6 +45,7 @@ function AutolekerdezesBody()
                     }
                 }
                 print "</tr>";
+
             }
         }else{
             $massega="A kezdő dátum kisebb kell legyen a végdátumnál probáld újra";
@@ -52,4 +53,6 @@ function AutolekerdezesBody()
         }
 
     }
+    print $kezdoDATE." - ".$vegDATE;;
+
 }
