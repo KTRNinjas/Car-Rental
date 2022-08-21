@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-08-21T22:18:40.240Z" agent="5.0 (X11)" etag="EBRnYCPfMiCqFIUsSqxC" version="20.2.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-08-21T22:19:54.693Z" agent="5.0 (X11)" etag="fJNxPFcEi9QkwoOQBuxv" version="20.2.5" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="942" dy="556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -175,7 +175,7 @@
         <mxCell id="dz25y3uaAjt0BuEXkS1v-47" value="Valtotipus: varchar(50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="dz25y3uaAjt0BuEXkS1v-45">
           <mxGeometry y="60" width="150" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="dz25y3uaAjt0BuEXkS1v-49" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.043;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="dz25y3uaAjt0BuEXkS1v-17" target="dz25y3uaAjt0BuEXkS1v-46">
+        <mxCell id="dz25y3uaAjt0BuEXkS1v-49" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.043;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="dz25y3uaAjt0BuEXkS1v-17" target="dz25y3uaAjt0BuEXkS1v-46">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="960" y="600" as="sourcePoint" />
             <mxPoint x="1060" y="600" as="targetPoint" />
