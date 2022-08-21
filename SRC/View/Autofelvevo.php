@@ -14,24 +14,27 @@ deleteCarController();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Az autófelvevő honlapja</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 0fr);
+            align-content: center;
+            grid-gap: 5px;
+        }
+
+        .grid-item {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-    <table class="autok">
-        <thead>
-            <?php makeHeader() ?>
-        </thead>
-        <tbody>
-            <?php printCarsInDB() ?>
-            <tr>
-                <td>
-                    <?php ?>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <?php
+    printCarsInDB();
+    ?>
     <button><b>+</b>Új autó felvétele</button>
-    <form action="" method="post">
+
+    <form id="insertForm" action="" method="post">
         <?php
 
         ?>
@@ -54,7 +57,7 @@ deleteCarController();
         <input type="number" name="teljesitmeny" size="8" id="" placeholder="Teljesítmény" required>
         <input type="number" name="biztositas" size="9" id="" placeholder="Biztosítási díj" required>
         <input type="number" name="kilometer" size="14" id="" placeholder="Kilométeróra állása" required>
-        <input type="text" name="forgalmi" id="" placeholder="Forgalmi megújításának ideje" onfocus="(this.type='date')" required>
+        <input type="test" name="forgalmi" id="" placeholder="Forgalmi megújításának ideje" onfocus="(this.type='date')" required>
         <input type="submit" name="insertCar" value="Új autó felvétele">
     </form>
 </body>

@@ -12,24 +12,30 @@ function initCarController()
 }
 function makeHeader()
 {
-    print "<th><small>Rendszám</small></th>";
-    print "<th><small>Alvázszám</small></th>";
-    print "<th><small>Autótípus</small></th>";
-    print "<th><small>Hajtáslánc</small></th>";
-    print "<th><small>Váltótípus</small></th>";
-    print "<th><small>Évjárat</small></th>";
-    print "<th><small>Teljesítmény</small></th>";
-    print "<th><small>Biztosítási díj</small></th>";
-    print "<th><small>Kilométeróra állása</small></th>";
-    print "<th><small>Forgalmi megújításának ideje</small></th>";
-    print "<th><small>Kivezetve</small></th>";
+    print '<div class="grid-item"><small>Rendszám</small></div>';
+    print '<div class="grid-item"><small>Alvázszám</small></div>';
+    print '<div class="grid-item"><small>Autótípus</small></div>';
+    print '<div class="grid-item"><small>Hajtáslánc</small></div>';
+    print '<div class="grid-item"><small>Váltótípus</small></div>';
+    print '<div class="grid-item"><small>Évjárat</small></div>';
+    print '<div class="grid-item"><small>Teljesítmény</small></div>';
+    print '<div class="grid-item"><small>Biztosítási díj</small></div>';
+    print '<div class="grid-item"><small>Kilométeróra állása</small></div>';
+    print '<div class="grid-item"><small>Forgalmi megújításának ideje</small></div>';
+    print '<div class="grid-item"><small>Kivezetve</small></div>';
+}
+function printSomeGrids()
+{
+    for ($i = 0; $i < 9; $i++) {
+        print '<div class="grid-item"></div>';
+    }
 }
 /*function printCarsInDB(){
    $cars=$GLOBALS['cars'];
    for($i=0;$i<count($cars);$i++){
     print '<tr>';
     foreach($cars[$i] as $key=>$value){
-     print '<td>'.$value.'</td>';
+     print '<div class="grid-item">'.$value.'</div>';
     }
     print '</tr>';
    }
@@ -39,52 +45,54 @@ function printCarsInDB()
     $hyphen = "'";
     $cars = $GLOBALS['cars'];
     for ($i = 0; $i < count($cars); $i++) {
-        //print '<tr>';
         print '<form action="" method="post">';
-        print '<tr>';
-        print '<td>';
+        print '<div class="grid-container">';
+        if ($i == 0) {
+            makeHeader();
+        }
+        print '<div class="grid-item">';
         print '<input type="text" name="carID" size="0" value="' . $cars[$i]['id'] . '" hidden>';
+        print '</div>';
+        print '<div class="grid-item">';
         print '<input type="text" name="rendszam" size="4" value="' . $cars[$i]['Rendszám'] . '" required>
-      </td>';
-        print '<td><input type="text" name="alvazszam" size="8" value="' . $cars[$i]['Alvázszám'] . '" required></td>';
+      </div>';
+        print '<div class="grid-item"><input type="text" name="alvazszam" size="8" value="' . $cars[$i]['Alvázszám'] . '" required></div>';
 
-        print '<td><select name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+        print '<div class="grid-item"><select name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
       <option value="">Válasszon autótípust</option>';
         getAllAutoTipusController($cars[$i]['marka']);
         print '<option value="autotipusfelvevo">Új autótípus felvétele</option>';
-        print '</select></td>';
+        print '</select></div>';
 
-        print '<td><select name="hajtaslanc" id="" required>
+        print '<div class="grid-item"><select name="hajtaslanc" id="" required>
       <option value="">Válasszon hajtásláncot</option>';
         getAllHajtaslancController($cars[$i]["hajtaslanc"]);
-        print '</select></td>';
+        print '</select></div>';
 
-        print '<td><select name="valtotipus" id="" required>
+        print '<div class="grid-item"><select name="valtotipus" id="" required>
       <option value="">Válasszon váltótípust</option>';
         getAllValtotipusController($cars[$i]["valtotipus"]);
-        print '</select></td>';
+        print '</select></div>';
 
-        print '<td><input type="number" name="evjarat" id="" value="' . $cars[$i]['Evjarat'] . '" size="4" required></td>';
+        print '<div class="grid-item"><input type="number" name="evjarat" id="" value="' . $cars[$i]['Evjarat'] . '" size="4" required></div>';
 
-        print '<td><input type="number" name="teljesitmeny" id="" value="' . $cars[$i]['Teljesitmeny'] . '" size=4 required></td>';
+        print '<div class="grid-item"><input type="number" name="teljesitmeny" id="" value="' . $cars[$i]['Teljesitmeny'] . '" size=4 required></div>';
 
-        print '<td><input type="number" name="biztositas" id="" value="' . $cars[$i]['Biztositasi_dij'] . '" size=7 required></td>';
+        print '<div class="grid-item"><input type="number" name="biztositas" id="" value="' . $cars[$i]['Biztositasi_dij'] . '" size=7 required></div>';
 
-        print '<td> <input type="number" name="kilometer" id="" value="' . $cars[$i]['km'] . '" size="6" required></td>';
+        print '<div class="grid-item"> <input type="number" name="kilometer" id="" value="' . $cars[$i]['km'] . '" size="6" required></div>';
 
-        print '<td><input type="date" name="forgalmi" id="" size="6" value="' . $cars[$i]['Forgalmi_megujitasanak_ideje'] . '" required></td>';
+        print '<div class="grid-item"><input type="date" name="forgalmi" id="" size="6" value="' . $cars[$i]['Forgalmi_megujitasanak_ideje'] . '" required></div>';
 
-        print '<td><input type="date" name="kivezetve" id="" value="' . $cars[$i]['Kivezetve'] . '"></td>';
+        print '<div class="grid-item"><input type="date" name="kivezetve" id="" value="' . $cars[$i]['Kivezetve'] . '"></div>';
 
-        print '</tr>';
+        print '<div class="grid-item"></div>';
+        print '<div class="grid-item"><input type="submit" name="updateCar" value="Mentés"></div>';
 
-        print '<td><input type="submit" name="updateCar" value="Mentés"></td>';
-
-        print '<td><input type="submit" name="deleteCar" value="Törlés"></td>';
-
+        print '<div class="grid-item"><input type="submit" name="deleteCar" value="Törlés"></div>';
+        printSomeGrids();
+        print '</div>';
         print '</form>';
-
-        //print '</tr>';
     }
 }
 function updateCarController()
