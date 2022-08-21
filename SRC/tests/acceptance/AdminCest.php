@@ -3,6 +3,7 @@ class AdminCest
 {
     public function test_Admin_with_nonexistent(AcceptanceTester $I)
     {
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
         $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/FileMuveletek/install_routing.php');
         $I->amOnPage('http://localhost/Admin');
         $I->fillField('lastname', 'Kamu');
