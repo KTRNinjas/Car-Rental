@@ -39,4 +39,21 @@ class user_dao_Test extends \Codeception\Test\Unit
         $sql = "DELETE FROM `autokolcsonzo`.`contact` WHERE `contact`.`id` = '$id'";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
     }
+
+    public function test_if_checkEmails_Finds_email()
+    {
+        //Given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $GLOBALS["kapcsolat"] = $kapcsolat;
+        $sql = "SELECT id FROM `autokolcsonzo`.`contact` WHERE e-mail=$mail";
+        $mail='k.pal@gmail.com';
+        $id = $egysor["id"];
+        //When
+        $result = checkEmails($mail);
+        //Then
+        $this->assertEquals($id, $result["id"]);
+    }
 }

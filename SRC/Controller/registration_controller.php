@@ -24,3 +24,10 @@ function dataRegistration()
     print "Sikertelen regisztráció!";
   }
 }
+function ifmailRegistered(){
+  if(isset($_SESSION["mail"])){
+    $mail=$_POST["mail"];
+    initRegistration();
+    checkEmails($mail);
+  }
+}
