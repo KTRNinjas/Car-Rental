@@ -18,16 +18,14 @@ function dataRegistration()
   $mail = $_POST["mail"];
   $pass = $_POST["pass"];
   $isRegistered = registration_form($surname, $firstname, $mail, $pass);
-  if ($isRegistered != NULL && $isRegistered) {
+  $id= ifmailRegistered($mail);
+  if ($isRegistered != NULL && $isRegistered && $id!=[]) {
     print "Sikeres regisztráció";
   } else {
     print "Sikertelen regisztráció!";
   }
 }
-function ifmailRegistered(){
-  if(isset($_SESSION["mail"])){
-    $mail=$_POST["mail"];
-    initRegistration();
-    checkEmails($mail);
+function ifmailRegistered($mail){
+    return checkEmailService($mail);
+  
   }
-}
