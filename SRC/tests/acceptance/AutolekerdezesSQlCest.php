@@ -1,8 +1,9 @@
 <?php
-class HomeCest
+class DateCest
 {
     public function test_Home_with_KezdonagyobbMintVegDate(AcceptanceTester $I)
     {
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
         $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/FileMuveletek/install_routing.php');
         $I->amOnPage('http://localhost/');
         $I->fillField('kezdoDATE',"2022-08-29");
@@ -19,12 +20,15 @@ class HomeCest
         $I->dontSee('Valtotipus');
         $I->dontSee('Napi Ár');
         $I->dontSee('Összár');
+
+        $I->dontSee('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');
     }
-    public function test_Home_with_KezdokissebbMintVegDate(AcceptanceTester $I)
+    public function test_Home_with_KezdokissebbMintVegDate2022_08_01_2022_08_15(AcceptanceTester $I)
     {
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
         $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/FileMuveletek/install_routing.php');
         $I->amOnPage('http://localhost/');
 
@@ -90,8 +94,17 @@ class HomeCest
         $I->see('2012');
         $I->see('Automata');
         $I->see('7000');
-        $I->see('98000');
-
+        $I->see('98000');        
+        $I->dontSee('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+    }
+    public function test_Home_with_KezdokissebbMintVegDate2022_08_16_2022_09_10(AcceptanceTester $I)
+    {
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/FileMuveletek/install_routing.php');
+        $I->amOnPage('http://localhost/');
 
         //date 2022-08-16-2022-09-10
         $I->fillField('kezdoDATE',"2022-08-16");
@@ -132,8 +145,10 @@ class HomeCest
         $I->see('Automata');
         $I->see('7000');
         $I->see('175000');
-
-
+}   
+    public function test_Home_with_KezdokissebbMintVegDate2022_09_11_2022_09_30(AcceptanceTester $I)
+    {
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
         //date 2022-09-11-2022-09-30
         $I->fillField('kezdoDATE',"2022-09-11");
         $I->fillField('vegDATE','2022-09-30');
