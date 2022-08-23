@@ -23,57 +23,97 @@ class ExampleTest extends \Codeception\Test\Unit
     }
 
     // tests
-    public function test_MainAutotipusTablaLetrehozas()
-    {
-        //given
-        $kapcsolat=[];
-        sleep(2);
-        //when
-        $result= MainAutotipusTablaCreate($kapcsolat);
+    // public function test_MainAutotipusTablaLetrehozas()
+    // {
+    //     //given
+    //     $kapcsolat=[];
+    //     sleep(2);
+    //     //when
+    //     $result= MainAutotipusTablaCreate($kapcsolat);
         
-        //then
-        $this->assertequals("Az autotipus tabla letrehozasa",$result);
-    }
+    //     //then
+    //     $this->assertequals("Az autotipus tabla letrehozasa",$result);
+    // }
     public function test_2MainAutotipusTablaCreate(){//main tábla létrehozása
         //give
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`fajta`";      
+        $sql = "DROP DATABASE `autokolcsonzo`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DROP TABLE `autokolcsonzo`.`kategoria`";        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DROP TABLE `autokolcsonzo`.`környezetvédelmibesorolás`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DROP TABLE `autokolcsonzo`.`autotipus`";
+        $sql = "CREATE DATABASE `autokolcsonzo`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
         $result = MainAutotipusTablaCreate($kapcsolat);
         //them
         //ahogy láttam a fő tábla volt beszurva 
-        $this->assertEquals("Az autotipus tabla letrehozasa sikeres volt!", $result);
-        $sql = "CREATE TABLE `autokolcsonzo`.`autotipus` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Márka` VARCHAR(50) NOT NULL ,`Tipus` VARCHAR(50) NOT NULL ,`Fajta_ID` INT UNSIGNED NOT NULL , `Kategoria_ID` INT UNSIGNED NOT NULL , `Prémium` BOOLEAN NOT NULL , `Környezetvédelmi_ID` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $this->assertEquals("Az autotipus tabla letrehozasaSikeres volt!", $result);
+
     }
-    public function test_if_FajtaID_Inserted()//fajta id teszt :) remélem jó lett
+    public function test_if_SideTable_Create(){
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+    
+        //when
+        SidetablaCreator($kapcsolat);
+
+        //them
+        $sql="DROP TABLE `autokolcsonzo`.`fajta`";
+        $result=mysqli_query($kapcsolat,$sql);
+        $this->assertTrue($result);
+
+        $sql="DROP TABLE `autokolcsonzo`.`kategoria`";
+        $result=mysqli_query($kapcsolat,$sql);
+        $this->assertTrue($result);
+
+        $sql="DROP TABLE `autokolcsonzo`.`környezetvédelmibesorolás`";
+        $result=mysqli_query($kapcsolat,$sql);
+        $this->assertTrue($result);
+        //affter:
+        SidetablaCreator($kapcsolat);
+    }
+    public function test_if_FajtaID_Inserted()
     {
         //Given
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`fajta`"; 
+        $sql = "DELETE FROM `autokolcsonzo`.`fajta`"; 
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DROP TABLE `autokolcsonzo`.`autotipus`";
+        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
         $kapcsolat = mysqli_connect($host, $user, $password);
         //When
-        $result = AdatfelvetelAutoFajta($kapcsolat);
+        AdatfelvetelAutoFajta($kapcsolat);
+        $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
+        $result=mysqli_query($kapcsolat,$sql);
+        $fogdo_tomb=[];
+        while($egysor =mysqli_fetch_array($result)){
+          array_push($fogdo_tomb,$egysor);  
+        };
         //Then
-        $this->assertEquals("a fajta sikeresen felvetük a Combi elemet sikeres volt!", $result[0]);
-        $this->assertEquals("a fajta sikeresen felvetük a Sedan elemet sikeres volt!", $result[1]);
-        $this->assertEquals("a fajta sikeresen felvetük a PickUp elemet sikeres volt!", $result[2]);
-        $this->assertEquals("a fajta sikeresen felvetük a SUV elemet sikeres volt!", $result[3]);
-        $this->assertEquals("a fajta sikeresen felvetük a 4X4 elemet sikeres volt!", $result[4]);        
+        $this->assertEquals(1,$fogdo_tomb[0]["ID"]);
+        $this->assertEquals('Combi',$fogdo_tomb[0]["Fajta_neve"]);
+
+        $this->assertEquals(2,$fogdo_tomb[1]["ID"]);
+        $this->assertEquals('Terepjáró',$fogdo_tomb[1]["Fajta_neve"]);
+        
+        $this->assertEquals(3,$fogdo_tomb[2]["ID"]);
+        $this->assertEquals('Sedan',$fogdo_tomb[2]["Fajta_neve"]);
+
+        $this->assertEquals(4,$fogdo_tomb[3]["ID"]);
+        $this->assertEquals('PickUp',$fogdo_tomb[3]["Fajta_neve"]);
+
+        $this->assertEquals(5,$fogdo_tomb[4]["ID"]);
+        $this->assertEquals('SUV',$fogdo_tomb[4]["Fajta_neve"]);
+
+        $this->assertEquals(6,$fogdo_tomb[5]["ID"]);
+        $this->assertEquals('4X4',$fogdo_tomb[5]["Fajta_neve"]);
+        
     }
     //fajta id teszt :) remélem jó lett
     public function test_if_KategoriaID_Inserted()
@@ -83,17 +123,19 @@ class ExampleTest extends \Codeception\Test\Unit
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`kategoria`"; 
+        $sql = "DELETE FROM `autokolcsonzo`.`fajta`"; 
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DROP TABLE `autokolcsonzo`.`autotipus`";
+        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
         $kapcsolat = mysqli_connect($host, $user, $password);
         //When
-        $result = AdatfelvetelAutoKategoria($kapcsolat);
-        //Then
-        $this->assertEquals("a kategoria sikeresen felvetük a Kis személy elemet sikeres volt!", $result[0]);
-        $this->assertEquals("a kategoria sikeresen felvetük a Személy autó elemet sikeres volt!", $result[1]);
-        $this->assertEquals("a kategoria sikeresen felvetük a Kis teher elemet sikeres volt!", $result[2]);
-        $this->assertEquals("a kategoria sikeresen felvetük a Teher elemet sikeres volt!", $result[3]); 
+        AdatfelvetelAutoFajta($kapcsolat);
+        $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
+        $result=mysqli_query($kapcsolat,$sql);
+        $fogdo_tomb=[];
+        while($egysor =mysqli_fetch_array($result)){
+          array_push($fogdo_tomb,$egysor);  
+        };
+    
     }
 
 
