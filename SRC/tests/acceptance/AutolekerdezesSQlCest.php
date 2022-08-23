@@ -10,7 +10,7 @@ class DateCest
         $I->fillField('kezdoDATE',"2022-08-29");
         $I->fillField('vegDATE','2022-08-03 ');
         $I->click('Lefoglalas');
-        $I->see('<h1>A kezdő dátum kisebb kell legyen a végdátumnál probáld újra</h1>');
+        $I->see('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
         $I->dontSee('Márka');
         $I->dontSee('Tipus');
         $I->dontSee('Fajta');
@@ -22,7 +22,7 @@ class DateCest
         $I->dontSee('Napi Ár');
         $I->dontSee('Összár');
 
-        $I->dontSee('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
+        $I->see('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');
@@ -36,7 +36,6 @@ class DateCest
         $I->fillField('kezdoDATE',"2022-08-01");
         $I->fillField('vegDATE','2022-08-15');
         $I->click('Lefoglalas');
-        $I->amOnPage('http://localhost/');
         $I->see('Márka');
         $I->see('Tipus');
         $I->see('Fajta');
