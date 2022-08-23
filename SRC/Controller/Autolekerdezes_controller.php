@@ -6,9 +6,6 @@ function autolekerdezes()
     AutolekerdezesBody();
 }
 
-
-
-
 function Autolekerdezesfejlec()
 {
     print "<th><small>Márka</small></th>";
