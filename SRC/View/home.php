@@ -1,7 +1,6 @@
 <?php
 $path = dirname(__DIR__, 1);
 require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "home_controller.php");
-require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Lefoglalo_controller.php");
 session_start();
 require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Autolekerdezes_controller.php");
 $hostname = getenv('HTTP_HOST');
