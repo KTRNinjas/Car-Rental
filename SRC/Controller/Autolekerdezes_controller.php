@@ -51,7 +51,7 @@ function AutolekerdezesBody()
             print "</table>";
         }else{
             $massega="A kezdő dátum kisebb kell legyen a végdátumnál probáld újra";
-            print   "<div><h3>".$massega."</h3></div>";
+            print   "<h1 class='massege'>".$massega."</h1>";
         }
         print $kezdoDATE." - ".$vegDATE;
 
