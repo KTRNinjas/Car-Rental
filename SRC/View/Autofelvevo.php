@@ -17,7 +17,7 @@ deleteCarController();
     <style>
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(12, 0fr);
+            grid-template-columns: repeat(11, 0fr);
             align-content: center;
             grid-gap: 5px;
         }
@@ -25,12 +25,16 @@ deleteCarController();
         .grid-item {
             text-align: center;
         }
+        #autoPictureToUpload{
+            display: none;
+        }
     </style>
 </head>
 
 <body>
     <?php
     printCarsInDB();
+    kepFeltoltesController();
     ?>
     <button><b>+</b>Új autó felvétele</button>
 

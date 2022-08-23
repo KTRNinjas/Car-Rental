@@ -26,7 +26,7 @@ function makeHeader()
 }
 function printSomeGrids()
 {
-    for ($i = 0; $i < 9; $i++) {
+    for ($i = 0; $i < 1; $i++) {
         print '<div class="grid-item"></div>';
     }
 }
@@ -45,14 +45,14 @@ function printCarsInDB()
     $hyphen = "'";
     $cars = $GLOBALS['cars'];
     for ($i = 0; $i < count($cars); $i++) {
-        print '<form action="" method="post">';
+        print '<form action="" method="post" enctype="multipart/form-data">';
         print '<div class="grid-container">';
         if ($i == 0) {
             makeHeader();
         }
-        print '<div class="grid-item">';
+        //print '<div class="grid-item">';
         print '<input type="text" name="carID" size="0" value="' . $cars[$i]['id'] . '" hidden>';
-        print '</div>';
+        //print '</div>';
         print '<div class="grid-item">';
         print '<input type="text" name="rendszam" size="4" value="' . $cars[$i]['Rendszám'] . '" required>
       </div>';
@@ -86,10 +86,16 @@ function printCarsInDB()
 
         print '<div class="grid-item"><input type="date" name="kivezetve" id="" value="' . $cars[$i]['Kivezetve'] . '"></div>';
 
-        print '<div class="grid-item"></div>';
+        //print '<div class="grid-item"></div>';
+
         print '<div class="grid-item"><input type="submit" name="updateCar" value="Mentés"></div>';
 
         print '<div class="grid-item"><input type="submit" name="deleteCar" value="Törlés"></div>';
+        print '<div class="grid-item">';
+        print ' <input type="file" accept=".png, .jpg, .jpeg" name="autoPictureToUpload[]" id="autoPictureToUpload" onchange="document.getElementById(' . $hyphen . 'autoPictureUpload' . $hyphen . ').click();" multiple="multiple" size="0" hidden>';
+        print '<input type="button" value="Képfeltöltés" onclick="document.getElementById(' . $hyphen . 'autoPictureToUpload' . $hyphen . ').click();" />';
+        print '<input type=submit name="autoPictureUpload" id="autoPictureUpload" hidden>';
+        print '</div>';
         printSomeGrids();
         print '</div>';
         print '</form>';
@@ -171,5 +177,30 @@ function deleteCarController()
         $carID = $_POST['carID'];
         deleteCarService($carID);
         header('Location: /Autofelvetel', true, 303);
+    }
+}
+function kepFeltoltesController(){
+    print "bejut";
+    if(isset($_POST["autoPictureUpload"])){
+        var_dump($_FILES);
+        $files = array_filter($_FILES['autoPictureToUpload']['name']); //Use something similar before processing files.
+        // Count the number of uploaded files in array
+        $total_count = count($_FILES['autoPictureToUpload']['name']);
+        $path=$GLOBALS['path'];
+        print $total_count;
+        for( $i=0 ; $i < $total_count ; $i++ ) {
+            //The temp file path is obtained
+            $tmpFilePath = $_FILES['autoPictureToUpload']['tmp_name'][$i];
+            //A file path needs to be present
+            if ($tmpFilePath != ""){
+               //Setup our new file path
+               $newFilePath = $path.DIRECTORY_SEPARATOR."Fileok".DIRECTORY_SEPARATOR."Kepek".DIRECTORY_SEPARATOR."Autok".DIRECTORY_SEPARATOR.$_FILES['autoPictureToUpload']['name'][$i];
+               //File is uploaded to temp dir
+               //copy($_FILES['autoPictureToUpload']['name'][$i], $newFilePath);
+               if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+                  //Other code goes here
+               }
+            }
+         }
     }
 }
