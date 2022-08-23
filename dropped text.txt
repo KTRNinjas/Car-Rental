@@ -1,1 +1,0 @@
-/home/attila/lampp/htdocs/KTRNinjas/Car-Rental/SRC/tests/unit/AutotipusSQL_Test.php

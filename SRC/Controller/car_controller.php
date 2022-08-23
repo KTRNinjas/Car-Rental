@@ -1,90 +1,112 @@
 <?php
 $path = dirname(__DIR__, 1);
 include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "car_service.php");
+include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "ImageService.php");
 $cars = [];
 $path = dirname(__DIR__, 1);
 $url = "/Autofelvetel";
 $fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "Autofelvevo.php";
 $routes[$url] = $fileLocation;
+$hostname = getenv('HTTP_HOST');
+$replacedPath = str_ireplace("\\", "/", $path);
+$izé = "//Car-Rental";
+$seenurl = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
 function initCarController()
 {
     $GLOBALS['cars'] = getAllCarsService();
 }
 function makeHeader()
 {
-    print "<th><small>Rendszám</small></th>";
-    print "<th><small>Alvázszám</small></th>";
-    print "<th><small>Autótípus</small></th>";
-    print "<th><small>Hajtáslánc</small></th>";
-    print "<th><small>Váltótípus</small></th>";
-    print "<th><small>Évjárat</small></th>";
-    print "<th><small>Teljesítmény</small></th>";
-    print "<th><small>Biztosítási díj</small></th>";
-    print "<th><small>Kilométeróra állása</small></th>";
-    print "<th><small>Forgalmi megújításának ideje</small></th>";
-    print "<th><small>Kivezetve</small></th>";
+    print '<div class="grid-item"></div>';
+    print '<div class="grid-item"><small>Rendszám</small></div>';
+    print '<div class="grid-item"><small>Alvázszám</small></div>';
+    print '<div class="grid-item"><small>Autótípus</small></div>';
+    print '<div class="grid-item"><small>Hajtáslánc</small></div>';
+    print '<div class="grid-item"><small>Váltótípus</small></div>';
+    print '<div class="grid-item"><small>Évjárat</small></div>';
+    print '<div class="grid-item"><small>Teljesítmény</small></div>';
+    print '<div class="grid-item"><small>Biztosítási díj</small></div>';
+    print '<div class="grid-item"><small>Kilométeróra állása</small></div>';
+    print '<div class="grid-item"><small>Forgalmi megújításának ideje</small></div>';
+    print '<div class="grid-item"><small>Kivezetve</small></div>';
 }
-/*function printCarsInDB(){
-   $cars=$GLOBALS['cars'];
-   for($i=0;$i<count($cars);$i++){
-    print '<tr>';
-    foreach($cars[$i] as $key=>$value){
-     print '<td>'.$value.'</td>';
-    }
-    print '</tr>';
-   }
-}*/
+
 function printCarsInDB()
 {
     $hyphen = "'";
     $cars = $GLOBALS['cars'];
     for ($i = 0; $i < count($cars); $i++) {
-        //print '<tr>';
-        print '<form action="" method="post">';
-        print '<tr>';
-        print '<td>';
-        print '<input type="text" name="carID" size="0" value="' . $cars[$i]['id'] . '" hidden>';
-        print '<input type="text" name="rendszam" size="4" value="' . $cars[$i]['Rendszám'] . '" required>
-      </td>';
-        print '<td><input type="text" name="alvazszam" size="8" value="' . $cars[$i]['Alvázszám'] . '" required></td>';
+        print '<form action="" method="post" enctype="multipart/form-data">';
+        print '<div class="grid-container">';
+        if ($i == 0) {
+            makeHeader();
+        }
+        $uri = $GLOBALS['seenurl'] . '/Fileok/Kepek/Autok/' . getPicturesOfACarService($cars[$i]['id'])[0];
 
-        print '<td><select name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+        print '<input type="text" id=carID' . $cars[$i]['id'] . ' name="carID" size="0" value="' . $cars[$i]['id'] . '" hidden>';
+
+        print '<style>
+        #carImageStyle' . $cars[$i]['id'] . '{
+            background-image: url("' . $uri . '");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        </style>';
+        print '<div class="grid-item multirow-image" id="carImageStyle' . $cars[$i]['id'] . '"';
+        print '<span></span>';
+        print '</div>';
+        print '<div class="grid-item">';
+        print '<input class="smallerInput" type="text" name="rendszam" size="5" value="' . $cars[$i]['Rendszám'] . '" required>
+      </div>';
+        print '<div class="grid-item"><input class="smallerInput" type="text" name="alvazszam" size="9" value="' . $cars[$i]['Alvázszám'] . '" required></div>';
+
+        print '<div class="grid-item"><select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
       <option value="">Válasszon autótípust</option>';
         getAllAutoTipusController($cars[$i]['marka']);
         print '<option value="autotipusfelvevo">Új autótípus felvétele</option>';
-        print '</select></td>';
+        print '</select></div>';
 
-        print '<td><select name="hajtaslanc" id="" required>
+        print '<div class="grid-item"><select class="smallerInput" name="hajtaslanc" id="" required>
       <option value="">Válasszon hajtásláncot</option>';
         getAllHajtaslancController($cars[$i]["hajtaslanc"]);
-        print '</select></td>';
+        print '</select></div>';
 
-        print '<td><select name="valtotipus" id="" required>
+        print '<div class="grid-item"><select class="smallerInput" name="valtotipus" id="" required>
       <option value="">Válasszon váltótípust</option>';
         getAllValtotipusController($cars[$i]["valtotipus"]);
-        print '</select></td>';
+        print '</select></div>';
 
-        print '<td><input type="number" name="evjarat" id="" value="' . $cars[$i]['Evjarat'] . '" size="4" required></td>';
+        print '<div class="grid-item"><input class="smallerInput" type="number" name="evjarat" id="" value="' . $cars[$i]['Evjarat'] . '" size="4" required></div>';
 
-        print '<td><input type="number" name="teljesitmeny" id="" value="' . $cars[$i]['Teljesitmeny'] . '" size=4 required></td>';
+        print '<div class="grid-item"><input class="smallerInput" type="number" name="teljesitmeny" id="" value="' . $cars[$i]['Teljesitmeny'] . '" size=4 required></div>';
 
-        print '<td><input type="number" name="biztositas" id="" value="' . $cars[$i]['Biztositasi_dij'] . '" size=7 required></td>';
+        print '<div class="grid-item"><input class="smallerInput" type="number" name="biztositas" id="" value="' . $cars[$i]['Biztositasi_dij'] . '" size=7 required></div>';
 
-        print '<td> <input type="number" name="kilometer" id="" value="' . $cars[$i]['km'] . '" size="6" required></td>';
+        print '<div class="grid-item"> <input class="smallerInput" type="number" name="kilometer" id="" value="' . $cars[$i]['km'] . '" size="6" required></div>';
 
-        print '<td><input type="date" name="forgalmi" id="" size="6" value="' . $cars[$i]['Forgalmi_megujitasanak_ideje'] . '" required></td>';
+        print '<div class="grid-item"><input class="smallerInput" type="date" name="forgalmi" id="" size="6" value="' . $cars[$i]['Forgalmi_megujitasanak_ideje'] . '" required></div>';
 
-        print '<td><input type="date" name="kivezetve" id="" value="' . $cars[$i]['Kivezetve'] . '"></td>';
+        print '<div class="grid-item"><input class="smallerInput" type="date" name="kivezetve" id="" value="' . $cars[$i]['Kivezetve'] . '"></div>';
 
-        print '</tr>';
 
-        print '<td><input type="submit" name="updateCar" value="Mentés"></td>';
+        print '<div class="grid-item"><input type="submit" name="updateCar" value="Mentés"></div>';
 
-        print '<td><input type="submit" name="deleteCar" value="Törlés"></td>';
+        print '<div class="grid-item"><input type="submit" name="deleteCar" value="Törlés"></div>';
+        print '<div class="grid-item">';
+        print ' <input type="file" accept=".png, .jpg, .jpeg" name="autoPictureToUpload[]" id="autoPictureToUpload' . $cars[$i]['id'] . '" onchange="document.getElementById(' . $hyphen . 'autoPictureUpload' . $cars[$i]['id'] . $hyphen . ').click();" multiple="multiple" size="0" hidden>';
+        print '<input type="button" value="Képfeltöltés" onclick="
+        document.getElementById(carID' . $cars[$i]['id'] . ');
+        document.getElementById(' . $hyphen . 'autoPictureToUpload' . $cars[$i]['id'] . $hyphen . ').click();" />';
+        print '<input type=submit name="autoPictureUpload" id="autoPictureUpload' . $cars[$i]['id'] . '" hidden>';
 
+        print '</div>';
+        if (isset($GLOBALS['imageErrors'][$cars[$i]['id']])) {
+            print '<div class="multicolumn-error-message">';
+            print $GLOBALS['imageErrors'][$cars[$i]['id']];
+            print '</div>';
+        }
+        print '</div>';
         print '</form>';
-
-        //print '</tr>';
     }
 }
 function updateCarController()
@@ -161,7 +183,23 @@ function deleteCarController()
 {
     if (isset($_POST['deleteCar'])) {
         $carID = $_POST['carID'];
-        deleteCarService($carID);
-        header('Location: /Autofelvetel', true, 303);
+        deleteAllImagesOfACarService($carID);
+        var_dump($GLOBALS['imageErrors']);
+        if (!isset($GLOBALS['imageErrors'][$carID])) {
+            deleteCarService($carID);
+            header('Location: /Autofelvetel', true, 303);
+            exit;
+        }
+    }
+}
+function kepFeltoltesController()
+{
+    if (isset($_POST["autoPictureUpload"])) {
+        $carID = $_POST['carID'];
+        kepFeltoltesService($carID);
+        if (count($GLOBALS['imageErrors']) == 0) {
+            header('Location: /Autofelvetel', true, 303);
+            exit;
+        }
     }
 }

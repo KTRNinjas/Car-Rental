@@ -136,6 +136,5 @@ class profilModositCest
         $I->click('login');
         $I->see('Hibás e-mail cím/ jelszó!');
         $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/FileMuveletek/uninstall_routing.php');
-        $I->amonPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
     }
 }
