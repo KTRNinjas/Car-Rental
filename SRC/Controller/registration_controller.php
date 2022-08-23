@@ -17,9 +17,12 @@ function dataRegistration()
   $firstname = $_POST["firstname"];
   $mail = $_POST["mail"];
   $pass = $_POST["pass"];
-  $isRegistered = registration_form($surname, $firstname, $mail, $pass);
+  $isRegistered = false;
   $id= ifmailRegistered($mail);
-  if ($isRegistered != NULL && $isRegistered && $id!=[]) {
+  if($id==null){
+    $isRegistered = registration_form($surname, $firstname, $mail, $pass);
+  }
+  if ($isRegistered != NULL && $isRegistered && $id==null) {
     print "Sikeres regisztráció";
   } else {
     print "Sikertelen regisztráció!";
