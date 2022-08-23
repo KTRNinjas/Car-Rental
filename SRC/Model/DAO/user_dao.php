@@ -42,8 +42,7 @@ function loginDAO($mail, $pass)
   }
   return $belepesiAdatok;
 }
-function loginNameDAO($user_id)
-{
+function loginNameDAO($user_id){
   $kapcsolat = $GLOBALS["kapcsolat"];
   $sql = "SELECT Vezetéknév, Keresztnév, id, Role_id FROM `autokolcsonzo`.`contact` WHERE `id`='$user_id'";
   $result = mysqli_query($kapcsolat, $sql);
@@ -54,4 +53,11 @@ function loginNameDAO($user_id)
     $belepesiAdatok["Role_id"] = $belepes["Role_id"];
   }
   return $belepesiAdatok;
+}
+function checkEmails($mail){
+  $kapcsolat = $GLOBALS["kapcsolat"];
+  $sql = "SELECT id FROM `autokolcsonzo`.`contact` WHERE `e-mail`='$mail'";
+  $result = mysqli_query($kapcsolat, $sql);
+  $egysor = mysqli_fetch_array($result);
+    return $egysor;
 }
