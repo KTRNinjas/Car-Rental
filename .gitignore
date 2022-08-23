@@ -1,19 +1,5 @@
 #####Saját ignore-ok, ide írjátok
-tests/_output
-codeception.yml
-acceptance.suite.yml
-functional.suite.yml
-unit.suite.yml
-.gitkeep
-AcceptanceTester.php
-FunctionalTester.php
-UnitTester.php
-Acceptance.php
-Functional.php
-Unit.php
-AcceptanceTesterActions.php
-FunctionalTesterActions.php
-UnitTesterActions.php
+_output
 phpunit.xml
 .phpunit.result.cache
 codeception.yml
