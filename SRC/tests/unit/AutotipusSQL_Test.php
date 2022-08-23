@@ -10,7 +10,7 @@ use mysqli;
 use \Tests\Support\UnitTester;
 
 
-class ExampleTest extends \Codeception\Test\Unit
+class AutotipusSQLTest extends \Codeception\Test\Unit
 {
 //protected UnitTester $tester;
 
