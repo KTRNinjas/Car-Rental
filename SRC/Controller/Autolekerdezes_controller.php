@@ -29,7 +29,9 @@ function AutolekerdezesBody()
         $kezdoDATE = $_POST["kezdoDATE"];
         $vegDATE = $_POST["vegDATE"];
         if($vegDATE>=$kezdoDATE){
+            print "<table>";
             Autolekerdezesfejlec();
+
             $GetLekerdezesAutok = GetLekerdezesAutok($kezdoDATE, $vegDATE);
             for ($i = 0; $i < count($GetLekerdezesAutok); $i++) {
                 print "<tr>";
@@ -45,8 +47,8 @@ function AutolekerdezesBody()
                     }
                 }
                 print "</tr>";
-
             }
+            print "</table>";
         }else{
             $massega="A kezdő dátum kisebb kell legyen a végdátumnál probáld újra";
             print   "<div><h3>".$massega."</h3></div>";

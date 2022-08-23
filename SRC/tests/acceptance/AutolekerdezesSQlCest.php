@@ -10,7 +10,7 @@ class DateCest
         $I->fillField('kezdoDATE',"2022-08-29");
         $I->fillField('vegDATE','2022-08-03 ');
         $I->click('Lefoglalas');
-        $I->see('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
+        $I->see('<div><h3>A kezdő dátum kisebb kell legyen a végdátumnál probáld újra</h3></div>');
         $I->dontSee('Márka');
         $I->dontSee('Tipus');
         $I->dontSee('Fajta');

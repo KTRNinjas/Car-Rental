@@ -1,13 +1,5 @@
-<?php
-$path = dirname(__DIR__, 1);
-require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "home_controller.php");
-require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Lefoglalo_controller.php");
-session_start();
-require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Autolekerdezes_controller.php");
-$hostname = "http://localhost/KTRNinjas/Car-Rental/SRC/View/css/home.css";
-$url = DIRECTORY_SEPARATOR . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
-?>
 
+<h3>Sikerült a kapcsolat</h3>
 <!DOCTYPE html>
 <html lang="hu">
 
@@ -16,8 +8,7 @@ $url = DIRECTORY_SEPARATOR . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href=<?php print '"'.$hostname.'"' ?>
-    >
+    <link rel="stylesheet" href="http://localhost/KTRNinjas/Car-Rental/SRC/View/css/home.css"    >
     
 </head>
 
@@ -33,10 +24,7 @@ $url = DIRECTORY_SEPARATOR . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
     <a href="/autotipusfelvevo">Autótípus felvétel</a><br>
     <a href="/Foni_oldala">Árfelvétel</a><br>
     <a href="/Autofelvetel">Autófelvétel</a><br>
-    <?php
-    loginController();
-    ?>
-    
+        
     <form action="" method="POST">
         <input type="text" name="kezdoDATE" id="" placeholder="Kezdő dátum" onfocus="(this.type='date')" required>
         <input type="text" name="vegDATE" id="" placeholder="Vég dátum" onfocus="(this.type='date')" required>
@@ -44,12 +32,11 @@ $url = DIRECTORY_SEPARATOR . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
     </form>
 
         <table>
-    <?php
-    autolekerdezes();
-    ?>
-    </table>
+        </table>
 
 
 </body>
 
-</html>
+</html><form action="" method="POST">
+<input type="submit" name="uninstall" value="Routing uninstallálása">
+</form>
