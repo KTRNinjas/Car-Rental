@@ -4,8 +4,10 @@ require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . 
 require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Lefoglalo_controller.php");
 session_start();
 require_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Autolekerdezes_controller.php");
-$hostname = "http://localhost/KTRNinjas/Car-Rental/SRC/View/css/home.css";
-$url = DIRECTORY_SEPARATOR . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
+$hostname = getenv('HTTP_HOST');
+$replacedPath = str_ireplace("\\", "/", $path);
+$izé = "//Car-Rental";
+$url = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +18,7 @@ $url = DIRECTORY_SEPARATOR . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href=<?php print '"'.$hostname.'"' ?>
+    <link rel="stylesheet" href=<?php print '"' . (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $hostname . $url . '/View/css/home.css"' ?>
     >
     
 </head>
