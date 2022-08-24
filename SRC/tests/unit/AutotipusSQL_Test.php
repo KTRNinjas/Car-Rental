@@ -123,20 +123,69 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DELETE FROM `autokolcsonzo`.`fajta`"; 
+        $sql = "DELETE FROM `autokolcsonzo`.`kategoria`"; 
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
         $kapcsolat = mysqli_connect($host, $user, $password);
         //When
-        AdatfelvetelAutoFajta($kapcsolat);
-        $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
+        AdatfelvetelAutoKategoria($kapcsolat);
+        $sql = "SELECT * FROM `autokolcsonzo`.`kategoria`";
         $result=mysqli_query($kapcsolat,$sql);
         $fogdo_tomb=[];
         while($egysor =mysqli_fetch_array($result)){
           array_push($fogdo_tomb,$egysor);  
         };
+        //Then
+        $this->assertEquals(1,$fogdo_tomb[0]["ID"]);
+        $this->assertEquals('Kis személy',$fogdo_tomb[0]["Kategoria"]);
+
+        $this->assertEquals(2,$fogdo_tomb[1]["ID"]);
+        $this->assertEquals('Személy autó',$fogdo_tomb[1]["Kategoria"]);
+        
+        $this->assertEquals(3,$fogdo_tomb[2]["ID"]);
+        $this->assertEquals('Kis teher',$fogdo_tomb[2]["Kategoria"]);
+
+        $this->assertEquals(4,$fogdo_tomb[3]["ID"]);
+        $this->assertEquals('Teher',$fogdo_tomb[3]["Kategoria"]);
+    }
+    public function test_if_környezetvédelmibesorolás_Inserted()
+    {
+        //Given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "DELETE FROM `autokolcsonzo`.`környezetvédelmibesorolás`"; 
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        //When
+        KornyezetvedelmiBesorolas($kapcsolat);
+        $sql = "SELECT * FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
+        $result=mysqli_query($kapcsolat,$sql);
+        $fogdo_tomb=[];
+        while($egysor =mysqli_fetch_array($result)){
+          array_push($fogdo_tomb,$egysor);  
+        };
+        //Then
+        $this->assertEquals(1,$fogdo_tomb[0]["ID"]);
+        $this->assertEquals('E1',$fogdo_tomb[0]["KörnyezetvédelmiBesorolás"]);
+
+        $this->assertEquals(2,$fogdo_tomb[1]["ID"]);
+        $this->assertEquals('E2',$fogdo_tomb[1]["KörnyezetvédelmiBesorolás"]);
+        
+        $this->assertEquals(3,$fogdo_tomb[2]["ID"]);
+        $this->assertEquals('E3',$fogdo_tomb[2]["KörnyezetvédelmiBesorolás"]);
+
+        $this->assertEquals(4,$fogdo_tomb[3]["ID"]);
+        $this->assertEquals('E4',$fogdo_tomb[3]["KörnyezetvédelmiBesorolás"]);
+    
+        $this->assertEquals(5,$fogdo_tomb[4]["ID"]);
+        $this->assertEquals('E5',$fogdo_tomb[4]["KörnyezetvédelmiBesorolás"]);
+    
+        $this->assertEquals(6,$fogdo_tomb[5]["ID"]);
+        $this->assertEquals('E6',$fogdo_tomb[5]["KörnyezetvédelmiBesorolás"]);
     
     }
-
-
 }
+
