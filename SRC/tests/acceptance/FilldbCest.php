@@ -25,21 +25,6 @@ class FillDBCest
         $I->see("Az fajta tabla letrehozasa sikeres volt!");
         $I->see("Az kategoria tabla letrehozasa sikeres volt!");
         $I->see("Az környezetvédelmibesorolás tabla letrehozasa sikeres volt!");
-        $I->see("Sikerült a kapcsolat");
-        $I->see("Sikerült a kapcsolat");
-        $I->see("Sikerült a kapcsolat");
-        $I->see("Sikerült a kapcsolat");
-        $I->see("Sikerült a kapcsolat");
-        $I->see("Sikerült a kapcsolat");
-        
-        $I->dontSee('warning');
-        $I->dontSee('error');
-        $I->dontSee('notice');
-        
-    }
-    public function test_if_AutotipusSQlsidetableinit_message_displayed(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
         $I->see("a fajta sikeresen felvetük a Combi elemet sikeres volt!");
         $I->see("a fajta sikeresen felvetük a Terepjáró elemet sikeres volt!");
         $I->see("a fajta sikeresen felvetük a Sedan elemet sikeres volt!");
@@ -59,7 +44,7 @@ class FillDBCest
         $I->see("a környezetvédelmibesorolás sikeresen felvetük a E4 elemet sikeres volt!");
         $I->see("a környezetvédelmibesorolás sikeresen felvetük a E5 elemet sikeres volt!");
         $I->see("a környezetvédelmibesorolás sikeresen felvetük a E6 elemet sikeres volt!");
-                
+        
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');
