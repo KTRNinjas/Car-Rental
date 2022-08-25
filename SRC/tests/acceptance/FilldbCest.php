@@ -36,8 +36,9 @@ class FillDBCest
         $I->see("tesztVolkswagenPassat betoltese sikeres volt!");
         $I->see("tesztJeepWranlger betoltese sikeres volt!");
         $I->see("A cars tábla kaszkádolása sikeres volt!");
-
-
+        //Car Image data
+        $I->see("A car-images tábla létrehozása sikeres volt!");
+        $I->see("A car-images tábla kaszkádolása sikeres volt!");
 
         $I->dontSee('warning');
         $I->dontSee('error');

@@ -24,6 +24,8 @@ class Car_Data_Integration_Test extends \Codeception\Test\Unit
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "DROP TABLE autokolcsonzo.car_images;";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
         $sql = "DROP TABLE `autokolcsonzo`.`cars`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
