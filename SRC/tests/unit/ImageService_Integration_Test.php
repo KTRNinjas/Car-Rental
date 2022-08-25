@@ -67,8 +67,6 @@ class ImageService_Integration_Test extends \Codeception\Test\Unit
         $GLOBALS['kapcsolat'] = $kapcsolat;
 
         $teszt_kep = imagecreatetruecolor(50, 50);
-        header("Content-type: image/jpeg");
-        getTargetDir();
         imagejpeg($teszt_kep, getTargetDir() . "teszt1.jpg", 95);
         imagejpeg($teszt_kep, getTargetDir() . "teszt2.jpg", 95);
         imagejpeg($teszt_kep, getTargetDir() . "teszt3.jpg", 95);
