@@ -1,5 +1,5 @@
 <?php
-class FillDBCest
+class zzFillDBCest
 {
     protected function car_data_tester(AcceptanceTester $I)
     {
