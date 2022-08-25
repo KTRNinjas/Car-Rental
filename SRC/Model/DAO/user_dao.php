@@ -4,7 +4,7 @@ require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . 
 function fill_registration($surname, $firstname, $mail, $pass)
 {
   $kapcsolat = $GLOBALS["kapcsolat"];
-  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, '$surname', '$firstname', '$mail', '$pass', '', NULL, '0')";
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, '$surname', '$firstname', '$mail', '$pass', '', NULL, '1')";
   $ok = mysqli_query($kapcsolat, $sql);
   return $ok;
 }
@@ -41,4 +41,23 @@ function loginDAO($mail, $pass)
     $belepesiAdatok["Role_id"] = $belepes["Role_id"];
   }
   return $belepesiAdatok;
+}
+function loginNameDAO($user_id){
+  $kapcsolat = $GLOBALS["kapcsolat"];
+  $sql = "SELECT Vezetéknév, Keresztnév, id, Role_id FROM `autokolcsonzo`.`contact` WHERE `id`='$user_id'";
+  $result = mysqli_query($kapcsolat, $sql);
+  while ($belepes = mysqli_fetch_array($result)) {
+    $belepesiAdatok["Vezetéknév"] = $belepes["Vezetéknév"];
+    $belepesiAdatok["Keresztnév"] = $belepes["Keresztnév"];
+    $belepesiAdatok["id"] = $belepes["id"];
+    $belepesiAdatok["Role_id"] = $belepes["Role_id"];
+  }
+  return $belepesiAdatok;
+}
+function checkEmails($mail){
+  $kapcsolat = $GLOBALS["kapcsolat"];
+  $sql = "SELECT id FROM `autokolcsonzo`.`contact` WHERE `e-mail`='$mail'";
+  $result = mysqli_query($kapcsolat, $sql);
+  $egysor = mysqli_fetch_array($result);
+    return $egysor;
 }

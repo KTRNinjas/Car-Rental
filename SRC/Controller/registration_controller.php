@@ -7,7 +7,7 @@ $routes[$url] = $fileLocation;
 
 function initRegistration()
 {
-  if (isset($_POST["submit"])) {
+  if (isset($_POST["registration"])) {
     dataRegistration();
   }
 }
@@ -17,10 +17,18 @@ function dataRegistration()
   $firstname = $_POST["firstname"];
   $mail = $_POST["mail"];
   $pass = $_POST["pass"];
-  $isRegistered = registration_form($surname, $firstname, $mail, $pass);
-  if ($isRegistered != NULL && $isRegistered) {
+  $isRegistered = false;
+  $id= ifmailRegistered($mail);
+  if($id==null){
+    $isRegistered = registration_form($surname, $firstname, $mail, $pass);
+  }
+  if ($isRegistered != NULL && $isRegistered && $id==null) {
     print "Sikeres regisztráció";
   } else {
     print "Sikertelen regisztráció!";
   }
 }
+function ifmailRegistered($mail){
+    return checkEmailService($mail);
+  
+  }

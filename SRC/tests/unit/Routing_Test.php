@@ -160,4 +160,3 @@ class RoutingTest extends TestCase
     $this->assertTrue($result, 'A projektben létező url-ekre true-val kell visszatérnie');
   }
 }
-?>
