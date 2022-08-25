@@ -5,6 +5,10 @@ updateCarController();
 insertCarController();
 initCarController();
 deleteCarController();
+$hostname = getenv('HTTP_HOST');
+$replacedPath = str_ireplace("\\", "/", $path);
+$izé = "//Car-Rental";
+$url = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -14,41 +18,7 @@ deleteCarController();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Az autófelvevő honlapja</title>
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            align-content: center;
-            grid-gap: 5px;
-        }
-
-        .grid-item {
-            text-align: center;
-        }
-
-        .multicolumn-error-message {
-            color: red;
-            grid-column: 4 / span 3;
-        }
-
-        .multirow-image {
-            grid-row: span 2;
-        }
-
-        #autoPictureToUpload {
-            display: none;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .smallerInput {
-            font-size: 0.7rem;
-        }
-    </style>
+    <link rel="stylesheet" href=<?php print '"' . (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $hostname . $url . '/View/css/autofelvevo.css"' ?>>
 </head>
 
 <body>

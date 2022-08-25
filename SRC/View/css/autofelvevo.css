@@ -1,0 +1,33 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-content: center;
+    grid-gap: 5px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.multicolumn-error-message {
+    color: red;
+    grid-column: 5 / span 3;
+}
+
+.multirow-image {
+    grid-row: span 2;
+}
+
+#autoPictureToUpload {
+    display: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.smallerInput {
+    font-size: 0.7rem;
+}
