@@ -14,4 +14,8 @@ function loginNameService($user_id)
 {
   return loginNameDAO($user_id);
 }
+function checkEmailService($mail)
+{
+ return checkEmails($mail);
+}
 ?>
