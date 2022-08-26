@@ -30,22 +30,7 @@ function makeHeader()
     print '<div class="grid-item"><small>Forgalmi megújításának ideje</small></div>';
     print '<div class="grid-item"><small>Kivezetve</small></div>';
 }
-function printSomeGrids()
-{
-    for ($i = 0; $i < 1; $i++) {
-        print '<div class="grid-item"></div>';
-    }
-}
-/*function printCarsInDB(){
-   $cars=$GLOBALS['cars'];
-   for($i=0;$i<count($cars);$i++){
-    print '<tr>';
-    foreach($cars[$i] as $key=>$value){
-     print '<div class="grid-item">'.$value.'</div>';
-    }
-    print '</tr>';
-   }
-}*/
+
 function printCarsInDB()
 {
     $hyphen = "'";
@@ -56,13 +41,19 @@ function printCarsInDB()
         if ($i == 0) {
             makeHeader();
         }
-        $uri = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $GLOBALS['hostname'] . $GLOBALS['seenurl'] . '/Fileok/Kepek/Autok/' . getPicturesOfACarService($cars[$i]['id'])[0];
-        //print '<div class="grid-item">';
+        $uri = $GLOBALS['seenurl'] . '/Fileok/Kepek/Autok/' . getPicturesOfACarService($cars[$i]['id'])[0];
+
         print '<input type="text" id=carID' . $cars[$i]['id'] . ' name="carID" size="0" value="' . $cars[$i]['id'] . '" hidden>';
 
-
-        print '<div class="grid-item multirow-image">';
-        print '<img src="' . $uri . '"' . '>';
+        print '<style>
+        #carImageStyle' . $cars[$i]['id'] . '{
+            background-image: url("' . $uri . '");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        </style>';
+        print '<div class="grid-item multirow-image" id="carImageStyle' . $cars[$i]['id'] . '"';
+        print '<span></span>';
         print '</div>';
         print '<div class="grid-item">';
         print '<input class="smallerInput" type="text" name="rendszam" size="4" value="' . $cars[$i]['Rendszám'] . '" required>
@@ -97,7 +88,6 @@ function printCarsInDB()
 
         print '<div class="grid-item"><input class="smallerInput" type="date" name="kivezetve" id="" value="' . $cars[$i]['Kivezetve'] . '"></div>';
 
-        //print '<div class="grid-item"></div>';
 
         print '<div class="grid-item"><input type="submit" name="updateCar" value="Mentés"></div>';
 
@@ -115,7 +105,6 @@ function printCarsInDB()
             print $GLOBALS['imageErrors'][$cars[$i]['id']];
             print '</div>';
         }
-        //printSomeGrids();
         print '</div>';
         print '</form>';
     }
@@ -199,6 +188,7 @@ function deleteCarController()
         if (!isset($GLOBALS['imageErrors'][$carID])) {
             deleteCarService($carID);
             header('Location: /Autofelvetel', true, 303);
+            exit;
         }
     }
 }
@@ -207,8 +197,9 @@ function kepFeltoltesController()
     if (isset($_POST["autoPictureUpload"])) {
         $carID = $_POST['carID'];
         kepFeltoltesService($carID);
-        if (!isset($GLOBALS['imageErrors'][$carID])) {
+        if (count($GLOBALS['imageErrors']) == 0) {
             header('Location: /Autofelvetel', true, 303);
+            exit;
         }
     }
 }
