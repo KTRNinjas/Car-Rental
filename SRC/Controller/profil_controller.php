@@ -12,10 +12,8 @@ function profilModifyController()
     print '<input type="text" name="surname" value="' . $user_data["Vezetéknév"] . '" placeholder="Vezetéknév" required>
   <input type="text" name="firstname"value="' . $user_data["Keresztnév"] . '" placeholder="Keresztnév" required>
   <input type="email" name="mail" value="' . $user_data["e-mail"] . '"placeholder="E-mail" required>
-  <input type="password" name="pass" value="' . $user_data["Password"] . '"placeholder="Password" required>
-  <input type="text" name="license" value="' . $user_data["Jogosítvány száma"] . '"placeholder="Jogosítvány">
-  <input type="tel" name="phone" value="' . $user_data["Telefonszám"] . '"placeholder="Telefonszám">
-  <input type="submit" value="Módosít" name="profile_modify">';
+  <input type="password" name="pass" value="' . $user_data["Password"] . '"placeholder="Password" required>';
+  lefoglalas($user_data);
     if (isset($_POST["profile_modify"])) {
       $surname = $_POST["surname"];
       $firstname = $_POST["firstname"];
@@ -27,6 +25,7 @@ function profilModifyController()
       profilModifyService($id, $surname, $firstname, $mail, $pass, $license, $phone);
       header('Location: /Profil_modositas', true, 303);
     }
+    redirectToAccount();
   }
 }
 function profilDeleteController()
@@ -39,5 +38,22 @@ function profilDeleteController()
       session_unset();
       header('Location: /Profil_modositas', true, 303);
     }
+  }
+}
+function lefoglalas($user_data){
+  if(isset($_SESSION['lefoglal'])){
+    print '<input type="text" name="license" value="' . $user_data["Jogosítvány száma"] . '"placeholder="Jogosítvány" required>';
+    print '<input type="tel" name="phone" value="' . $user_data["Telefonszám"] . '"placeholder="Telefonszám" required>';
+    print '<input type="submit" value="Tovább" name="redirect_account">';
+  }else{
+    print '<input type="text" name="license" value="' . $user_data["Jogosítvány száma"] . '"placeholder="Jogosítvány">';
+    print '<input type="tel" name="phone" value="' . $user_data["Telefonszám"] . '"placeholder="Telefonszám">';
+    print '<input type="submit" value="Módosít" name="profile_modify">';
+  }
+}
+function redirectToAccount(){
+  if(isset($_POST['redirect_account'])){
+    header('Location: /', true, 303);
+    exit();
   }
 }

@@ -56,6 +56,12 @@ function is_Userid_in_Session()
   if (isset($_SESSION["user_id"])) {
     print "A user azonosítója: " . $_SESSION["user_id"] . '<br>';
     print '<a href="/Profil_modositas">Profil módosítása</a>';
+    print '<form action="/Profil_modositas" method="post">';
+    print '<input type=submit name=lefoglal value="Lefoglalás">';
+    print '</form>';
+    if(isset($_POST['lefoglal'])){
+    $_SESSION['lefoglal']=$_POST['lefoglal'];
+    }
   }
 }
 function Logout()
