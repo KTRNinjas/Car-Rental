@@ -56,9 +56,9 @@ function printCarsInDB()
         print '<span></span>';
         print '</div>';
         print '<div class="grid-item">';
-        print '<input class="smallerInput" type="text" name="rendszam" size="4" value="' . $cars[$i]['Rendszám'] . '" required>
+        print '<input class="smallerInput" type="text" name="rendszam" size="5" value="' . $cars[$i]['Rendszám'] . '" required>
       </div>';
-        print '<div class="grid-item"><input class="smallerInput" type="text" name="alvazszam" size="8" value="' . $cars[$i]['Alvázszám'] . '" required></div>';
+        print '<div class="grid-item"><input class="smallerInput" type="text" name="alvazszam" size="9" value="' . $cars[$i]['Alvázszám'] . '" required></div>';
 
         print '<div class="grid-item"><select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
       <option value="">Válasszon autótípust</option>';

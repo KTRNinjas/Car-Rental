@@ -1,13 +1,12 @@
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(100px,min-content));
     align-content: center;
-    grid-gap: 5px;
+    grid-gap: 1px;
 }
 
 .grid-item {
     text-align: center;
-    min-width: 5%;
 }
 
 .multicolumn-error-message {
@@ -17,7 +16,6 @@
 
 .multirow-image {
     grid-row: span 2;
-
 }
 
 #autoPictureToUpload {
@@ -28,3 +26,6 @@
 .smallerInput {
     font-size: 0.7rem;
 }
+input[type='number']{
+    width: 70px;
+} 
