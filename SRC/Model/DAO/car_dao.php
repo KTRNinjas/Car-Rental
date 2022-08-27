@@ -6,7 +6,11 @@ function getAllCars()
     $kapcsolat = $GLOBALS['kapcsolat'];
     $cars = [];
     $today = date("y-m-d");
-    $sql = "SELECT id,Rendszám,Alvázszám,(SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,(SELECT Tipus FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS tipus,(SELECT hajtaslanc FROM `autokolcsonzo`.`hajtaslanc` WHERE id=hajtaslanc_id) AS hajtaslanc,(SELECT valtotipus FROM `autokolcsonzo`.`valtotipus` WHERE id=valtotipus_id) AS valtotipus,Evjarat,Teljesitmeny,Biztositasi_dij,km,Forgalmi_megujitasanak_ideje,Kivezetve FROM `autokolcsonzo`.`cars` WHERE Kivezetve IS NULL OR DATE(Kivezetve)>'$today'";
+    $sql = "SELECT id,Rendszám,Alvázszám,
+    (SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,
+    (SELECT Tipus FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS tipus,
+    (SELECT hajtaslanc FROM `autokolcsonzo`.`hajtaslanc` WHERE id=hajtaslanc_id) AS hajtaslanc,
+    (SELECT valtotipus FROM `autokolcsonzo`.`valtotipus` WHERE id=valtotipus_id) AS valtotipus,Evjarat,Teljesitmeny,Biztositasi_dij,km,Forgalmi_megujitasanak_ideje,Kivezetve FROM `autokolcsonzo`.`cars` WHERE Kivezetve IS NULL OR DATE(Kivezetve)>'$today'";
     $result = mysqli_query($kapcsolat, $sql);
     while ($egysor = mysqli_fetch_assoc($result)) {
         $car = [];
