@@ -27,7 +27,7 @@ function getAllCars()
     }
     return $cars;
 }
-getAllAutoTipusDAO();
+
 function getAllAutoTipusDAO()
 {
     $kapcsolat = $GLOBALS['kapcsolat'];
@@ -67,6 +67,7 @@ function insertCarDAO($rendszam, $alvazszam, $hajtaslanc_id, $valtotipus_id, $ev
 
     $sql = "INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, '$rendszam', '$alvazszam', '$hajtaslanc_id', '$valtotipus_id', '$evjarat', '$teljesitmeny', '$biztositasi_dij', '$kilometer', '$forgalmi', '$autotipus_id', NULL)";
     $ok = mysqli_query($kapcsolat, $sql);
+    return $ok;
 }
 function updateCarDAO($rendszam, $alvazszam, $autotipus_id, $hajtaslanc_id, $valtotipus_id, $evjarat, $teljesitmeny, $biztositas, $kilometer, $forgalmi, $kivezetve, $carID)
 {
@@ -77,10 +78,12 @@ function updateCarDAO($rendszam, $alvazszam, $autotipus_id, $hajtaslanc_id, $val
         $sql = "UPDATE `autokolcsonzo`.`cars` SET `Rendszám` = '$rendszam', `Alvázszám` = '$alvazszam', `hajtaslanc_id` = '$hajtaslanc_id', `valtotipus_id` = '$valtotipus_id', `Evjarat` = '$evjarat', `Teljesitmeny` = '$teljesitmeny', `Biztositasi_dij` = '$biztositas', `km` = '$kilometer', `Forgalmi_megujitasanak_ideje` = '$forgalmi', `Autotipus_id` = '$autotipus_id', `Kivezetve` = NULL  WHERE `cars`.`id` = $carID ";
     }
     $ok = mysqli_query($kapcsolat, $sql);
+    return $ok;
 }
 function deleteCarDAO($carID)
 {
     $kapcsolat = $GLOBALS['kapcsolat'];
     $sql = "DELETE FROM `autokolcsonzo`.cars WHERE `autokolcsonzo`.`cars`.`id` = $carID";
     $ok = mysqli_query($kapcsolat, $sql);
+    return $ok;
 }

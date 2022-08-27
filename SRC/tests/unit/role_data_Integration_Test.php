@@ -2,9 +2,6 @@
 
 namespace Tests\Unit;
 
-$path = dirname(__DIR__, 2);
-include_once($path . DIRECTORY_SEPARATOR . "role_data.php");
-
 use mysqli;
 use \Tests\Support\UnitTester;
 
