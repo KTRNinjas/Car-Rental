@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-05T16:05:21.299Z" agent="5.0 (X11)" etag="HdteDWa87Cy15ZCvQSxc" version="20.2.8" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-05T16:08:25.810Z" agent="5.0 (X11)" etag="7w6vT-eqLo1otuX2PnUA" version="20.2.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2596" dy="1725" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1302,7 +1302,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="qspIsMNP-3Orc4f_YfxA-161" value="car_data" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="2790" y="498" width="310" height="170" as="geometry">
+          <mxGeometry x="2790" y="498" width="310" height="242" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1318,11 +1318,20 @@
         <mxCell id="qspIsMNP-3Orc4f_YfxA-165" value="+create_hajtaslanc($kapcsolat)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
           <mxGeometry y="86" width="310" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="qspIsMNP-3Orc4f_YfxA-166" value="+Tablamegvaltoztatas($kapcsolat)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
+        <mxCell id="qspIsMNP-3Orc4f_YfxA-166" value="+fill_valtotipus($kapcsolat)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
           <mxGeometry y="112" width="310" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="qspIsMNP-3Orc4f_YfxA-167" value="+Query($kapcsolat, $üzenet, $sql)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
+        <mxCell id="qspIsMNP-3Orc4f_YfxA-167" value="+fill_hajtaslanc($kapcsolat)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
           <mxGeometry y="138" width="310" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="qspIsMNP-3Orc4f_YfxA-168" value="+fill_testcars($kapcsolat)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
+          <mxGeometry y="164" width="310" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="qspIsMNP-3Orc4f_YfxA-170" value="+fill_testAutoTipus($kapcsolat)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
+          <mxGeometry y="190" width="310" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="qspIsMNP-3Orc4f_YfxA-171" value="+CarsTablamegvaltoztatasa($kapcsolat)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="qspIsMNP-3Orc4f_YfxA-161">
+          <mxGeometry y="216" width="310" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
