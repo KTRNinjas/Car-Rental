@@ -57,11 +57,20 @@ function CarsTablamegvaltoztatasa($kapcsolat)
   $sql = "ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
   return Query($kapcsolat, "A cars tábla kaszkádolása ", $sql);
 }
+<<<<<<< HEAD
 function hajtaslancCascad($kapcsolat){
   $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`hajtaslanc_id`) REFERENCES `autokolcsonzo`.`hajtaslanc`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
   Query($kapcsolat, "A cars hajtaslanc tábla kaszkádolása ", $sql);
 }
 function valtotipusCascad($kapcsolat){
   $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`valtotipus_id`) REFERENCES `autokolcsonzo`.`valtotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+=======
+function hajtaslancCascad(){
+  $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`hajtaslanc`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+  Query($kapcsolat, "A cars hajtaslanc tábla kaszkádolása ", $sql);
+}
+function valtotipusCascad(){
+  $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`Valtotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+>>>>>>> 41a0a42 (cascad kesz tesyt nincs)
   Query($kapcsolat, "A cars valtotipus tábla kaszkádolása ", $sql);
 }
