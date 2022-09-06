@@ -49,3 +49,11 @@ function CarsTablamegvaltoztatasa($kapcsolat){
   $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
   Query($kapcsolat, "A cars tábla kaszkádolása ", $sql);
 }
+function hajtaslancCascad(){
+  $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`hajtaslanc`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+  Query($kapcsolat, "A cars hajtaslanc tábla kaszkádolása ", $sql);
+}
+function valtotipusCascad(){
+  $sql="ALTER TABLE `autokolcsonzo`.`cars` ADD FOREIGN KEY (`Autotipus_id`) REFERENCES `autokolcsonzo`.`Valtotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+  Query($kapcsolat, "A cars valtotipus tábla kaszkádolása ", $sql);
+}
