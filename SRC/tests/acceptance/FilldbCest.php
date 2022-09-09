@@ -15,6 +15,21 @@ class FillDBCest
         $I->dontSee('error');
         $I->dontSee('notice');
     }
+    public function test_if_Tablamegvaltoztatas_message_displayed(AcceptanceTester $I)
+    {
+        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
+        $I->see("Az artabla cascadolás sikeres volt!");
+        $I->see("az autotipus tabla sikeresen megvaltoztatva sikeres volt!");
+        $I->see("az autotipus tabla sikeresen megvaltoztatva sikeres volt!");
+        $I->see("A cars tábla kaszkádolása sikeres volt!");        
+        $I->see("A cars hajtaslanc tábla kaszkádolása sikeres volt!");
+        $I->see("A cars valtotipus tábla kaszkádolása sikeres volt!");
+        $I->see("A Role tábla megváltoztatása sikeres volt!");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+    }
+
     public function test_if_AutotipusSQlmainAndsideTable_message_displayed(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
