@@ -1,81 +1,88 @@
-<?php 
-function creatAutotipusTable($kapcsolat){
+<?php
+$SideTableNevArray = [];
+$arrayAdat = [];
+$tablaID = [];
+$tablaNev = [];
+
+function insert_adatok($kapcsolat, $arrayAdat, $tabla, $oszlop)
+{
+    for ($i = 0; $i < count($arrayAdat); $i++) {
+        $sql = "INSERT INTO `autokolcsonzo`.`$tabla` (`ID`, `$oszlop`) VALUES (NULL, '$arrayAdat[$i]')";
+        $üzenet = "a $tabla sikeresen felvetük a $arrayAdat[$i] elemet";
+        Query($kapcsolat, $üzenet, $sql);
+    }
+}
+function Cascade($kapcsolat, $tablaID, $tablaNev)
+{
+    for ($i = 0; $i < count($tablaID); $i++) {
+        $sql = "ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`$tablaNev[$i]`) REFERENCES `$tablaID[$i]`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+        $üzenet = "az autotipus tabla sikeresen megvaltoztatva";
+        Query($kapcsolat, $üzenet, $sql);
+    }
+}
+function creatAutotipusTable($kapcsolat)
+{
+    MainAutotipusTablaCreate($kapcsolat);
+    SidetablaCreator($kapcsolat, );
+}
+
+
+function MainAutotipusTablaCreate($kapcsolat)
+{
     $sql = "CREATE TABLE `autokolcsonzo`.`autotipus` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Márka` VARCHAR(50) NOT NULL ,`Tipus` VARCHAR(50) NOT NULL ,`Fajta_ID` INT UNSIGNED NOT NULL , `Kategoria_ID` INT UNSIGNED NOT NULL , `Prémium` BOOLEAN NOT NULL , `Környezetvédelmi_ID` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
-    $üzenet = "Az autotipus tábla létrehozása";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql="CREATE TABLE `autokolcsonzo`.`fajta` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Fajta_neve` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
-    $üzenet = "Az Fajta tábla letrehozasa";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql = "CREATE TABLE `autokolcsonzo`.`kategoria` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Kategoria` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
-    $üzenet = "Az Kategoria tabla letrehozasa";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql="CREATE TABLE `autokolcsonzo`.`környezetvédelmibesorolás` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `KörnyezetvédelmiBesorolás` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
-    $üzenet = "Az Környezetvédelmi besorolás tábla létrehozása";
-    Query($kapcsolat, $üzenet, $sql);
+    $üzenet = "Az autotipus tabla letrehozasa";
+    return Query($kapcsolat, $üzenet, $sql);
+    
 }
-function AdatfelvetelAutoFajta($kapcsolat){
-    $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, 'Combi')";
-    $üzenet = "a fajtába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, 'Terepjáró')";
-    $üzenet = "a fajtába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, 'Sedan')";
-    $üzenet = "a fajtába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, 'PickUp')";
-    $üzenet = "a fajtába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, 'SUV')";
-    $üzenet = "a fajtába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, '4X4')";
-    $üzenet = "a fajtába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
+function SidetablaCreator($kapcsolat)
+{
+    $tablaNeveArray = ['fajta', 'kategoria', 'környezetvédelmibesorolás'];
+    $SideTableNevArray = ['Fajta_neve', 'Kategoria', 'KörnyezetvédelmiBesorolás'];
+    for ($i = 0; $i < count($tablaNeveArray); $i++) {
+        $sql = "CREATE TABLE `autokolcsonzo`.`$tablaNeveArray[$i]` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `$SideTableNevArray[$i]` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
+        $üzenet = "Az $tablaNeveArray[$i] tabla letrehozasa";
+        Query($kapcsolat, $üzenet, $sql);
+    }
 }
-function AdatfelvetelAutoKategoria($kapcsolat){
-    $sql="INSERT INTO `autokolcsonzo`.`kategoria` (`ID`, `Kategoria`) VALUES (NULL, 'Kis személy')";
-    $üzenet = "a Kategoria táblába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql="INSERT INTO `autokolcsonzo`.`kategoria` (`ID`, `Kategoria`) VALUES (NULL, 'Személy autó')";
-    $üzenet = "a Kategoria táblába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql="INSERT INTO `autokolcsonzo`.`kategoria` (`ID`, `Kategoria`) VALUES (NULL, 'Kis teher')";
-    $üzenet = "a Kategoria táblába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
-    $sql="INSERT INTO `autokolcsonzo`.`kategoria` (`ID`, `Kategoria`) VALUES (NULL, 'Teher')";
-    $üzenet = "a Kategoria táblába felvettünk egy elemet";
-    Query($kapcsolat, $üzenet, $sql);
- }
- function KornyezetvedelmiBesorolas($kapcsolat){
-     $sql = "INSERT INTO `autokolcsonzo`.`környezetvédelmibesorolás` (`ID`, `KörnyezetvédelmiBesorolás`) VALUES (NULL, 'E1')";
-     $üzenet = "a KornyezetvedelmiBesorolas táblába felvettünk egy elemet";
-     Query($kapcsolat, $üzenet, $sql);
-     $sql = "INSERT INTO `autokolcsonzo`.`környezetvédelmibesorolás` (`ID`, `KörnyezetvédelmiBesorolás`) VALUES (NULL, 'E2')";
-     $üzenet = "a KornyezetvedelmiBesorolas táblába felvettünk egy elemet";
-     Query($kapcsolat, $üzenet, $sql);
-     $sql = "INSERT INTO `autokolcsonzo`.`környezetvédelmibesorolás` (`ID`, `KörnyezetvédelmiBesorolás`) VALUES (NULL, 'E3')";
-     $üzenet = "a KornyezetvedelmiBesorolas táblába felvettünk egy elemet";
-     Query($kapcsolat, $üzenet, $sql);
-     $sql = "INSERT INTO `autokolcsonzo`.`környezetvédelmibesorolás` (`ID`, `KörnyezetvédelmiBesorolás`) VALUES (NULL, 'E4')";
-     $üzenet = "a KornyezetvedelmiBesorolas táblába felvettünk egy elemet";
-     Query($kapcsolat, $üzenet, $sql);
-     $sql = "INSERT INTO `autokolcsonzo`.`környezetvédelmibesorolás` (`ID`, `KörnyezetvédelmiBesorolás`) VALUES (NULL, 'E5')";
-     $üzenet = "a KornyezetvedelmiBesorolas táblába felvettünk egy elemet";
-     Query($kapcsolat, $üzenet, $sql);
-     $sql = "INSERT INTO `autokolcsonzo`.`környezetvédelmibesorolás` (`ID`, `KörnyezetvédelmiBesorolás`) VALUES (NULL, 'E6')";
-     $üzenet = "a KornyezetvedelmiBesorolas táblába felvettünk egy elemet";
-     Query($kapcsolat, $üzenet, $sql);  
- }
-function AutotipusTablamegvaltoztatasa($kapcsolat){
-    $sql="ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Környezetvédelmi_ID`) REFERENCES `környezetvédelmibesorolás`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
-    $üzenet= "Az autotipus tábla környezetvédelemmel kaszádolva ";
-    Query($kapcsolat,$üzenet,$sql);
-    $sql="ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Kategoria_ID`) REFERENCES `kategoria`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
-    $üzenet= "az autotipus tábla Kategóriával kaszkádolva ";
-    Query($kapcsolat,$üzenet,$sql);
-    $sql="ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Fajta_ID`) REFERENCES `fajta`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
-    $üzenet= "az autotipus tábla Fajtával kaszkádolva ";
-    Query($kapcsolat,$üzenet,$sql);
+
+
+
+function MarkafelvetelAutoFajta($kapcsolat)
+{
+    $arrayAdat = ['BMW', 'Mercedes', 'Nissan'];
+    $tabla = 'márka';
+    $oszlop = 'Márka';
+    insert_adatok($kapcsolat, $arrayAdat, $tabla, $oszlop);
 }
+function AdatfelvetelAutoFajta($kapcsolat)
+{
+    $arrayAdat = ['Combi', 'Terepjáró', 'Sedan', 'PickUp', 'SUV', '4X4'];
+    $tabla = 'fajta';
+    $oszlop = 'Fajta_neve';
+    insert_adatok($kapcsolat, $arrayAdat, $tabla, $oszlop);
+}
+
+function AdatfelvetelAutoKategoria($kapcsolat)
+{
+    $arrayAdat = ['Kis személy', 'Személy autó', 'Kis teher', 'Teher'];
+    $tabla = 'kategoria';
+    $oszlop = 'Kategoria';
+    insert_adatok($kapcsolat, $arrayAdat, $tabla, $oszlop);
+}
+function KornyezetvedelmiBesorolas($kapcsolat)
+{
+    $arrayAdat = ['E1', 'E2', 'E3', 'E4', 'E5', 'E6'];
+    $tabla = 'környezetvédelmibesorolás';
+    $oszlop = 'KörnyezetvédelmiBesorolás';
+    insert_adatok($kapcsolat, $arrayAdat, $tabla, $oszlop);
+}
+
+function AutotipusTablamegvaltoztatasa($kapcsolat)
+{
+    $tablaID = ['Fajta_ID', 'Kategoria_ID', 'Környezetvédelmi_ID'];
+    $tablaNev = ['fajta', 'kategoria', 'környezetvédelmibesorolás'];
+    Cascade($kapcsolat, $tablaNev, $tablaID);
+}
+
+
 ?>
