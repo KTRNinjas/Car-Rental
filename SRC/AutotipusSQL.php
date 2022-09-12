@@ -83,6 +83,4 @@ function AutotipusTablamegvaltoztatasa($kapcsolat)
     $tablaNev = ['fajta', 'kategoria', 'környezetvédelmibesorolás'];
     Cascade($kapcsolat, $tablaNev, $tablaID);
 }
-
-
 ?>
