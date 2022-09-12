@@ -71,6 +71,7 @@ function Tablamegvaltoztatas($kapcsolat)
     Arcascadolas($kapcsolat);
     AutotipusTablamegvaltoztatasa($kapcsolat);
     CarsTablamegvaltoztatasa($kapcsolat);
+    hajtaslanc_valtotipusCascad($kapcsolat);
     alterRoleTable($kapcsolat);
     alterCarImageTable($kapcsolat);
 }
