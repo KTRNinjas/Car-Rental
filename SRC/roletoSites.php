@@ -5,7 +5,8 @@ function create_honlapok($kapcsolat){
 }
 function create_honlapok_role_join($kapcsolat)
 {
-  # code...
+  $sql = "CREATE TABLE `autokolcsonzo`.`honlapok_role_join` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT , `honlapok_id` INT(10) UNSIGNED NOT NULL , `role_id` INT(10) UNSIGNED NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
+  Query($kapcsolat, "honlapok_role_join tábla létrehozása", $sql);
 }
 
 ?>
