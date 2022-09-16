@@ -7,6 +7,7 @@ include_once("car_data.php");
 include_once("contract_data.php");
 include_once("role_data.php");
 include_once("car_image_data.php");
+include_once("roletoSites.php");
 
 function InitDb($kapcsolat)
 {
@@ -44,6 +45,8 @@ function TablaFelvetele($kapcsolat)
     CreateArtabla($kapcsolat);
     creatAutotipusTable($kapcsolat);
     create_contact($kapcsolat);
+    create_honlapok($kapcsolat);
+    create_honlapok_role_join($kapcsolat);
     create_account($kapcsolat);
     create_user_account_join($kapcsolat);
     create_cars($kapcsolat);
