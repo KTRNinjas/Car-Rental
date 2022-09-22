@@ -1,22 +1,5 @@
 #####Saját ignore-ok, ide írjátok
-<<<<<<< HEAD
-codeception.yml
-acceptance.suite.yml
-functional.suite.yml
-unit.suite.yml
-.gitkeep
-AcceptanceTester.php
-FunctionalTester.php
-UnitTester.php
-Acceptance.php
-Functional.php
-Unit.php
-AcceptanceTesterActions.php
-FunctionalTesterActions.php
-UnitTesterActions.php
-=======
 _output
->>>>>>> c243906b5e7b314f364caab41fb8c4ec53cdc244
 phpunit.xml
 .phpunit.result.cache
 codeception.yml
