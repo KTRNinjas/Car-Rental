@@ -11,6 +11,7 @@ class zzFillDBCest
         $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
         $I->see("adatbazis törlése sikeres volt!");
         $I->see("az adatbázis létrehozása sikeres volt!");
+
         $I->see("A Role tábla létrehozása sikeres volt!");
         $I->see("A Vásárló Role létrehozása sikeres volt!");
         $I->see("Az autófelvevő Role létrehozása sikeres volt!");
@@ -64,6 +65,7 @@ class zzFillDBCest
         $I->dontSee('error');
         $I->dontSee('notice');
         //car data test
+
         $I->see("Az egyedi autó tábla létrehozása sikeres volt!");
         $I->see("A váltótípus tábla létrehozása sikeres volt!");
         $I->see("A hajtáslánc tábla létrehozása sikeres volt!");

@@ -10,7 +10,6 @@ include_once("car_image_data.php");
 
 function InitDb($kapcsolat)
 {
-
     $üzenet = "adatbazis törlése";
     $sql = "DROP DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);

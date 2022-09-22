@@ -34,6 +34,7 @@ class DateCest
         //date 2022-08-01-2022-08-15
         $I->fillField('kezdoDATE', "2022-08-01");
         $I->fillField('vegDATE', '2022-08-15');
+
         $I->click('Lefoglalas');
         $I->see('Márka');
         $I->see('Tipus');
@@ -106,6 +107,7 @@ class DateCest
         //date 2022-08-16-2022-09-10
         $I->fillField('kezdoDATE', "2022-08-16");
         $I->fillField('vegDATE', '2022-09-10');
+
         $I->click('Lefoglalas');
         $I->see('Márka');
         $I->see('Tipus');
@@ -148,6 +150,7 @@ class DateCest
         //date 2022-09-11-2022-09-30
         $I->fillField('kezdoDATE', "2022-09-11");
         $I->fillField('vegDATE', '2022-09-30');
+
         $I->click('Lefoglalas');
         $I->see('Márka');
         $I->see('Tipus');
