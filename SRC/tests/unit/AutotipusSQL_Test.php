@@ -4,7 +4,9 @@ namespace Tests\Unit;
 
 $path = dirname(__DIR__, 2);
 include_once($path . DIRECTORY_SEPARATOR . "AutotipusSQL.php");
-include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
+include_once($path . DIRECTORY_SEPARATOR . "car_data.php");
+include_once($path . DIRECTORY_SEPARATOR . "Arfeltolto.php");
+//include_once($path . DIRECTORY_SEPARATOR . "Filldb.php");
 
 use mysqli;
 
@@ -13,28 +15,6 @@ use \Tests\Support\UnitTester;
 
 class AutotipusSQLTest extends \Codeception\Test\Unit
 {
-    //protected UnitTester $tester;
-
-    protected function _before()
-    {
-        // $path=dirname(__DIR__,2);
-        // include_once($path.DIRECTORY_SEPARATOR."Connection".DIRECTORY_SEPARATOR."Dbconn.php");
-        // include_once($path.DIRECTORY_SEPARATOR.'AutotipusSQL.php');
-        //  ezeket kikomentoltam mert a m'sikban nincs ott role_data_integration_test.php
-    }
-
-    // tests
-    // public function test_MainAutotipusTablaLetrehozas()
-    // {
-    //     //given
-    //     $kapcsolat=[];
-    //     sleep(2);
-    //     //when
-    //     $result= MainAutotipusTablaCreate($kapcsolat);
-
-    //     //then
-    //     $this->assertequals("Az autotipus tabla letrehozasa",$result);
-    // }
     public function test_2MainAutotipusTablaCreate()
     { //main tábla létrehozása
         //give
@@ -42,9 +22,11 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP DATABASE `autokolcsonzo`";
+        $sql = "ALTER TABLE autokolcsonzo.cars DROP FOREIGN KEY car_autotipus;";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "CREATE DATABASE `autokolcsonzo`";
+        $sql = "ALTER TABLE autokolcsonzo.Ar DROP FOREIGN KEY ar_autotipus;";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "DROP TABLE `autokolcsonzo`.`autotipus`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
         $result = MainAutotipusTablaCreate($kapcsolat);
@@ -60,10 +42,6 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
 
-        //when
-        SidetablaCreator($kapcsolat);
-
-        //them
         $sql = "DROP TABLE `autokolcsonzo`.`fajta`";
         $result = mysqli_query($kapcsolat, $sql);
         $this->assertTrue($result);
@@ -75,8 +53,24 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $sql = "DROP TABLE `autokolcsonzo`.`környezetvédelmibesorolás`";
         $result = mysqli_query($kapcsolat, $sql);
         $this->assertTrue($result);
-        //affter:
+        //when
         SidetablaCreator($kapcsolat);
+
+        //then
+        $sql = "SELECT TABLE_NAME FROM information_schema.TABLES WHERE table_schema='autokolcsonzo' AND TABLE_NAME='fajta';";
+        $result = mysqli_query($kapcsolat, $sql);
+        $egysor = mysqli_fetch_assoc($result);
+        $this->assertEquals('fajta', $egysor['TABLE_NAME']);
+
+        $sql = "SELECT TABLE_NAME FROM information_schema.TABLES WHERE table_schema='autokolcsonzo' AND TABLE_NAME='kategoria';";
+        $result = mysqli_query($kapcsolat, $sql);
+        $egysor = mysqli_fetch_assoc($result);
+        $this->assertEquals('kategoria', $egysor['TABLE_NAME']);
+
+        $sql = "SELECT TABLE_NAME FROM information_schema.TABLES WHERE table_schema='autokolcsonzo' AND TABLE_NAME='környezetvédelmibesorolás';";
+        $result = mysqli_query($kapcsolat, $sql);
+        $egysor = mysqli_fetch_assoc($result);
+        $this->assertEquals('környezetvédelmibesorolás', $egysor['TABLE_NAME']);
     }
     public function test_if_FajtaID_Inserted()
     {
@@ -88,7 +82,7 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $sql = "DELETE FROM `autokolcsonzo`.`fajta`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
-        $kapcsolat = mysqli_connect($host, $user, $password);
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //When
         AdatfelvetelAutoFajta($kapcsolat);
         $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
@@ -127,7 +121,7 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $sql = "DELETE FROM `autokolcsonzo`.`kategoria`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
-        $kapcsolat = mysqli_connect($host, $user, $password);
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //When
         AdatfelvetelAutoKategoria($kapcsolat);
         $sql = "SELECT * FROM `autokolcsonzo`.`kategoria`";
@@ -159,7 +153,7 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $sql = "DELETE FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
-        $kapcsolat = mysqli_connect($host, $user, $password);
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //When
         KornyezetvedelmiBesorolas($kapcsolat);
         $sql = "SELECT * FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
@@ -240,7 +234,7 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $sql = "DELETE FROM `autokolcsonzo`.`kategoria` WHERE `Kategoria`='TestKategoria'";
         $result = mysqli_query($kapcsolat, $sql);
         $this->assertTrue($result);
-        $sql = "SELECT ID FROM `autokolcsonzo`.`kategoria` WHERE `Kategoria`='$ID'; ";
+        $sql = "SELECT ID FROM `autokolcsonzo`.`kategoria` WHERE `ID`='$ID'; ";
         $result = mysqli_query($kapcsolat, $sql);
         $egysor = mysqli_fetch_assoc($result);
         $this->assertTrue(!isset($egysor['ID']));
@@ -272,11 +266,18 @@ class AutotipusSQLTest extends \Codeception\Test\Unit
         $sql = "DELETE FROM `autokolcsonzo`.`környezetvédelmibesorolás` WHERE `KörnyezetvédelmiBesorolás`='TestkornyezetvedelmiBesorolas'";
         $result = mysqli_query($kapcsolat, $sql);
         $this->assertTrue($result);
-        $sql = "SELECT ID FROM `autokolcsonzo`.`környezetvédelmibesorolás` WHERE `KörnyezetvédelmiBesorolás`='$ID'; ";
+        $sql = "SELECT ID FROM `autokolcsonzo`.`környezetvédelmibesorolás` WHERE `ID`='$ID'; ";
         $result = mysqli_query($kapcsolat, $sql);
         $egysor = mysqli_fetch_assoc($result);
         $this->assertTrue(!isset($egysor['ID']));
-        //affter
-        InitDb($kapcsolat);
+        //After
+        $sql = "DROP TABLE `autokolcsonzo`.`autotipus`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        //when
+        MainAutotipusTablaCreate($kapcsolat);
+        CarsTablamegvaltoztatasa($kapcsolat);
+        Arcascadolas($kapcsolat);
+        fill_testAutoTipus($kapcsolat);
+        fillAutotipus($kapcsolat);
     }
 }

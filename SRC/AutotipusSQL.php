@@ -20,13 +20,6 @@ function Cascade($kapcsolat, $tablaID, $tablaNev)
         Query($kapcsolat, $üzenet, $sql);
     }
 }
-function creatAutotipusTable($kapcsolat)
-{
-    MainAutotipusTablaCreate($kapcsolat);
-    SidetablaCreator($kapcsolat, );
-}
-
-
 function MainAutotipusTablaCreate($kapcsolat)
 {
     $sql = "CREATE TABLE `autokolcsonzo`.`autotipus` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Márka` VARCHAR(50) NOT NULL ,`Tipus` VARCHAR(50) NOT NULL ,`Fajta_ID` INT UNSIGNED NOT NULL , `Kategoria_ID` INT UNSIGNED NOT NULL , `Prémium` BOOLEAN NOT NULL , `Környezetvédelmi_ID` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
@@ -43,16 +36,6 @@ function SidetablaCreator($kapcsolat)
         $üzenet = "Az $tablaNeveArray[$i] tabla letrehozasa";
         Query($kapcsolat, $üzenet, $sql);
     }
-}
-
-
-
-function MarkafelvetelAutoFajta($kapcsolat)
-{
-    $arrayAdat = ['BMW', 'Mercedes', 'Nissan'];
-    $tabla = 'márka';
-    $oszlop = 'Márka';
-    insert_adatok($kapcsolat, $arrayAdat, $tabla, $oszlop);
 }
 function AdatfelvetelAutoFajta($kapcsolat)
 {
@@ -83,4 +66,3 @@ function AutotipusTablamegvaltoztatasa($kapcsolat)
     $tablaNev = ['fajta', 'kategoria', 'környezetvédelmibesorolás'];
     Cascade($kapcsolat, $tablaNev, $tablaID);
 }
-?>

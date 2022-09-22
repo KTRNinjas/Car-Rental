@@ -291,4 +291,98 @@ class Car_Data_Integration_Test extends \Codeception\Test\Unit
         //then
         $this->assertEquals(0, count($cars));
     }
+    public function test_hajtaslanc_cascade()
+    {
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "DROP TABLE `autokolcsonzo`.`hajtaslanc`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        create_hajtaslanc($kapcsolat);
+        fill_hajtaslanc($kapcsolat);
+        //WHEN
+        $result = hajtaslancCascad($kapcsolat);
+        //Then
+        $this->assertEquals("A cars hajtaslanc tábla kaszkádolása Sikeres volt!", $result);
+    }
+    public function test_if_hajtaslanc_table_cascaded_for_cars()
+    {
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "INSERT INTO `autokolcsonzo`.`hajtaslanc` (`id`, `Hajtaslanc`) VALUES (NULL, 'testhajtaslanc');";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "SELECT `id` FROM `autokolcsonzo`.`hajtaslanc` WHERE `Hajtaslanc`='testhajtaslanc'";
+        $result = mysqli_query($kapcsolat, $sql);
+        $egysor = mysqli_fetch_assoc($result);
+        $id = $egysor["id"];
+        $sql = "SELECT `ID` FROM `autokolcsonzo`.`autotipus` LIMIT 1";
+        $result = mysqli_query($kapcsolat, $sql);
+        $egysor = mysqli_fetch_assoc($result);
+        $autotipus_id = $egysor["ID"];
+        $sql = "INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'test', '123123123123', '$id', '1', '2008', '8', '100000', '50000', '2022-07-31', '$autotipus_id', NULL)";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        //when
+        $sql = "DELETE FROM `autokolcsonzo`.`hajtaslanc` WHERE `hajtaslanc`.`Hajtaslanc`='testhajtaslanc'";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "SELECT * FROM `autokolcsonzo`.`cars` WHERE `Rendszám`='test'";
+        $result = mysqli_query($kapcsolat, $sql);
+        $cars = [];
+        while ($egysor = mysqli_fetch_array($result)) {
+            array_push($cars, $egysor);
+        }
+        //then
+        $this->assertEquals(0, count($cars));
+    }
+    public function test_valtotipus_cascade()
+    {
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "DROP TABLE `autokolcsonzo`.`valtotipus`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        create_valtotipus($kapcsolat);
+        fill_valtotipus($kapcsolat);
+        //WHEN
+        $result = valtotipusCascad($kapcsolat);
+        //Then
+        $this->assertEquals("A cars valtotipus tábla kaszkádolása Sikeres volt!", $result);
+    }
+    public function test_if_valtotipus_table_cascaded_for_cars()
+    {
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "INSERT INTO `autokolcsonzo`.`valtotipus` (`id`, `Valtotipus`) VALUES (NULL, 'testvaltotipus');";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "SELECT `id` FROM `autokolcsonzo`.`valtotipus` WHERE `Valtotipus`='testvaltotipus'";
+        $result = mysqli_query($kapcsolat, $sql);
+        $egysor = mysqli_fetch_assoc($result);
+        $id = $egysor["id"];
+        $sql = "SELECT `ID` FROM `autokolcsonzo`.`autotipus` LIMIT 1";
+        $result = mysqli_query($kapcsolat, $sql);
+        $egysor = mysqli_fetch_assoc($result);
+        $autotipus_id = $egysor["ID"];
+        $sql = "INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'test', '123123123123', '1', '$id', '2008', '8', '100000', '50000', '2022-07-31', '$autotipus_id', NULL)";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        //when
+        $sql = "DELETE FROM `autokolcsonzo`.`valtotipus` WHERE `valtotipus`.`Valtotipus`='testvaltotipus'";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "SELECT * FROM `autokolcsonzo`.`cars` WHERE `Rendszám`='test'";
+        $result = mysqli_query($kapcsolat, $sql);
+        $cars = [];
+        while ($egysor = mysqli_fetch_array($result)) {
+            array_push($cars, $egysor);
+        }
+        //then
+        $this->assertEquals(0, count($cars));
+    }
 }

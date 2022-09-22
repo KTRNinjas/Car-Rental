@@ -1,4 +1,4 @@
-<?php 
+<?php
 require("Connection/Dbconn.php");
 include_once("ArFeltolto.php");
 include_once("registration_data.php");
@@ -11,7 +11,7 @@ include_once("car_image_data.php");
 function InitDb($kapcsolat)
 {
 
-    $üzenet = "adatbazis torlése";
+    $üzenet = "adatbazis törlése";
     $sql = "DROP DATABASE autokolcsonzo";
     Query($kapcsolat, $üzenet, $sql);
     $üzenet = "az adatbázis létrehozása ";
@@ -42,7 +42,8 @@ function AdatFelvetel($kapcsolat)
 function TablaFelvetele($kapcsolat)
 {
     CreateArtabla($kapcsolat);
-    creatAutotipusTable($kapcsolat);
+    MainAutotipusTablaCreate($kapcsolat);
+    SidetablaCreator($kapcsolat);
     create_contact($kapcsolat);
     create_account($kapcsolat);
     create_user_account_join($kapcsolat);
@@ -52,7 +53,6 @@ function TablaFelvetele($kapcsolat)
     createRoleTable($kapcsolat);
     createCarImageTable($kapcsolat);
     Create_Contract_car_join_table($kapcsolat);
-    //creatSzerzodesTabal($kapcsolat);
     create_contract_table($kapcsolat);
 }
 function Query($kapcsolat, $üzenet, $sql)
@@ -71,7 +71,8 @@ function Tablamegvaltoztatas($kapcsolat)
     Arcascadolas($kapcsolat);
     AutotipusTablamegvaltoztatasa($kapcsolat);
     CarsTablamegvaltoztatasa($kapcsolat);
-    hajtaslanc_valtotipusCascad($kapcsolat);
+    hajtaslancCascad($kapcsolat);
+    valtotipusCascad($kapcsolat);
     alterRoleTable($kapcsolat);
     alterCarImageTable($kapcsolat);
 }
