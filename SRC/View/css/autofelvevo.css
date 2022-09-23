@@ -1,0 +1,31 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(100px,min-content));
+    align-content: center;
+    grid-gap: 1px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.multicolumn-error-message {
+    color: red;
+    grid-column: 5 / span 3;
+}
+
+.multirow-image {
+    grid-row: span 2;
+}
+
+#autoPictureToUpload {
+    display: none;
+}
+
+
+.smallerInput {
+    font-size: 0.7rem;
+}
+input[type='number']{
+    width: 70px;
+} 
