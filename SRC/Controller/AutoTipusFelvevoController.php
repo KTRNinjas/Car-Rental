@@ -46,15 +46,24 @@ function printAutotipusInDB(){
     }
     print '<input type="text" id=carID' . $autotipus[$i]['id'] . ' name="carID" size="0" value="' . $autotipus[$i]['id'] . '" hidden>';
     print '<div class="grid-item">';
-        print '<input class="smallerInput" type="text" name="marka" size="5" value="' . $autotipus[$i]['Márka'] . '" required>
+        print '<input class="smallerInput" type="text" name="marka"  value="' . $autotipus[$i]['Márka'] . '" required>
         ';
-        print '<input class="smallerInput" type="text" name="tipus" size="5" value="' . $autotipus[$i]['Tipus'] . '" required>';
-        print '<input class="smallerInput" type="text" name="tipus" size="5" value="' . $autotipus[$i]['Prémium'] . '" required>';
+        print '<input class="smallerInput" type="text" name="tipus"  value="' . $autotipus[$i]['Tipus'] . '" required>';
+        print '<input class="smallerInput" type="text" name="tipus"  value="' . $autotipus[$i]['Prémium'] . '" required>';
 
-        print '<div class="grid-item"><select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
-      <option value="">Válasszon autótípust</option>';
-        getAllAutoTipusController($cars[$i]['marka']);
+        print '<select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      <option value="">Válasszon Fajtát</option>';
+      getFajta($autotipus[$i]['fajta']);
+      print '</select>';
 
+      print '<select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      <option value="">Válasszon kategoriat</option>';
+      getKategoria($autotipus[$i]['kategoria']);
+      print '</select>';
+      print '<select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      <option value="">Válasszon környezetvédelmibesorolás</option>';
+      getKornyezetVedelem($autotipus[$i]['környezetvédelmibesorolás']);
+      print '</select>';
         //bezar
     print '</div>';
     print '</form>';
@@ -63,14 +72,6 @@ function printAutotipusInDB(){
 
   }
 }
-
-
-
-
-
-
-
-
 
 
 
