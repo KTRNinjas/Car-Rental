@@ -76,10 +76,10 @@ function updateAutotipusController(){
     $marka = $_POST['Márka'];
     $tipus = $_POST['Tipus'];
     $premium=$_POST['prémium'];
-    $fajta = $_POST['fajta'];
-    $kategoria = $_POST['kategoria'];
-    $környezetvédelmibesorolás = $_POST['környezetvédelmibesorolás'];
-    updateAutotipusService($marka,$tipus,$premium,$fajta,$kategoria,$kornyezetvedelem);
+    $fajta_ID = $_POST['fajta'];
+    $kategoria_ID = $_POST['kategoria'];
+    $környezetvédelmibesorolás_ID = $_POST['környezetvédelmibesorolás'];
+    updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID);
     header('Location: /Autofelvetel', true, 303);
     exit;
   }
