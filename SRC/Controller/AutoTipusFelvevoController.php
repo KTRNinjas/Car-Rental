@@ -8,11 +8,7 @@ $routes[$url] = $fileLocation;
 
 
 //autotipus lekérdezese
-$cars = [];
-$path = dirname(__DIR__, 1);
-$url = "/Autofelvetel";
-$fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "Autofelvevo.php";
-$routes[$url] = $fileLocation;
+$autotipusok = [];
 $hostname = getenv('HTTP_HOST');
 $replacedPath = str_ireplace("\\", "/", $path);
 $izé = "//Car-Rental";
@@ -80,7 +76,7 @@ function updateAutotipusController(){
     $kategoria_ID = $_POST['kategoria'];
     $környezetvédelmibesorolás_ID = $_POST['környezetvédelmibesorolás'];
     updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID);
-    header('Location: /Autofelvetel', true, 303);
+    header('Location: /autotipusfelvevo', true, 303);
     exit;
   }
    
