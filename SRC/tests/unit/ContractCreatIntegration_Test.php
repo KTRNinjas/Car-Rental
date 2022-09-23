@@ -15,6 +15,23 @@ class ContractCreatTest extends \Codeception\Test\Unit
     {
     }
     // tests
+    public function test_if_contract_table_generated()
+    {
+      //given
+      $path=dirname(__DIR__,2);
+      include_once($path . DIRECTORY_SEPARATOR . "FilldbData.php");
+      $host="127.0.0.1";
+      $user="root";
+      $password="";
+      $kapcsolat=mysqli_connect($host,$user,$password);
+      $sql="DROP TABLE `autokolcsonzo`.`contract`";
+      $this->assertTrue(mysqli_query($kapcsolat,$sql));
+      //when
+      $result=create_contract_table($kapcsolat);
+      
+      //then
+      $this->assertEquals("contract tábla létrehozása Sikeres volt!", $result);
+    }
     public function test_Contract_create_contracts()
     {
         //Given
@@ -24,7 +41,7 @@ class ContractCreatTest extends \Codeception\Test\Unit
         $kapcsolat=mysqli_connect($host,$user,$password);
 
         //When
-//        Contract_create($kapcsolat);
+        Contract_create($kapcsolat);
         $sql="SELECT * FROM `autokolcsonzo`.`contract` ";
         $contract_Adatok=[];
         $result=mysqli_query($kapcsolat,$sql);
