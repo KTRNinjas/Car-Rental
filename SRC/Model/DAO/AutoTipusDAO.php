@@ -1,6 +1,32 @@
 <?php
 $path = dirname(__DIR__, 2);
 require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . "Dbconn.php");
+//-----
+function getAllCars()
+{
+    $kapcsolat = $GLOBALS['kapcsolat'];
+    $autotipusok = [];
+    $today = date("y-m-d");
+    $sql = "SELECT ID,Márka,Tipus,Prémium,
+    (SELECT Fajta_neve FROM `autokolcsonzo`.`fajta` WHERE id=Fajta_ID ) AS fajta,
+    (SELECT Kategoria FROM `autokolcsonzo`.`kategoria` WHERE id=Kategoria_ID ) AS kategoria,
+    (SELECT KörnyezetvédelmiBesorolás FROM `autokolcsonzo`.`környezetvédelmibesorolás` WHERE id=Környezetvédelmi_ID) AS KörnyezetvédelmiBesolas FROM `autokolcsonzo`.`autotipus`";
+    $result = mysqli_query($kapcsolat, $sql);
+    while ($egysor = mysqli_fetch_assoc($result)) {
+        $autotipus = [];
+        foreach ($egysor as $key => $value) {
+            
+                $autotipus[$key] = $value;
+            
+        }
+        array_push($autotipusok, $autotipus);
+    }
+    return $autotipusok;
+}
+
+
+
+//----
 function AutoTipusTarolo($Marka, $Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
 {
     $kapcsolat = $GLOBALS["kapcsolat"];

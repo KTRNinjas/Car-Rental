@@ -8,7 +8,9 @@
     <?php
     $path = dirname(__DIR__, 1);
     include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
-    ?>
+    include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "Autotipuslekedezes_Controller.php");
+
+?>
 </head>
 
 <body>
@@ -51,6 +53,12 @@
         <?php
         printresult();
         ?>
+    </div>
+    <div>
+        <h2>Jelenlegi autotipusaink:</h2>
+        <?php
+            printAutotipusInDB();
+        ?> 
     </div>
 </body>
 
