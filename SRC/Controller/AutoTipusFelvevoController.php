@@ -5,7 +5,19 @@ $url = "/autotipusfelvevo";
 $fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "AutoTipusFelvetel.php";
 $routes[$url] = $fileLocation;
 
+
+
 //autotipus lekérdezese
+$cars = [];
+$path = dirname(__DIR__, 1);
+$url = "/Autofelvetel";
+$fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "Autofelvevo.php";
+$routes[$url] = $fileLocation;
+$hostname = getenv('HTTP_HOST');
+$replacedPath = str_ireplace("\\", "/", $path);
+$izé = "//Car-Rental";
+$seenurl = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
+
 function initCarController()
 {
     $GLOBALS['autotipus'] = getallAutotipusService();
@@ -27,11 +39,29 @@ function printAutotipusInDB(){
   $hyphen = "'";
     $autotipus = $GLOBALS['autotipus'];
     for ($i = 0; $i < count($autotipus); $i++) {
+      print '<form action="" method="post" enctype="multipart/form-data">';
+      print '<div class="grid-container">';
+      if ($i == 0) {
+        makeHeader();
+    }
+    print '<input type="text" id=carID' . $autotipus[$i]['id'] . ' name="carID" size="0" value="' . $autotipus[$i]['id'] . '" hidden>';
+    print '<div class="grid-item">';
+        print '<input class="smallerInput" type="text" name="marka" size="5" value="' . $autotipus[$i]['Márka'] . '" required>
+        ';
+        print '<input class="smallerInput" type="text" name="tipus" size="5" value="' . $autotipus[$i]['Tipus'] . '" required>';
+        print '<input class="smallerInput" type="text" name="tipus" size="5" value="' . $autotipus[$i]['Prémium'] . '" required>';
+
+        print '<div class="grid-item"><select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      <option value="">Válasszon autótípust</option>';
+        getAllAutoTipusController($cars[$i]['marka']);
+
+        //bezar
+    print '</div>';
+    print '</form>';
+
     
-    print $autotipus[$i]['Márka'];
-}
 
-
+  }
 }
 
 
