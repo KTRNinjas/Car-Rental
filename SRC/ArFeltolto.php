@@ -30,6 +30,6 @@ function CreateArtabla($kapcsolat)
 }
 function Arcascadolas($kapcsolat)
 {
-    $sql = "ALTER TABLE `autokolcsonzo`.`Ar` ADD FOREIGN KEY (`AutoTipusID`) REFERENCES `autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
+    $sql = "ALTER TABLE `autokolcsonzo`.`Ar` ADD  CONSTRAINT `ar_autotipus`  FOREIGN KEY (`AutoTipusID`) REFERENCES `autotipus`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
     Query($kapcsolat, "Az artabla cascadolás ", $sql);
 }
