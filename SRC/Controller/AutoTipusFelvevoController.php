@@ -5,6 +5,47 @@ $url = "/autotipusfelvevo";
 $fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "AutoTipusFelvetel.php";
 $routes[$url] = $fileLocation;
 
+//autotipus lekérdezese
+function initCarController()
+{
+    $GLOBALS['autotipus'] = getallAutotipusService();
+  }
+function makeHeader()
+{
+    print '<div class="grid-item"></div>';
+    print '<div class="grid-item"><small>Márka</small></div>';
+    print '<div class="grid-item"><small>Tipus</small></div>';
+    print '<div class="grid-item"><small>Fajta_ID</small></div>';
+    print '<div class="grid-item"><small>Kategoria_ID</small></div>';
+    print '<div class="grid-item"><small>Prémium</small></div>';
+    print '<div class="grid-item"><small>Környezetvédelmi_ID</small></div>';
+}
+
+
+
+function printAutotipusInDB(){
+  $hyphen = "'";
+    $autotipus = $GLOBALS['autotipus'];
+    for ($i = 0; $i < count($autotipus); $i++) {
+    
+    print $autotipus[$i]['Márka'];
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//autotipus felvétele
 $autotipusadatatvevo = "";
 function kiiro($legordulo)
 {
