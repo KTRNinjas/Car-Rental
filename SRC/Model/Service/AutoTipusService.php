@@ -1,6 +1,10 @@
 <?php
 $path = dirname(__DIR__, 1);
 include_once($path . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
+function getallAutotipusService(){
+    return getAllAutotipus();
+}
+
 function FajtaFeltoltoService()
 {
     return FajtaFeltoltoDAO();

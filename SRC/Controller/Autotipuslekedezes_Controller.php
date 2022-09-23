@@ -1,7 +1,11 @@
 <?php
 $path = dirname(__DIR__, 1);
-include_once($path . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . 'Service' . DIRECTORY_SEPARATOR . 'AutoTipuslekerdezesService.php');
+include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "AutoTipusService.php");
 //nincs m;g meg a file
+function initCarController()
+{
+    $GLOBALS['autotipus'] = getallAutotipusService();
+}
 function makeHeader()
 {
     print '<div class="grid-item"></div>';
