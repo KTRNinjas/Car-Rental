@@ -49,29 +49,58 @@ function printAutotipusInDB(){
         print '<input class="smallerInput" type="text" name="marka"  value="' . $autotipus[$i]['Márka'] . '" required>
         ';
         print '<input class="smallerInput" type="text" name="tipus"  value="' . $autotipus[$i]['Tipus'] . '" required>';
-        print '<input class="smallerInput" type="text" name="tipus"  value="' . $autotipus[$i]['Prémium'] . '" required>';
+        print '<input class="smallerInput" type="text" name="prémium"  value="' . $autotipus[$i]['Prémium'] . '" required>';
 
-        print '<select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+        print '<select class="smallerInput" name="fajta" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
       <option value="">Válasszon Fajtát</option>';
       getFajta($autotipus[$i]['fajta']);
       print '</select>';
 
-      print '<select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      print '<select class="smallerInput" name="kategoria" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
       <option value="">Válasszon kategoriat</option>';
       getKategoria($autotipus[$i]['kategoria']);
       print '</select>';
-      print '<select class="smallerInput" name="autotipus" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      print '<select class="smallerInput" name="környezetvédelmibesorolás" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
       <option value="">Válasszon környezetvédelmibesorolás</option>';
       getKornyezetVedelem($autotipus[$i]['környezetvédelmibesorolás']);
       print '</select>';
         //bezar
     print '</div>';
     print '</form>';
-
-    
-
+    print '<div class="grid-item"><input type="submit" name="updateAutotipus" value="Mentés"></div>';
   }
 }
+
+function updateAutotipusController(){
+  if (isset($_POST['updateAutotipus'])) {
+    $marka = $_POST['Márka'];
+    $tipus = $_POST['Tipus'];
+    $premium=$_POST['prémium'];
+    $fajta = $_POST['fajta'];
+    $kategoria = $_POST['kategoria'];
+    $környezetvédelmibesorolás = $_POST['környezetvédelmibesorolás'];
+    updateAutotipusService($marka,$tipus,$premium,$fajta,$kategoria,$kornyezetvedelem);
+    header('Location: /Autofelvetel', true, 303);
+    exit;
+  }
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
