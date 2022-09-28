@@ -37,9 +37,12 @@ function printAutotipusInDB(){
     for ($i = 0; $i < count($autotipus); $i++) {
       print '<form action="" method="post" enctype="multipart/form-data">';
       print '<div class="grid-container">';
+    
       if ($i == 0) {
         makeHeader();
+
     }
+
     print '<input type="text" id=carID' . $autotipus[$i]['id'] . ' name="carID" size="0" value="' . $autotipus[$i]['id'] . '" hidden>';
     print '<div class="grid-item">';
         print '<input class="smallerInput" type="text" name="marka"  value="' . $autotipus[$i]['Márka'] . '" required>
@@ -56,10 +59,12 @@ function printAutotipusInDB(){
       <option value="">Válasszon kategoriat</option>';
       getKategoria($autotipus[$i]['kategoria']);
       print '</select>';
-      print '<select class="smallerInput" name="környezetvédelmibesorolás" id="'.$autotipus[$i]['kornyezetvedelem'].'"  required>
+      
+      print '<select class="smallerInput" name="környezetvédelmibesorolás" id=""  required>
       <option value="">Válasszon környezetvédelmibesorolás</option>';
-      getKornyezetVedelem($autotipus[$i]['kornyezetvedelem']);
+      getKornyezetVedelem($autotipus[$i]['KörnyezetvédelmiBesolas']);
       print '</select>';
+      
         //bezar
     print '</div>';
     print '</form>';
@@ -120,9 +125,9 @@ function getKornyezetVedelem($kornyezetvedelemInput =null)
     } else {
         print '<option value="' . $key . '" selected>' . $value . '</option>';
     }
-
+    
 }
-};
+ };
 function initAutotipusbekuldes()
 {
   if (isset($_POST["Autotipusbekuldes"])) {
