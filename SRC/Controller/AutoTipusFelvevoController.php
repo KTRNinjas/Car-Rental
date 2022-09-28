@@ -40,7 +40,6 @@ function printAutotipusInDB(){
     
       if ($i == 0) {
         makeHeader();
-
     }
 
     print '<input type="text" id=carID' . $autotipus[$i]['id'] . ' name="carID" size="0" value="' . $autotipus[$i]['id'] . '" hidden>';
@@ -60,7 +59,7 @@ function printAutotipusInDB(){
       getKategoria($autotipus[$i]['kategoria']);
       print '</select>';
       
-      print '<select class="smallerInput" name="környezetvédelmibesorolás" id=""  required>
+      print '<select class="smallerInput" name="kornyezetvedelem" id=""  required>
       <option value="">Válasszon környezetvédelmibesorolás</option>';
       getKornyezetVedelem($autotipus[$i]['KörnyezetvédelmiBesolas']);
       print '</select>';
@@ -71,26 +70,22 @@ function printAutotipusInDB(){
     print '<div class="grid-item"><input type="submit" name="updateAutotipus" value="Mentés"></div>';
   }
 }
-
+//update
 function updateAutotipusController(){
   if (isset($_POST['updateAutotipus'])) {
-    $marka = $_POST['Márka'];
-    $tipus = $_POST['Tipus'];
+    $marka = $_POST['marka'];
+    $tipus = $_POST['tipus'];
     $premium=$_POST['prémium'];
     $fajta_ID = $_POST['fajta'];
     $kategoria_ID = $_POST['kategoria'];
     $környezetvédelmibesorolás_ID = $_POST['kornyezetvedelem'];
+    print "$marka $tipus $premium $fajta_ID $kategoria_ID $környezetvédelmibesorolás_ID";
     updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID);
     header('Location: /autotipusfelvevo', true, 303);
     exit;
   }
    
 }
-
-
-
-
-//autotipus felvétele
 $autotipusadatatvevo = "";
 
 function getFajta($fajtaInput =null)
