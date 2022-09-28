@@ -47,18 +47,18 @@ function printAutotipusInDB(){
         print '<input class="smallerInput" type="text" name="tipus"  value="' . $autotipus[$i]['Tipus'] . '" required>';
         print '<input class="smallerInput" type="text" name="prémium"  value="' . $autotipus[$i]['Prémium'] . '" required>';
 
-        print '<select class="smallerInput" name="fajta" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+        print '<select class="smallerInput" name="fajta" id=""  required>
       <option value="">Válasszon Fajtát</option>';
       getFajta($autotipus[$i]['fajta']);
       print '</select>';
 
-      print '<select class="smallerInput" name="kategoria" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      print '<select class="smallerInput" name="kategoria" id=""  required>
       <option value="">Válasszon kategoriat</option>';
       getKategoria($autotipus[$i]['kategoria']);
       print '</select>';
-      print '<select class="smallerInput" name="környezetvédelmibesorolás" id="" onchange="if(this.value==' . $hyphen . 'autotipusfelvevo' . $hyphen . '){location=this.value}" required>
+      print '<select class="smallerInput" name="környezetvédelmibesorolás" id="'.$autotipus[$i]['kornyezetvedelem'].'"  required>
       <option value="">Válasszon környezetvédelmibesorolás</option>';
-      getKornyezetVedelem($autotipus[$i]['környezetvédelmibesorolás']);
+      getKornyezetVedelem($autotipus[$i]['kornyezetvedelem']);
       print '</select>';
         //bezar
     print '</div>';
@@ -74,7 +74,7 @@ function updateAutotipusController(){
     $premium=$_POST['prémium'];
     $fajta_ID = $_POST['fajta'];
     $kategoria_ID = $_POST['kategoria'];
-    $környezetvédelmibesorolás_ID = $_POST['környezetvédelmibesorolás'];
+    $környezetvédelmibesorolás_ID = $_POST['kornyezetvedelem'];
     updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID);
     header('Location: /autotipusfelvevo', true, 303);
     exit;
@@ -85,44 +85,43 @@ function updateAutotipusController(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //autotipus felvétele
 $autotipusadatatvevo = "";
-function kiiro($legordulo)
-{
-  foreach ($legordulo as $key => $value) {
-    print '<option value="' . $key . '" >' . $value . '</option>';
-  };
-}
-function getFajta()
+
+function getFajta($fajtaInput =null)
 {
   $fajta = FajtaFeltoltoService();
-  kiiro($fajta);
+  foreach ($fajta as $key => $value) {
+    if ($value != $fajtaInput) {
+        print '<option value="' . $key . '">' . $value . '</option>';
+    } else {
+        print '<option value="' . $key . '" selected>' . $value . '</option>';
+    }
+
+}
 };
-function getKategoria()
+function getKategoria($kategoriaInput = null)
 {
   $kategoria = KategoriaFeltoltoService();
-  kiiro($kategoria);
-};
-function getKornyezetVedelem()
+  foreach ($kategoria as $key => $value) {
+    if ($value != $kategoriaInput) {
+        print '<option value="' . $key . '">' . $value . '</option>';
+    } else {
+        print '<option value="' . $key . '" selected>' . $value . '</option>';
+    }
+
+}};
+function getKornyezetVedelem($kornyezetvedelemInput =null)
 {
   $kornyezetvedelem = KornyezetVedelemFeltoltoService();
-  kiiro($kornyezetvedelem);
+  foreach ($kornyezetvedelem as $key => $value) {
+    if ($value != $kornyezetvedelemInput) {
+        print '<option value="' . $key . '">' . $value . '</option>';
+    } else {
+        print '<option value="' . $key . '" selected>' . $value . '</option>';
+    }
+
+}
 };
 function initAutotipusbekuldes()
 {
