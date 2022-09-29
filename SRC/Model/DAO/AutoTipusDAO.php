@@ -38,18 +38,10 @@ $fajta_ID,$kategoria_ID,$kornyezetvedelem_ID
     
     $kapcsolat = $GLOBALS['kapcsolat'];
     if ($kivezetve != '') {
-        $sql = "UPDATE `autokolcsonzo`.`autotipus` 
-                SET `Márka` = '$marka',
-                 `Tipus` = '$tipus',
-                  `Prémium` = '$premium',
-                   `Fajta_ID` = '$fajta_ID',
-                    `Kategoria_ID` = '$kategoria_ID',
-                        `Környezetvédelmi_ID` = '$kornyezetvedelem_ID' 
-                WHERE `autotipus`.`ID` = `$autotipus_ID` ";
-    print $sql;    
+        $sql = "UPDATE `autokolcsonzo`.`autotipus` SET `Márka` = '$marka',`Tipus` = '$tipus',`Prémium` = '$premium',`Fajta_ID` = '$fajta_ID',`Kategoria_ID` = '$kategoria_ID',`Környezetvédelmi_ID` = '$kornyezetvedelem_ID' WHERE `autotipus`.`ID` = '$autotipus_ID' ";    
 } else {
-        $sql = "UPDATE `autokolcsonzo`.`autotipus` SET `Márka` = '$marka', `Tipus` = '$tipus', `Prémium` = '$premium', `Fajta_ID` = '$fajta_ID', `Kategoria_ID` = '$kategoria_ID', `Környezetvédelmi_ID` = '$kornyezetvedelem_ID' WHERE `autotipus`.`ID` = '$autotipus_ID' ";
-        print $sql;
+        $sql = "UPDATE `autokolcsonzo`.`autotipus` SET `Márka` = '$marka',`Tipus` = '$tipus',`Prémium` = '$premium',`Fajta_ID` = '$fajta_ID',`Kategoria_ID` = '$kategoria_ID',`Környezetvédelmi_ID` = '$kornyezetvedelem_ID' WHERE `autotipus`.`ID` = '$autotipus_ID' ";
+       
     }
     $ok = mysqli_query($kapcsolat, $sql);
     return $ok;

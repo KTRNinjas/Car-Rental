@@ -80,10 +80,9 @@ function updateAutotipusController(){
     $kategoria_ID = $_POST['kategoria'];
     $kornyezetvedelem_ID = $_POST['kornyezetvedelem'];
     $autotipus_ID=$_POST["AutotipusID"];
-
     updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
-    // header('Location: /autotipusfelvevo', true, 303);
-    // exit;
+    header('Location: /autotipusfelvevo', true, 303);
+    exit;
   }
    
 }

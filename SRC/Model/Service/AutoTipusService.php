@@ -28,6 +28,5 @@ function AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $korn
     return AutoTipusTarolo($marka, $tipus, $fajta, $kategoria, $premium, $kornyezetvedelem);
 }
 function updateAutotipusService($marka,$tipus,$premium,$_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID){
-    //print "$marka $tipus $premium $fajta_ID $kategoria_ID $környezetv $kornyezetvedelem_ID $autotipus_ID";
     updateAutotipusDAO($marka,$tipus,$premium,$_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
 }
