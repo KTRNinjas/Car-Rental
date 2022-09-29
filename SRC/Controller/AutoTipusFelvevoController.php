@@ -42,7 +42,7 @@ function printAutotipusInDB(){
         makeHeader();
     }
 
-    print '<input type="text" id=carID' . $autotipus[$i]['id'] . ' name="carID" size="0" value="' . $autotipus[$i]['id'] . '" hidden>';
+    print '<input type="text" id=AutotipusID' . $autotipus[$i]['ID'] . ' name="AutotipusID" size="0" value="' . $autotipus[$i]['ID'] . '" hidden>';
     print '<div class="grid-item">';
         print '<input class="smallerInput" type="text" name="marka"  value="' . $autotipus[$i]['Márka'] . '" required>
         ';
@@ -79,8 +79,9 @@ function updateAutotipusController(){
     $fajta_ID = $_POST['fajta'];
     $kategoria_ID = $_POST['kategoria'];
     $kornyezetvedelem_ID = $_POST['kornyezetvedelem'];
-    // print "$marka $tipus $premium $fajta_ID $kategoria_ID $környezetv $kornyezetvedelem_ID";
-    updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID);
+    $autotipus_ID=$_POST["AutotipusID"];
+
+    updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
     // header('Location: /autotipusfelvevo', true, 303);
     // exit;
   }

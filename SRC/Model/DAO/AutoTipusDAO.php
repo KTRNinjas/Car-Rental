@@ -1,4 +1,4 @@
-<?php
+s<?php
 $path = dirname(__DIR__, 2);
 require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . "Dbconn.php");
 //-----
@@ -29,12 +29,27 @@ function getAllAutotipus()
 
 
 
-function updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID){
+function updateAutotipusDAO($marka,$tipus,$premium,
+$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID
+,$autotipus_ID){
+
+
+    //print "$marka $tipus $premium $fajta_ID $kategoria_ID $környezetv $kornyezetvedelem_ID $autotipus_ID";
+    
     $kapcsolat = $GLOBALS['kapcsolat'];
     if ($kivezetve != '') {
-        $sql = "UPDATE `autokolcsonzo`.`autotipus` SET `Márka` = '$marka', `Tipus` = '$tipus', `Prémium` = '$premium', `Fajta_ID` = '$fajta_ID', `Kategoria_ID` = '$kategoria_ID', `Környezetvédelmi_ID` = '$kornyezetvedelem_ID'";
-    } else {
-        $sql = "UPDATE `autokolcsonzo`.`autotipus` SET `Márka` = '$marka', `Tipus` = '$tipus', `Prémium` = '$premium', `Fajta_ID` = '$fajta_ID', `Kategoria_ID` = '$kategoria_ID', `Környezetvédelmi_ID` = '$kornyezetvedelem_ID'";
+        $sql = "UPDATE `autokolcsonzo`.`autotipus` 
+                SET `Márka` = '$marka',
+                 `Tipus` = '$tipus',
+                  `Prémium` = '$premium',
+                   `Fajta_ID` = '$fajta_ID',
+                    `Kategoria_ID` = '$kategoria_ID',
+                        `Környezetvédelmi_ID` = '$kornyezetvedelem_ID' 
+                WHERE `autotipus`.`ID` = `$autotipus_ID` ";
+    print $sql;    
+} else {
+        $sql = "UPDATE `autokolcsonzo`.`autotipus` SET `Márka` = '$marka', `Tipus` = '$tipus', `Prémium` = '$premium', `Fajta_ID` = '$fajta_ID', `Kategoria_ID` = '$kategoria_ID', `Környezetvédelmi_ID` = '$kornyezetvedelem_ID' WHERE `autotipus`.`ID` = '$autotipus_ID' ";
+        print $sql;
     }
     $ok = mysqli_query($kapcsolat, $sql);
     return $ok;
