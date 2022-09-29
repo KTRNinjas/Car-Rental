@@ -27,67 +27,93 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         $sql = "DROP TABLE `autokolcsonzo`.`autotipus`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
-        $result = creatAutotipusTable($kapcsolat);
+        $result = creatAutotipusManiTable($kapcsolat);
         //then
         $this->assertEquals("Az autotipus tábla létrehozása sikeres volt!", $result);
     }
 
     //<-kesz
-    public function test_if_valtotipus_table_created()
+    public function test_if_fajta_table_created()
     {
         //given
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`valtotipus`";
+        $sql = "DROP TABLE `autokolcsonzo`.`fajta`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
-        $result = create_valtotipus($kapcsolat);
+        $result = creatFajtaTable($kapcsolat);
         //then
-        $this->assertEquals("A váltótípus tábla létrehozásaSikeres volt!", $result);
+        $this->assertEquals("Az Fajta tábla letrehozasa sikeres volt!", $result);
     }
-    public function test_if_hajtaslanc_table_created()
+    //<-kesz
+
+    public function test_if_kategoria_table_created()
     {
         //given
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`hajtaslanc`";
+        $sql = "DROP TABLE `autokolcsonzo`.`kategoria`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
-        $result = create_hajtaslanc($kapcsolat);
+        $result = creatKategoriaTable($kapcsolat);
         //then
-        $this->assertEquals("A hajtáslánc tábla létrehozásaSikeres volt!", $result);
+        $this->assertEquals("Az Kategoria tabla letrehozasa sikeres volt!", $result);
     }
-    public function test_if_valtotipus_table_filled_with_elements()
+    //<-kesz
+    public function test_if_Kornyeyetvedelem_table_created()
     {
         //given
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DELETE FROM `autokolcsonzo`.`valtotipus`";
+        $sql = "DROP TABLE `autokolcsonzo`.`környezetvédelmibesorolás`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
-        fill_valtotipus($kapcsolat);
-        $sql = "SELECT * FROM `autokolcsonzo`.`valtotipus`";
-        $valtotipus_collector = [];
+        $result = creatKornyezetvedelemTable($kapcsolat);
+        //then
+        $this->assertEquals("Az Környezetvédelmi besorolás tábla létrehozása sikeres volt!", $result);
+    }
+    //<-kesz
+    public function test_if_fajta_table_filled_with_elements()
+    {
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "DELETE FROM `autokolcsonzo`.`fajta`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        //when
+        AdatfelvetelAutoFajta($kapcsolat);
+        $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
+        $fajta_collector = [];
         $result = mysqli_query($kapcsolat, $sql);
         while ($egysor = mysqli_fetch_array($result)) {
-            $valtotipus = [];
-            $valtotipus["id"] = $egysor["id"];
-            $valtotipus["Valtotipus"] = $egysor["Valtotipus"];
-            array_push($valtotipus_collector, $valtotipus);
+            $fajta = [];
+            $fajta["ID"] = $egysor["ID"];
+            $fajta["Fajta_neve"] = $egysor["Fajta_neve"];
+            array_push($fajta_collector, $fajta);
         }
         //then
-        $this->assertEquals(2, count($valtotipus_collector));
-        $this->assertEquals(1, $valtotipus_collector[0]["id"]);
-        $this->assertEquals("Kézi", $valtotipus_collector[0]["Valtotipus"]);
-        $this->assertEquals(2, $valtotipus_collector[1]["id"]);
-        $this->assertEquals("Automata", $valtotipus_collector[1]["Valtotipus"]);
-    }
+        $this->assertEquals(6, count($fajta_collector));
+        $this->assertEquals(1, $fajta_collector[0]["ID"]);
+        $this->assertEquals("Combi", $fajta_collector[0]["Fajta_neve"]);
+        $this->assertEquals(2, $fajta_collector[1]["ID"]);
+        $this->assertEquals("Terepjáró", $fajta_collector[1]["Fajta_neve"]);
+        $this->assertEquals(3, $fajta_collector[2]["ID"]);
+        $this->assertEquals("Sedan", $fajta_collector[1]["Fajta_neve"]);
+        $this->assertEquals(4, $fajta_collector[3]["ID"]);
+        $this->assertEquals("PickUp", $fajta_collector[1]["Fajta_neve"]);
+        $this->assertEquals(5, $fajta_collector[4]["ID"]);
+        $this->assertEquals("SUV", $fajta_collector[1]["Fajta_neve"]);
+        $this->assertEquals(6, $fajta_collector[5]["ID"]);
+        $this->assertEquals("4X4", $fajta_collector[1]["Fajta_neve"]);
+    }//<-kesz
     public function test_if_hajtaslanc_table_filled_with_elements()
     {
         //given
