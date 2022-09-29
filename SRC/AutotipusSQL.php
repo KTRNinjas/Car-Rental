@@ -1,18 +1,34 @@
 <?php 
 function creatAutotipusTable($kapcsolat){
+    creatAutotipusManiTable($kapcsolat);
+    creatFajtaTable($kapcsolat);
+    creatKategoriaTable($kapcsolat);
+    creatKornyezetvedelemTable($kapcsolat);
+}
+
+//táblák felosztasa
+function creatAutotipusManiTable($kapcsolat){
     $sql = "CREATE TABLE `autokolcsonzo`.`autotipus` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Márka` VARCHAR(50) NOT NULL ,`Tipus` VARCHAR(50) NOT NULL ,`Fajta_ID` INT UNSIGNED NOT NULL , `Kategoria_ID` INT UNSIGNED NOT NULL , `Prémium` BOOLEAN NOT NULL , `Környezetvédelmi_ID` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
     $üzenet = "Az autotipus tábla létrehozása";
     Query($kapcsolat, $üzenet, $sql);
+}
+function creatFajtaTable($kapcsolat){
     $sql="CREATE TABLE `autokolcsonzo`.`fajta` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Fajta_neve` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
     $üzenet = "Az Fajta tábla letrehozasa";
     Query($kapcsolat, $üzenet, $sql);
+}
+function creatKategoriaTable($kapcsolat){
     $sql = "CREATE TABLE `autokolcsonzo`.`kategoria` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `Kategoria` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
     $üzenet = "Az Kategoria tabla letrehozasa";
     Query($kapcsolat, $üzenet, $sql);
+}
+function creatKornyezetvedelemTable($kapcsolat){
     $sql="CREATE TABLE `autokolcsonzo`.`környezetvédelmibesorolás` (`ID` INT UNSIGNED NOT NULL AUTO_INCREMENT , `KörnyezetvédelmiBesorolás` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB";
     $üzenet = "Az Környezetvédelmi besorolás tábla létrehozása";
     Query($kapcsolat, $üzenet, $sql);
+
 }
+
 function AdatfelvetelAutoFajta($kapcsolat){
     $sql ="INSERT INTO `autokolcsonzo`.`fajta` (`ID`, `Fajta_neve`) VALUES (NULL, 'Combi')";
     $üzenet = "a fajtába felvettünk egy elemet";
