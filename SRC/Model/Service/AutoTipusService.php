@@ -30,3 +30,6 @@ function AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $korn
 function updateAutotipusService($marka,$tipus,$premium,$_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID){
     updateAutotipusDAO($marka,$tipus,$premium,$_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
 }
+function deleteAutotipusService($autotipus_ID){
+    deleteAutotipusDAO($autotipus_ID);
+}

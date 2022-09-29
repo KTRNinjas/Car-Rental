@@ -11,6 +11,7 @@
     updateAutotipusController();
     initCarController();
     printAutotipusInDB();
+    deleteAutotipusController();
 ?>
 </head>
 

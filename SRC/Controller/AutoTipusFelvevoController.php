@@ -68,6 +68,8 @@ function printAutotipusInDB(){
     print '</div>';
     print '</form>';
     print '<div class="grid-item"><input type="submit" name="updateAutotipus" value="Mentés"></div>';
+    print '<div class="grid-item"><input type="submit" name="deleteAutotipus" value="Törlés"></div>';
+    
   }
 }
 //update
@@ -86,6 +88,17 @@ function updateAutotipusController(){
   }
    
 }
+//delete
+function deleteAutotipusController()
+{
+    if (isset($_POST['deleteAutotipus'])) {
+        $autotipus_ID = $_POST['AutotipusID'];
+        deleteAutotipusService($autotipus_ID);
+        header('Location: /Autofelvetel', true, 303);
+        exit;
+    }
+}
+
 $autotipusadatatvevo = "";
 
 function getFajta($fajtaInput =null)
