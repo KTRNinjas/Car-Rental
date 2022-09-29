@@ -25,6 +25,10 @@ function getAllAutotipus()
     }
     return $autotipusok;
 }
+
+
+
+
 function updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID){
     $kapcsolat = $GLOBALS['kapcsolat'];
     if ($kivezetve != '') {

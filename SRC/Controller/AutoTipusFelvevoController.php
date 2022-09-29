@@ -78,11 +78,11 @@ function updateAutotipusController(){
     $premium=$_POST['prémium'];
     $fajta_ID = $_POST['fajta'];
     $kategoria_ID = $_POST['kategoria'];
-    $környezetvédelmibesorolás_ID = $_POST['kornyezetvedelem'];
-    print "$marka $tipus $premium $fajta_ID $kategoria_ID $környezetvédelmibesorolás_ID";
+    $kornyezetvedelem_ID = $_POST['kornyezetvedelem'];
+    // print "$marka $tipus $premium $fajta_ID $kategoria_ID $környezetv $kornyezetvedelem_ID";
     updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID);
-    header('Location: /autotipusfelvevo', true, 303);
-    exit;
+    // header('Location: /autotipusfelvevo', true, 303);
+    // exit;
   }
    
 }
