@@ -176,7 +176,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         //Then
         $this->assertTrue($result);
     }
-    public function test_if_updateCarDao_updates_testcar()
+    public function test_if_updateAutotipusDAO_updates_testAutotupis()
     {
         //Given
         $path = dirname(__DIR__, 2);
@@ -187,28 +187,23 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
 
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
-        $rendszam='test-002';
-        $alvazszam='123124';
-        $hajtaslanc_id=2;
-        $valtotipus_id=2;
-        $evjarat="2021";
-        $teljesitmeny=900;
-        $biztositas=200;
-        $kilometer=200;
-        $forgalmi='2022-09-11';
-        $autotipus_id=2;
-        $kivezetve=null;
-        $sql="SELECT id FROM `autokolcsonzo`.`cars` WHERE `Rendszám`='test-001'";
+        $Marka='test MarkaUpdate';
+        $Tipus='teszt tipus Update';
+        $Fajta=3;
+        $Kategoria=3;
+        $Premium=0;
+        $KornyezetvedelmiBesorolas=5;
+        $sql="SELECT ID FROM `autokolcsonzo`.`autotipus` WHERE `Márka`='test Marka'";
         $result=mysqli_query($kapcsolat,$sql);
         $egysor=mysqli_fetch_assoc($result);
-        $carID=$egysor["id"];
+        $AutotipusID=$egysor["ID"];
         //When
-        $result=updateCarDAO($rendszam, $alvazszam, $autotipus_id, $hajtaslanc_id, $valtotipus_id, $evjarat, $teljesitmeny, $biztositas, $kilometer, $forgalmi, $kivezetve, $carID);
+        $result=updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
         //Then
         $this->assertTrue($result);
         //When
-        $kivezetve='2022-09-28';
-        $result=updateCarDAO($rendszam, $alvazszam, $autotipus_id, $hajtaslanc_id, $valtotipus_id, $evjarat, $teljesitmeny, $biztositas, $kilometer, $forgalmi, $kivezetve, $carID);
+        $KornyezetvedelmiBesorolas=2;
+        $result=updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
         $this->assertTrue($result);
     }
     public function test_if_deleteCarDao_deletes_testcar()
