@@ -165,18 +165,14 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
 
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
-        $rendszam='test-001';
-        $alvazszam='123123';
-        $hajtaslanc_id=1;
-        $valtotipus_id=1;
-        $evjarat="2020";
-        $teljesitmeny=800;
-        $biztositasi_dij=100;
-        $kilometer=100;
-        $forgalmi='2021-09-11';
-        $autotipus_id=1;
+        $Marka='test Marka';
+        $Tipus='teszt tipus';
+        $Fajta=1;
+        $Kategoria=2;
+        $Premium=1;
+        $KornyezetvedelmiBesorolas=1;
         //When
-        $result=insertCarDAO($rendszam, $alvazszam, $hajtaslanc_id, $valtotipus_id, $evjarat, $teljesitmeny, $biztositasi_dij, $kilometer, $forgalmi, $autotipus_id);
+        $result=insertCarDAO($Marka,$Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas);
         //Then
         $this->assertTrue($result);
     }
