@@ -20,7 +20,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
     {
         //Given
         $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
@@ -87,11 +87,11 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
 
     }
 
-    public function test_if_getAllHajtaslancDao_gets_All_Hajtaslanc()
+    public function test_if_FajtaFeltoltoDAO_gets_All_Fajta()
     {
         //Given
         $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
@@ -99,19 +99,22 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
         //When
-        $result=getAllHajtaslancDAO();
+        $result=FajtaFeltoltoDAO();
         //Then
-        $this->assertEquals(3,count($result));
+        $this->assertEquals(6,count($result));
         
-        $this->assertEquals('Benzines',$result[1]);
-        $this->assertEquals('Diesel',$result[2]);
-        $this->assertEquals('Elektromos',$result[3]);
+        $this->assertEquals('Combi',$result[1]);
+        $this->assertEquals('Terepjáró',$result[2]);
+        $this->assertEquals('Sedan',$result[3]);
+        $this->assertEquals('PickUp',$result[4]);
+        $this->assertEquals('SUV',$result[5]);
+        $this->assertEquals('4X4',$result[6]);
     }
-    public function test_if_getAllValtotipusDao_gets_All_Valtotipus()
+    public function test_if_KategoriaFeltoltoDAO_gets_All_kategoria()
     {
         //Given
         $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
@@ -119,18 +122,43 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
         //When
-        $result=getAllValtotipusDAO();
+        $result=KategoriaFeltoltoDAO();
         //Then
-        $this->assertEquals(2,count($result));
+        $this->assertEquals(4,count($result));
         
-        $this->assertEquals('Kézi',$result[1]);
-        $this->assertEquals('Automata',$result[2]);
+        $this->assertEquals('Kis személy',$result[1]);
+        $this->assertEquals('Személy autó',$result[2]);
+        $this->assertEquals('Kis teher',$result[3]);
+        $this->assertEquals('Elektromos',$result[4]);
+    }
+    public function test_if_KornyezetVedelemFeltoltoDAO_gets_All_Kornyezetvedelem()
+    {
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        //When
+        $result=KornyezetVedelemFeltoltoDAO();
+        //Then
+        $this->assertEquals(4,count($result));
+        
+        $this->assertEquals('E1',$result[1]);
+        $this->assertEquals('E2',$result[2]);
+        $this->assertEquals('E3',$result[3]);
+        $this->assertEquals('E4',$result[4]);
+        $this->assertEquals('E5',$result[5]);
+        $this->assertEquals('E6',$result[6]);
     }
     public function test_if_insertCarDao_inserts_testcar()
     {
         //Given
         $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
@@ -156,7 +184,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
     {
         //Given
         $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
@@ -191,7 +219,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
     {
         //Given
         $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
