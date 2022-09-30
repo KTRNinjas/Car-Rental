@@ -84,15 +84,25 @@ function AdatfelvetelAutoKategoria($kapcsolat){
      Query($kapcsolat, $üzenet, $sql);  
  }
 function AutotipusTablamegvaltoztatasa($kapcsolat){
+    KornyezetvedelmiBesorolasMegvaltoztatas($kapcsolat);
+    KategoriaTablaMegvaltoztatasa($kapcsolat);
+    AutoFajtaTablaMegvaltoztatas($kapcsolat);
+}
+function KornyezetvedelmiBesorolasMegvaltoztatas($kapcsolat){
     $sql="ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Környezetvédelmi_ID`) REFERENCES `környezetvédelmibesorolás`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
     $üzenet= "Az autotipus tábla környezetvédelemmel kaszádolva ";
-    Query($kapcsolat,$üzenet,$sql);
+    Query($kapcsolat,$üzenet,$sql);    
+}
+function KategoriaTablaMegvaltoztatasa($kapcsolat){
     $sql="ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Kategoria_ID`) REFERENCES `kategoria`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
     $üzenet= "az autotipus tábla Kategóriával kaszkádolva ";
     Query($kapcsolat,$üzenet,$sql);
+}
+function AutoFajtaTablaMegvaltoztatas($kapcsolat){
     $sql="ALTER TABLE `autokolcsonzo`.`autotipus` ADD FOREIGN KEY (`Fajta_ID`) REFERENCES `fajta`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE";
     $üzenet= "az autotipus tábla Fajtával kaszkádolva ";
     Query($kapcsolat,$üzenet,$sql);
+
 }
 function fillAutotipus($kapcsolat)
 {

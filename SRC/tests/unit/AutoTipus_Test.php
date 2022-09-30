@@ -180,50 +180,8 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         $this->assertEquals(6, $kornyezetvedelmibesorolas_collector[5]["ID"]);
         $this->assertEquals("E6", $kornyezetvedelmibesorolas_collector[5]["KörnyezetvédelmiBesorolás"]);
     }//<-kesz
-    public function test_if_Autotipus_table_filled_with_elements()
-    {
-        //given
-        $host = "127.0.0.1";
-        $user = "root";
-        $password = "";
-        $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        fill_testAutoTipus($kapcsolat);
-        $sql = "SELECT * FROM `autokolcsonzo`.`autotipus`";
-        $autotipus_collector = [];
-        $result = mysqli_query($kapcsolat, $sql);
-        while ($egysor = mysqli_fetch_array($result)) {
-            array_push($autotipus_collector, $egysor);
-        }
-        //then
-        $this->assertEquals(3, count($autotipus_collector));
-        $this->assertEquals(7, $autotipus_collector[0]["ID"]);
-        $this->assertEquals('AudiTeszt', $autotipus_collector[0]["Márka"]);
-        $this->assertEquals('S8Teszt', $autotipus_collector[0]["Tipus"]);
-        $this->assertEquals(3, $autotipus_collector[0]["Fajta_ID"]);
-        $this->assertEquals(2, $autotipus_collector[0]["Kategoria_ID"]);
-        $this->assertEquals(1, $autotipus_collector[0]["Prémium"]);
-        $this->assertEquals(1, $autotipus_collector[0]["Környezetvédelmi_ID"]);
-
-        $this->assertEquals(8, $autotipus_collector[1]["ID"]);
-        $this->assertEquals('VolkswagenTeszt', $autotipus_collector[1]["Márka"]);
-        $this->assertEquals('PassatTeszt', $autotipus_collector[1]["Tipus"]);
-        $this->assertEquals(1, $autotipus_collector[1]["Fajta_ID"]);
-        $this->assertEquals(2, $autotipus_collector[1]["Kategoria_ID"]);
-        $this->assertEquals(0, $autotipus_collector[1]["Prémium"]);
-        $this->assertEquals(2, $autotipus_collector[1]["Környezetvédelmi_ID"]);
-
-        $this->assertEquals(9, $autotipus_collector[2]["ID"]);
-        $this->assertEquals('JeepTeszt', $autotipus_collector[2]["Márka"]);
-        $this->assertEquals('WranglerTeszt', $autotipus_collector[2]["Tipus"]);
-        $this->assertEquals(2, $autotipus_collector[2]["Fajta_ID"]);
-        $this->assertEquals(2, $autotipus_collector[2]["Kategoria_ID"]);
-        $this->assertEquals(0, $autotipus_collector[2]["Prémium"]);
-        $this->assertEquals(5, $autotipus_collector[2]["Környezetvédelmi_ID"]);
-    }//<-kesz
-    public function test_if_Cascadolas_table_altered()
+    
+    public function test_if_Fajta_table_altered()
     {
         //given
         $host = "127.0.0.1";
@@ -235,12 +193,12 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         $sql = "DELETE FROM `autokolcsonzo`.`fajta`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $result = AutotipusTablamegvaltoztatasa($kapcsolat);
+        $result = AutoFajtaTablaMegvaltoztatas($kapcsolat);
         //then
-        $this->assertEquals("Az autotipus tábla környezetvédelemmel kaszádolva sikeres volt!", $result);
-        $this->assertEquals("az autotipus tábla Kategóriával kaszkádolva sikeres volt!", $result);
         $this->assertEquals("az autotipus tábla Fajtával kaszkádolva sikeres volt!", $result);
     }//? lehet hibás
+
+    
     public function test_if_Cars_table_cascaded_for_autotipus()
     {
         //given
