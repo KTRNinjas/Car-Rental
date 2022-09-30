@@ -154,7 +154,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         $this->assertEquals('E5',$result[5]);
         $this->assertEquals('E6',$result[6]);
     }
-    public function test_if_insertCarDao_inserts_testcar()
+    public function test_if_AutoTipusTarolo_inserts_testautotipus()
     {
         //Given
         $path = dirname(__DIR__, 2);
@@ -172,7 +172,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         $Premium=1;
         $KornyezetvedelmiBesorolas=1;
         //When
-        $result=insertCarDAO($Marka,$Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas);
+        $result=AutoTipusTarolo($Marka,$Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas);
         //Then
         $this->assertTrue($result);
     }
@@ -206,7 +206,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         $result=updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
         $this->assertTrue($result);
     }
-    public function test_if_deleteCarDao_deletes_testcar()
+    public function test_if_deleteAutotipusDAO_deletes_testAutotipus()
     {
         //Given
         $path = dirname(__DIR__, 2);
@@ -217,12 +217,12 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
 
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
-        $sql="SELECT id FROM `autokolcsonzo`.`cars` WHERE `Rendszám`='test-002'";
+        $sql="SELECT id FROM `autokolcsonzo`.`autotipus` WHERE `Márka`='test MarkaUpdate'";
         $result=mysqli_query($kapcsolat,$sql);
         $egysor=mysqli_fetch_assoc($result);
-        $carID=$egysor["id"];
+        $AutitipusID=$egysor["id"];
         //When
-        $result=deleteCarDAO($carID);
+        $result=deleteAutotipusDAO($AutitipusID);
         //Then
         $this->assertTrue($result);
     }
