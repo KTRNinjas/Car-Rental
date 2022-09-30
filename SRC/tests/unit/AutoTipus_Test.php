@@ -196,34 +196,47 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         $result = AutoFajtaTablaMegvaltoztatas($kapcsolat);
         //then
         $this->assertEquals("az autotipus tábla Fajtával kaszkádolva sikeres volt!", $result);
+        //after
+        AdatfelvetelAutoFajta($kapcsolat);
+        fill_testAutoTipus($kapcsolat);
     }//? lehet hibás
-
-    
-    public function test_if_Cars_table_cascaded_for_autotipus()
+    public function test_if_Kategoria_table_altered()
     {
         //given
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "INSERT INTO `autokolcsonzo`.`autotipus` (`ID`, `Márka`, `Tipus`, `Fajta_ID`, `Kategoria_ID`, `Prémium`, `Környezetvédelmi_ID`) VALUES (NULL, 'test', 'test', '3', '2', '1', '1') ";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "SELECT `ID` FROM `autokolcsonzo`.`autotipus` WHERE `Márka`='test' AND `Tipus`='test'";
-        $result = mysqli_query($kapcsolat, $sql);
-        $egysor = mysqli_fetch_assoc($result);
-        $id = $egysor["ID"];
-        $sql = "INSERT INTO `autokolcsonzo`.`cars` (`id`, `Rendszám`, `Alvázszám`, `hajtaslanc_id`, `valtotipus_id`, `Evjarat`, `Teljesitmeny`, `Biztositasi_dij`, `km`, `Forgalmi_megujitasanak_ideje`, `Autotipus_id`, `Kivezetve`) VALUES (NULL, 'test', '123123123123', '1', '1', '2008', '8', '100000', '50000', '2022-07-31', '$id', NULL)";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
-        $sql = "DELETE FROM `autokolcsonzo`.`autotipus` WHERE `autotipus`.`Márka`='test' AND `autotipus`.`Tipus`='test'";
+        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "SELECT * FROM `autokolcsonzo`.`cars` WHERE `Rendszám`='test'";
-        $result = mysqli_query($kapcsolat, $sql);
-        $cars = [];
-        while ($egysor = mysqli_fetch_array($result)) {
-            array_push($cars, $egysor);
-        }
+        $sql = "DELETE FROM `autokolcsonzo`.`kategoria`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $result = KategoriaTablaMegvaltoztatasa($kapcsolat);
         //then
-        $this->assertEquals(0, count($cars));
-    }
+        $this->assertEquals("az autotipus tábla Kategóriával kaszkádolva sikeres volt!", $result);
+        //after
+        AdatfelvetelAutoKategoria($kapcsolat);
+        fill_testAutoTipus($kapcsolat);
+    }//? lehet hibás
+    public function test_if_Kornyezetvedelmi_table_altered()
+    {
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        //when
+        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $sql = "DELETE FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        $result = KornyezetvedelmiBesorolasMegvaltoztatas($kapcsolat);
+        //then
+        $this->assertEquals("Az autotipus tábla környezetvédelemmel kaszádolva sikeres volt!", $result);
+        //after
+        KornyezetvedelmiBesorolas($kapcsolat);
+        fill_testAutoTipus($kapcsolat);
+    }//? lehet hibás
+
 }
