@@ -31,82 +31,62 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         $result=getAllAutotipus();
         //Then
         $this->assertEquals(6,count($result));
-        //Audi
+        //AudiTeszt
         $this->assertEquals(1,$result[0]["ID"]);
-        $this->assertEquals('AAA-001',$result[0]["Márka"]);
-        $this->assertEquals('123123123123',$result[0]["Tipus"]);
-        $this->assertEquals('Benzines',$result[0]["hajtaslanc"]);
-        $this->assertEquals('Kézi',$result[0]["valtotipus"]);
-        $this->assertEquals('2008',$result[0]["Evjarat"]);
-        $this->assertEquals(8,$result[0]["Teljesitmeny"]);
-        $this->assertEquals(100000,$result[0]["Biztositasi_dij"]);
-        $this->assertEquals(50000,$result[0]["km"]);
-        $this->assertEquals("2022-07-31",$result[0]["Forgalmi_megujitasanak_IDeje"]);
-        $this->assertEquals('AudiTeszt S8Teszt',$result[0]["marka"]);
-        $this->assertEquals(null,$result[0]["Kivezetve"]);
-        //Volkswagen
-        $this->assertEquals(2,$result[1]["ID"]);
-        $this->assertEquals('BBB-002',$result[1]["Márka"]);
-        $this->assertEquals('123123123123',$result[1]["Tipus"]);
-        $this->assertEquals('Diesel',$result[1]["Prémium"]);
-        $this->assertEquals('Automata',$result[1]["fajta"]);
-        $this->assertEquals('2009',$result[1]["Evjarat"]);
-        $this->assertEquals(9,$result[1]["Teljesitmeny"]);
-        $this->assertEquals(110000,$result[1]["Biztositasi_dij"]);
-        $this->assertEquals(60000,$result[1]["km"]);
-        $this->assertEquals("2022-08-31",$result[1]["Forgalmi_megujitasanak_IDeje"]);
-        $this->assertEquals('VolkswagenTeszt PassatTeszt',$result[1]["marka"]);
-        $this->assertEquals(null,$result[1]["Kivezetve"]);
-        //Jeep1
-        $this->assertEquals(3,$result[2]["ID"]);
-        $this->assertEquals('CCC-003',$result[2]["Márka"]);
-        $this->assertEquals('123123123123',$result[2]["Tipus"]);
-        $this->assertEquals('Elektromos',$result[2]["Prémium"]);
-        $this->assertEquals('Kézi',$result[2]["fajta"]);
-        $this->assertEquals('2010',$result[2]["Evjarat"]);
-        $this->assertEquals(10,$result[2]["Teljesitmeny"]);
-        $this->assertEquals(120000,$result[2]["Biztositasi_dij"]);
-        $this->assertEquals(70000,$result[2]["km"]);
-        $this->assertEquals("2022-09-28",$result[2]["Forgalmi_megujitasanak_IDeje"]);
-        $this->assertEquals('JeepTeszt WranglerTeszt',$result[2]["marka"]);
-        $this->assertEquals(null,$result[2]["Kivezetve"]);
-        //Jeep2
-        $this->assertEquals(5,$result[3]["ID"]);
-        $this->assertEquals('EEE-005',$result[3]["Márka"]);
-        $this->assertEquals('123123123123',$result[3]["Tipus"]);
-        $this->assertEquals('Diesel',$result[3]["Prémium"]);
-        $this->assertEquals('Automata',$result[3]["fajta"]);
-        $this->assertEquals('2012',$result[3]["Evjarat"]);
-        $this->assertEquals(12,$result[3]["Teljesitmeny"]);
-        $this->assertEquals(140000,$result[3]["Biztositasi_dij"]);
-        $this->assertEquals(90000,$result[3]["km"]);
-        $this->assertEquals("2022-11-28",$result[3]["Forgalmi_megujitasanak_IDeje"]);
-        $this->assertEquals('JeepTeszt WranglerTeszt',$result[3]["marka"]);
-        $this->assertEquals('2022-09-28',$result[3]["Kivezetve"]);
-    }
-    public function test_if_getAllAutotipusDao_gets_All_Autotipus()
-    {
-        //Given
-        $path = dirname(__DIR__, 2);
-        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "role_dao.php");
-        $host = "127.0.0.1";
-        $user = "root";
-        $password = "";
+        $this->assertEquals('AudiTeszt',$result[0]["Márka"]);
+        $this->assertEquals('S8Teszt',$result[0]["Tipus"]);
+        $this->assertEquals('1',$result[0]["Prémium"]);
+        $this->assertEquals('Sedan',$result[0]["fajta"]);
+        $this->assertEquals('Személy autó',$result[0]["kategoria"]);
+        $this->assertEquals("E1",$result[0]["KörnyezetvédelmiBesolas"]);
 
-        $kapcsolat = mysqli_connect($host, $user, $password);
-        $GLOBALS['kapcsolat'] = $kapcsolat;
-        //When
-        $result=getAllAutoTipusDAO();
-        //Then
-        $this->assertEquals(6,count($result));
+        //VolkswagenTeszt
+        $this->assertEquals(2,$result[1]["ID"]);
+        $this->assertEquals('VolkswagenTeszt',$result[1]["Márka"]);
+        $this->assertEquals('PassatTeszt',$result[1]["Tipus"]);
+        $this->assertEquals('0',$result[1]["Prémium"]);
+        $this->assertEquals('Combi',$result[1]["fajta"]);
+        $this->assertEquals('Személy autó',$result[1]["kategoria"]);
+        $this->assertEquals("E2",$result[1]["KörnyezetvédelmiBesolas"]);
+
+        //JeepTeszt
+        $this->assertEquals(3,$result[2]["ID"]);
+        $this->assertEquals('JeepTeszt',$result[2]["Márka"]);
+        $this->assertEquals('WranglerTeszt',$result[2]["Tipus"]);
+        $this->assertEquals('0',$result[2]["Prémium"]);
+        $this->assertEquals('Terepjáró',$result[2]["fajta"]);
+        $this->assertEquals('Személy autó',$result[2]["kategoria"]);
+        $this->assertEquals("E5",$result[2]["KörnyezetvédelmiBesolas"]);
+
+        //BMW
+        $this->assertEquals(4,$result[3]["ID"]);
+        $this->assertEquals('BMW',$result[3]["Márka"]);
+        $this->assertEquals('M3',$result[3]["Tipus"]);
+        $this->assertEquals('1',$result[3]["Prémium"]);
+        $this->assertEquals('Combi',$result[3]["fajta"]);
+        $this->assertEquals('Kis személy',$result[3]["kategoria"]);
+        $this->assertEquals("E6",$result[3]["KörnyezetvédelmiBesolas"]);
+
+        //Nissan
+        $this->assertEquals(5,$result[4]["ID"]);
+        $this->assertEquals('Nissan',$result[3]["Márka"]);
+        $this->assertEquals('Mikra',$result[3]["Tipus"]);
+        $this->assertEquals('1',$result[3]["Prémium"]);
+        $this->assertEquals('Combi',$result[3]["fajta"]);
+        $this->assertEquals('Kis személy',$result[3]["kategoria"]);
+        $this->assertEquals("E6",$result[3]["KörnyezetvédelmiBesolas"]);
         
-        $this->assertEquals('AudiTeszt S8Teszt',$result[1]);
-        $this->assertEquals('VolkswagenTeszt PassatTeszt',$result[2]);
-        $this->assertEquals('JeepTeszt WranglerTeszt',$result[3]);
-        $this->assertEquals('BMW M3',$result[4]);
-        $this->assertEquals('Nissan Mikra',$result[5]);
-        $this->assertEquals('Dacia Logan',$result[6]);
+        //Dacia
+        $this->assertEquals(6,$result[5]["ID"]);
+        $this->assertEquals('Dacia',$result[3]["Márka"]);
+        $this->assertEquals('Logan',$result[3]["Tipus"]);
+        $this->assertEquals('1',$result[3]["Prémium"]);
+        $this->assertEquals('Combi',$result[3]["fajta"]);
+        $this->assertEquals('Kis személy',$result[3]["kategoria"]);
+        $this->assertEquals("E6",$result[3]["KörnyezetvédelmiBesolas"]);
+
     }
+
     public function test_if_getAllHajtaslancDao_gets_All_Hajtaslanc()
     {
         //Given
