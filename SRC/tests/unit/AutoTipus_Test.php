@@ -179,7 +179,7 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         $this->assertEquals("E5", $kornyezetvedelmibesorolas_collector[4]["KörnyezetvédelmiBesorolás"]);
         $this->assertEquals(6, $kornyezetvedelmibesorolas_collector[5]["ID"]);
         $this->assertEquals("E6", $kornyezetvedelmibesorolas_collector[5]["KörnyezetvédelmiBesorolás"]);
-    }
+    }//<-kesz
     public function test_if_cars_table_filled_with_elements()
     {
         //given
