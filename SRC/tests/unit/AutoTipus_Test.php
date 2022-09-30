@@ -114,34 +114,36 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         $this->assertEquals(6, $fajta_collector[5]["ID"]);
         $this->assertEquals("4X4", $fajta_collector[1]["Fajta_neve"]);
     }//<-kesz
-    public function test_if_hajtaslanc_table_filled_with_elements()
+    public function test_if_kategoria_table_filled_with_elements()
     {
         //given
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DELETE FROM `autokolcsonzo`.`hajtaslanc`";
+        $sql = "DELETE FROM `autokolcsonzo`.`kategoria`";
         $this->assertTrue(mysqli_query($kapcsolat, $sql));
         //when
-        fill_hajtaslanc($kapcsolat);
-        $sql = "SELECT * FROM `autokolcsonzo`.`hajtaslanc`";
-        $hajtaslanc_collector = [];
+        AdatfelvetelAutoKategoria($kapcsolat);
+        $sql = "SELECT * FROM `autokolcsonzo`.`kategoria`";
+        $kategoria_collector = [];
         $result = mysqli_query($kapcsolat, $sql);
         while ($egysor = mysqli_fetch_array($result)) {
-            $hajtaslanc = [];
-            $hajtaslanc["id"] = $egysor["id"];
-            $hajtaslanc["Hajtaslanc"] = $egysor["Hajtaslanc"];
-            array_push($hajtaslanc_collector, $hajtaslanc);
+            $kategoria = [];
+            $kategoria["ID"] = $egysor["ID"];
+            $kategoria["Kategoria"] = $egysor["Kategoria"];
+            array_push($kategoria_collector, $kategoria);
         }
         //then
-        $this->assertEquals(3, count($hajtaslanc_collector));
-        $this->assertEquals(1, $hajtaslanc_collector[0]["id"]);
-        $this->assertEquals("Benzines", $hajtaslanc_collector[0]["Hajtaslanc"]);
-        $this->assertEquals(2, $hajtaslanc_collector[1]["id"]);
-        $this->assertEquals("Diesel", $hajtaslanc_collector[1]["Hajtaslanc"]);
-        $this->assertEquals(3, $hajtaslanc_collector[2]["id"]);
-        $this->assertEquals("Elektromos", $hajtaslanc_collector[2]["Hajtaslanc"]);
+        $this->assertEquals(4, count($kategoria_collector));
+        $this->assertEquals(1, $kategoria_collector[0]["ID"]);
+        $this->assertEquals("Kis személy", $kategoria_collector[0]["Kategoria"]);
+        $this->assertEquals(2, $kategoria_collector[1]["ID"]);
+        $this->assertEquals("Személy autó", $kategoria_collector[1]["Kategoria"]);
+        $this->assertEquals(3, $kategoria_collector[2]["ID"]);
+        $this->assertEquals("Kis teher", $kategoria_collector[2]["Kategoria"]);
+        $this->assertEquals(4, $kategoria_collector[2]["ID"]);
+        $this->assertEquals("Teher", $kategoria_collector[2]["Kategoria"]);
     }
     public function test_if_cars_table_filled_with_elements()
     {
