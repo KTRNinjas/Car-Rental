@@ -140,10 +140,45 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         $this->assertEquals("Kis személy", $kategoria_collector[0]["Kategoria"]);
         $this->assertEquals(2, $kategoria_collector[1]["ID"]);
         $this->assertEquals("Személy autó", $kategoria_collector[1]["Kategoria"]);
-        $this->assertEquals(3, $kategoria_collector[2]["ID"]);
-        $this->assertEquals("Kis teher", $kategoria_collector[2]["Kategoria"]);
-        $this->assertEquals(4, $kategoria_collector[2]["ID"]);
-        $this->assertEquals("Teher", $kategoria_collector[2]["Kategoria"]);
+        $this->assertEquals(3, $kategoria_collector[3]["ID"]);
+        $this->assertEquals("Kis teher", $kategoria_collector[3]["Kategoria"]);
+        $this->assertEquals(4, $kategoria_collector[4]["ID"]);
+        $this->assertEquals("Teher", $kategoria_collector[4]["Kategoria"]);
+    }//<-kesz
+    public function test_if_kornyezetvedelem_table_filled_with_elements()
+    {
+        //given
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $sql = "DELETE FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
+        $this->assertTrue(mysqli_query($kapcsolat, $sql));
+        //when
+        KornyezetvedelmiBesorolas($kapcsolat);
+        $sql = "SELECT * FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
+        $kornyezetvedelmibesorolas_collector = [];
+        $result = mysqli_query($kapcsolat, $sql);
+        while ($egysor = mysqli_fetch_array($result)) {
+            $kornyezetvedelmibesorolas = [];
+            $kornyezetvedelmibesorolas["ID"] = $egysor["ID"];
+            $kornyezetvedelmibesorolas["KörnyezetvédelmiBesorolás"] = $egysor["KörnyezetvédelmiBesorolás"];
+            array_push($kornyezetvedelmibesorolas_collector, $kornyezetvedelmibesorolas);
+        }
+        //then
+        $this->assertEquals(6, count($kornyezetvedelmibesorolas_collector));
+        $this->assertEquals(1, $kornyezetvedelmibesorolas_collector[0]["ID"]);
+        $this->assertEquals("E1", $kornyezetvedelmibesorolas_collector[0]["KörnyezetvédelmiBesorolás"]);
+        $this->assertEquals(2, $kornyezetvedelmibesorolas_collector[1]["ID"]);
+        $this->assertEquals("E2", $kornyezetvedelmibesorolas_collector[1]["KörnyezetvédelmiBesorolás"]);
+        $this->assertEquals(3, $kornyezetvedelmibesorolas_collector[2]["ID"]);
+        $this->assertEquals("E3", $kornyezetvedelmibesorolas_collector[2]["KörnyezetvédelmiBesorolás"]);
+        $this->assertEquals(4, $kornyezetvedelmibesorolas_collector[3]["ID"]);
+        $this->assertEquals("E4", $kornyezetvedelmibesorolas_collector[3]["KörnyezetvédelmiBesorolás"]);
+        $this->assertEquals(5, $kornyezetvedelmibesorolas_collector[4]["ID"]);
+        $this->assertEquals("E5", $kornyezetvedelmibesorolas_collector[4]["KörnyezetvédelmiBesorolás"]);
+        $this->assertEquals(6, $kornyezetvedelmibesorolas_collector[5]["ID"]);
+        $this->assertEquals("E6", $kornyezetvedelmibesorolas_collector[5]["KörnyezetvédelmiBesorolás"]);
     }
     public function test_if_cars_table_filled_with_elements()
     {
