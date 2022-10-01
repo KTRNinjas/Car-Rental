@@ -27,6 +27,7 @@ function InitDb($kapcsolat)
 function AdatFelvetel($kapcsolat)
 {
     fill_user_data($kapcsolat);
+    fill_create_honlapok_role_join($kapcsolat);
     AdatfelvetelAutoFajta($kapcsolat);
     AdatfelvetelAutoKategoria($kapcsolat);
     KornyezetvedelmiBesorolas($kapcsolat);
