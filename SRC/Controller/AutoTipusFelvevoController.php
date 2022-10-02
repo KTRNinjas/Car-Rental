@@ -14,12 +14,12 @@ $replacedPath = str_ireplace("\\", "/", $path);
 $izé = "//Car-Rental";
 $seenurl = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
 
-function initCarController()
+function initAutotipusController()
 {
     $GLOBALS['autotipus'] = getallAutotipusService();
   }
 function makeHeader()
-{
+{//nem hivja meg semmi mert ez a head generálásért volt ott de már más függvénz kigenerálja azt
     print '<div class="grid-item"></div>';
     print '<div class="grid-item"><small>Márka</small></div>';
     print '<div class="grid-item"><small>Tipus</small></div>';
@@ -28,7 +28,7 @@ function makeHeader()
     print '<div class="grid-item"><small>Prémium</small></div>';
     print '<div class="grid-item"><small>Környezetvédelmi_ID</small></div>';
 }
-
+//ez nem kell
 
 
 function printAutotipusInDB(){
