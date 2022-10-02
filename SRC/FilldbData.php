@@ -21,8 +21,8 @@ function InitDb($kapcsolat)
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
     Tablamegvaltoztatas($kapcsolat);
-    create_honlapok($kapcsolat);
-    create_honlapok_role_join($kapcsolat);
+    
+   
 }
 function AdatFelvetel($kapcsolat)
 {
@@ -47,6 +47,8 @@ function TablaFelvetele($kapcsolat)
 {
     CreateArtabla($kapcsolat);
     creatAutotipusTable($kapcsolat);
+    create_honlapok($kapcsolat);
+    create_honlapok_role_join($kapcsolat);
     create_contact($kapcsolat);
     create_account($kapcsolat);
     create_user_account_join($kapcsolat);

@@ -9,4 +9,17 @@ function urlCollectorDAO($urls){
     $sql2->execute(); 
   }
 }
+function getURL_DAO(){
+  $sql="SELECT `url` FROM `autokolcsonzo`.`honlapok` asc";
+  $db_conn=$GLOBALS["db_conn"];
+  try{
+    $result=$db_conn->query($sql);
+    $urls=[];
+    while($egysor=$result->fetch()){
+       array_push($urls,$egysor["url"]);
+    } return $urls;
+   }catch(PDOException $e){
+     print "Az url nem kérdezhető le!";
+   }
+}
 ?>
