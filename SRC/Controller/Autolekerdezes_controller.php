@@ -51,7 +51,6 @@ function AutolekerdezesBody()
             print   "<h1 class='massege'>".$massega."</h1>";
         }
         print $kezdoDATE." - ".$vegDATE;
-
     }
 
 }
