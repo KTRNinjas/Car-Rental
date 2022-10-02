@@ -9,10 +9,10 @@
     $path = dirname(__DIR__, 1);
     include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
     updateAutotipusController();
-    initCarController();
+    initAutotipusbekuldes();
     printAutotipusInDB();
     deleteAutotipusController();
-?>
+    ?>
 </head>
 
 <body>
