@@ -10,14 +10,14 @@ function urlCollectorDAO($urls){
   }
 }
 function getURL_DAO(){
-  $sql="SELECT `url` FROM `autokolcsonzo`.`honlapok` asc";
+  $sql="SELECT `url` FROM `autokolcsonzo`.`honlapok`";
   $db_conn=$GLOBALS["db_conn"];
   try{
     $result=$db_conn->query($sql);
-    $urls=[];
+    $url_dao=[];
     while($egysor=$result->fetch()){
-       array_push($urls,$egysor["url"]);
-    } return $urls;
+       array_push($url_dao,$egysor["url"]);
+    } return $url_dao;
    }catch(PDOException $e){
      print "Az url nem kérdezhető le!";
    }
