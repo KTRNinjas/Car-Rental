@@ -1,10 +1,21 @@
 <?php
 $path = dirname(__DIR__, 1);
 require_once($path . "/Controller/master_controller.php");
+require_once($path . DIRECTORY_SEPARATOR . 'Connection' . DIRECTORY_SEPARATOR . 'dbconn_pdo.php');
+//session_start();
 
 $isRoutingTest = false;
+/* function getRole($user_id){
+    $sql="SELECT `Role_id` From `autokolcsonzo`.`contact` Where `id`=:user_id";
+    $db_conn=$GLOBALS["db_conn"];
+    $roleid=$db_conn->prepare($sql);
+    $roleid->bindParam(':user_id',$user_id);
+    $roleid->execute();
+} */
 function requireRouting($filenameAndLocation, $isTest)
 {
+ // $user_id=$_SESSION["user_id"];
+
     if (!$isTest) {
         require_once($filenameAndLocation);
     }
