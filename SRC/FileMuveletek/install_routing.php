@@ -14,7 +14,8 @@ function createIndexPHP()
     $replacedPath=str_ireplace("\\","\\\\",$path);
     $content =
         '<?php
-include_once("' . $replacedPath . DIRECTORY_SEPARATOR.'Controller'.DIRECTORY_SEPARATOR.'indexcontroller.php");
+include_once("' . $replacedPath . DIRECTORY_SEPARATOR.'Controller'.DIRECTORY_SEPARATOR.'indexcontroller.php"); 
+session_start();
 initRouting($_SERVER[' . $hyphen . 'REQUEST_URI' . $hyphen . ']);
 print  ' . $hyphen . '<form action="" method="POST">
 <input type="submit" name="uninstall" value="Routing uninstallálása">

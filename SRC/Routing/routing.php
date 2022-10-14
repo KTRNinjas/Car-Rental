@@ -5,17 +5,21 @@ require_once($path . DIRECTORY_SEPARATOR . 'Connection' . DIRECTORY_SEPARATOR . 
 //session_start();
 
 $isRoutingTest = false;
-/* function getRole($user_id){
-    $sql="SELECT `Role_id` From `autokolcsonzo`.`contact` Where `id`=:user_id";
+ function getRole($user_id){
+   $sql="SELECT `url` From `autokolcsonzo`.`honlapok` JOIN `autokolcsonzo`.`honlapok_role_join` on `autokolcsonzo`.`honlapok`.`id`=`autokolcsonzo`.`honlapok_role_join`.`honlapok_id` JOIN `autokolcsonzo`.`contact` ON `autokolcsonzo`.`honlapok_role_join`.`role_id`=`autokolcsonzo`.`contact`.`Role_id` Where `autokolcsonzo`.`contact`.`id`=':user_id'"; 
     $db_conn=$GLOBALS["db_conn"];
     $roleid=$db_conn->prepare($sql);
     $roleid->bindParam(':user_id',$user_id);
     $roleid->execute();
-} */
+    $result=$roleid->fetchAll();
+    $RI=[];
+    foreach($result as $ri){
+        array_push($RI,$ri["url"]);
+    }
+    return $RI;
+} 
 function requireRouting($filenameAndLocation, $isTest)
 {
- // $user_id=$_SESSION["user_id"];
-
     if (!$isTest) {
         require_once($filenameAndLocation);
     }
@@ -27,8 +31,21 @@ function initRouting($serverRequestUri, $isTest = false)
     foreach ($GLOBALS['routes'] as $url => $filenameAndLocation) {
         if (matcher($url, $request)) {
             http_response_code(200);
-            requireRouting($filenameAndLocation, $isTest);
-            return $filenameAndLocation;
+            if(isset($_SESSION["user_id"])){
+                $user_id=$_SESSION["user_id"];
+                $site=getRole($user_id);
+                if(in_array($url,$site)){                        //lineáris keresés      
+                  requireRouting($filenameAndLocation, $isTest);
+                  }else {
+                    http_response_code(403);
+                    require_once($path .DIRECTORY_SEPARATOR."View".DIRECTORY_SEPARATOR."access_denied.php");
+                  }
+              } else{
+                  var_dump($_SESSION);
+                requireRouting($filenameAndLocation, $isTest);
+                print "Bejut";
+                return $filenameAndLocation;
+              } 
         }
     }
     if (!$isTest) {
