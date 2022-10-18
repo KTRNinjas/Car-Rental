@@ -21,7 +21,6 @@ function InitDb($kapcsolat)
     TablaFelvetele($kapcsolat);
     Adatfelvetel($kapcsolat);
     Tablamegvaltoztatas($kapcsolat);
-    
    
 }
 function AdatFelvetel($kapcsolat)
@@ -79,4 +78,6 @@ function Tablamegvaltoztatas($kapcsolat)
     CarsTablamegvaltoztatasa($kapcsolat);
     alterRoleTable($kapcsolat);
     alterCarImageTable($kapcsolat);
+    
+    alter_role_join($kapcsolat);
 }

@@ -22,4 +22,10 @@ function fill_user_data($kapcsolat)
   Query($kapcsolat, "user_data tábla kitöltése Tök Ödönnel", $sql);
   $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Füty', 'Imre', 'f_imre@gmail.com', 'futyimre25', '', NULL, '1')";
   Query($kapcsolat, "user_data tábla kitöltése Füty Imrével", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Füty', 'Imre', 'autofelvevo@gmail.com', 'autofelvevo', '', NULL, '2')";
+  Query($kapcsolat, "user_data tábla kitöltése autófelvevővel", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Füty', 'Imre', 'admin@gmail.com', 'admin', '', NULL, '3')";
+  Query($kapcsolat, "user_data tábla kitöltése adminnal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`contact` (`id`, `Vezetéknév`, `Keresztnév`, `e-mail`, `Password`, `Jogosítvány száma`, `Telefonszám`, `Role_id`) VALUES (NULL, 'Füty', 'Imre', 'fonok@gmail.com', 'fonok', '', NULL, '5')";
+  Query($kapcsolat, "user_data tábla kitöltése főnökkel", $sql);
 }

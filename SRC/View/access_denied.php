@@ -1,7 +1,9 @@
 <?php
 $path = dirname(__DIR__, 1);
 $hostname = getenv('HTTP_HOST');
-$url = '/' . trim($path . "c", $_SERVER['DOCUMENT_ROOT']) . "C";
+$replacedPath = str_ireplace("\\", "/", $path);
+$izé = "//Car-Rental";
+$url = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
 ?>
 <!DOCTYPE html>
 <html lang="hu">
