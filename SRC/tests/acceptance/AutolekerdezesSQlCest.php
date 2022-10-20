@@ -3,12 +3,11 @@ class DateCest
 {
     public function test_Home_with_KezdonagyobbMintVegDate(AcceptanceTester $I)
     {
-        $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/Filldb.php');
         $I->amOnPage('http://localhost/KTRNINJAS/Car-Rental/SRC/FileMuveletek/install_routing.php');
         $I->amOnPage('http://localhost/');
-        
-        $I->fillField('kezdoDATE',"2022-08-29");
-        $I->fillField('vegDATE','2022-08-03 ');
+
+        $I->fillField('kezdoDATE', "2022-08-29");
+        $I->fillField('vegDATE', '2022-08-03 ');
         $I->click('Lefoglalas');
         $I->see('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
         $I->dontSee('Márka');
@@ -33,8 +32,9 @@ class DateCest
         $I->amOnPage('http://localhost/');
 
         //date 2022-08-01-2022-08-15
-        $I->fillField('kezdoDATE',"2022-08-01");
-        $I->fillField('vegDATE','2022-08-15');
+        $I->fillField('kezdoDATE', "2022-08-01");
+        $I->fillField('vegDATE', '2022-08-15');
+
         $I->click('Lefoglalas');
         $I->see('Márka');
         $I->see('Tipus');
@@ -93,7 +93,7 @@ class DateCest
         $I->see('2012');
         $I->see('Automata');
         $I->see('7000');
-        $I->see('98000');        
+        $I->see('98000');
         $I->dontSee('A kezdő dátum kisebb kell legyen a végdátumnál probáld újra');
         $I->dontSee('warning');
         $I->dontSee('error');
@@ -105,8 +105,9 @@ class DateCest
         $I->amOnPage('http://localhost/');
 
         //date 2022-08-16-2022-09-10
-        $I->fillField('kezdoDATE',"2022-08-16");
-        $I->fillField('vegDATE','2022-09-10');
+        $I->fillField('kezdoDATE', "2022-08-16");
+        $I->fillField('vegDATE', '2022-09-10');
+
         $I->click('Lefoglalas');
         $I->see('Márka');
         $I->see('Tipus');
@@ -142,13 +143,14 @@ class DateCest
         $I->see('Automata');
         $I->see('7000');
         $I->see('175000');
-}   
+    }
     public function test_Home_with_KezdokissebbMintVegDate2022_09_11_2022_09_30(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/');
         //date 2022-09-11-2022-09-30
-        $I->fillField('kezdoDATE',"2022-09-11");
-        $I->fillField('vegDATE','2022-09-30');
+        $I->fillField('kezdoDATE', "2022-09-11");
+        $I->fillField('vegDATE', '2022-09-30');
+
         $I->click('Lefoglalas');
         $I->see('Márka');
         $I->see('Tipus');
@@ -190,6 +192,5 @@ class DateCest
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');
-
     }
 }
