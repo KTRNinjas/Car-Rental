@@ -1,19 +1,21 @@
+<?php
+$path = dirname(__DIR__, 1);
+include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
+initAutotipusController();
+createAutotipusController();
+updateAutotipusController();
+deleteAutotipusController();
+
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=<?php print '"' . (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $hostname . $url . '/View/css/autoFelvetel.css"' ?>>
     <title>Autotipus felvétel</title>
-    <?php
-    $path = dirname(__DIR__, 1);
-    include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
-    initAutotipusController();
-    createAutotipusController();
-    updateAutotipusController();
-    deleteAutotipusController();
-
-    ?>
 </head>
 
 <body>

@@ -6,8 +6,7 @@ $fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "Au
 $routes[$url] = $fileLocation;
 
 function initAutotipusController(){
-  $a=$GLOBALS['autotipus']=autotipusService();
- var_dump($a);
+  $GLOBALS['autotipus']=autotipusService();
 };
 function AutotmakeHeader()
 {
