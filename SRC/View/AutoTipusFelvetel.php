@@ -10,7 +10,9 @@
     include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
     initAutotipusController();
     updateAutotipusController();
-    ?>
+    deleteAutotipusController();
+
+?>
 </head>
 
 <body><?php

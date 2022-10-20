@@ -63,6 +63,17 @@ function printAutotipusInDB(){
     
   }
 }
+//delet
+function deleteAutotipusController()
+{
+    if (isset($_POST['deleteAutotipus'])) {
+        $autotipus_ID = $_POST['AutotipusID'];
+        deleteAutotipusService($autotipus_ID);
+        header('Location: /autotipusfelvevo', true, 303);
+        exit;
+    }
+}
+
 //update
 function updateAutotipusController(){
   if (isset($_POST['updateAutotipus'])) {

@@ -77,3 +77,12 @@ function updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$korn
     $ok = mysqli_query($kapcsolat, $sql);
     return $ok;
 }
+function deleteAutotipusDAO($autotipus_ID){
+    
+    $kapcsolat = $GLOBALS['kapcsolat'];
+    $sql = "DELETE FROM `autokolcsonzo`.autotipus WHERE `autokolcsonzo`.`autotipus`.`ID` = $autotipus_ID";
+    $ok = mysqli_query($kapcsolat, $sql);
+    return $ok;
+
+
+}
