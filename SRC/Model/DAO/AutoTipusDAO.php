@@ -1,6 +1,53 @@
 <?php
 $path = dirname(__DIR__, 2);
 require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . "Dbconn.php");
+//-----
+//lekérdezés
+
+function getAllAutotipus()
+{
+    $kapcsolat = $GLOBALS['kapcsolat'];
+    $autotipusok = [];
+    $today = date("y-m-d");
+    $sql = "SELECT ID,Márka,Tipus,Prémium,
+    (SELECT Fajta_neve FROM `autokolcsonzo`.`fajta` WHERE id=Fajta_ID ) AS fajta,
+    (SELECT Kategoria FROM `autokolcsonzo`.`kategoria` WHERE id=Kategoria_ID ) AS kategoria,
+    (SELECT KörnyezetvédelmiBesorolás FROM `autokolcsonzo`.`környezetvédelmibesorolás` WHERE id=Környezetvédelmi_ID) AS KörnyezetvédelmiBesolas FROM `autokolcsonzo`.`autotipus`";
+    $result = mysqli_query($kapcsolat, $sql);
+    while ($egysor = mysqli_fetch_assoc($result)) {
+        $autotipus = [];
+        foreach ($egysor as $key => $value) {
+            
+                $autotipus[$key] = $value;
+            
+        }
+        array_push($autotipusok, $autotipus);
+    }
+    return $autotipusok;
+}
+
+//update delete 
+function deleteAutotipusDAO($autotipus_ID){
+    
+        $kapcsolat = $GLOBALS['kapcsolat'];
+        $sql = "DELETE FROM `autokolcsonzo`.autotipus WHERE `autokolcsonzo`.`autotipus`.`ID` = $autotipus_ID";
+        $ok = mysqli_query($kapcsolat, $sql);
+        return $ok;
+    
+    
+}
+
+function updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID){
+    $kapcsolat = $GLOBALS['kapcsolat'];
+    
+        $sql = "UPDATE `autokolcsonzo`.`autotipus` SET `Márka` = '$marka',`Tipus` = '$tipus',`Prémium` = '$premium',`Fajta_ID` = '$fajta_ID',`Kategoria_ID` = '$kategoria_ID',`Környezetvédelmi_ID` = '$kornyezetvedelem_ID' WHERE `autotipus`.`ID` = '$autotipus_ID' ";
+       
+    
+    $ok = mysqli_query($kapcsolat, $sql);
+    return $ok;
+}
+
+//----
 function AutoTipusTarolo($Marka, $Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas)
 {
     $kapcsolat = $GLOBALS["kapcsolat"];

@@ -1,3 +1,18 @@
+<?php
+$path = dirname(__DIR__, 1);
+include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
+updateAutotipusController();
+initAutotipusController();
+initAutotipusbekuldes();
+deleteAutotipusController();
+$hostname = getenv('HTTP_HOST');
+$replacedPath = str_ireplace("\\", "/", $path);
+$izé = "//Car-Rental";
+$url = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="hu">
 
@@ -5,13 +20,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autotipus felvétel</title>
-    <?php
-    $path = dirname(__DIR__, 1);
-    include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
-    ?>
 </head>
 
 <body>
+    <?php
+    printAutotipusInDB();
+
+    ?>
     <form action="" method="POST">
         <label name="marka" for="">
             <input type="text" name="marka" required placeholder="Márka">
@@ -52,6 +67,7 @@
         printresult();
         ?>
     </div>
+
 </body>
 
 </html>
