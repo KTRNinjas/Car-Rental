@@ -9,6 +9,7 @@
     $path = dirname(__DIR__, 1);
     include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
     initAutotipusController();
+    createAutotipusController();
     updateAutotipusController();
     deleteAutotipusController();
 

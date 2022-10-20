@@ -91,6 +91,12 @@ function updateAutotipusController(){
    
 }
 
+function createAutotipusController()
+{
+  if (isset($_POST["Autotipusbekuldes"])) {
+    Autotipusbekuldes();
+  }
+}
 
 
 function getFajta($fajtaInput =null)
