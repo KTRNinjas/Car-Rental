@@ -18,7 +18,8 @@
   function Create_Contract_car_join_table($kapcsolat){
     $sql="CREATE TABLE `autokolcsonzo`.`contract_car_join` (`ID` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT , `Car_ID` INT UNSIGNED NOT NULL , `Contract_ID` INT UNSIGNED NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
     $uzenet="Contract car join tabla létrehozasa ";
-    return Query($kapcsolat,$uzenet,$sql);    
+    return Query($kapcsolat,$uzenet,$sql);
+    
   }
   function Contract_car_table_beszuro($kapcsolat){
     $sql="INSERT INTO `autokolcsonzo`.`contract_car_join` (`ID`, `Car_ID`, `Contract_ID`) VALUES (NULL, '2', '1')";
