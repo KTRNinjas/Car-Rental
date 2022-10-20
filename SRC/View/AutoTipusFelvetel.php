@@ -9,10 +9,13 @@
     $path = dirname(__DIR__, 1);
     include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
     initAutotipusController()
+    
     ?>
 </head>
 
-<body>
+<body><?php
+printAutotipusInDB()
+?>
     <form action="" method="POST">
         <label name="marka" for="">
             <input type="text" name="marka" required placeholder="Márka">
