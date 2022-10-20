@@ -150,6 +150,8 @@ function Autotipusbekuldes()
   $premium = isset($_POST["premium"]);
   $kornyezetvedelem = $_POST["kornyezetvedelem"];
   $GLOBALS["autotipusadatatvevo"] = AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $kornyezetvedelem);
+  header('Location: /autotipusfelvevo', true, 303);
+    exit;
 }
 function printresult()
 {
