@@ -1,140 +1,36 @@
 <?php
 $path = dirname(__DIR__, 1);
 include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "Service" . DIRECTORY_SEPARATOR . "AutoTipusService.php");
-$autotipusok = [];
-$path = dirname(__DIR__, 1);
 $url = "/autotipusfelvevo";
 $fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "AutoTipusFelvetel.php";
 $routes[$url] = $fileLocation;
-$hostname = getenv('HTTP_HOST');
-$replacedPath = str_ireplace("\\", "/", $path);
-$izé = "//Car-Rental";
-$seenurl = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
 
-
-function initAutotipusController()
-{
-    $a = $GLOBALS['autotipus'] = getallAutotipusService();
-    var_dump($a);
-  }
-function AutotmakeHeader()
-{
-    print '<div class="grid-item"></div>';
-    print '<div class="grid-item"><small>Márka</small></div>';
-    print '<div class="grid-item"><small>Tipus</small></div>';
-    print '<div class="grid-item"><small>Fajta_ID</small></div>';
-    print '<div class="grid-item"><small>Kategoria_ID</small></div>';
-    print '<div class="grid-item"><small>Prémium</small></div>';
-    print '<div class="grid-item"><small>Környezetvédelmi_ID</small></div>';
-}
-
-
-
-function printAutotipusInDB(){
-  $hyphen = "'";
-    $autotipus = $GLOBALS['autotipus'];
-    for ($i = 0; $i < count($autotipus); $i++) {
-      print '<form action="" method="post" enctype="multipart/form-data">';
-      print '<div class="grid-container">';
-    
-      if ($i == 0) {
-        AutotmakeHeader();
-    }
-
-    print '<input type="text" id=AutotipusID' . $autotipus[$i]['ID'] . ' name="AutotipusID" size="0" value="' . $autotipus[$i]['ID'] . '" hidden>';
-    print '<div class="grid-item">';
-        print '<input class="smallerInput" type="text" name="marka"  value="' . $autotipus[$i]['Márka'] . '" required>
-        ';
-        print '<input class="smallerInput" type="text" name="tipus"  value="' . $autotipus[$i]['Tipus'] . '" required>';
-        print '<input class="smallerInput" type="text" name="prémium"  value="' . $autotipus[$i]['Prémium'] . '" required>';
-
-        print '<select class="smallerInput" name="fajta" id=""  required>
-      <option value="">Válasszon Fajtát</option>';
-      getFajta($autotipus[$i]['fajta']);
-      print '</select>';
-
-      print '<select class="smallerInput" name="kategoria" id=""  required>
-      <option value="">Válasszon kategoriat</option>';
-      getKategoria($autotipus[$i]['kategoria']);
-      print '</select>';
-      
-      print '<select class="smallerInput" name="kornyezetvedelem" id=""  required>
-      <option value="">Válasszon környezetvédelmibesorolás</option>';
-      getKornyezetVedelem($autotipus[$i]['KörnyezetvédelmiBesolas']);
-      print '</select>';
-      
-        //bezar
-    print '</div>';
-    print '</form>';
-    print '<div class="grid-item"><input type="submit" name="updateAutotipus" value="Mentés"></div>';
-    print '<div class="grid-item"><input type="submit" name="deleteAutotipus" value="Törlés"></div>';
-    
-  }
-}
-//update
-function updateAutotipusController(){
-  if (isset($_POST['updateAutotipus'])) {
-    $marka = $_POST['marka'];
-    $tipus = $_POST['tipus'];
-    $premium=$_POST['prémium'];
-    $fajta_ID = $_POST['fajta'];
-    $kategoria_ID = $_POST['kategoria'];
-    $kornyezetvedelem_ID = $_POST['kornyezetvedelem'];
-    $autotipus_ID=$_POST["AutotipusID"];
-    updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
-    header('Location: /autotipusfelvevo', true, 303);
-    exit;
-  }
-   
-}
-//delete
-function deleteAutotipusController()
-{
-    if (isset($_POST['deleteAutotipus'])) {
-        $autotipus_ID = $_POST['AutotipusID'];
-        deleteAutotipusService($autotipus_ID);
-        header('Location: /Autofelvetel', true, 303);
-        exit;
-    }
-}
-
+function initAutotipusController(){
+  $a=autotipusService();
+ var_dump($a);
+};
 $autotipusadatatvevo = "";
-
-function getFajta($fajtaInput =null)
+function kiiro($legordulo)
+{
+  foreach ($legordulo as $key => $value) {
+    print '<option value="' . $key . '" >' . $value . '</option>';
+  };
+}
+function getFajta()
 {
   $fajta = FajtaFeltoltoService();
-  foreach ($fajta as $key => $value) {
-    if ($value != $fajtaInput) {
-        print '<option value="' . $key . '">' . $value . '</option>';
-    } else {
-        print '<option value="' . $key . '" selected>' . $value . '</option>';
-    }
-
-}
+  kiiro($fajta);
 };
-function getKategoria($kategoriaInput = null)
+function getKategoria()
 {
   $kategoria = KategoriaFeltoltoService();
-  foreach ($kategoria as $key => $value) {
-    if ($value != $kategoriaInput) {
-        print '<option value="' . $key . '">' . $value . '</option>';
-    } else {
-        print '<option value="' . $key . '" selected>' . $value . '</option>';
-    }
-
-}};
-function getKornyezetVedelem($kornyezetvedelemInput =null)
+  kiiro($kategoria);
+};
+function getKornyezetVedelem()
 {
   $kornyezetvedelem = KornyezetVedelemFeltoltoService();
-  foreach ($kornyezetvedelem as $key => $value) {
-    if ($value != $kornyezetvedelemInput) {
-        print '<option value="' . $key . '">' . $value . '</option>';
-    } else {
-        print '<option value="' . $key . '" selected>' . $value . '</option>';
-    }
-    
-}
- };
+  kiiro($kornyezetvedelem);
+};
 function initAutotipusbekuldes()
 {
   if (isset($_POST["Autotipusbekuldes"])) {
