@@ -63,7 +63,22 @@ function printAutotipusInDB(){
     
   }
 }
-
+//update
+function updateAutotipusController(){
+  if (isset($_POST['updateAutotipus'])) {
+    $marka = $_POST['marka'];
+    $tipus = $_POST['tipus'];
+    $premium=$_POST['prémium'];
+    $fajta_ID = $_POST['fajta'];
+    $kategoria_ID = $_POST['kategoria'];
+    $kornyezetvedelem_ID = $_POST['kornyezetvedelem'];
+    $autotipus_ID=$_POST["AutotipusID"];
+    updateAutotipusService($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
+    header('Location: /autotipusfelvevo', true, 303);
+    exit;
+  }
+   
+}
 
 
 
