@@ -82,29 +82,42 @@ function updateAutotipusController(){
 
 
 
-
-$autotipusadatatvevo = "";
-function kiiro($legordulo)
-{
-  foreach ($legordulo as $key => $value) {
-    print '<option value="' . $key . '" >' . $value . '</option>';
-  };
-}
-function getFajta()
+function getFajta($fajtaInput =null)
 {
   $fajta = FajtaFeltoltoService();
-  kiiro($fajta);
+  foreach ($fajta as $key => $value) {
+    if ($value != $fajtaInput) {
+        print '<option value="' . $key . '">' . $value . '</option>';
+    } else {
+        print '<option value="' . $key . '" selected>' . $value . '</option>';
+    }
+
+}
 };
-function getKategoria()
+function getKategoria($kategoriaInput = null)
 {
   $kategoria = KategoriaFeltoltoService();
-  kiiro($kategoria);
-};
-function getKornyezetVedelem()
+  foreach ($kategoria as $key => $value) {
+    if ($value != $kategoriaInput) {
+        print '<option value="' . $key . '">' . $value . '</option>';
+    } else {
+        print '<option value="' . $key . '" selected>' . $value . '</option>';
+    }
+
+}};
+function getKornyezetVedelem($kornyezetvedelemInput =null)
 {
   $kornyezetvedelem = KornyezetVedelemFeltoltoService();
-  kiiro($kornyezetvedelem);
-};
+  foreach ($kornyezetvedelem as $key => $value) {
+    if ($value != $kornyezetvedelemInput) {
+        print '<option value="' . $key . '">' . $value . '</option>';
+    } else {
+        print '<option value="' . $key . '" selected>' . $value . '</option>';
+    }
+    
+}
+ };
+
 function initAutotipusbekuldes()
 {
   if (isset($_POST["Autotipusbekuldes"])) {
