@@ -20,15 +20,34 @@ function fill_create_honlapok_role_join($kapcsolat){
   $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '3', '5')";
   Query($kapcsolat, "create_honlapok_role_join tábla kitöltése view-főnök jogosultsággal", $sql);
   $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '5', '2')";
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '5', '3')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése autófelvevő-admin jogosultsággal", $sql);
   Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése autófelvevő jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '5', '5')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése autófelvevő-főnök jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '6', '5')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése főnöki jogosultsággal", $sql);
   $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '7', '2')";
   Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése autófelvevő jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '7', '5')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése autófelvevő-főnök jogosultsággal", $sql);
   $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '8', '3')";
   Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése admin jogosultsággal", $sql);
   $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '8', '4')";
   Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése sales jogosultsággal", $sql);
-  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '6', '5')";
-  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése főnöki jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '8', '5')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése admin-főnök jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '9', '1')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése profil módosítás vásárló jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '9', '2')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése profil módosítás autófelvevő jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '9', '3')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése profil módosítás admin jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '9', '4')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése profil módosítás sales jogosultsággal", $sql);
+  $sql = "INSERT INTO `autokolcsonzo`.`honlapok_role_join` (`id`, `honlapok_id`, `role_id`) VALUES (NULL, '9', '5')";
+  Query($kapcsolat, "ucreate_honlapok_role_join tábla kitöltése profil módosítás főnök jogosultsággal", $sql);
+ 
 }
 
 function alter_honlapok_role_join($kapcsolat){
