@@ -7,7 +7,7 @@ function urlCollectorDAO($urls){
   for($i=0;$i<count($urls);$i++){
     $sql2->bindParam(1,$urls[$i]);
     $sql2->execute(); 
-  }
+  } return $sql2;
 }
 function getURL_DAO(){
   $sql="SELECT `url` FROM `autokolcsonzo`.`honlapok`";

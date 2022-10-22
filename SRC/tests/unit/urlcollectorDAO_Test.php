@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 $path = dirname(__DIR__, 2);
-include_once($path . DIRECTORY_SEPARATOR . 'Connection' . DIRECTORY_SEPARATOR . 'dbconn_pdo.php');
+//include_once($path . DIRECTORY_SEPARATOR . 'Filldb.php');
 include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "urlCollector_DAO.php");
 
 use \Tests\Support\UnitTester;
@@ -23,9 +23,10 @@ class urlcollectorDAO_Test extends \Codeception\Test\Unit
         $db_user="root";
         $db_password="";
         $conn="mysql:host=$db_host";
-        $db_conn=[];
-        $GLOBALS["db_conn"]=$db_conn;
-        $urls=[];
+        $db_conn=new PDO($conn,$db_user,$db_password);
+        /* $db_conn=[];*/
+        $GLOBALS["db_conn"]=$db_conn; 
+        $urls=["http://localhost/Profil_modositas"];
         //When
         $result = urlCollectorDAO($urls);
         //Then
