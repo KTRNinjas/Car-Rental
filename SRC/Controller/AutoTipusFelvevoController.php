@@ -5,21 +5,11 @@ $url = "/autotipusfelvevo";
 $fileLocation = $path . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . "AutoTipusFelvetel.php";
 $routes[$url] = $fileLocation;
 
-
-
-//autotipus lekérdezese
-$autotipusok = [];
-$hostname = getenv('HTTP_HOST');
-$replacedPath = str_ireplace("\\", "/", $path);
-$izé = "//Car-Rental";
-$seenurl = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
-
-function initAutotipusController()
+function initAutotipusController(){
+  $GLOBALS['autotipus']=autotipusService();
+};
+function AutotmakeHeader()
 {
-    $GLOBALS['autotipus'] = getallAutotipusService();
-  }
-function makeHeader()
-{//nem hivja meg semmi mert ez a head generálásért volt ott de már más függvénz kigenerálja azt
     print '<div class="grid-item"></div>';
     print '<div class="grid-item"><small>Márka</small></div>';
     print '<div class="grid-item"><small>Tipus</small></div>';
@@ -28,7 +18,7 @@ function makeHeader()
     print '<div class="grid-item"><small>Prémium</small></div>';
     print '<div class="grid-item"><small>Környezetvédelmi_ID</small></div>';
 }
-//ez nem kell
+
 
 
 function printAutotipusInDB(){
@@ -39,7 +29,7 @@ function printAutotipusInDB(){
       print '<div class="grid-container">';
     
       if ($i == 0) {
-        makeHeader();
+        AutotmakeHeader();
     }
 
     print '<input type="text" id=AutotipusID' . $autotipus[$i]['ID'] . ' name="AutotipusID" size="0" value="' . $autotipus[$i]['ID'] . '" hidden>';
@@ -72,6 +62,17 @@ function printAutotipusInDB(){
     
   }
 }
+//delet
+function deleteAutotipusController()
+{
+    if (isset($_POST['deleteAutotipus'])) {
+        $autotipus_ID = $_POST['AutotipusID'];
+        deleteAutotipusService($autotipus_ID);
+        header('Location: /autotipusfelvevo', true, 303);
+        exit;
+    }
+}
+
 //update
 function updateAutotipusController(){
   if (isset($_POST['updateAutotipus'])) {
@@ -88,18 +89,14 @@ function updateAutotipusController(){
   }
    
 }
-//delete
-function deleteAutotipusController()
+
+function createAutotipusController()
 {
-    if (isset($_POST['deleteAutotipus'])) {
-        $autotipus_ID = $_POST['AutotipusID'];
-        deleteAutotipusService($autotipus_ID);
-        header('Location: /Autofelvetel', true, 303);
-        exit;
-    }
+  if (isset($_POST["Autotipusbekuldes"])) {
+    Autotipusbekuldes();
+  }
 }
 
-$autotipusadatatvevo = "";
 
 function getFajta($fajtaInput =null)
 {
@@ -136,6 +133,7 @@ function getKornyezetVedelem($kornyezetvedelemInput =null)
     
 }
  };
+
 function initAutotipusbekuldes()
 {
   if (isset($_POST["Autotipusbekuldes"])) {
@@ -151,6 +149,8 @@ function Autotipusbekuldes()
   $premium = isset($_POST["premium"]);
   $kornyezetvedelem = $_POST["kornyezetvedelem"];
   $GLOBALS["autotipusadatatvevo"] = AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $kornyezetvedelem);
+  header('Location: /autotipusfelvevo', true, 303);
+    exit;
 }
 function printresult()
 {

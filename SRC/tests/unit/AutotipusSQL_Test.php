@@ -28,7 +28,7 @@ class AutoTipus_DAO_Test extends \Codeception\Test\Unit
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
         //When
-        $result=getAllAutotipus();
+        $result=AllautotipusDAO();
         //Then
         $this->assertEquals(6,count($result));
         //AudiTeszt
