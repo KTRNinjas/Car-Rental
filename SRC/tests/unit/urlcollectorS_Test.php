@@ -21,7 +21,7 @@ class urlcollectorService_Test extends \Codeception\Test\Unit
         $db_password="";
         $conn="mysql:host=$db_host";
         $db_conn=new \PDO($conn,$db_user,$db_password);
-        /* $db_conn=[];*/
+        
         $GLOBALS["db_conn"]=$db_conn; 
         $urls=["http://localhost/Profil_modositas"];
         //When
@@ -41,7 +41,7 @@ class urlcollectorService_Test extends \Codeception\Test\Unit
         $db_password="";
         $conn="mysql:host=$db_host";
         $db_conn=new \PDO($conn,$db_user,$db_password);
-        /* $db_conn=[];*/
+        
         $GLOBALS["db_conn"]=$db_conn; 
         $urls=["http://localhost/Profil_modositas", "http://localhost/Autofelvevo"];
         //When
