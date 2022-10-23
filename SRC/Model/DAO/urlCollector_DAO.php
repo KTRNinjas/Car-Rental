@@ -4,10 +4,11 @@ function urlCollectorDAO($urls){
   $sql="INSERT INTO `autokolcsonzo`.`honlapok` (`id`, `url`) VALUES (NULL, ?)";
   $db_conn=$GLOBALS["db_conn"];
   $sql2=$db_conn->prepare($sql); 
+  $ok=false;
   for($i=0;$i<count($urls);$i++){
     $sql2->bindParam(1,$urls[$i]);
-    $sql2->execute(); 
-  } return $sql2;
+    $ok=$sql2->execute(); 
+  } return $ok;
 }
 function getURL_DAO(){
   $sql="SELECT `url` FROM `autokolcsonzo`.`honlapok`";
