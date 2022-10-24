@@ -175,6 +175,28 @@ class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
         //Then
         $this->assertEquals($result,"Az autotipus felvétel  sikeres volt!<br><br>");
     }
+    public function test_if_AutoTipusTarolo_not_inserts_testautotipus()
+    {
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "";
+
+        $kapcsolat = mysqli_connect($host, $user, $password);
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        $Marka='test Marka';
+        $Tipus='teszt tipus';
+        $Fajta='ez cseszi el';
+        $Kategoria=2;
+        $Premium=1;
+        $KornyezetvedelmiBesorolas=1;
+        //When
+        $result=AutoTipusTarolo($Marka,$Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas);
+        //Then
+        $this->assertEquals($result,"Az autotipus felvétel  sikertelen volt!<br><br>");
+    }
     public function test_if_updateAutotipusDAO_updates_testAutotipus()
     {
         //Given
