@@ -3,240 +3,227 @@
 namespace Tests\Unit;
 
 $path = dirname(__DIR__, 2);
-include_once($path . DIRECTORY_SEPARATOR . "AutotipusSQL.php");
+include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
 
 use mysqli;
 use \Tests\Support\UnitTester;
 
 class Autotipus_Data_Integration_Test extends \Codeception\Test\Unit
 {
-    //protected UnitTester $tester;
-
     protected function _before()
     {
     }
 
     // tests
-    public function test_if_autotipus_table_created()
+    public function test_if_getAllAutotipus_gets_All_Autotipus()
     {
-        //given
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
+
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`autotipus`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        $result = creatAutotipusManiTable($kapcsolat);
-        //then
-        $this->assertEquals("Az autotipus tábla létrehozása sikeres volt!", $result);
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        //When
+        $result=AllautotipusDAO();
+        //Then
+        $this->assertEquals(6,count($result));
+        //AudiTeszt
+        $this->assertEquals(1,$result[0]["ID"]);
+        $this->assertEquals('AudiTeszt',$result[0]["Márka"]);
+        $this->assertEquals('S8Teszt',$result[0]["Tipus"]);
+        $this->assertEquals('1',$result[0]["Prémium"]);
+        $this->assertEquals('Sedan',$result[0]["fajta"]);
+        $this->assertEquals('Személy autó',$result[0]["kategoria"]);
+        $this->assertEquals("E1",$result[0]["KörnyezetvédelmiBesolas"]);
+
+        //VolkswagenTeszt
+        $this->assertEquals(2,$result[1]["ID"]);
+        $this->assertEquals('VolkswagenTeszt',$result[1]["Márka"]);
+        $this->assertEquals('PassatTeszt',$result[1]["Tipus"]);
+        $this->assertEquals('0',$result[1]["Prémium"]);
+        $this->assertEquals('Combi',$result[1]["fajta"]);
+        $this->assertEquals('Személy autó',$result[1]["kategoria"]);
+        $this->assertEquals("E2",$result[1]["KörnyezetvédelmiBesolas"]);
+
+        //JeepTeszt
+        $this->assertEquals(3,$result[2]["ID"]);
+        $this->assertEquals('JeepTeszt',$result[2]["Márka"]);
+        $this->assertEquals('WranglerTeszt',$result[2]["Tipus"]);
+        $this->assertEquals('0',$result[2]["Prémium"]);
+        $this->assertEquals('Terepjáró',$result[2]["fajta"]);
+        $this->assertEquals('Személy autó',$result[2]["kategoria"]);
+        $this->assertEquals("E5",$result[2]["KörnyezetvédelmiBesolas"]);
+
+        //BMW
+        $this->assertEquals(4,$result[3]["ID"]);
+        $this->assertEquals('BMW',$result[3]["Márka"]);
+        $this->assertEquals('M3',$result[3]["Tipus"]);
+        $this->assertEquals('1',$result[3]["Prémium"]);
+        $this->assertEquals('Combi',$result[3]["fajta"]);
+        $this->assertEquals('Kis személy',$result[3]["kategoria"]);
+        $this->assertEquals("E6",$result[3]["KörnyezetvédelmiBesolas"]);
+
+        //Nissan
+        $this->assertEquals(5,$result[4]["ID"]);
+        $this->assertEquals('Nissan',$result[4]["Márka"]);
+        $this->assertEquals('Mikra',$result[4]["Tipus"]);
+        $this->assertEquals('1',$result[4]["Prémium"]);
+        $this->assertEquals('Combi',$result[4]["fajta"]);
+        $this->assertEquals('Kis személy',$result[4]["kategoria"]);
+        $this->assertEquals("E6",$result[4]["KörnyezetvédelmiBesolas"]);
+        
+        //Dacia
+        $this->assertEquals(6,$result[5]["ID"]);
+        $this->assertEquals('Dacia',$result[5]["Márka"]);
+        $this->assertEquals('Logan',$result[5]["Tipus"]);
+        $this->assertEquals('1',$result[5]["Prémium"]);
+        $this->assertEquals('Combi',$result[5]["fajta"]);
+        $this->assertEquals('Kis személy',$result[5]["kategoria"]);
+        $this->assertEquals("E6",$result[5]["KörnyezetvédelmiBesolas"]);
+
     }
 
-    //<-kesz
-    public function test_if_fajta_table_created()
+    public function test_if_FajtaFeltoltoDAO_gets_All_Fajta()
     {
-        //given
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
-        $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`fajta`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        $result = creatFajtaTable($kapcsolat);
-        //then
-        $this->assertEquals("Az Fajta tábla letrehozasa sikeres volt!", $result);
-    }
-    //<-kesz
 
-    public function test_if_kategoria_table_created()
-    {
-        //given
-        $host = "127.0.0.1";
-        $user = "root";
-        $password = "";
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`kategoria`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        $result = creatKategoriaTable($kapcsolat);
-        //then
-        $this->assertEquals("Az Kategoria tabla letrehozasa sikeres volt!", $result);
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        //When
+        $result=FajtaFeltoltoDAO();
+        //Then
+        $this->assertEquals(6,count($result));
+        
+        $this->assertEquals('Combi',$result[1]);
+        $this->assertEquals('Terepjáró',$result[2]);
+        $this->assertEquals('Sedan',$result[3]);
+        $this->assertEquals('PickUp',$result[4]);
+        $this->assertEquals('SUV',$result[5]);
+        $this->assertEquals('4X4',$result[6]);
     }
-    //<-kesz
-    public function test_if_Kornyeyetvedelem_table_created()
+    public function test_if_KategoriaFeltoltoDAO_gets_All_kategoria()
     {
-        //given
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
+
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DROP TABLE `autokolcsonzo`.`környezetvédelmibesorolás`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        $result = creatKornyezetvedelemTable($kapcsolat);
-        //then
-        $this->assertEquals("Az Környezetvédelmi besorolás tábla létrehozása sikeres volt!", $result);
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        //When
+        $result=KategoriaFeltoltoDAO();
+        //Then
+        $this->assertEquals(4,count($result));
+        
+        $this->assertEquals('Kis személy',$result[1]);
+        $this->assertEquals('Személy autó',$result[2]);
+        $this->assertEquals('Kis teher',$result[3]);
+        $this->assertEquals('Teher',$result[4]);
     }
-    //<-kesz
-    public function test_if_fajta_table_filled_with_elements()
+    public function test_if_KornyezetVedelemFeltoltoDAO_gets_All_Kornyezetvedelem()
     {
-        //given
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
+
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DELETE FROM `autokolcsonzo`.`fajta`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        AdatfelvetelAutoFajta($kapcsolat);
-        $sql = "SELECT * FROM `autokolcsonzo`.`fajta`";
-        $fajta_collector = [];
-        $result = mysqli_query($kapcsolat, $sql);
-        while ($egysor = mysqli_fetch_array($result)) {
-            $fajta = [];
-            $fajta["ID"] = $egysor["ID"];
-            $fajta["Fajta_neve"] = $egysor["Fajta_neve"];
-            array_push($fajta_collector, $fajta);
-        }
-        //then
-        $this->assertEquals(6, count($fajta_collector));
-        $this->assertEquals(1, $fajta_collector[0]["ID"]);
-        $this->assertEquals("Combi", $fajta_collector[0]["Fajta_neve"]);
-        $this->assertEquals(2, $fajta_collector[1]["ID"]);
-        $this->assertEquals("Terepjáró", $fajta_collector[1]["Fajta_neve"]);
-        $this->assertEquals(3, $fajta_collector[2]["ID"]);
-        $this->assertEquals("Sedan", $fajta_collector[1]["Fajta_neve"]);
-        $this->assertEquals(4, $fajta_collector[3]["ID"]);
-        $this->assertEquals("PickUp", $fajta_collector[1]["Fajta_neve"]);
-        $this->assertEquals(5, $fajta_collector[4]["ID"]);
-        $this->assertEquals("SUV", $fajta_collector[1]["Fajta_neve"]);
-        $this->assertEquals(6, $fajta_collector[5]["ID"]);
-        $this->assertEquals("4X4", $fajta_collector[1]["Fajta_neve"]);
-    }//<-kesz
-    public function test_if_kategoria_table_filled_with_elements()
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        //When
+        $result=KornyezetVedelemFeltoltoDAO();
+        //Then
+        $this->assertEquals(6,count($result));
+        
+        $this->assertEquals('E1',$result[1]);
+        $this->assertEquals('E2',$result[2]);
+        $this->assertEquals('E3',$result[3]);
+        $this->assertEquals('E4',$result[4]);
+        $this->assertEquals('E5',$result[5]);
+        $this->assertEquals('E6',$result[6]);
+    }
+    public function test_if_AutoTipusTarolo_inserts_testautotipus()
     {
-        //given
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
+
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DELETE FROM `autokolcsonzo`.`kategoria`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        AdatfelvetelAutoKategoria($kapcsolat);
-        $sql = "SELECT * FROM `autokolcsonzo`.`kategoria`";
-        $kategoria_collector = [];
-        $result = mysqli_query($kapcsolat, $sql);
-        while ($egysor = mysqli_fetch_array($result)) {
-            $kategoria = [];
-            $kategoria["ID"] = $egysor["ID"];
-            $kategoria["Kategoria"] = $egysor["Kategoria"];
-            array_push($kategoria_collector, $kategoria);
-        }
-        //then
-        $this->assertEquals(4, count($kategoria_collector));
-        $this->assertEquals(1, $kategoria_collector[0]["ID"]);
-        $this->assertEquals("Kis személy", $kategoria_collector[0]["Kategoria"]);
-        $this->assertEquals(2, $kategoria_collector[1]["ID"]);
-        $this->assertEquals("Személy autó", $kategoria_collector[1]["Kategoria"]);
-        $this->assertEquals(3, $kategoria_collector[3]["ID"]);
-        $this->assertEquals("Kis teher", $kategoria_collector[3]["Kategoria"]);
-        $this->assertEquals(4, $kategoria_collector[4]["ID"]);
-        $this->assertEquals("Teher", $kategoria_collector[4]["Kategoria"]);
-    }//<-kesz
-    public function test_if_kornyezetvedelem_table_filled_with_elements()
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        $Marka='test Marka';
+        $Tipus='teszt tipus';
+        $Fajta=1;
+        $Kategoria=2;
+        $Premium=1;
+        $KornyezetvedelmiBesorolas=1;
+        //When
+        $result=AutoTipusTarolo($Marka,$Tipus, $Fajta, $Kategoria, $Premium, $KornyezetvedelmiBesorolas);
+        //Then
+        $this->assertEquals($result,"Az autotipus felvétel  sikeres volt!<br><br>");
+    }
+    public function test_if_updateAutotipusDAO_updates_testAutotipus()
     {
-        //given
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
+
         $kapcsolat = mysqli_connect($host, $user, $password);
-        $sql = "DELETE FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        //when
-        KornyezetvedelmiBesorolas($kapcsolat);
-        $sql = "SELECT * FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
-        $kornyezetvedelmibesorolas_collector = [];
-        $result = mysqli_query($kapcsolat, $sql);
-        while ($egysor = mysqli_fetch_array($result)) {
-            $kornyezetvedelmibesorolas = [];
-            $kornyezetvedelmibesorolas["ID"] = $egysor["ID"];
-            $kornyezetvedelmibesorolas["KörnyezetvédelmiBesorolás"] = $egysor["KörnyezetvédelmiBesorolás"];
-            array_push($kornyezetvedelmibesorolas_collector, $kornyezetvedelmibesorolas);
-        }
-        //then
-        $this->assertEquals(6, count($kornyezetvedelmibesorolas_collector));
-        $this->assertEquals(1, $kornyezetvedelmibesorolas_collector[0]["ID"]);
-        $this->assertEquals("E1", $kornyezetvedelmibesorolas_collector[0]["KörnyezetvédelmiBesorolás"]);
-        $this->assertEquals(2, $kornyezetvedelmibesorolas_collector[1]["ID"]);
-        $this->assertEquals("E2", $kornyezetvedelmibesorolas_collector[1]["KörnyezetvédelmiBesorolás"]);
-        $this->assertEquals(3, $kornyezetvedelmibesorolas_collector[2]["ID"]);
-        $this->assertEquals("E3", $kornyezetvedelmibesorolas_collector[2]["KörnyezetvédelmiBesorolás"]);
-        $this->assertEquals(4, $kornyezetvedelmibesorolas_collector[3]["ID"]);
-        $this->assertEquals("E4", $kornyezetvedelmibesorolas_collector[3]["KörnyezetvédelmiBesorolás"]);
-        $this->assertEquals(5, $kornyezetvedelmibesorolas_collector[4]["ID"]);
-        $this->assertEquals("E5", $kornyezetvedelmibesorolas_collector[4]["KörnyezetvédelmiBesorolás"]);
-        $this->assertEquals(6, $kornyezetvedelmibesorolas_collector[5]["ID"]);
-        $this->assertEquals("E6", $kornyezetvedelmibesorolas_collector[5]["KörnyezetvédelmiBesorolás"]);
-    }//<-kesz
-    
-    public function test_if_Fajta_table_altered()
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        $marka='test Marka';
+        $tipus='teszt tipus Update';
+        $fajta_ID=3;
+        $kategoria_ID=3;
+        $premium=0;
+        $kornyezetvedelem_ID=5;
+        $sql="SELECT ID FROM `autokolcsonzo`.`autotipus` WHERE `Márka`='$marka'";
+        $result=mysqli_query($kapcsolat,$sql);
+        $egysor=mysqli_fetch_assoc($result);
+        $autotipus_ID=$egysor["ID"];
+        //When
+        $result=updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
+        //Then
+        $this->assertTrue($result);
+        //When
+        $kornyezetvedelem_ID=2;
+        $result=updateAutotipusDAO($marka,$tipus,$premium,$fajta_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
+        $this->assertTrue($result);
+    }
+    public function test_if_deleteAutotipusDAO_deletes_testAutotipus()
     {
-        //given
+        //Given
+        $path = dirname(__DIR__, 2);
+        include_once($path . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "AutoTipusDAO.php");
         $host = "127.0.0.1";
         $user = "root";
         $password = "";
+
         $kapcsolat = mysqli_connect($host, $user, $password);
-        //when
-        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DELETE FROM `autokolcsonzo`.`fajta`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $result = AutoFajtaTablaMegvaltoztatas($kapcsolat);
-        //then
-        $this->assertEquals("az autotipus tábla Fajtával kaszkádolva sikeres volt!", $result);
-        //after
-        AdatfelvetelAutoFajta($kapcsolat);
-        fill_testAutoTipus($kapcsolat);
-    }//? lehet hibás
-    public function test_if_Kategoria_table_altered()
-    {
-        //given
-        $host = "127.0.0.1";
-        $user = "root";
-        $password = "";
-        $kapcsolat = mysqli_connect($host, $user, $password);
-        //when
-        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DELETE FROM `autokolcsonzo`.`kategoria`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $result = KategoriaTablaMegvaltoztatasa($kapcsolat);
-        //then
-        $this->assertEquals("az autotipus tábla Kategóriával kaszkádolva sikeres volt!", $result);
-        //after
-        AdatfelvetelAutoKategoria($kapcsolat);
-        fill_testAutoTipus($kapcsolat);
-    }//? lehet hibás
-    public function test_if_Kornyezetvedelmi_table_altered()
-    {
-        //given
-        $host = "127.0.0.1";
-        $user = "root";
-        $password = "";
-        $kapcsolat = mysqli_connect($host, $user, $password);
-        //when
-        $sql = "DELETE FROM `autokolcsonzo`.`autotipus`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $sql = "DELETE FROM `autokolcsonzo`.`környezetvédelmibesorolás`";
-        $this->assertTrue(mysqli_query($kapcsolat, $sql));
-        $result = KornyezetvedelmiBesorolasMegvaltoztatas($kapcsolat);
-        //then
-        $this->assertEquals("Az autotipus tábla környezetvédelemmel kaszádolva sikeres volt!", $result);
-        //after
-        KornyezetvedelmiBesorolas($kapcsolat);
-        fill_testAutoTipus($kapcsolat);
-    }//? lehet hibás
+        $GLOBALS['kapcsolat'] = $kapcsolat;
+        $sql="SELECT id FROM `autokolcsonzo`.`autotipus` WHERE `Tipus`='teszt tipus Update'";
+        $result=mysqli_query($kapcsolat,$sql);
+        $egysor=mysqli_fetch_assoc($result);
+        $AutitipusID=$egysor["id"];
+        //When
+        $result=deleteAutotipusDAO($AutitipusID);
+        //Then
+        $this->assertTrue($result);
+    }
 
 }
