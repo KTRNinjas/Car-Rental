@@ -18,7 +18,6 @@ class AdminCest
     public function test_Admin_with_existing(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/Admin');
-
         $I->fillField('lastname', 'Ka');
         $I->fillField('firstname', 'Pál');
         $I->fillField('email', 'k.pal@gmail.com');

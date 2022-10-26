@@ -1,11 +1,16 @@
 <?php
 $path = dirname(__DIR__, 2);
 require_once($path . DIRECTORY_SEPARATOR . "Connection" . DIRECTORY_SEPARATOR . "Dbconn.php");
-function getAllCars()
+function getAllCars($timestamp=null)
 {
     $kapcsolat = $GLOBALS['kapcsolat'];
     $cars = [];
-    $today = date("y-m-d");
+    if($timestamp==null){
+        $today = date("y-m-d");
+    }else{
+        $today = date("y-m-d",$timestamp);
+    }
+    
     $sql = "SELECT id,Rendszám,Alvázszám,
     (SELECT Márka FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS marka,
     (SELECT Tipus FROM `autokolcsonzo`.`autotipus` WHERE id=Autotipus_id ) AS tipus,
