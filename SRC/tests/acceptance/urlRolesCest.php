@@ -1,5 +1,5 @@
 <?php
-class profilModositCest
+class URLrolesCest
 {
     public function test_rolesURL(AcceptanceTester $I)
     {
@@ -13,31 +13,42 @@ class profilModositCest
         $I->click('login');
         $I->amOnPage('http://localhost/');
         $I->dontSee('Hibás e-mail cím/ jelszó!');
-        $I->see('Üdvözöllek Fütty Imre');
         $I->seeElement('[value=Kijelentkezés]');
         $I->dontSee('warning');
         $I->dontSee('error');
         $I->dontSee('notice');
         $I->seeLink("Autótípus felvétel");
         $I->amOnPage('http://localhost/autotipusfelvevo');
-        $I->fillField('marka', 'Toyota');      
-        $I->fillField('tipus', 'Auris');
-        $I->fillField('fajta', 'Sedan');
-        $I->fillField('kategoria', 'Személy autó');
-        $I->fillField('premium', '');
-        $I->fillField('kornyezetvedelmi', 'E5');
-        $I->click('Autotipusbekuldes');
-        $I->see("Az autotipus felvétel sikeres volt!");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+        $I->dontSee('404');
+        $I->dontSee('Access denied');
         $I->amOnPage('http://localhost/');
         $I->seeLink("Árfelvétel");
         $I->amonPage("http://localhost/Foni_oldala");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+        $I->dontSee('404');
+        $I->dontSee('Access denied');
         $I->amOnPage('http://localhost/');
-        $I->seeLink("Autofelvétel");
+        $I->seeLink("Autófelvétel");
         $I->amonPage("http://localhost/Autofelvetel");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+        $I->dontSee('404');
+        $I->dontSee('Access denied');
         $I->amOnPage('http://localhost/');
         $I->seeLink("Profil módosítása");
         $I->click('Profil módosítása');
         $I->amOnPage('http://localhost/Profil_modositas');
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+        $I->dontSee('404');
+        $I->dontSee('Access denied');
         /* $I->see('Profil adatainak módosítása');
         $I->seeElement('[value=Ka]');
         $I->seeElement('[value=Pál]');
