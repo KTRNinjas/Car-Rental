@@ -13,10 +13,10 @@ function AutotmakeHeader()
 {
   print '<div class="grid-item"><small>Márka</small></div>';
   print '<div class="grid-item"><small>Tipus</small></div>';
-  print '<div class="grid-item"><small>Fajta_ID</small></div>';
-  print '<div class="grid-item"><small>Kategoria_ID</small></div>';
   print '<div class="grid-item"><small>Prémium</small></div>';
-  print '<div class="grid-item"><small>Környezetvédelmi_ID</small></div>';
+  print '<div class="grid-item"><small>Fajta</small></div>';
+  print '<div class="grid-item"><small>Kategoria</small></div>';
+  print '<div class="grid-item"><small>Környezetvédelmi besorolás</small></div>';
 }
 
 
