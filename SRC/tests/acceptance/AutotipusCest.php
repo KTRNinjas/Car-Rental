@@ -1,1 +1,233 @@
-<?php ?>
+<?php 
+class AutotipusCest
+{
+    public function test_Insert_Update_Delete_Autotipus(AcceptanceTester $I)
+    {
+        //Insert
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->fillField("marka", "tesztmarka");
+        $I->fillField("tipus", "teszttipus");
+        $I->selectOption('fajta','Combi');
+        $I->selectOption('kategoria','Kis személy');
+        $I->selectOption('kornyezetvedelem','E1');
+        $I->click("Autotipusbekuldes");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus');
+        $I->dontSeeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Combi");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis személy");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E1");
+        //Delete
+        $I->click('body > form:nth-child(12) > div:nth-child(1) > div:nth-child(9) > input:nth-child(1)');
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->fillField("marka", "tesztmarka1");
+        $I->fillField("tipus", "teszttipus1");
+        $I->selectOption('fajta','Terepjáró');
+        $I->selectOption('kategoria','Személy autó');
+        //$I->checkOption("#premium");
+        $I->selectOption('kornyezetvedelem','E2');
+        $I->click("Autotipusbekuldes");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka1');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus1');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Terepjáró");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Személy autó");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E2");
+        //Delete
+        $I->click('body > form:nth-child(12) > div:nth-child(1) > div:nth-child(9) > input:nth-child(1)');
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->fillField("marka", "tesztmarka1");
+        $I->fillField("tipus", "teszttipus1");
+        //$I->checkOption("prémium");
+        $I->selectOption('fajta','Sedan');
+        $I->selectOption('kategoria','Kis teher');
+        $I->selectOption('kornyezetvedelem','E3');
+        $I->click("Autotipusbekuldes");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka1');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus1');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Sedan");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E3");
+        //Delete
+        $I->click('body > form:nth-child(12) > div:nth-child(1) > div:nth-child(9) > input:nth-child(1)');
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->fillField("marka", "tesztmarka1");
+        $I->fillField("tipus", "teszttipus1");
+        //$I->checkOption("prémium");
+        $I->selectOption('fajta','PickUp');
+        $I->selectOption('kategoria','Teher');
+        $I->selectOption('kornyezetvedelem','E4');
+        $I->click("Autotipusbekuldes");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka1');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus1');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "PickUp");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E4");
+        //Delete
+        $I->click('body > form:nth-child(12) > div:nth-child(1) > div:nth-child(9) > input:nth-child(1)');
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->fillField("marka", "tesztmarka1");
+        $I->fillField("tipus", "teszttipus1");
+        //$I->checkOption("prémium");
+        $I->selectOption('fajta','SUV');
+        $I->selectOption('kategoria','Teher');
+        $I->selectOption('kornyezetvedelem','E5');
+        $I->click("Autotipusbekuldes");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka1');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus1');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "SUV");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E5");
+        //Delete
+        $I->click('body > form:nth-child(12) > div:nth-child(1) > div:nth-child(9) > input:nth-child(1)');
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->fillField("marka", "tesztmarka1");
+        $I->fillField("tipus", "teszttipus1");
+        //$I->checkOption("prémium");
+        $I->selectOption('fajta','4X4');
+        $I->selectOption('kategoria','Teher');
+        $I->selectOption('kornyezetvedelem','E6');
+        $I->click("Autotipusbekuldes");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka1');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus1');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "4X4");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E6");
+        //Update
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Combi");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis személy");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E1");
+        $I->click("body > form:nth-child(12) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Combi");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis személy");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E1");
+        //Update
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Terepjáró");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Személy autó");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E2");
+        $I->click("body > form:nth-child(12) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Terepjáró");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Személy autó");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E2");
+        //Update
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Sedan");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E3");
+        $I->click("body > form:nth-child(12) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "Sedan");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E3");
+        //Update
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "PickUp");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Teher");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E4");
+        $I->click("body > form:nth-child(12) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "PickUp");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E4");
+        //Update
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "SUV");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E5");
+        $I->click("body > form:nth-child(12) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "SUV");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E5");
+        //Update
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->fillField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "4X4");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->selectOption("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E6");
+        $I->click("body > form:nth-child(12) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->seeInField("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(5)", "4X4");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->seeOptionIsSelected("body > form:nth-child(12) > div:nth-child(1) > select:nth-child(7)", "E6");
+         //Delete
+         $I->click('body > form:nth-child(12) > div:nth-child(1) > div:nth-child(9) > input:nth-child(1)');
+         $I->amOnPage('http://localhost/autotipusfelvevo');
+         //Update
+        $I->fillField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->fillField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(5)", "4X4");
+        $I->selectOption("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->selectOption("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(7)", "E6");
+        $I->click("body > form:nth-child(8) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(2)", 'tesztmarka2');
+        $I->seeInField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(3)", 'teszttipus2');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(5)", "4X4");
+        $I->seeOptionIsSelected("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(6)", "Kis teher");
+        $I->seeOptionIsSelected("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(7)", "E6");
+        //Update
+        $I->fillField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(2)", 'JeepTeszt');
+        $I->fillField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(3)", 'WranglerTeszt');
+        //$I->checkOption("body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)");
+        $I->selectOption("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(5)", "Terepjáró");
+        $I->selectOption("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(6)", "Személy autó");
+        $I->selectOption("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(7)", "E5");
+        $I->click("body > form:nth-child(8) > div:nth-child(1) > div:nth-child(8) > input:nth-child(1)");
+        $I->amOnPage('http://localhost/autotipusfelvevo');
+        $I->seeInField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(2)", 'JeepTeszt');
+        $I->seeInField("body > form:nth-child(8) > div:nth-child(1) > input:nth-child(3)", 'WranglerTeszt');
+        //$I->seeCheckboxIsChecked('body > form:nth-child(12) > div:nth-child(1) > input:nth-child(4)');
+        $I->seeOptionIsSelected("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(5)", "Terepjáró");
+        $I->seeOptionIsSelected("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(6)", "Személy autó");
+        $I->seeOptionIsSelected("body > form:nth-child(8) > div:nth-child(1) > select:nth-child(7)", "E5");
+        $I->dontSee('warning');
+        $I->dontSee('error');
+        $I->dontSee('notice');
+    }
+}

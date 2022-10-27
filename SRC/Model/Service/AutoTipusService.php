@@ -19,7 +19,7 @@ function KornyezetVedelemFeltoltoService()
 }
 function AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $kornyezetvedelem)
 {
-    if ($premium == true) {
+    if ($premium == true || $premium=="on") {
         $premium = 1;
     } else {
         $premium = 0;
@@ -28,6 +28,11 @@ function AutotipusAdatAtvevo($marka, $tipus, $fajta, $kategoria, $premium, $korn
     return AutoTipusTarolo($marka, $tipus, $fajta, $kategoria, $premium, $kornyezetvedelem);
 }
 function updateAutotipusService($marka,$tipus,$premium,$_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID){
+    if ($premium == true || $premium=="on") {
+        $premium = 1;
+    } else {
+        $premium = 0;
+    }
     updateAutotipusDAO($marka,$tipus,$premium,$_ID,$kategoria_ID,$kornyezetvedelem_ID,$autotipus_ID);
 }
 function deleteAutotipusService($autotipus_ID){

@@ -1,5 +1,9 @@
 <?php
 $path = dirname(__DIR__, 1);
+$hostname = getenv('HTTP_HOST');
+$replacedPath = str_ireplace("\\", "/", $path);
+$izé = "//Car-Rental";
+$url = str_ireplace($_SERVER['DOCUMENT_ROOT'], "", $replacedPath);
 include_once($path . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "AutoTipusFelvevoController.php");
 initAutotipusController();
 createAutotipusController();
@@ -14,7 +18,7 @@ deleteAutotipusController();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=<?php print '"' . (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $hostname . $url . '/View/css/autoFelvetel.css"' ?>>
+    <link rel="stylesheet" href=<?php print '"' . (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $hostname . $url . '/View/css/autotipusfelvevo.css"' ?>>
     <title>Autotipus felvétel</title>
 </head>
 
@@ -41,27 +45,16 @@ deleteAutotipusController();
             getKategoria();
             ?>
         </select>
-        <label for="">
-            <input name="premium" type="checkbox" value="off">
-            Prémium
-            </input>
-        </label>
+        
+        <input type="checkbox" name="premium" id="premium" value="off">
         <select name="kornyezetvedelem" required id="">
             <option value="">Válaszon környezetvédelmi besorolást</option>
             <?php
             getKornyezetVedelem();
             ?>
         </select>
-        <?php
-        initAutotipusbekuldes();
-        ?>
         <button type="submit" name="Autotipusbekuldes">Beküldés</button>
     </form>
-    <div>
-        <?php
-        printresult();
-        ?>
-    </div>
 </body>
 
 </html>
