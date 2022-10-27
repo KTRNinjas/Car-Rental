@@ -1,4 +1,5 @@
 #####Saját ignore-ok, ide írjátok
+c3.php
 _output
 phpunit.xml
 .phpunit.result.cache
