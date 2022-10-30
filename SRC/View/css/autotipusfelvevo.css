@@ -1,0 +1,17 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(10px, 1fr));
+    align-content: center;
+    grid-gap: 1px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.smallerInput {
+    font-size: 0.7rem;
+}
+input[type='number']{
+    width: 70px;
+} 

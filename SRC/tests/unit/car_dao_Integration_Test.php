@@ -27,8 +27,9 @@ class Car_DAO_Test extends \Codeception\Test\Unit
 
         $kapcsolat = mysqli_connect($host, $user, $password);
         $GLOBALS['kapcsolat'] = $kapcsolat;
+        $timestamp=mktime(0,0,0,8,1,2022);
         //When
-        $result=getAllCars();
+        $result=getAllCars($timestamp);
         //Then
         $this->assertEquals(4,count($result));
         //Audi
